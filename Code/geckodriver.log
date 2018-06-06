@@ -1,0 +1,379 @@
+1521222311110	geckodriver	INFO	geckodriver 0.20.0
+1521222311118	geckodriver	INFO	Listening on 127.0.0.1:55275
+1521222312173	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.DkYOw1KeSmRv"
+1521222313385	Marionette	INFO	Enabled via --marionette
+1521222317020	Marionette	INFO	Listening on port 35611
+1521222317860	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Parent 8945, Gecko_IOThread] WARNING: pipe error (57): Connessione interrotta dal corrispondente: file /build/firefox-h7Huxq/firefox-58.0.2+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+1521288123973	geckodriver	INFO	geckodriver 0.20.0
+1521288124104	geckodriver	INFO	Listening on 127.0.0.1:36459
+1521288124994	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.AlZxIYoIFb7E"
+1521288126169	Marionette	INFO	Enabled via --marionette
+1521288129755	Marionette	INFO	Listening on port 41203
+1521288129827	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Parent 8248, Gecko_IOThread] WARNING: pipe error (57): Connessione interrotta dal corrispondente: file /build/firefox-h7Huxq/firefox-58.0.2+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+1521288626081	geckodriver	INFO	geckodriver 0.20.0
+1521288626086	geckodriver	INFO	Listening on 127.0.0.1:50687
+1521288627086	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.nCfZvXdKEWIO"
+1521288627782	Marionette	INFO	Enabled via --marionette
+1521288630574	Marionette	INFO	Listening on port 44163
+1521288630606	Marionette	WARN	TLS certificate errors will be ignored for this session
+1521369678067	geckodriver	INFO	geckodriver 0.20.0
+1521369678183	geckodriver	INFO	Listening on 127.0.0.1:38933
+1521369678878	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.6VWQiMUhJQxR"
+1521369679596	Marionette	INFO	Enabled via --marionette
+1521369682682	Marionette	INFO	Listening on port 38107
+1521369682702	Marionette	WARN	TLS certificate errors will be ignored for this session
+1521369684714	addons.xpi	WARN	Exception running bootstrap method shutdown on activity-stream@mozilla.org: [Exception... "Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIObserverService.removeObserver]"  nsresult: "0x80004005 (NS_ERROR_FAILURE)"  location: "JS frame :: resource://activity-stream/lib/SnippetsFeed.jsm :: uninit :: line 125"  data: no] Stack trace: uninit()@resource://activity-stream/lib/SnippetsFeed.jsm:125 < onAction()@resource://activity-stream/lib/SnippetsFeed.jsm:141 < _middleware/</<()@resource://activity-stream/lib/Store.jsm:51 < Store/this[method]()@resource://activity-stream/lib/Store.jsm:30 < uninit()@resource://activity-stream/lib/Store.jsm:153 < uninit()@resource://activity-stream/lib/ActivityStream.jsm:274 < uninit()@resource://gre/modules/addons/XPIProvider.jsm -> jar:file:///usr/lib/firefox/browser/features/activity-stream@mozilla.org.xpi!/bootstrap.js:80 < shutdown()@resource://gre/modules/addons/XPIProvider.jsm -> jar:file:///usr/lib/firefox/browser/features/activity-stream@mozilla.org.xpi!/bootstrap.js:196 < callBootstrapMethod()@resource://gre/modules/addons/XPIProvider.jsm:4419 < observe()@resource://gre/modules/addons/XPIProvider.jsm:2279
+JavaScript error: resource://shield-recipe-client/lib/ShieldRecipeClient.jsm, line 70: TypeError: log is undefined
+console.error: PushService: 
+  clearOriginData: Error clearing origin data:
+  UnknownError
+console.error: PushService: 
+  stateChangeProcessEnqueue: Error transitioning state
+  UnknownError
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1521369701379	geckodriver	INFO	geckodriver 0.20.0
+1521369701387	geckodriver	INFO	Listening on 127.0.0.1:42897
+1521369702397	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.y4XvuwhqzoF7"
+1521369703298	Marionette	INFO	Enabled via --marionette
+1521369708208	Marionette	INFO	Listening on port 44545
+1521369708222	Marionette	WARN	TLS certificate errors will be ignored for this session
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1521390275862	geckodriver	INFO	geckodriver 0.20.0
+1521390275866	geckodriver	INFO	Listening on 127.0.0.1:37111
+1521390276872	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.QlFk3X2PMfB2"
+1521390277750	Marionette	INFO	Enabled via --marionette
+1521390280610	Marionette	INFO	Listening on port 43097
+1521390280766	Marionette	WARN	TLS certificate errors will be ignored for this session
+1521630777388	geckodriver	INFO	geckodriver 0.20.0
+1521630777512	geckodriver	INFO	Listening on 127.0.0.1:46217
+1521630778411	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.eatvGX7cd3AR"
+1521630781406	Marionette	INFO	Enabled via --marionette
+1521630785272	Marionette	INFO	Listening on port 40437
+1521630785390	Marionette	WARN	TLS certificate errors will be ignored for this session
+1521630832401	geckodriver	INFO	geckodriver 0.20.0
+1521630832410	geckodriver	INFO	Listening on 127.0.0.1:56585
+1521630833416	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.XHi3PzcpfMQH"
+1521630834100	Marionette	INFO	Enabled via --marionette
+1521630837354	Marionette	INFO	Listening on port 37343
+1521630837442	Marionette	WARN	TLS certificate errors will be ignored for this session
+1521631329858	geckodriver	INFO	geckodriver 0.20.0
+1521631329863	geckodriver	INFO	Listening on 127.0.0.1:35651
+1521631330877	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.f21fQFahmEBj"
+1521631331556	Marionette	INFO	Enabled via --marionette
+1521631334464	Marionette	INFO	Listening on port 38349
+1521631334506	Marionette	WARN	TLS certificate errors will be ignored for this session
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+1521631752450	geckodriver	INFO	geckodriver 0.20.0
+1521631752455	geckodriver	INFO	Listening on 127.0.0.1:45217
+1521631753460	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.mSjsCgkW1Hwn"
+1521631754126	Marionette	INFO	Enabled via --marionette
+1521631756952	Marionette	INFO	Listening on port 33175
+1521631756982	Marionette	WARN	TLS certificate errors will be ignored for this session
+1521631779176	geckodriver	INFO	geckodriver 0.20.0
+1521631779182	geckodriver	INFO	Listening on 127.0.0.1:59849
+1521631780194	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.QwYZq3rZ8f8M"
+1521631780974	Marionette	INFO	Enabled via --marionette
+1521631784822	Marionette	INFO	Listening on port 37827
+1521631784912	Marionette	WARN	TLS certificate errors will be ignored for this session
+1521631810394	geckodriver	INFO	geckodriver 0.20.0
+1521631810399	geckodriver	INFO	Listening on 127.0.0.1:51493
+1521631811410	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.3T40VBBcnata"
+1521631812130	Marionette	INFO	Enabled via --marionette
+1521631817482	Marionette	INFO	Listening on port 34993
+1521631818524	Marionette	WARN	TLS certificate errors will be ignored for this session
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1521631829278	geckodriver::marionette	ERROR	Failed to stop browser process
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1521632219105	geckodriver	INFO	geckodriver 0.20.0
+1521632219110	geckodriver	INFO	Listening on 127.0.0.1:59937
+1521632220124	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.Efoj2LQld4Fh"
+1521632220838	Marionette	INFO	Enabled via --marionette
+1521632223670	Marionette	INFO	Listening on port 36381
+1521632223752	Marionette	WARN	TLS certificate errors will be ignored for this session
+1522058036847	geckodriver	INFO	geckodriver 0.20.0
+1522058036983	geckodriver	INFO	Listening on 127.0.0.1:36335
+1522058038217	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.Z1G2HDkBctfw"
+1522058039806	Marionette	INFO	Enabled via --marionette
+1522058043346	Marionette	INFO	Listening on port 41409
+1522058043436	Marionette	WARN	TLS certificate errors will be ignored for this session
+IPDL protocol error: Handler returned error code!
+
+###!!! [Parent][DispatchAsyncMessage] Error: PLayerTransaction::Msg_ReleaseLayer Processing error: message was deserialized, but the handler returned false (indicating failure)
+
+IPDL protocol error: Handler returned error code!
+
+###!!! [Parent][DispatchAsyncMessage] Error: PLayerTransaction::Msg_ReleaseLayer Processing error: message was deserialized, but the handler returned false (indicating failure)
+
+IPDL protocol error: Handler returned error code!
+
+###!!! [Parent][DispatchAsyncMessage] Error: PLayerTransaction::Msg_ReleaseLayer Processing error: message was deserialized, but the handler returned false (indicating failure)
+
+IPDL protocol error: Handler returned error code!
+
+###!!! [Parent][DispatchAsyncMessage] Error: PLayerTransaction::Msg_ReleaseLayer Processing error: message was deserialized, but the handler returned false (indicating failure)
+
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1522058092979	geckodriver	INFO	geckodriver 0.20.0
+1522058092983	geckodriver	INFO	Listening on 127.0.0.1:38949
+1522058093988	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.lT79AxcH0wU7"
+1522058095342	Marionette	INFO	Enabled via --marionette
+1522058099064	Marionette	INFO	Listening on port 44723
+1522058099118	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Parent 7079, Gecko_IOThread] WARNING: pipe error (66): Connessione interrotta dal corrispondente: file /build/firefox-xPvJxO/firefox-59.0.1+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1522058461809	geckodriver	INFO	geckodriver 0.20.0
+1522058461813	geckodriver	INFO	Listening on 127.0.0.1:47641
+1522058462822	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.ir3BZRcHsQz3"
+1522058464704	Marionette	INFO	Enabled via --marionette
+1522058468250	Marionette	INFO	Listening on port 45105
+1522058468346	Marionette	WARN	TLS certificate errors will be ignored for this session
+1522058626965	geckodriver	INFO	geckodriver 0.20.0
+1522058626969	geckodriver	INFO	Listening on 127.0.0.1:38459
+1522058627983	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.Go7jRvXl79DP"
+1522058628628	Marionette	INFO	Enabled via --marionette
+1522058631370	Marionette	INFO	Listening on port 37373
+1522058631404	Marionette	WARN	TLS certificate errors will be ignored for this session
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1522058681487	geckodriver	INFO	geckodriver 0.20.0
+1522058681492	geckodriver	INFO	Listening on 127.0.0.1:53967
+1522058682495	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.Wu0suRQ00LPI"
+1522058683618	Marionette	INFO	Enabled via --marionette
+1522058686208	Marionette	INFO	Listening on port 42547
+1522058686220	Marionette	WARN	TLS certificate errors will be ignored for this session
+1522058687368	addons.xpi	WARN	Exception running bootstrap method shutdown on activity-stream@mozilla.org: [Exception... "Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIObserverService.removeObserver]"  nsresult: "0x80004005 (NS_ERROR_FAILURE)"  location: "JS frame :: resource://activity-stream/lib/SnippetsFeed.jsm :: uninit :: line 125"  data: no] Stack trace: uninit()@resource://activity-stream/lib/SnippetsFeed.jsm:125 < onAction()@resource://activity-stream/lib/SnippetsFeed.jsm:141 < _middleware/</<()@resource://activity-stream/lib/Store.jsm:51 < Store/this[method]()@resource://activity-stream/lib/Store.jsm:30 < uninit()@resource://activity-stream/lib/Store.jsm:153 < uninit()@resource://activity-stream/lib/ActivityStream.jsm:274 < uninit()@resource://gre/modules/addons/XPIProvider.jsm -> jar:file:///usr/lib/firefox/browser/features/activity-stream@mozilla.org.xpi!/bootstrap.js:80 < shutdown()@resource://gre/modules/addons/XPIProvider.jsm -> jar:file:///usr/lib/firefox/browser/features/activity-stream@mozilla.org.xpi!/bootstrap.js:196 < callBootstrapMethod()@resource://gre/modules/addons/XPIProvider.jsm:4419 < observe()@resource://gre/modules/addons/XPIProvider.jsm:2279 < GeckoDriver.prototype.quit()@driver.js:3270 < despatch()@server.js:557 < execute()@server.js:531 < onPacket/<()@server.js:506 < onPacket()@server.js:505 < _onJSONObjectReady/<()@transport.js:500
+JavaScript error: resource://shield-recipe-client/lib/ShieldRecipeClient.jsm, line 70: TypeError: log is undefined
+console.error: PushService: 
+  clearOriginData: Error clearing origin data:
+  UnknownError
+console.error: PushService: 
+  stateChangeProcessEnqueue: Error transitioning state
+  UnknownError
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1522058691840	geckodriver::marionette	ERROR	Failed to stop browser process
+1522058691846	geckodriver	INFO	geckodriver 0.20.0
+1522058691851	geckodriver	INFO	Listening on 127.0.0.1:48675
+1522058692855	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.s1MgH02J9L6s"
+1522058693538	Marionette	INFO	Enabled via --marionette
+1522058695990	Marionette	INFO	Listening on port 46335
+1522058696066	Marionette	WARN	TLS certificate errors will be ignored for this session
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1522058717597	geckodriver::marionette	ERROR	Failed to stop browser process
+1522058717611	geckodriver	INFO	geckodriver 0.20.0
+1522058717618	geckodriver	INFO	Listening on 127.0.0.1:60223
+1522058718630	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.QrDEAebhwYCU"
+1522058720736	Marionette	INFO	Enabled via --marionette
+1522058725280	Marionette	INFO	Listening on port 41671
+1522058725366	Marionette	WARN	TLS certificate errors will be ignored for this session
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1522058750090	geckodriver::marionette	ERROR	Failed to stop browser process
+1522058750118	geckodriver	INFO	geckodriver 0.20.0
+1522058750128	geckodriver	INFO	Listening on 127.0.0.1:40397
+1522058751133	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.JvyStOVmjijk"
+1522058751878	Marionette	INFO	Enabled via --marionette
+1522058755490	Marionette	INFO	Listening on port 45023
+1522058755554	Marionette	WARN	TLS certificate errors will be ignored for this session
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1522058785640	geckodriver::marionette	ERROR	Failed to stop browser process
+1522058785692	geckodriver	INFO	geckodriver 0.20.0
+1522058785709	geckodriver	INFO	Listening on 127.0.0.1:42835
+1522058786708	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.LKZaGuHaBOTj"
+1522058788040	Marionette	INFO	Enabled via --marionette
+1522058790644	Marionette	INFO	Listening on port 41837
+1522058790738	Marionette	WARN	TLS certificate errors will be ignored for this session
+1522935518270	geckodriver	INFO	geckodriver 0.20.0
+1522935518441	geckodriver	INFO	Listening on 127.0.0.1:55699
+1522935519293	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.Tpn6btkFlGcZ"
+1522935520264	Marionette	INFO	Enabled via --marionette
+1522935523548	Marionette	INFO	Listening on port 43159
+1522935523610	Marionette	WARN	TLS certificate errors will be ignored for this session
+1522935524070	addons.xpi	WARN	Exception running bootstrap method shutdown on activity-stream@mozilla.org: [Exception... "Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIObserverService.removeObserver]"  nsresult: "0x80004005 (NS_ERROR_FAILURE)"  location: "JS frame :: resource://activity-stream/lib/SnippetsFeed.jsm :: uninit :: line 125"  data: no] Stack trace: uninit()@resource://activity-stream/lib/SnippetsFeed.jsm:125 < onAction()@resource://activity-stream/lib/SnippetsFeed.jsm:141 < _middleware/</<()@resource://activity-stream/lib/Store.jsm:51 < Store/this[method]()@resource://activity-stream/lib/Store.jsm:30 < uninit()@resource://activity-stream/lib/Store.jsm:153 < uninit()@resource://activity-stream/lib/ActivityStream.jsm:274 < uninit()@resource://gre/modules/addons/XPIProvider.jsm -> jar:file:///usr/lib/firefox/browser/features/activity-stream@mozilla.org.xpi!/bootstrap.js:80 < shutdown()@resource://gre/modules/addons/XPIProvider.jsm -> jar:file:///usr/lib/firefox/browser/features/activity-stream@mozilla.org.xpi!/bootstrap.js:196 < callBootstrapMethod()@resource://gre/modules/addons/XPIProvider.jsm:4419 < observe()@resource://gre/modules/addons/XPIProvider.jsm:2279 < GeckoDriver.prototype.quit()@driver.js:3270 < despatch()@server.js:557 < execute()@server.js:531 < onPacket/<()@server.js:506 < onPacket()@server.js:505 < _onJSONObjectReady/<()@transport.js:500
+JavaScript error: resource://shield-recipe-client/lib/ShieldRecipeClient.jsm, line 70: TypeError: log is undefined
+console.error: PushService: 
+  clearOriginData: Error clearing origin data:
+  UnknownError
+console.error: PushService: 
+  stateChangeProcessEnqueue: Error transitioning state
+  UnknownError
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1522935528235	geckodriver::marionette	ERROR	Failed to stop browser process
+1522935528243	geckodriver	INFO	geckodriver 0.20.0
+1522935528248	geckodriver	INFO	Listening on 127.0.0.1:49457
+1522935529260	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.n3ZzkGVOeMuG"
+1522935530606	Marionette	INFO	Enabled via --marionette
+1522935535070	Marionette	INFO	Listening on port 34953
+1522935535092	Marionette	WARN	TLS certificate errors will be ignored for this session
+1522935556760	addons.productaddons	WARN	Failed downloading via XHR, status: 0, reason: error
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1522935558258	geckodriver::marionette	ERROR	Failed to stop browser process
+1522935558289	geckodriver	INFO	geckodriver 0.20.0
+1522935558297	geckodriver	INFO	Listening on 127.0.0.1:42335
+1522935559305	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.kgJvmtzNNkFg"
+1522935560484	Marionette	INFO	Enabled via --marionette
+1522935563914	Marionette	INFO	Listening on port 40239
+1522935563932	Marionette	WARN	TLS certificate errors will be ignored for this session
+1522935564070	addons.xpi	WARN	Exception running bootstrap method shutdown on activity-stream@mozilla.org: [Exception... "Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIObserverService.removeObserver]"  nsresult: "0x80004005 (NS_ERROR_FAILURE)"  location: "JS frame :: resource://activity-stream/lib/SnippetsFeed.jsm :: uninit :: line 125"  data: no] Stack trace: uninit()@resource://activity-stream/lib/SnippetsFeed.jsm:125 < onAction()@resource://activity-stream/lib/SnippetsFeed.jsm:141 < _middleware/</<()@resource://activity-stream/lib/Store.jsm:51 < Store/this[method]()@resource://activity-stream/lib/Store.jsm:30 < uninit()@resource://activity-stream/lib/Store.jsm:153 < uninit()@resource://activity-stream/lib/ActivityStream.jsm:274 < uninit()@resource://gre/modules/addons/XPIProvider.jsm -> jar:file:///usr/lib/firefox/browser/features/activity-stream@mozilla.org.xpi!/bootstrap.js:80 < shutdown()@resource://gre/modules/addons/XPIProvider.jsm -> jar:file:///usr/lib/firefox/browser/features/activity-stream@mozilla.org.xpi!/bootstrap.js:196 < callBootstrapMethod()@resource://gre/modules/addons/XPIProvider.jsm:4419 < observe()@resource://gre/modules/addons/XPIProvider.jsm:2279
+[Child 3912, Chrome_ChildThread] WARNING: pipe error (3): Connessione interrotta dal corrispondente: file /build/firefox-MBnaRH/firefox-59.0.2+build1/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+1522942200115	geckodriver	INFO	geckodriver 0.20.0
+1522942200139	geckodriver	INFO	Listening on 127.0.0.1:47937
+1522942201200	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.rVPwxU4sl4lD"
+1522942211662	Marionette	INFO	Enabled via --marionette
+1522942219276	Marionette	INFO	Listening on port 36565
+1522942220982	Marionette	WARN	TLS certificate errors will be ignored for this session
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1522942225245	geckodriver::marionette	ERROR	Failed to stop browser process
+1522942225347	geckodriver	INFO	geckodriver 0.20.0
+1522942225351	geckodriver	INFO	Listening on 127.0.0.1:41553
+1522942226366	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.1yuGourXSrAe"
+1522942227204	Marionette	INFO	Enabled via --marionette
+1522942230210	Marionette	INFO	Listening on port 33431
+1522942231306	Marionette	WARN	TLS certificate errors will be ignored for this session
+1522942231822	addons.xpi	WARN	Exception running bootstrap method shutdown on activity-stream@mozilla.org: [Exception... "Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIObserverService.removeObserver]"  nsresult: "0x80004005 (NS_ERROR_FAILURE)"  location: "JS frame :: resource://activity-stream/lib/SnippetsFeed.jsm :: uninit :: line 125"  data: no] Stack trace: uninit()@resource://activity-stream/lib/SnippetsFeed.jsm:125 < onAction()@resource://activity-stream/lib/SnippetsFeed.jsm:141 < _middleware/</<()@resource://activity-stream/lib/Store.jsm:51 < Store/this[method]()@resource://activity-stream/lib/Store.jsm:30 < uninit()@resource://activity-stream/lib/Store.jsm:153 < uninit()@resource://activity-stream/lib/ActivityStream.jsm:274 < uninit()@resource://gre/modules/addons/XPIProvider.jsm -> jar:file:///usr/lib/firefox/browser/features/activity-stream@mozilla.org.xpi!/bootstrap.js:80 < shutdown()@resource://gre/modules/addons/XPIProvider.jsm -> jar:file:///usr/lib/firefox/browser/features/activity-stream@mozilla.org.xpi!/bootstrap.js:196 < callBootstrapMethod()@resource://gre/modules/addons/XPIProvider.jsm:4419 < observe()@resource://gre/modules/addons/XPIProvider.jsm:2279 < GeckoDriver.prototype.quit()@driver.js:3270 < despatch()@server.js:557 < execute()@server.js:531 < onPacket/<()@server.js:506 < onPacket()@server.js:505 < _onJSONObjectReady/<()@transport.js:500
+JavaScript error: resource://shield-recipe-client/lib/ShieldRecipeClient.jsm, line 70: TypeError: log is undefined
+console.error: PushService: 
+  clearOriginData: Error clearing origin data:
+  UnknownError
+console.error: PushService: 
+  stateChangeProcessEnqueue: Error transitioning state
+  UnknownError
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1522942234785	geckodriver::marionette	ERROR	Failed to stop browser process
+1522942234848	geckodriver	INFO	geckodriver 0.20.0
+1522942234852	geckodriver	INFO	Listening on 127.0.0.1:49841
+1522942235867	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.lO7TSgZ3aXcM"
+1522942238306	Marionette	INFO	Enabled via --marionette
+1522942242166	Marionette	INFO	Listening on port 41549
+1522942242208	Marionette	WARN	TLS certificate errors will be ignored for this session
+1522942243668	addons.xpi	WARN	Exception running bootstrap method shutdown on activity-stream@mozilla.org: [Exception... "Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIObserverService.removeObserver]"  nsresult: "0x80004005 (NS_ERROR_FAILURE)"  location: "JS frame :: resource://activity-stream/lib/SnippetsFeed.jsm :: uninit :: line 125"  data: no] Stack trace: uninit()@resource://activity-stream/lib/SnippetsFeed.jsm:125 < onAction()@resource://activity-stream/lib/SnippetsFeed.jsm:141 < _middleware/</<()@resource://activity-stream/lib/Store.jsm:51 < Store/this[method]()@resource://activity-stream/lib/Store.jsm:30 < uninit()@resource://activity-stream/lib/Store.jsm:153 < uninit()@resource://activity-stream/lib/ActivityStream.jsm:274 < uninit()@resource://gre/modules/addons/XPIProvider.jsm -> jar:file:///usr/lib/firefox/browser/features/activity-stream@mozilla.org.xpi!/bootstrap.js:80 < shutdown()@resource://gre/modules/addons/XPIProvider.jsm -> jar:file:///usr/lib/firefox/browser/features/activity-stream@mozilla.org.xpi!/bootstrap.js:196 < callBootstrapMethod()@resource://gre/modules/addons/XPIProvider.jsm:4419 < observe()@resource://gre/modules/addons/XPIProvider.jsm:2279 < GeckoDriver.prototype.quit()@driver.js:3270 < despatch()@server.js:557 < execute()@server.js:531 < onPacket/<()@server.js:506 < onPacket()@server.js:505 < _onJSONObjectReady/<()@transport.js:500
+JavaScript error: resource://shield-recipe-client/lib/ShieldRecipeClient.jsm, line 70: TypeError: log is undefined
+console.error: PushService: 
+  clearOriginData: Error clearing origin data:
+  UnknownError
+console.error: PushService: 
+  stateChangeProcessEnqueue: Error transitioning state
+  UnknownError
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1522942246814	geckodriver::marionette	ERROR	Failed to stop browser process
+1522942246884	geckodriver	INFO	geckodriver 0.20.0
+1522942246888	geckodriver	INFO	Listening on 127.0.0.1:45117
+1522942247903	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.4C79uzkKrUey"
+1522942248696	Marionette	INFO	Enabled via --marionette
+1522942251592	Marionette	INFO	Listening on port 44403
+1522942251636	Marionette	WARN	TLS certificate errors will be ignored for this session
+1522942253162	addons.xpi	WARN	Exception running bootstrap method shutdown on activity-stream@mozilla.org: [Exception... "Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIObserverService.removeObserver]"  nsresult: "0x80004005 (NS_ERROR_FAILURE)"  location: "JS frame :: resource://activity-stream/lib/SnippetsFeed.jsm :: uninit :: line 125"  data: no] Stack trace: uninit()@resource://activity-stream/lib/SnippetsFeed.jsm:125 < onAction()@resource://activity-stream/lib/SnippetsFeed.jsm:141 < _middleware/</<()@resource://activity-stream/lib/Store.jsm:51 < Store/this[method]()@resource://activity-stream/lib/Store.jsm:30 < uninit()@resource://activity-stream/lib/Store.jsm:153 < uninit()@resource://activity-stream/lib/ActivityStream.jsm:274 < uninit()@resource://gre/modules/addons/XPIProvider.jsm -> jar:file:///usr/lib/firefox/browser/features/activity-stream@mozilla.org.xpi!/bootstrap.js:80 < shutdown()@resource://gre/modules/addons/XPIProvider.jsm -> jar:file:///usr/lib/firefox/browser/features/activity-stream@mozilla.org.xpi!/bootstrap.js:196 < callBootstrapMethod()@resource://gre/modules/addons/XPIProvider.jsm:4419 < observe()@resource://gre/modules/addons/XPIProvider.jsm:2279 < GeckoDriver.prototype.quit()@driver.js:3270 < despatch()@server.js:557 < execute()@server.js:531 < onPacket/<()@server.js:506 < onPacket()@server.js:505 < _onJSONObjectReady/<()@transport.js:500
+JavaScript error: resource://shield-recipe-client/lib/ShieldRecipeClient.jsm, line 70: TypeError: log is undefined
+console.error: PushService: 
+  clearOriginData: Error clearing origin data:
+  UnknownError
+console.error: PushService: 
+  stateChangeProcessEnqueue: Error transitioning state
+  UnknownError
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1522942255705	geckodriver::marionette	ERROR	Failed to stop browser process
+1522942255806	geckodriver	INFO	geckodriver 0.20.0
+1522942255810	geckodriver	INFO	Listening on 127.0.0.1:34357
+1522942256825	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.0DwA82FsSWWL"
+1522942257622	Marionette	INFO	Enabled via --marionette
+1522942260190	Marionette	INFO	Listening on port 36495
+1522942261246	Marionette	WARN	TLS certificate errors will be ignored for this session
+1522942261730	addons.xpi	WARN	Exception running bootstrap method shutdown on activity-stream@mozilla.org: [Exception... "Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIObserverService.removeObserver]"  nsresult: "0x80004005 (NS_ERROR_FAILURE)"  location: "JS frame :: resource://activity-stream/lib/SnippetsFeed.jsm :: uninit :: line 125"  data: no] Stack trace: uninit()@resource://activity-stream/lib/SnippetsFeed.jsm:125 < onAction()@resource://activity-stream/lib/SnippetsFeed.jsm:141 < _middleware/</<()@resource://activity-stream/lib/Store.jsm:51 < Store/this[method]()@resource://activity-stream/lib/Store.jsm:30 < uninit()@resource://activity-stream/lib/Store.jsm:153 < uninit()@resource://activity-stream/lib/ActivityStream.jsm:274 < uninit()@resource://gre/modules/addons/XPIProvider.jsm -> jar:file:///usr/lib/firefox/browser/features/activity-stream@mozilla.org.xpi!/bootstrap.js:80 < shutdown()@resource://gre/modules/addons/XPIProvider.jsm -> jar:file:///usr/lib/firefox/browser/features/activity-stream@mozilla.org.xpi!/bootstrap.js:196 < callBootstrapMethod()@resource://gre/modules/addons/XPIProvider.jsm:4419 < observe()@resource://gre/modules/addons/XPIProvider.jsm:2279 < GeckoDriver.prototype.quit()@driver.js:3270 < despatch()@server.js:557 < execute()@server.js:531 < onPacket/<()@server.js:506 < onPacket()@server.js:505 < _onJSONObjectReady/<()@transport.js:500
+JavaScript error: resource://shield-recipe-client/lib/ShieldRecipeClient.jsm, line 70: TypeError: log is undefined
+console.error: PushService: 
+  clearOriginData: Error clearing origin data:
+  UnknownError
+console.error: PushService: 
+  stateChangeProcessEnqueue: Error transitioning state
+  UnknownError
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1522942265182	geckodriver::marionette	ERROR	Failed to stop browser process
+1522942265244	geckodriver	INFO	geckodriver 0.20.0
+1522942265248	geckodriver	INFO	Listening on 127.0.0.1:60889
+1522942266249	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.IHOfbAPWlprZ"
+1522942267008	Marionette	INFO	Enabled via --marionette
+1522942270568	Marionette	INFO	Listening on port 44599
+1522942270676	Marionette	WARN	TLS certificate errors will be ignored for this session
+1522942271634	addons.xpi	WARN	Exception running bootstrap method shutdown on activity-stream@mozilla.org: [Exception... "Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIObserverService.removeObserver]"  nsresult: "0x80004005 (NS_ERROR_FAILURE)"  location: "JS frame :: resource://activity-stream/lib/SnippetsFeed.jsm :: uninit :: line 125"  data: no] Stack trace: uninit()@resource://activity-stream/lib/SnippetsFeed.jsm:125 < onAction()@resource://activity-stream/lib/SnippetsFeed.jsm:141 < _middleware/</<()@resource://activity-stream/lib/Store.jsm:51 < Store/this[method]()@resource://activity-stream/lib/Store.jsm:30 < uninit()@resource://activity-stream/lib/Store.jsm:153 < uninit()@resource://activity-stream/lib/ActivityStream.jsm:274 < uninit()@resource://gre/modules/addons/XPIProvider.jsm -> jar:file:///usr/lib/firefox/browser/features/activity-stream@mozilla.org.xpi!/bootstrap.js:80 < shutdown()@resource://gre/modules/addons/XPIProvider.jsm -> jar:file:///usr/lib/firefox/browser/features/activity-stream@mozilla.org.xpi!/bootstrap.js:196 < callBootstrapMethod()@resource://gre/modules/addons/XPIProvider.jsm:4419 < observe()@resource://gre/modules/addons/XPIProvider.jsm:2279 < GeckoDriver.prototype.quit()@driver.js:3270 < despatch()@server.js:557 < execute()@server.js:531 < onPacket/<()@server.js:506 < onPacket()@server.js:505 < _onJSONObjectReady/<()@transport.js:500
+console.error: 
+  Message: Error: Connection closed before committing the transaction.
+  Stack:
+    executeTransaction/promise</transactionPromise<@resource://gre/modules/Sqlite.jsm:617:19
+observe@resource://gre/modules/AsyncShutdown.jsm:535:9
+
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1522942274301	geckodriver::marionette	ERROR	Failed to stop browser process
+1522942274398	geckodriver	INFO	geckodriver 0.20.0
+1522942274402	geckodriver	INFO	Listening on 127.0.0.1:49527
+1522942275411	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.V35KLrNHxGps"
+1522942276702	Marionette	INFO	Enabled via --marionette
+1522942279702	Marionette	INFO	Listening on port 43851
+1522942279746	Marionette	WARN	TLS certificate errors will be ignored for this session
+1522942280944	addons.xpi	WARN	Exception running bootstrap method shutdown on activity-stream@mozilla.org: [Exception... "Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIObserverService.removeObserver]"  nsresult: "0x80004005 (NS_ERROR_FAILURE)"  location: "JS frame :: resource://activity-stream/lib/SnippetsFeed.jsm :: uninit :: line 125"  data: no] Stack trace: uninit()@resource://activity-stream/lib/SnippetsFeed.jsm:125 < onAction()@resource://activity-stream/lib/SnippetsFeed.jsm:141 < _middleware/</<()@resource://activity-stream/lib/Store.jsm:51 < Store/this[method]()@resource://activity-stream/lib/Store.jsm:30 < uninit()@resource://activity-stream/lib/Store.jsm:153 < uninit()@resource://activity-stream/lib/ActivityStream.jsm:274 < uninit()@resource://gre/modules/addons/XPIProvider.jsm -> jar:file:///usr/lib/firefox/browser/features/activity-stream@mozilla.org.xpi!/bootstrap.js:80 < shutdown()@resource://gre/modules/addons/XPIProvider.jsm -> jar:file:///usr/lib/firefox/browser/features/activity-stream@mozilla.org.xpi!/bootstrap.js:196 < callBootstrapMethod()@resource://gre/modules/addons/XPIProvider.jsm:4419 < observe()@resource://gre/modules/addons/XPIProvider.jsm:2279 < GeckoDriver.prototype.quit()@driver.js:3270 < despatch()@server.js:557 < execute()@server.js:531 < onPacket/<()@server.js:506 < onPacket()@server.js:505 < _onJSONObjectReady/<()@transport.js:500
+JavaScript error: resource://shield-recipe-client/lib/ShieldRecipeClient.jsm, line 70: TypeError: log is undefined
+console.error: PushService: 
+  clearOriginData: Error clearing origin data:
+  UnknownError
+console.error: PushService: 
+  stateChangeProcessEnqueue: Error transitioning state
+  UnknownError
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1522942283896	geckodriver::marionette	ERROR	Failed to stop browser process
+1522942283996	geckodriver	INFO	geckodriver 0.20.0
+1522942284000	geckodriver	INFO	Listening on 127.0.0.1:36255
+1522942285015	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.b50XWfTt1EW3"
+1522942285816	Marionette	INFO	Enabled via --marionette
+1522942288254	Marionette	INFO	Listening on port 44021
+1522942288342	Marionette	WARN	TLS certificate errors will be ignored for this session
+1522942289272	addons.xpi	WARN	Exception running bootstrap method shutdown on activity-stream@mozilla.org: [Exception... "Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIObserverService.removeObserver]"  nsresult: "0x80004005 (NS_ERROR_FAILURE)"  location: "JS frame :: resource://activity-stream/lib/SnippetsFeed.jsm :: uninit :: line 125"  data: no] Stack trace: uninit()@resource://activity-stream/lib/SnippetsFeed.jsm:125 < onAction()@resource://activity-stream/lib/SnippetsFeed.jsm:141 < _middleware/</<()@resource://activity-stream/lib/Store.jsm:51 < Store/this[method]()@resource://activity-stream/lib/Store.jsm:30 < uninit()@resource://activity-stream/lib/Store.jsm:153 < uninit()@resource://activity-stream/lib/ActivityStream.jsm:274 < uninit()@resource://gre/modules/addons/XPIProvider.jsm -> jar:file:///usr/lib/firefox/browser/features/activity-stream@mozilla.org.xpi!/bootstrap.js:80 < shutdown()@resource://gre/modules/addons/XPIProvider.jsm -> jar:file:///usr/lib/firefox/browser/features/activity-stream@mozilla.org.xpi!/bootstrap.js:196 < callBootstrapMethod()@resource://gre/modules/addons/XPIProvider.jsm:4419 < observe()@resource://gre/modules/addons/XPIProvider.jsm:2279 < GeckoDriver.prototype.quit()@driver.js:3270 < despatch()@server.js:557 < execute()@server.js:531 < onPacket/<()@server.js:506 < onPacket()@server.js:505 < _onJSONObjectReady/<()@transport.js:500
+JavaScript error: resource://shield-recipe-client/lib/ShieldRecipeClient.jsm, line 70: TypeError: log is undefined
+console.error: PushService: 
+  clearOriginData: Error clearing origin data:
+  UnknownError
+console.error: PushService: 
+  stateChangeProcessEnqueue: Error transitioning state
+  UnknownError
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1522942292634	geckodriver::marionette	ERROR	Failed to stop browser process
+1522942292695	geckodriver	INFO	geckodriver 0.20.0
+1522942292699	geckodriver	INFO	Listening on 127.0.0.1:57797
+1522942293713	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-profile" "/tmp/rust_mozprofile.DqExoVKmYEg0"
+1522942294566	Marionette	INFO	Enabled via --marionette
+1522942297384	Marionette	INFO	Listening on port 40525
+1522942297434	Marionette	WARN	TLS certificate errors will be ignored for this session
+1522943949026	Marionette	ERROR	No reply from Marionette:Register
+1522943949026	Marionette	ERROR	No reply from Marionette:Register
+JavaScript error: chrome://marionette/content/listener.js, line 466: TypeError: reply[0] is undefined
+JavaScript error: chrome://marionette/content/listener.js, line 466: TypeError: reply[0] is undefined
+1522943949148	Marionette	ERROR	No reply from Marionette:Register
+JavaScript error: chrome://marionette/content/listener.js, line 466: TypeError: reply[0] is undefined
+1522943949208	Marionette	ERROR	No reply from Marionette:Register
+JavaScript error: chrome://marionette/content/listener.js, line 466: TypeError: reply[0] is undefined
+1522943949222	Marionette	ERROR	No reply from Marionette:Register
+JavaScript error: chrome://marionette/content/listener.js, line 466: TypeError: reply[0] is undefined
+1522943949244	Marionette	ERROR	No reply from Marionette:Register
+JavaScript error: chrome://marionette/content/listener.js, line 466: TypeError: reply[0] is undefined
+1522943949278	Marionette	ERROR	No reply from Marionette:Register
+JavaScript error: chrome://marionette/content/listener.js, line 466: TypeError: reply[0] is undefined
+1522943949302	Marionette	ERROR	No reply from Marionette:Register
+JavaScript error: chrome://marionette/content/listener.js, line 466: TypeError: reply[0] is undefined
+1522943949336	Marionette	ERROR	No reply from Marionette:Register
+JavaScript error: chrome://marionette/content/listener.js, line 466: TypeError: reply[0] is undefined
+1522943949366	Marionette	ERROR	No reply from Marionette:Register
+JavaScript error: chrome://marionette/content/listener.js, line 466: TypeError: reply[0] is undefined
+1522943949368	Marionette	DEBUG	Register listener.js for window 6442450945
+1522943949368	Marionette	ERROR	No reply from Marionette:Register
+JavaScript error: chrome://marionette/content/listener.js, line 466: TypeError: reply[0] is undefined
+1522943949418	Marionette	ERROR	No reply from Marionette:Register
+JavaScript error: chrome://marionette/content/listener.js, line 466: TypeError: reply[0] is undefined
+1522943949442	Marionette	ERROR	No reply from Marionette:Register
+JavaScript error: chrome://marionette/content/listener.js, line 466: TypeError: reply[0] is undefined
+1522943949486	Marionette	ERROR	No reply from Marionette:Register
+JavaScript error: chrome://marionette/content/listener.js, line 466: TypeError: reply[0] is undefined
+1522943949520	Marionette	ERROR	No reply from Marionette:Register
+JavaScript error: chrome://marionette/content/listener.js, line 466: TypeError: reply[0] is undefined
+1522943949552	Marionette	ERROR	No reply from Marionette:Register
+JavaScript error: chrome://marionette/content/listener.js, line 466: TypeError: reply[0] is undefined
+1522943949570	Marionette	ERROR	No reply from Marionette:Register
+JavaScript error: chrome://marionette/content/listener.js, line 466: TypeError: reply[0] is undefined
+1522943949584	Marionette	ERROR	No reply from Marionette:Register
+JavaScript error: chrome://marionette/content/listener.js, line 466: TypeError: reply[0] is undefined
