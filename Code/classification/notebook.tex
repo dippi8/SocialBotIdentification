@@ -284,15 +284,16 @@
 features}\label{models-without-tweets-features}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}51}]:} \PY{k+kn}{import} \PY{n+nn}{pandas} \PY{k+kn}{as} \PY{n+nn}{pd}
+{\color{incolor}In [{\color{incolor}61}]:} \PY{k+kn}{import} \PY{n+nn}{pandas} \PY{k+kn}{as} \PY{n+nn}{pd}
          \PY{k+kn}{import} \PY{n+nn}{numpy} \PY{k+kn}{as} \PY{n+nn}{np}
          \PY{k+kn}{from} \PY{n+nn}{sklearn.model\PYZus{}selection} \PY{k+kn}{import} \PY{n}{train\PYZus{}test\PYZus{}split}
-         \PY{k+kn}{from} \PY{n+nn}{sklearn.preprocessing} \PY{k+kn}{import} \PY{n}{StandardScaler}
+         \PY{k+kn}{from} \PY{n+nn}{sklearn.preprocessing} \PY{k+kn}{import} \PY{n}{StandardScaler}\PY{p}{,} \PY{n}{MinMaxScaler}
          \PY{k+kn}{from} \PY{n+nn}{sklearn.ensemble} \PY{k+kn}{import} \PY{n}{RandomForestClassifier}
          \PY{k+kn}{from} \PY{n+nn}{sklearn.metrics} \PY{k+kn}{import} \PY{n}{confusion\PYZus{}matrix}
          \PY{k+kn}{from} \PY{n+nn}{sklearn.externals} \PY{k+kn}{import} \PY{n}{joblib}
-         \PY{k+kn}{from} \PY{n+nn}{sklearn} \PY{k+kn}{import} \PY{n}{model\PYZus{}selection}
+         \PY{k+kn}{from} \PY{n+nn}{sklearn} \PY{k+kn}{import} \PY{n}{model\PYZus{}selection}\PY{p}{,} \PY{n}{linear\PYZus{}model}
          \PY{k+kn}{from} \PY{n+nn}{sklearn.model\PYZus{}selection} \PY{k+kn}{import} \PY{n}{StratifiedKFold}
+         \PY{k+kn}{from} \PY{n+nn}{sklearn.neighbors} \PY{k+kn}{import} \PY{n}{KNeighborsClassifier}
          
          \PY{c+c1}{\PYZsh{} visualization library}
          \PY{k+kn}{import} \PY{n+nn}{seaborn} \PY{k+kn}{as} \PY{n+nn}{sns}
@@ -316,42 +317,110 @@ features}\label{models-without-tweets-features}
 datasets}\label{load-join-and-clean-datasets}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}52}]:} \PY{c+c1}{\PYZsh{}targets:}
-         \PY{c+c1}{\PYZsh{}    0: porn}
-         \PY{c+c1}{\PYZsh{}    1: propaganda}
-         \PY{c+c1}{\PYZsh{}    2: spam}
-         \PY{c+c1}{\PYZsh{}    3: fake followers}
-         
-         \PY{n}{porn} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}csv}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{data/porn/users.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{encoding}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{utf\PYZhy{}8\PYZhy{}sig}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
-         \PY{n}{porn}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{target}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{l+m+mi}{0}
-         
-         \PY{n}{propaganda} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}csv}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{data/propaganda/users.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{encoding}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{utf\PYZhy{}8\PYZhy{}sig}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
-         \PY{n}{propaganda}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{target}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{l+m+mi}{1}
-         
-         \PY{n}{spam} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}csv}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{data/spam/users.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{encoding}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{utf\PYZhy{}8\PYZhy{}sig}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
-         \PY{n}{spam}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{target}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{l+m+mi}{2}
-         
-         \PY{n}{fake\PYZus{}followers} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}csv}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{data/fake\PYZus{}followers/users.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{encoding}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{utf\PYZhy{}8\PYZhy{}sig}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
-         \PY{n}{fake\PYZus{}followers}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{target}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{l+m+mi}{3}
-         
-         \PY{n}{frames} \PY{o}{=} \PY{p}{[}\PY{n}{porn}\PY{p}{,} \PY{n}{propaganda}\PY{p}{,} \PY{n}{spam}\PY{p}{,} \PY{n}{fake\PYZus{}followers}\PY{p}{]}
-         \PY{n}{users} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{concat}\PY{p}{(}\PY{n}{frames}\PY{p}{,} \PY{n}{ignore\PYZus{}index}\PY{o}{=}\PY{n+nb+bp}{True}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}2}]:} \PY{c+c1}{\PYZsh{}targets:}
+        \PY{c+c1}{\PYZsh{}    0: porn}
+        \PY{c+c1}{\PYZsh{}    1: propaganda}
+        \PY{c+c1}{\PYZsh{}    2: spam}
+        \PY{c+c1}{\PYZsh{}    3: fake followers}
+        
+        \PY{n}{porn} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}csv}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{data/porn/users.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{encoding}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{utf\PYZhy{}8\PYZhy{}sig}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{porn}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{target}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{l+m+mi}{0}
+        
+        \PY{n}{propaganda} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}csv}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{data/propaganda/users.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{encoding}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{utf\PYZhy{}8\PYZhy{}sig}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{propaganda}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{target}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{l+m+mi}{1}
+        
+        \PY{n}{spam} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}csv}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{data/spam/users.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{encoding}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{utf\PYZhy{}8\PYZhy{}sig}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{spam}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{target}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{l+m+mi}{2}
+        
+        \PY{n}{fake\PYZus{}followers} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{read\PYZus{}csv}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{data/fake\PYZus{}followers/users.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{encoding}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{utf\PYZhy{}8\PYZhy{}sig}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+        \PY{n}{fake\PYZus{}followers}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{target}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{l+m+mi}{3}
+        \PY{n}{chosen\PYZus{}idx} \PY{o}{=} \PY{n}{np}\PY{o}{.}\PY{n}{random}\PY{o}{.}\PY{n}{choice}\PY{p}{(}\PY{l+m+mi}{8825}\PY{p}{,} \PY{n}{replace}\PY{o}{=}\PY{n+nb+bp}{False}\PY{p}{,} \PY{n}{size}\PY{o}{=}\PY{l+m+mi}{3500}\PY{p}{)}
+        \PY{n}{fake\PYZus{}followers} \PY{o}{=} \PY{n}{fake\PYZus{}followers}\PY{o}{.}\PY{n}{iloc}\PY{p}{[}\PY{n}{chosen\PYZus{}idx}\PY{p}{]}
+        
+        \PY{n}{frames} \PY{o}{=} \PY{p}{[}\PY{n}{porn}\PY{p}{,} \PY{n}{propaganda}\PY{p}{,} \PY{n}{spam}\PY{p}{,} \PY{n}{fake\PYZus{}followers}\PY{p}{]}
+        \PY{n}{users} \PY{o}{=} \PY{n}{pd}\PY{o}{.}\PY{n}{concat}\PY{p}{(}\PY{n}{frames}\PY{p}{,} \PY{n}{ignore\PYZus{}index}\PY{o}{=}\PY{n+nb+bp}{True}\PY{p}{)}
 \end{Verbatim}
 
 
-    \subsubsection{Visualize missing values}\label{visualize-missing-values}
+    \subsection{Visualize missing values}\label{visualize-missing-values}
+
+    \subsubsection{Full}\label{full}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}53}]:} \PY{n}{msno}\PY{o}{.}\PY{n}{matrix}\PY{p}{(}\PY{n}{users}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}3}]:} \PY{n}{msno}\PY{o}{.}\PY{n}{matrix}\PY{p}{(}\PY{n}{users}\PY{p}{)}
 \end{Verbatim}
 
 
 \begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}53}]:} <matplotlib.axes.\_subplots.AxesSubplot at 0x7fbce6a2bd90>
+{\color{outcolor}Out[{\color{outcolor}3}]:} <matplotlib.axes.\_subplots.AxesSubplot at 0x11ef174e0>
 \end{Verbatim}
             
     \begin{center}
-    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_5_1.png}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_6_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \subsubsection{Porn Bots}\label{porn-bots}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{n}{msno}\PY{o}{.}\PY{n}{matrix}\PY{p}{(}\PY{n}{users}\PY{p}{[}\PY{n}{users}\PY{o}{.}\PY{n}{target}\PY{o}{==}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}4}]:} <matplotlib.axes.\_subplots.AxesSubplot at 0x11060a1d0>
+\end{Verbatim}
+            
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_8_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \subsubsection{Propaganda Bots}\label{propaganda-bots}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{n}{msno}\PY{o}{.}\PY{n}{matrix}\PY{p}{(}\PY{n}{users}\PY{p}{[}\PY{n}{users}\PY{o}{.}\PY{n}{target}\PY{o}{==}\PY{l+m+mi}{1}\PY{p}{]}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}5}]:} <matplotlib.axes.\_subplots.AxesSubplot at 0x11ea25240>
+\end{Verbatim}
+            
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_10_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \subsubsection{Spam Bots}\label{spam-bots}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{n}{msno}\PY{o}{.}\PY{n}{matrix}\PY{p}{(}\PY{n}{users}\PY{p}{[}\PY{n}{users}\PY{o}{.}\PY{n}{target}\PY{o}{==}\PY{l+m+mi}{2}\PY{p}{]}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}6}]:} <matplotlib.axes.\_subplots.AxesSubplot at 0x11eb2e2e8>
+\end{Verbatim}
+            
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_12_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \subsubsection{Fake Followers}\label{fake-followers}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{n}{msno}\PY{o}{.}\PY{n}{matrix}\PY{p}{(}\PY{n}{users}\PY{p}{[}\PY{n}{users}\PY{o}{.}\PY{n}{target}\PY{o}{==}\PY{l+m+mi}{3}\PY{p}{]}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}7}]:} <matplotlib.axes.\_subplots.AxesSubplot at 0x120277208>
+\end{Verbatim}
+            
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_14_1.png}
     \end{center}
     { \hspace*{\fill} \\}
     
@@ -359,14 +428,24 @@ datasets}\label{load-join-and-clean-datasets}
 values}\label{remove-attributes-with-a-lot-of-missing-values}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}54}]:} \PY{n}{users} \PY{o}{=} \PY{n}{users}\PY{o}{.}\PY{n}{drop}\PY{p}{(}\PY{n}{columns}\PY{o}{=}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Unnamed: 0}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Unnamed: 0.1}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{contributors\PYZus{}enabled}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{crawled\PYZus{}at}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{follow\PYZus{}request\PYZus{}sent}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{following}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{geo\PYZus{}enabled}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{is\PYZus{}translator}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{notifications}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{profile\PYZus{}banner\PYZus{}url}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{test\PYZus{}set\PYZus{}2}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{time\PYZus{}zone}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{timestamp}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{updated}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{utc\PYZus{}offset}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{protected}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{n}{axis}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}8}]:} \PY{n}{users} \PY{o}{=} \PY{n}{users}\PY{o}{.}\PY{n}{drop}\PY{p}{(}\PY{n}{columns}\PY{o}{=}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{default\PYZus{}profile}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{location}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{verified}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Unnamed: 0}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Unnamed: 0.1}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{contributors\PYZus{}enabled}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{crawled\PYZus{}at}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{follow\PYZus{}request\PYZus{}sent}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{following}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{geo\PYZus{}enabled}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{is\PYZus{}translator}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{notifications}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{profile\PYZus{}banner\PYZus{}url}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{test\PYZus{}set\PYZus{}2}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{time\PYZus{}zone}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{timestamp}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{updated}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{utc\PYZus{}offset}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{protected}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{n}{axis}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{)}
+        \PY{n}{msno}\PY{o}{.}\PY{n}{matrix}\PY{p}{(}\PY{n}{users}\PY{p}{)}
 \end{Verbatim}
 
 
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}8}]:} <matplotlib.axes.\_subplots.AxesSubplot at 0x11e567780>
+\end{Verbatim}
+            
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_16_1.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
     Save cleaned dataset
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}55}]:} \PY{n}{users}\PY{o}{.}\PY{n}{to\PYZus{}csv}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{data/full/users.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{encoding}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{utf\PYZhy{}8\PYZhy{}sig}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}9}]:} \PY{n}{users}\PY{o}{.}\PY{n}{to\PYZus{}csv}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{data/full/users.csv}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{encoding}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{utf\PYZhy{}8\PYZhy{}sig}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
 \end{Verbatim}
 
 
@@ -374,23 +453,23 @@ values}\label{remove-attributes-with-a-lot-of-missing-values}
 attributes}\label{remove-useless-attributes}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}56}]:} \PY{n}{fig}\PY{p}{,} \PY{n}{ax} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{subplots}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{10}\PY{p}{,}\PY{l+m+mi}{10}\PY{p}{)}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}10}]:} \PY{n}{fig}\PY{p}{,} \PY{n}{ax} \PY{o}{=} \PY{n}{plt}\PY{o}{.}\PY{n}{subplots}\PY{p}{(}\PY{n}{figsize}\PY{o}{=}\PY{p}{(}\PY{l+m+mi}{10}\PY{p}{,}\PY{l+m+mi}{10}\PY{p}{)}\PY{p}{)}
          \PY{n}{cov}\PY{o}{=}\PY{n}{users}\PY{o}{.}\PY{n}{corr}\PY{p}{(}\PY{n}{method}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{pearson}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
          \PY{n}{sns}\PY{o}{.}\PY{n}{heatmap}\PY{p}{(}\PY{n}{cov}\PY{p}{,}\PY{n}{annot}\PY{o}{=}\PY{n+nb+bp}{True}\PY{p}{,}\PY{n}{cmap}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{Blues}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{n}{linewidths}\PY{o}{=}\PY{o}{.}\PY{l+m+mi}{5}\PY{p}{,} \PY{n}{ax}\PY{o}{=}\PY{n}{ax}\PY{p}{)}
 \end{Verbatim}
 
 
 \begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}56}]:} <matplotlib.axes.\_subplots.AxesSubplot at 0x7fbce2e2f590>
+{\color{outcolor}Out[{\color{outcolor}10}]:} <matplotlib.axes.\_subplots.AxesSubplot at 0x11e0fffd0>
 \end{Verbatim}
             
     \begin{center}
-    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_11_1.png}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_20_1.png}
     \end{center}
     { \hspace*{\fill} \\}
     
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}57}]:} \PY{n}{users} \PY{o}{=} \PY{n}{users}\PY{o}{.}\PY{n}{drop}\PY{p}{(}\PY{n}{columns}\PY{o}{=}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{profile\PYZus{}background\PYZus{}image\PYZus{}url}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{profile\PYZus{}background\PYZus{}image\PYZus{}url\PYZus{}https}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{profile\PYZus{}image\PYZus{}url}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{profile\PYZus{}image\PYZus{}url\PYZus{}https}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{id}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{screen\PYZus{}name}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{n}{axis}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}11}]:} \PY{n}{users} \PY{o}{=} \PY{n}{users}\PY{o}{.}\PY{n}{drop}\PY{p}{(}\PY{n}{columns}\PY{o}{=}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{id}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{screen\PYZus{}name}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{n}{axis}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{)}
 \end{Verbatim}
 
 
@@ -399,382 +478,418 @@ attributes}\label{remove-useless-attributes}
     Distribution of missing values
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}58}]:} \PY{n}{msno}\PY{o}{.}\PY{n}{matrix}\PY{p}{(}\PY{n}{users}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}12}]:} \PY{n}{msno}\PY{o}{.}\PY{n}{matrix}\PY{p}{(}\PY{n}{users}\PY{p}{)}
 \end{Verbatim}
 
 
 \begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}58}]:} <matplotlib.axes.\_subplots.AxesSubplot at 0x7fbce5ab98d0>
+{\color{outcolor}Out[{\color{outcolor}12}]:} <matplotlib.axes.\_subplots.AxesSubplot at 0x12058db70>
 \end{Verbatim}
             
     \begin{center}
-    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_15_1.png}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_24_1.png}
     \end{center}
     { \hspace*{\fill} \\}
     
     Fill missing values
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}59}]:} \PY{n}{users}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{default\PYZus{}profile}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{value\PYZus{}counts}\PY{p}{(}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}13}]:} \PY{n}{users}\PY{p}{[}\PY{n}{users}\PY{o}{.}\PY{n}{target}\PY{o}{==}\PY{l+m+mi}{2}\PY{p}{]}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{default\PYZus{}profile\PYZus{}image}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{value\PYZus{}counts}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
 \begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}59}]:} 1.0    14267
-         0.0     1533
-         Name: default\_profile, dtype: int64
-\end{Verbatim}
-            
-    \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}60}]:} \PY{n}{users}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{default\PYZus{}profile}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{users}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{default\PYZus{}profile}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{fillna}\PY{p}{(}\PY{n}{users}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{default\PYZus{}profile}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{mode}\PY{p}{(}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}
-\end{Verbatim}
-
-
-    \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}61}]:} \PY{n}{users}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{default\PYZus{}profile\PYZus{}image}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{value\PYZus{}counts}\PY{p}{(}\PY{p}{)}
-\end{Verbatim}
-
-
-\begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}61}]:} 0.0    11762
-         1.0      863
+{\color{outcolor}Out[{\color{outcolor}13}]:} 1.0    46
          Name: default\_profile\_image, dtype: int64
 \end{Verbatim}
             
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}62}]:} \PY{n}{users}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{default\PYZus{}profile\PYZus{}image}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{users}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{default\PYZus{}profile\PYZus{}image}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{fillna}\PY{p}{(}\PY{n}{users}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{default\PYZus{}profile\PYZus{}image}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{mode}\PY{p}{(}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}14}]:} \PY{n}{users}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{default\PYZus{}profile\PYZus{}image}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{users}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{default\PYZus{}profile\PYZus{}image}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{apply}\PY{p}{(}\PY{k}{lambda} \PY{n}{x}\PY{p}{:} \PY{n+nb}{int}\PY{p}{(}\PY{o+ow}{not}\PY{p}{(}\PY{n+nb}{int}\PY{p}{(}\PY{n}{pd}\PY{o}{.}\PY{n}{isnull}\PY{p}{(}\PY{n}{x}\PY{p}{)}\PY{p}{)}\PY{p}{)}\PY{p}{)}\PY{p}{)}
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}63}]:} \PY{n}{users}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{description}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{users}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{description}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{apply}\PY{p}{(}\PY{k}{lambda} \PY{n}{x}\PY{p}{:} \PY{n+nb}{int}\PY{p}{(}\PY{n}{pd}\PY{o}{.}\PY{n}{isnull}\PY{p}{(}\PY{n}{x}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}15}]:} \PY{n}{users}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{description}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{users}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{description}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{fillna}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}64}]:} \PY{n}{users}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{lang}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{value\PYZus{}counts}\PY{p}{(}\PY{p}{)}\PY{p}{[}\PY{p}{:}\PY{l+m+mi}{10}\PY{p}{]}
+{\color{incolor}In [{\color{incolor}16}]:} \PY{n}{users}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{description}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{users}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{description}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{apply}\PY{p}{(}\PY{k}{lambda} \PY{n}{x}\PY{p}{:} \PY{n+nb}{len}\PY{p}{(}\PY{n}{x}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}17}]:} \PY{n}{users}\PY{p}{[}\PY{n}{users}\PY{o}{.}\PY{n}{target}\PY{o}{==}\PY{l+m+mi}{2}\PY{p}{]}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{description}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{value\PYZus{}counts}\PY{p}{(}\PY{p}{)}\PY{p}{[}\PY{p}{:}\PY{l+m+mi}{10}\PY{p}{]}
 \end{Verbatim}
 
 
 \begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}64}]:} en       14833
-         tr        2683
-         es         480
-         ru         393
-         fr         340
-         pt         294
-         ko         126
-         de         121
-         it         114
-         zh-cn       66
-         Name: lang, dtype: int64
+{\color{outcolor}Out[{\color{outcolor}17}]:} 0     3447
+         86      34
+         55      32
+         50      30
+         64      30
+         89      27
+         32      23
+         54      10
+         62       8
+         59       8
+         Name: description, dtype: int64
 \end{Verbatim}
             
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}65}]:} \PY{n}{users}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{lang}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{users}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{lang}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{fillna}\PY{p}{(}\PY{n}{users}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{lang}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{mode}\PY{p}{(}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}
-\end{Verbatim}
-
-
-    \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}66}]:} \PY{n}{users}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{location}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{value\PYZus{}counts}\PY{p}{(}\PY{p}{)}\PY{p}{[}\PY{p}{:}\PY{l+m+mi}{10}\PY{p}{]}
+{\color{incolor}In [{\color{incolor}18}]:} \PY{n}{users}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{lang}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{isnull}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{values}\PY{o}{.}\PY{n}{any}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
 \begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}66}]:} USA                109
-         United States       93
-         Stati Uniti         55
-         Texas, USA          54
-         Brasil              49
-         California, USA     48
-         Florida, USA        42
-         US                  38
-         London              32
-         Texas               27
-         Name: location, dtype: int64
+{\color{outcolor}Out[{\color{outcolor}18}]:} False
 \end{Verbatim}
             
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}67}]:} \PY{n+nb}{len}\PY{p}{(}\PY{n}{users}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{location}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{value\PYZus{}counts}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}19}]:} \PY{n}{users}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{profile\PYZus{}background\PYZus{}color}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{isnull}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{values}\PY{o}{.}\PY{n}{any}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
 \begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}67}]:} 3822
+{\color{outcolor}Out[{\color{outcolor}19}]:} False
 \end{Verbatim}
             
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}68}]:} \PY{n}{users} \PY{o}{=} \PY{n}{users}\PY{o}{.}\PY{n}{drop}\PY{p}{(}\PY{n}{columns}\PY{o}{=}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{location}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{n}{axis}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{)}
-\end{Verbatim}
-
-
-    \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}69}]:} \PY{n}{users}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{profile\PYZus{}background\PYZus{}color}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{value\PYZus{}counts}\PY{p}{(}\PY{p}{)}\PY{p}{[}\PY{p}{:}\PY{l+m+mi}{5}\PY{p}{]}
+{\color{incolor}In [{\color{incolor}20}]:} \PY{n}{users}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{profile\PYZus{}background\PYZus{}color}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{isnull}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{values}\PY{o}{.}\PY{n}{any}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
 \begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}69}]:} C0DEED    7433
-         F5F8FA    7050
-         0000FF    3429
-         000000     575
-         131516     335
-         Name: profile\_background\_color, dtype: int64
+{\color{outcolor}Out[{\color{outcolor}20}]:} False
 \end{Verbatim}
             
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}70}]:} \PY{n}{users}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{profile\PYZus{}background\PYZus{}color}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{users}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{profile\PYZus{}background\PYZus{}color}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{fillna}\PY{p}{(}\PY{n}{method}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ffill}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
-\end{Verbatim}
-
-
-    \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}71}]:} \PY{n}{users}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{profile\PYZus{}background\PYZus{}tile}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{value\PYZus{}counts}\PY{p}{(}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}21}]:} \PY{n}{users}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{profile\PYZus{}background\PYZus{}tile}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{isnull}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{values}\PY{o}{.}\PY{n}{any}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
 \begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}71}]:} 0.0    12132
-         1.0     4289
-         Name: profile\_background\_tile, dtype: int64
+{\color{outcolor}Out[{\color{outcolor}21}]:} True
 \end{Verbatim}
             
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}72}]:} \PY{n}{users}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{profile\PYZus{}background\PYZus{}tile}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{users}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{profile\PYZus{}background\PYZus{}tile}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{fillna}\PY{p}{(}\PY{n}{method}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ffill}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}22}]:} \PY{n}{users}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{profile\PYZus{}background\PYZus{}tile}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{users}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{profile\PYZus{}background\PYZus{}tile}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{apply}\PY{p}{(}\PY{k}{lambda} \PY{n}{x}\PY{p}{:} \PY{n+nb}{int}\PY{p}{(}\PY{o+ow}{not}\PY{p}{(}\PY{n+nb}{int}\PY{p}{(}\PY{n}{pd}\PY{o}{.}\PY{n}{isnull}\PY{p}{(}\PY{n}{x}\PY{p}{)}\PY{p}{)}\PY{p}{)}\PY{p}{)}\PY{p}{)}
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}73}]:} \PY{n}{users}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{profile\PYZus{}link\PYZus{}color}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{value\PYZus{}counts}\PY{p}{(}\PY{p}{)}\PY{p}{[}\PY{p}{:}\PY{l+m+mi}{5}\PY{p}{]}
+{\color{incolor}In [{\color{incolor}23}]:} \PY{n}{users}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{profile\PYZus{}background\PYZus{}tile}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{count}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
 \begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}73}]:} 1DA1F2    11042
-         0084B4     3488
-         0000FF     3438
-         009999      313
-         1B95E0      161
-         Name: profile\_link\_color, dtype: int64
+{\color{outcolor}Out[{\color{outcolor}23}]:} 14520
 \end{Verbatim}
             
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}74}]:} \PY{n}{users}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{profile\PYZus{}link\PYZus{}color}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{users}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{profile\PYZus{}link\PYZus{}color}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{fillna}\PY{p}{(}\PY{n}{users}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{profile\PYZus{}link\PYZus{}color}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{mode}\PY{p}{(}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}
-\end{Verbatim}
-
-
-    \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}75}]:} \PY{n}{users}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{profile\PYZus{}sidebar\PYZus{}border\PYZus{}color}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{value\PYZus{}counts}\PY{p}{(}\PY{p}{)}\PY{p}{[}\PY{p}{:}\PY{l+m+mi}{5}\PY{p}{]}
+{\color{incolor}In [{\color{incolor}24}]:} \PY{n}{users}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{profile\PYZus{}link\PYZus{}color}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{isnull}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{values}\PY{o}{.}\PY{n}{any}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
 \begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}75}]:} C0DEED    14435
-         FFFFFF     3709
-         000000      677
-         EEEEEE      369
-         65B0DA       85
-         Name: profile\_sidebar\_border\_color, dtype: int64
+{\color{outcolor}Out[{\color{outcolor}24}]:} False
 \end{Verbatim}
             
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}76}]:} \PY{n}{users}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{profile\PYZus{}sidebar\PYZus{}border\PYZus{}color}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{users}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{profile\PYZus{}sidebar\PYZus{}border\PYZus{}color}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{fillna}\PY{p}{(}\PY{n}{users}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{profile\PYZus{}sidebar\PYZus{}border\PYZus{}color}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{mode}\PY{p}{(}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}
-\end{Verbatim}
-
-
-    \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}77}]:} \PY{n}{users}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{profile\PYZus{}sidebar\PYZus{}fill\PYZus{}color}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{value\PYZus{}counts}\PY{p}{(}\PY{p}{)}\PY{p}{[}\PY{p}{:}\PY{l+m+mi}{5}\PY{p}{]}
+{\color{incolor}In [{\color{incolor}25}]:} \PY{n}{users}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{profile\PYZus{}sidebar\PYZus{}border\PYZus{}color}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{isnull}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{values}\PY{o}{.}\PY{n}{any}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
 \begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}77}]:} DDEEF6    18019
-         000000      581
-         EFEFEF      328
-         7AC3EE      102
-         252429       96
-         Name: profile\_sidebar\_fill\_color, dtype: int64
+{\color{outcolor}Out[{\color{outcolor}25}]:} False
 \end{Verbatim}
             
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}78}]:} \PY{n}{users}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{profile\PYZus{}sidebar\PYZus{}fill\PYZus{}color}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{users}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{profile\PYZus{}sidebar\PYZus{}fill\PYZus{}color}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{fillna}\PY{p}{(}\PY{n}{users}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{profile\PYZus{}sidebar\PYZus{}fill\PYZus{}color}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{mode}\PY{p}{(}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}
-\end{Verbatim}
-
-
-    \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}79}]:} \PY{n}{users}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{profile\PYZus{}text\PYZus{}color}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{value\PYZus{}counts}\PY{p}{(}\PY{p}{)}\PY{p}{[}\PY{p}{:}\PY{l+m+mi}{5}\PY{p}{]}
+{\color{incolor}In [{\color{incolor}26}]:} \PY{n}{users}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{profile\PYZus{}sidebar\PYZus{}fill\PYZus{}color}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{isnull}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{values}\PY{o}{.}\PY{n}{any}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
 \begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}79}]:} 333333    18632
-         000000      604
-         3D1957      106
-         666666       94
-         3C3940       69
-         Name: profile\_text\_color, dtype: int64
+{\color{outcolor}Out[{\color{outcolor}26}]:} False
 \end{Verbatim}
             
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}80}]:} \PY{n}{users}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{profile\PYZus{}text\PYZus{}color}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{users}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{profile\PYZus{}text\PYZus{}color}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{fillna}\PY{p}{(}\PY{n}{users}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{profile\PYZus{}text\PYZus{}color}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{mode}\PY{p}{(}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}
-\end{Verbatim}
-
-
-    \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}81}]:} \PY{n}{users}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{profile\PYZus{}use\PYZus{}background\PYZus{}image}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{value\PYZus{}counts}\PY{p}{(}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}27}]:} \PY{n}{users}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{profile\PYZus{}text\PYZus{}color}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{isnull}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{values}\PY{o}{.}\PY{n}{any}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
 \begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}81}]:} 1.0    19259
-         0.0      574
+{\color{outcolor}Out[{\color{outcolor}27}]:} False
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}28}]:} \PY{n}{users}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{profile\PYZus{}use\PYZus{}background\PYZus{}image}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{isnull}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{values}\PY{o}{.}\PY{n}{any}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}28}]:} True
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}29}]:} \PY{n}{users}\PY{p}{[}\PY{n}{users}\PY{o}{.}\PY{n}{target}\PY{o}{==}\PY{l+m+mi}{2}\PY{p}{]}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{profile\PYZus{}use\PYZus{}background\PYZus{}image}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{value\PYZus{}counts}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}29}]:} 1.0    3918
          Name: profile\_use\_background\_image, dtype: int64
 \end{Verbatim}
             
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}82}]:} \PY{n}{users}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{profile\PYZus{}use\PYZus{}background\PYZus{}image}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{users}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{profile\PYZus{}use\PYZus{}background\PYZus{}image}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{fillna}\PY{p}{(}\PY{n}{users}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{profile\PYZus{}use\PYZus{}background\PYZus{}image}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{mode}\PY{p}{(}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}30}]:} \PY{n}{users}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{profile\PYZus{}use\PYZus{}background\PYZus{}image}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{users}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{profile\PYZus{}use\PYZus{}background\PYZus{}image}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{apply}\PY{p}{(}\PY{k}{lambda} \PY{n}{x}\PY{p}{:} \PY{n+nb}{int}\PY{p}{(}\PY{o+ow}{not}\PY{p}{(}\PY{n+nb}{int}\PY{p}{(}\PY{n}{pd}\PY{o}{.}\PY{n}{isnull}\PY{p}{(}\PY{n}{x}\PY{p}{)}\PY{p}{)}\PY{p}{)}\PY{p}{)}\PY{p}{)}
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}83}]:} \PY{n}{users}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{url}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{users}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{url}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{apply}\PY{p}{(}\PY{k}{lambda} \PY{n}{x}\PY{p}{:} \PY{n+nb}{int}\PY{p}{(}\PY{n}{pd}\PY{o}{.}\PY{n}{isnull}\PY{p}{(}\PY{n}{x}\PY{p}{)}\PY{p}{)}\PY{p}{)}
-\end{Verbatim}
-
-
-    \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}84}]:} \PY{n}{users}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{verified}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{value\PYZus{}counts}\PY{p}{(}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}31}]:} \PY{n}{users}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{profile\PYZus{}background\PYZus{}image\PYZus{}url}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{isnull}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{values}\PY{o}{.}\PY{n}{any}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
 \begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}84}]:} 0.0    12508
-         1.0       65
-         Name: verified, dtype: int64
+{\color{outcolor}Out[{\color{outcolor}31}]:} True
 \end{Verbatim}
             
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}85}]:} \PY{n}{users}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{verified}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{users}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{verified}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{fillna}\PY{p}{(}\PY{n}{users}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{verified}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{mode}\PY{p}{(}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}32}]:} \PY{n}{users}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{profile\PYZus{}background\PYZus{}image\PYZus{}url}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{users}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{profile\PYZus{}background\PYZus{}image\PYZus{}url}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{apply}\PY{p}{(}\PY{k}{lambda} \PY{n}{x}\PY{p}{:} \PY{n+nb}{int}\PY{p}{(}\PY{o+ow}{not}\PY{p}{(}\PY{n+nb}{int}\PY{p}{(}\PY{n}{pd}\PY{o}{.}\PY{n}{isnull}\PY{p}{(}\PY{n}{x}\PY{p}{)}\PY{p}{)}\PY{p}{)}\PY{p}{)}\PY{p}{)}
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}86}]:} \PY{n}{msno}\PY{o}{.}\PY{n}{matrix}\PY{p}{(}\PY{n}{users}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}33}]:} \PY{n}{users}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{profile\PYZus{}background\PYZus{}image\PYZus{}url\PYZus{}https}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{isnull}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{values}\PY{o}{.}\PY{n}{any}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
 \begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}86}]:} <matplotlib.axes.\_subplots.AxesSubplot at 0x7fbce66e9b90>
+{\color{outcolor}Out[{\color{outcolor}33}]:} True
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}34}]:} \PY{n}{users}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{profile\PYZus{}background\PYZus{}image\PYZus{}url\PYZus{}https}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{users}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{profile\PYZus{}background\PYZus{}image\PYZus{}url\PYZus{}https}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{apply}\PY{p}{(}\PY{k}{lambda} \PY{n}{x}\PY{p}{:} \PY{n+nb}{int}\PY{p}{(}\PY{o+ow}{not}\PY{p}{(}\PY{n+nb}{int}\PY{p}{(}\PY{n}{pd}\PY{o}{.}\PY{n}{isnull}\PY{p}{(}\PY{n}{x}\PY{p}{)}\PY{p}{)}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}35}]:} \PY{n}{users}\PY{p}{[}\PY{n}{users}\PY{o}{.}\PY{n}{target}\PY{o}{==}\PY{l+m+mi}{3}\PY{p}{]}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{url}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{isnull}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{values}\PY{o}{.}\PY{n}{any}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}35}]:} True
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}36}]:} \PY{n}{users}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{url}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{=} \PY{n}{users}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{url}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{o}{.}\PY{n}{apply}\PY{p}{(}\PY{k}{lambda} \PY{n}{x}\PY{p}{:} \PY{n+nb}{int}\PY{p}{(}\PY{o+ow}{not}\PY{p}{(}\PY{n+nb}{int}\PY{p}{(}\PY{n}{pd}\PY{o}{.}\PY{n}{isnull}\PY{p}{(}\PY{n}{x}\PY{p}{)}\PY{p}{)}\PY{p}{)}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}37}]:} \PY{n}{msno}\PY{o}{.}\PY{n}{matrix}\PY{p}{(}\PY{n}{users}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}37}]:} <matplotlib.axes.\_subplots.AxesSubplot at 0x12c632cc0>
 \end{Verbatim}
             
     \begin{center}
-    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_44_1.png}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{output_50_1.png}
     \end{center}
     { \hspace*{\fill} \\}
     
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}87}]:} \PY{n}{users}\PY{o}{.}\PY{n}{describe}\PY{p}{(}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}38}]:} \PY{n}{users}\PY{o}{.}\PY{n}{describe}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
 \begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}87}]:}        default\_profile  default\_profile\_image   description  favourites\_count  \textbackslash{}
-         count     20845.000000           20845.000000  20845.000000      20845.000000   
-         mean          0.926457               0.041401      0.589782       6315.584025   
-         std           0.261032               0.199220      0.491885      28456.577073   
-         min           0.000000               0.000000      0.000000          0.000000   
-         25\%           1.000000               0.000000      0.000000          0.000000   
-         50\%           1.000000               0.000000      1.000000          0.000000   
-         75\%           1.000000               0.000000      1.000000        194.000000   
-         max           1.000000               1.000000      1.000000     913239.000000   
+{\color{outcolor}Out[{\color{outcolor}38}]:}        default\_profile\_image   description  favourites\_count  followers\_count  \textbackslash{}
+         count           14520.000000  14520.000000      14520.000000     1.452000e+04   
+         mean                0.642493     36.691185       9065.800207     1.068284e+04   
+         std                 0.479282     49.019322      33728.543025     4.794182e+05   
+         min                 0.000000      0.000000          0.000000     0.000000e+00   
+         25\%                 0.000000      0.000000          0.000000     4.000000e+00   
+         50\%                 1.000000      0.000000          1.000000     1.100000e+01   
+         75\%                 1.000000     58.000000        410.250000     8.800000e+01   
+         max                 1.000000    175.000000     913239.000000     5.254102e+07   
          
-                followers\_count  friends\_count  listed\_count  profile\_background\_tile  \textbackslash{}
-         count     2.084500e+04   20845.000000  20845.000000              20845.00000   
-         mean      7.473929e+03    1184.791317     38.236604                  0.41799   
-         std       4.001517e+05    4760.925023    998.608149                  0.49324   
-         min       0.000000e+00       0.000000      0.000000                  0.00000   
-         25\%       3.000000e+00      66.000000      0.000000                  0.00000   
-         50\%       9.000000e+00     221.000000      0.000000                  0.00000   
-         75\%       4.800000e+01     644.000000      0.000000                  1.00000   
-         max       5.254102e+07  191706.000000  89208.000000                  1.00000   
+                friends\_count  listed\_count  profile\_background\_image\_url  \textbackslash{}
+         count   14520.000000  14520.000000                  14520.000000   
+         mean     1444.760606     54.340289                      0.741185   
+         std      5657.048729   1195.883456                      0.437999   
+         min         0.000000      0.000000                      0.000000   
+         25\%        41.000000      0.000000                      0.000000   
+         50\%       214.000000      0.000000                      1.000000   
+         75\%       627.000000      1.000000                      1.000000   
+         max    191706.000000  89208.000000                      1.000000   
+         
+                profile\_background\_image\_url\_https  profile\_background\_tile  \textbackslash{}
+         count                        14520.000000             14520.000000   
+         mean                             0.741185                 0.897314   
+         std                              0.437999                 0.303559   
+         min                              0.000000                 0.000000   
+         25\%                              0.000000                 1.000000   
+         50\%                              1.000000                 1.000000   
+         75\%                              1.000000                 1.000000   
+         max                              1.000000                 1.000000   
          
                 profile\_use\_background\_image  statuses\_count        target  \textbackslash{}
-         count                  20845.000000    2.084500e+04  20845.000000   
-         mean                       0.972463    9.686903e+03      1.900600   
-         std                        0.163645    4.370222e+04      1.140488   
+         count                  14520.000000    1.452000e+04  14520.000000   
+         mean                       0.999449    1.388044e+04      1.490565   
+         std                        0.023467    5.180458e+04      1.120371   
          min                        0.000000    0.000000e+00      0.000000   
-         25\%                        1.000000    0.000000e+00      1.000000   
-         50\%                        1.000000    3.700000e+01      2.000000   
-         75\%                        1.000000    8.500000e+01      3.000000   
+         25\%                        1.000000    2.200000e+01      0.000000   
+         50\%                        1.000000    5.600000e+01      2.000000   
+         75\%                        1.000000    1.719750e+03      2.000000   
          max                        1.000000    1.418488e+06      3.000000   
          
-                         url      verified  
-         count  20845.000000  20845.000000  
-         mean       0.926697      0.003118  
-         std        0.260639      0.055756  
-         min        0.000000      0.000000  
-         25\%        1.000000      0.000000  
-         50\%        1.000000      0.000000  
-         75\%        1.000000      0.000000  
-         max        1.000000      1.000000  
+                         url  
+         count  14520.000000  
+         mean       0.073691  
+         std        0.261277  
+         min        0.000000  
+         25\%        0.000000  
+         50\%        0.000000  
+         75\%        0.000000  
+         max        1.000000  
 \end{Verbatim}
             
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}88}]:} \PY{n}{users}\PY{o}{.}\PY{n}{describe}\PY{p}{(}\PY{n}{exclude}\PY{o}{=}\PY{p}{[}\PY{n}{np}\PY{o}{.}\PY{n}{number}\PY{p}{]}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}39}]:} \PY{n}{users}\PY{o}{.}\PY{n}{describe}\PY{p}{(}\PY{n}{exclude}\PY{o}{=}\PY{p}{[}\PY{n}{np}\PY{o}{.}\PY{n}{number}\PY{p}{]}\PY{p}{)}
 \end{Verbatim}
 
 
 \begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}88}]:}                             created\_at   lang   name profile\_background\_color  \textbackslash{}
-         count                            20845  20845  20844                    20845   
-         unique                           18005     42  17682                      276   
-         top     Sat Jun 23 15:33:05 +0000 2012     en   Sara                   C0DEED   
-         freq                                 5  15833      7                     7433   
+{\color{outcolor}Out[{\color{outcolor}39}]:}                  created\_at   lang            name profile\_background\_color  \textbackslash{}
+         count                 14520  14520           14519                    14520   
+         unique                14048     42           13879                      251   
+         top     2018-03-28 20:49:00     en  Live Cam Girls                   C0DEED   
+         freq                      3  11292               6                     5566   
          
-                profile\_link\_color profile\_sidebar\_border\_color  \textbackslash{}
-         count               20845                        20845   
-         unique                382                          147   
-         top                1DA1F2                       C0DEED   
-         freq                12042                        15435   
+                                                 profile\_image\_url  \textbackslash{}
+         count                                               14519   
+         unique                                              13435   
+         top     http://abs.twimg.com/sticky/default\_profile\_im{\ldots}   
+         freq                                                  625   
          
-                profile\_sidebar\_fill\_color profile\_text\_color  
-         count                       20845              20845  
-         unique                        199                178  
-         top                        DDEEF6             333333  
-         freq                        19019              19632  
+                                           profile\_image\_url\_https profile\_link\_color  \textbackslash{}
+         count                                               14519              14520   
+         unique                                              13435                350   
+         top     https://abs.twimg.com/sticky/default\_profile\_i{\ldots}             1DA1F2   
+         freq                                                  625               7750   
+         
+                profile\_sidebar\_border\_color profile\_sidebar\_fill\_color  \textbackslash{}
+         count                         14520                      14520   
+         unique                          125                        175   
+         top                          C0DEED                     DDEEF6   
+         freq                           9273                      12852   
+         
+                profile\_text\_color  
+         count               14520  
+         unique                153  
+         top                333333  
+         freq                13417  
+\end{Verbatim}
+            
+    \subsubsection{Create model}\label{create-model}
+
+    \subsubsection{Drop non numeric
+features}\label{drop-non-numeric-features}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}40}]:} \PY{n}{users} \PY{o}{=} \PY{n}{users}\PY{o}{.}\PY{n}{drop}\PY{p}{(}\PY{n}{columns}\PY{o}{=}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{created\PYZus{}at}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{lang}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{name}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{profile\PYZus{}background\PYZus{}color}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{profile\PYZus{}image\PYZus{}url}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{profile\PYZus{}image\PYZus{}url\PYZus{}https}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{profile\PYZus{}link\PYZus{}color}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{profile\PYZus{}sidebar\PYZus{}border\PYZus{}color}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{profile\PYZus{}sidebar\PYZus{}fill\PYZus{}color}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{profile\PYZus{}text\PYZus{}color}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{n}{axis}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}41}]:} \PY{n}{users}\PY{o}{.}\PY{n}{describe}\PY{p}{(}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}41}]:}        default\_profile\_image   description  favourites\_count  followers\_count  \textbackslash{}
+         count           14520.000000  14520.000000      14520.000000     1.452000e+04   
+         mean                0.642493     36.691185       9065.800207     1.068284e+04   
+         std                 0.479282     49.019322      33728.543025     4.794182e+05   
+         min                 0.000000      0.000000          0.000000     0.000000e+00   
+         25\%                 0.000000      0.000000          0.000000     4.000000e+00   
+         50\%                 1.000000      0.000000          1.000000     1.100000e+01   
+         75\%                 1.000000     58.000000        410.250000     8.800000e+01   
+         max                 1.000000    175.000000     913239.000000     5.254102e+07   
+         
+                friends\_count  listed\_count  profile\_background\_image\_url  \textbackslash{}
+         count   14520.000000  14520.000000                  14520.000000   
+         mean     1444.760606     54.340289                      0.741185   
+         std      5657.048729   1195.883456                      0.437999   
+         min         0.000000      0.000000                      0.000000   
+         25\%        41.000000      0.000000                      0.000000   
+         50\%       214.000000      0.000000                      1.000000   
+         75\%       627.000000      1.000000                      1.000000   
+         max    191706.000000  89208.000000                      1.000000   
+         
+                profile\_background\_image\_url\_https  profile\_background\_tile  \textbackslash{}
+         count                        14520.000000             14520.000000   
+         mean                             0.741185                 0.897314   
+         std                              0.437999                 0.303559   
+         min                              0.000000                 0.000000   
+         25\%                              0.000000                 1.000000   
+         50\%                              1.000000                 1.000000   
+         75\%                              1.000000                 1.000000   
+         max                              1.000000                 1.000000   
+         
+                profile\_use\_background\_image  statuses\_count        target  \textbackslash{}
+         count                  14520.000000    1.452000e+04  14520.000000   
+         mean                       0.999449    1.388044e+04      1.490565   
+         std                        0.023467    5.180458e+04      1.120371   
+         min                        0.000000    0.000000e+00      0.000000   
+         25\%                        1.000000    2.200000e+01      0.000000   
+         50\%                        1.000000    5.600000e+01      2.000000   
+         75\%                        1.000000    1.719750e+03      2.000000   
+         max                        1.000000    1.418488e+06      3.000000   
+         
+                         url  
+         count  14520.000000  
+         mean       0.073691  
+         std        0.261277  
+         min        0.000000  
+         25\%        0.000000  
+         50\%        0.000000  
+         75\%        0.000000  
+         max        1.000000  
 \end{Verbatim}
             
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}89}]:} \PY{n}{users} \PY{o}{=} \PY{n}{users}\PY{o}{.}\PY{n}{drop}\PY{p}{(}\PY{n}{columns}\PY{o}{=}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{created\PYZus{}at}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{lang}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{name}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{profile\PYZus{}background\PYZus{}color}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{profile\PYZus{}link\PYZus{}color}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{profile\PYZus{}sidebar\PYZus{}border\PYZus{}color}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{profile\PYZus{}sidebar\PYZus{}fill\PYZus{}color}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{profile\PYZus{}text\PYZus{}color}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{n}{axis}\PY{o}{=}\PY{l+m+mi}{1}\PY{p}{)}
-\end{Verbatim}
-
-
-    \subsubsection{Create model}\label{create-model}
-
-    \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}90}]:} \PY{n}{target} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{target}\PY{l+s+s1}{\PYZsq{}}
+{\color{incolor}In [{\color{incolor}42}]:} \PY{n}{target} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{target}\PY{l+s+s1}{\PYZsq{}}
          \PY{n}{features} \PY{o}{=} \PY{n}{users}\PY{o}{.}\PY{n}{columns}\PY{p}{[}\PY{n}{users}\PY{o}{.}\PY{n}{columns}\PY{o}{!=}\PY{n}{target}\PY{p}{]}
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}91}]:} \PY{n}{X} \PY{o}{=} \PY{n}{users}\PY{p}{[}\PY{n}{features}\PY{p}{]}
+{\color{incolor}In [{\color{incolor}43}]:} \PY{n}{X} \PY{o}{=} \PY{n}{users}\PY{p}{[}\PY{n}{features}\PY{p}{]}
          \PY{n}{y} \PY{o}{=} \PY{n}{users}\PY{p}{[}\PY{n}{target}\PY{p}{]}
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}92}]:} \PY{n}{X\PYZus{}train}\PY{p}{,} \PY{n}{X\PYZus{}test}\PY{p}{,} \PY{n}{y\PYZus{}train}\PY{p}{,} \PY{n}{y\PYZus{}test} \PY{o}{=} \PY{n}{train\PYZus{}test\PYZus{}split}\PY{p}{(}\PY{n}{X}\PY{p}{,} \PY{n}{y}\PY{p}{,} \PY{n}{test\PYZus{}size} \PY{o}{=} \PY{l+m+mf}{0.25}\PY{p}{,} \PY{n}{random\PYZus{}state} \PY{o}{=} \PY{l+m+mi}{21}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}44}]:} \PY{n}{X\PYZus{}train}\PY{p}{,} \PY{n}{X\PYZus{}test}\PY{p}{,} \PY{n}{y\PYZus{}train}\PY{p}{,} \PY{n}{y\PYZus{}test} \PY{o}{=} \PY{n}{train\PYZus{}test\PYZus{}split}\PY{p}{(}\PY{n}{X}\PY{p}{,} \PY{n}{y}\PY{p}{,} \PY{n}{test\PYZus{}size} \PY{o}{=} \PY{l+m+mf}{0.25}\PY{p}{,} \PY{n}{random\PYZus{}state} \PY{o}{=} \PY{l+m+mi}{42}\PY{p}{)}
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}93}]:} \PY{c+c1}{\PYZsh{} Fitting Random Forest Classification to the Training set}
-         \PY{n}{classifier} \PY{o}{=} \PY{n}{RandomForestClassifier}\PY{p}{(}\PY{n}{n\PYZus{}estimators} \PY{o}{=} \PY{l+m+mi}{10}\PY{p}{,} \PY{n}{criterion} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{entropy}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{random\PYZus{}state} \PY{o}{=} \PY{l+m+mi}{42}\PY{p}{)}
-         \PY{n}{classifier}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{X\PYZus{}train}\PY{p}{,} \PY{n}{y\PYZus{}train}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}45}]:} \PY{c+c1}{\PYZsh{} Fitting Random Forest Classification to the Training set}
+         \PY{n}{forest} \PY{o}{=} \PY{n}{RandomForestClassifier}\PY{p}{(}\PY{n}{n\PYZus{}estimators} \PY{o}{=} \PY{l+m+mi}{10}\PY{p}{,} \PY{n}{criterion} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{entropy}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{n}{random\PYZus{}state} \PY{o}{=} \PY{l+m+mi}{42}\PY{p}{)}
+         \PY{n}{forest}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{X\PYZus{}train}\PY{p}{,} \PY{n}{y\PYZus{}train}\PY{p}{)}
 \end{Verbatim}
 
 
 \begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}93}]:} RandomForestClassifier(bootstrap=True, class\_weight=None, criterion='entropy',
+{\color{outcolor}Out[{\color{outcolor}45}]:} RandomForestClassifier(bootstrap=True, class\_weight=None, criterion='entropy',
                      max\_depth=None, max\_features='auto', max\_leaf\_nodes=None,
                      min\_impurity\_decrease=0.0, min\_impurity\_split=None,
                      min\_samples\_leaf=1, min\_samples\_split=2,
@@ -782,44 +897,140 @@ attributes}\label{remove-useless-attributes}
                      oob\_score=False, random\_state=42, verbose=0, warm\_start=False)
 \end{Verbatim}
             
-    \subsubsection{Confusion Matrix}\label{confusion-matrix}
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}50}]:} \PY{c+c1}{\PYZsh{} Fitting Logistic Regression}
+         \PY{n}{logreg} \PY{o}{=} \PY{n}{linear\PYZus{}model}\PY{o}{.}\PY{n}{LogisticRegression}\PY{p}{(}\PY{p}{)}
+         \PY{n}{logreg}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{X\PYZus{}train}\PY{p}{,} \PY{n}{y\PYZus{}train}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}50}]:} LogisticRegression(C=1.0, class\_weight=None, dual=False, fit\_intercept=True,
+                   intercept\_scaling=1, max\_iter=100, multi\_class='ovr', n\_jobs=1,
+                   penalty='l2', random\_state=None, solver='liblinear', tol=0.0001,
+                   verbose=0, warm\_start=False)
+\end{Verbatim}
+            
+    \subsubsection{Holdout score - forest}\label{holdout-score---forest}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}94}]:} \PY{c+c1}{\PYZsh{} Predicting the Test set results}
-         \PY{n}{y\PYZus{}pred} \PY{o}{=} \PY{n}{classifier}\PY{o}{.}\PY{n}{predict}\PY{p}{(}\PY{n}{X\PYZus{}test}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}51}]:} \PY{c+c1}{\PYZsh{} Predicting the Test set results}
+         \PY{n}{y\PYZus{}pred} \PY{o}{=} \PY{n}{forest}\PY{o}{.}\PY{n}{predict}\PY{p}{(}\PY{n}{X\PYZus{}test}\PY{p}{)}
          \PY{c+c1}{\PYZsh{} Making the Confusion Matrix}
          \PY{k}{print}\PY{p}{(}\PY{n}{pd}\PY{o}{.}\PY{n}{crosstab}\PY{p}{(}\PY{n}{y\PYZus{}test}\PY{p}{,} \PY{n}{y\PYZus{}pred}\PY{p}{,} \PY{n}{rownames}\PY{o}{=}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Actual Target}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{n}{colnames}\PY{o}{=}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Predicted Target}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}\PY{p}{)}
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-Predicted Target    0    1     2     3
-Actual Target                         
-0                 947   32     0     0
-1                  32  775     0     0
-2                   0    0  1212     4
-3                   0    0    15  2195
+Predicted Target    0    1     2    3
+Actual Target                        
+0                 922   24     0    1
+1                  16  789     1    0
+2                   0    0  1004    4
+3                   0    0     4  865
 
     \end{Verbatim}
 
     \subsubsection{Most important features}\label{most-important-features}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}96}]:} \PY{n+nb}{sorted}\PY{p}{(}\PY{n+nb}{zip}\PY{p}{(}\PY{n+nb}{map}\PY{p}{(}\PY{k}{lambda} \PY{n}{x}\PY{p}{:} \PY{n+nb}{round}\PY{p}{(}\PY{n}{x}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}\PY{p}{,} \PY{n}{classifier}\PY{o}{.}\PY{n}{feature\PYZus{}importances\PYZus{}}\PY{p}{)}\PY{p}{,} \PY{n}{users}\PY{o}{.}\PY{n}{columns}\PY{p}{)}\PY{p}{,} \PY{n}{reverse}\PY{o}{=}\PY{n+nb+bp}{True}\PY{p}{)}\PY{p}{[}\PY{p}{:}\PY{l+m+mi}{10}\PY{p}{]}
+{\color{incolor}In [{\color{incolor}56}]:} \PY{n+nb}{sorted}\PY{p}{(}\PY{n+nb}{zip}\PY{p}{(}\PY{n+nb}{map}\PY{p}{(}\PY{k}{lambda} \PY{n}{x}\PY{p}{:} \PY{n+nb}{round}\PY{p}{(}\PY{n}{x}\PY{p}{,} \PY{l+m+mi}{2}\PY{p}{)}\PY{p}{,} \PY{n}{classifier}\PY{o}{.}\PY{n}{feature\PYZus{}importances\PYZus{}}\PY{p}{)}\PY{p}{,} \PY{n}{users}\PY{o}{.}\PY{n}{columns}\PY{p}{)}\PY{p}{,} \PY{n}{reverse}\PY{o}{=}\PY{n+nb+bp}{True}\PY{p}{)}\PY{p}{[}\PY{p}{:}\PY{l+m+mi}{10}\PY{p}{]}
 \end{Verbatim}
 
 
 \begin{Verbatim}[commandchars=\\\{\}]
-{\color{outcolor}Out[{\color{outcolor}96}]:} [(0.23, u'statuses\_count'),
-          (0.17, u'favourites\_count'),
-          (0.16, u'profile\_background\_tile'),
-          (0.15, u'friends\_count'),
-          (0.15, u'followers\_count'),
-          (0.06, u'listed\_count'),
-          (0.06, u'description'),
-          (0.02, u'default\_profile'),
-          (0.01, u'default\_profile\_image'),
-          (0.0, u'url')]
+{\color{outcolor}Out[{\color{outcolor}56}]:} [(0.41999999999999998, 'favourites\_count'),
+          (0.12, 'statuses\_count'),
+          (0.089999999999999997, 'followers\_count'),
+          (0.089999999999999997, 'default\_profile\_image'),
+          (0.080000000000000002, 'friends\_count'),
+          (0.059999999999999998, 'description'),
+          (0.050000000000000003, 'profile\_background\_image\_url'),
+          (0.040000000000000001, 'profile\_background\_image\_url\_https'),
+          (0.029999999999999999, 'profile\_background\_tile'),
+          (0.02, 'listed\_count')]
+\end{Verbatim}
+            
+    \subsubsection{Holdout score - logistic
+regression}\label{holdout-score---logistic-regression}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}52}]:} \PY{c+c1}{\PYZsh{} Predicting the Test set results}
+         \PY{n}{y\PYZus{}pred} \PY{o}{=} \PY{n}{logreg}\PY{o}{.}\PY{n}{predict}\PY{p}{(}\PY{n}{X\PYZus{}test}\PY{p}{)}
+         \PY{c+c1}{\PYZsh{} Making the Confusion Matrix}
+         \PY{k}{print}\PY{p}{(}\PY{n}{pd}\PY{o}{.}\PY{n}{crosstab}\PY{p}{(}\PY{n}{y\PYZus{}test}\PY{p}{,} \PY{n}{y\PYZus{}pred}\PY{p}{,} \PY{n}{rownames}\PY{o}{=}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Actual Target}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{n}{colnames}\PY{o}{=}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Predicted Target}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Predicted Target    0    1    2    3
+Actual Target                       
+0                 884   31   12   20
+1                  37  749   20    0
+2                  13   11  984    0
+3                   4    1   12  852
+
+    \end{Verbatim}
+
+    \subsection{KNN}\label{knn}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}65}]:} \PY{n}{scaler} \PY{o}{=} \PY{n}{MinMaxScaler}\PY{p}{(}\PY{p}{)}
+         \PY{n}{X\PYZus{}train\PYZus{}n} \PY{o}{=} \PY{n}{scaler}\PY{o}{.}\PY{n}{fit\PYZus{}transform}\PY{p}{(}\PY{n}{X\PYZus{}train}\PY{p}{)}
+         \PY{n}{X\PYZus{}test\PYZus{}n} \PY{o}{=} \PY{n}{scaler}\PY{o}{.}\PY{n}{fit\PYZus{}transform}\PY{p}{(}\PY{n}{X\PYZus{}test}\PY{p}{)}
+         \PY{n}{X\PYZus{}n} \PY{o}{=} \PY{n}{scaler}\PY{o}{.}\PY{n}{fit\PYZus{}transform}\PY{p}{(}\PY{n}{X}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}73}]:} \PY{n}{knn} \PY{o}{=} \PY{n}{KNeighborsClassifier}\PY{p}{(}\PY{n}{n\PYZus{}neighbors}\PY{o}{=}\PY{l+m+mi}{10}\PY{p}{)}
+         \PY{n}{knn}\PY{o}{.}\PY{n}{fit}\PY{p}{(}\PY{n}{X\PYZus{}train\PYZus{}n}\PY{p}{,} \PY{n}{y\PYZus{}train}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}73}]:} KNeighborsClassifier(algorithm='auto', leaf\_size=30, metric='minkowski',
+                    metric\_params=None, n\_jobs=1, n\_neighbors=10, p=2,
+                    weights='uniform')
+\end{Verbatim}
+            
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}74}]:} \PY{c+c1}{\PYZsh{} Predicting the Test set results}
+         \PY{n}{y\PYZus{}pred} \PY{o}{=} \PY{n}{knn}\PY{o}{.}\PY{n}{predict}\PY{p}{(}\PY{n}{X\PYZus{}test\PYZus{}n}\PY{p}{)}
+         \PY{c+c1}{\PYZsh{} Making the Confusion Matrix}
+         \PY{k}{print}\PY{p}{(}\PY{n}{pd}\PY{o}{.}\PY{n}{crosstab}\PY{p}{(}\PY{n}{y\PYZus{}test}\PY{p}{,} \PY{n}{y\PYZus{}pred}\PY{p}{,} \PY{n}{rownames}\PY{o}{=}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Actual Target}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{,} \PY{n}{colnames}\PY{o}{=}\PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Predicted Target}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+Predicted Target    0    1    2    3
+Actual Target                       
+0                 917   25    0    5
+1                  63  740    0    3
+2                   4    0  961   43
+3                   0    0   18  851
+
+    \end{Verbatim}
+
+    \subsection{Cross Validation scores}\label{cross-validation-scores}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}75}]:} \PY{k+kn}{from} \PY{n+nn}{sklearn.model\PYZus{}selection} \PY{k+kn}{import} \PY{n}{cross\PYZus{}val\PYZus{}score}
+         \PY{n}{scores} \PY{o}{=} \PY{p}{[}\PY{p}{]}
+         \PY{n}{scores}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{cross\PYZus{}val\PYZus{}score}\PY{p}{(}\PY{n}{forest}\PY{p}{,} \PY{n}{X}\PY{p}{,} \PY{n}{y}\PY{p}{,} \PY{n}{cv}\PY{o}{=}\PY{l+m+mi}{10}\PY{p}{,} \PY{n}{scoring}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{f1\PYZus{}macro}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+         \PY{n}{scores}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{cross\PYZus{}val\PYZus{}score}\PY{p}{(}\PY{n}{logreg}\PY{p}{,} \PY{n}{X}\PY{p}{,} \PY{n}{y}\PY{p}{,} \PY{n}{cv}\PY{o}{=}\PY{l+m+mi}{10}\PY{p}{,} \PY{n}{scoring}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{f1\PYZus{}macro}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+         \PY{n}{scores}\PY{o}{.}\PY{n}{append}\PY{p}{(}\PY{n}{cross\PYZus{}val\PYZus{}score}\PY{p}{(}\PY{n}{knn}\PY{p}{,} \PY{n}{X\PYZus{}n}\PY{p}{,} \PY{n}{y}\PY{p}{,} \PY{n}{cv}\PY{o}{=}\PY{l+m+mi}{10}\PY{p}{,} \PY{n}{scoring}\PY{o}{=}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{f1\PYZus{}macro}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{o}{.}\PY{n}{mean}\PY{p}{(}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}76}]:} \PY{c+c1}{\PYZsh{}\PYZsh{} Random forest  /  Logistic Regression  /  KNN}
+         \PY{n}{scores}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}76}]:} [0.98425081499420075, 0.9107995624308286, 0.94689582913491388]
 \end{Verbatim}
             
 
