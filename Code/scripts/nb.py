@@ -31,7 +31,7 @@ api = tweepy.API(auth)
 
 # download user's tweets
 
-stuff = api.user_timeline(user_id = user, count = 100, include_rts = True, tweet_mode="extended")
+stuff = api.user_timeline(screen_name = user, count = 100, include_rts = True, tweet_mode="extended")
 tweets = []
 
 for tweet in stuff:
