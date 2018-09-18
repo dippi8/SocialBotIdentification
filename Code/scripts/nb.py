@@ -80,6 +80,7 @@ def remove_stop(x):
 
 tweets = tweets.apply(lambda x: remove_rt(x))
 tweets = tweets.apply(lambda x: re.sub(r'^\/t.co\/[^\s]+', '', x))
+tweets = tweets.apply(lambda x: re.sub(r'[^\s]+\/t.co\/[^\s]+', '', x))
 tweets = tweets.apply(lambda x: re.sub(r'[^\w\s]','',x))
 tweets = tweets.apply(lambda x: x.lower())
 tweets = tweets.apply(lambda x: remove_stop(x))
