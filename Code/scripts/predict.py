@@ -415,5 +415,16 @@ proba = pd.DataFrame(nb_scores.tolist() + rf_scores[0].tolist()).T
 lr = pickle.load(open('../scripts/lr.model', 'rb'))
 
 # return final prediction
-
+print('STACKING:')
 print(lr.predict_proba(proba).tolist()[0])
+
+
+proba = proba * [1.19, 2.13, 0.96, 1, 1.12, 2.66, 0, 1.8, 2.88, 1.77]
+proba[0] = (proba[0] + proba[5]) / 2
+proba[1] = (proba[1] + proba[6]) / 2
+proba[2] = (proba[2] + proba[7]) / 2
+proba[3] = (proba[3] + proba[8]) / 2
+proba[4] = (proba[4] + proba[9]) / 2
+proba = proba.drop(columns=[5,6,7,8,9])
+print('\nGenetic')
+print(proba.iloc[0].tolist())
