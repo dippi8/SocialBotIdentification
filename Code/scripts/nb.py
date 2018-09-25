@@ -59,11 +59,9 @@ nb = pickle.load( open( "nb.model", "rb" ) )
 # define preprocess functions
 
 def remove_rt(x):
-    
-    if 'RT' in x:
-        x = x.replace('RT', '')
+    if 'RT @' in x:
         try:
-            return x[x.rindex(':')+2:]
+            return x[x.find(':')+2:]
         except:
             return x
     else:
@@ -79,7 +77,7 @@ def remove_stop(x):
 # preprocess tweets
 
 tweets = tweets.apply(lambda x: remove_rt(x))
-tweets = tweets.apply(lambda x: re.sub(r'^\/t.co\/[^\s]+', '', x))
+tweets = tweets.apply(lambda x: re.sub(r'http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', '', x))
 tweets = tweets.apply(lambda x: re.sub(r'[^\w\s]','',x))
 tweets = tweets.apply(lambda x: x.lower())
 tweets = tweets.apply(lambda x: remove_stop(x))

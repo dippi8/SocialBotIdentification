@@ -1,0 +1,42 @@
+Introduction
+	Context: [topic]
+	Scenario and Problem Statement
+	Methodology
+	Contributions
+	Structure of Thesis 
+State of the Art
+	Botometer
+	Hoaxy
+	Cresci
+	Varol
+	Debot
+	Botblock
+Goals and Requirements
+	Concepts
+	Goals and Requirements (RASD)
+	Background: Twitter
+	Background: ML
+Approach
+	Design Decisions (passaggi fatti)
+		clustering varol
+		raccolta dati
+		feature engineering
+		data analysis
+		performance evaluation
+		web app
+	Architecture
+		tutte le librerie
+Solution aspect (?)
+Implementation and Evaluation
+	Implementation
+	Evaluation
+		Design of Evaluation
+		Metrics
+		Results
+		Discussion
+Conclusion and Future Work
+	Summary and Lessons Learned
+	Outputs and Contributions
+	Limitations
+	Future Work
+	
