@@ -187,8 +187,77 @@ def intradistances():
 
 intradistances = intradistances()
 
+# NSFW features
 
-#collect descriptive features
+import os, sys
+import tensorflow as tf
+import urllib.request
+from ast import literal_eval
+
+# Loads label file, strips off carriage return
+label_lines = [line.rstrip() for line 
+                   in tf.gfile.GFile("../scripts/NSFW-detection/retrained_labels.txt")]
+
+# Unpersists graph from file
+with tf.gfile.FastGFile("../scripts/NSFW-detection/retrained_graph.pb", 'rb') as f:
+    graph_def = tf.GraphDef()
+    graph_def.ParseFromString(f.read())
+    tf.import_graph_def(graph_def, name='')
+
+
+def nsfw(url):
+    try:
+        urllib.request.urlretrieve(url, "local-filename.jpg")
+        image_path = 'local-filename.jpg'
+        os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
+
+        # Read in the image_data
+        image_data = tf.gfile.FastGFile(image_path, 'rb').read()
+
+        with tf.Session() as sess:
+            # Feed the image_data as input to the graph and get first prediction
+            softmax_tensor = sess.graph.get_tensor_by_name('final_result:0')
+            predictions = sess.run(softmax_tensor, {'DecodeJpeg/contents:0': image_data})
+
+            return predictions[0][1]
+    except:
+        return 0
+    
+
+def nsfw_detection(bot_id):
+    
+    
+    porn = 0
+    tot = len(tweets.extended_entities[tweets.extended_entities.notnull()][:10])
+    
+    for media in tweets.extended_entities[tweets.extended_entities.notnull()][:10]:
+        try:
+            url = media['media'][0]['media_url_https']
+            if nsfw(url) > 0.5:
+                porn += 1
+        except:
+            print('cazzo')
+
+
+    if tot > 0:
+        nudity = porn/tot
+    else:
+        nudity = 0
+
+    try:
+        profile = user.profile_image_url_https.replace('normal', '400x400')
+        profile_nudity = nsfw(profile)
+    except:
+        profile_nudity = 0
+        
+        
+    return profile_nudity, nudity
+
+
+nsfw_profile, nsfw_avg = nsfw_detection(user.id)
+
+
+# collect descriptive features
 
 def describe_tweets(tweets):
     
@@ -338,6 +407,8 @@ full = full[['avg_fav', 'avg_hash', 'avg_len', 'avg_ret', 'default_profile',
        'tweets_intra', 'url', 'url_intra', 'url_perc',
        'description_len', 'name_len', 'screen_name_len', 'age']]
 
+full['nsfw_profile'] = nsfw_profile
+full['nsfw_avg'] = nsfw_avg
 
 # load model and predict
 
@@ -347,7 +418,7 @@ rf_scores = rf.predict_proba(full)
 
 # BoN classification
 
-full.drop(columns=['porn_words_score', 'prop_words_score', 'spam_words_score', 'fake_words_score', 'genuine_words_score'], inplace=True)
+full.drop(columns=['porn_words_score', 'prop_words_score', 'spam_words_score', 'fake_words_score', 'genuine_words_score', 'nsfw_profile', 'nsfw_avg'], inplace=True)
 
 # predict bot or not
 
@@ -432,14 +503,14 @@ proba = pd.DataFrame(np.array(bon_scores)[0].tolist() + nb_scores.tolist() + rf_
 lr = pickle.load(open('../scripts/lr.model', 'rb'))
 
 # return final prediction
-print('STACKING:')
+# print('STACKING:')
 print(lr.predict_proba(proba).tolist()[0])
 
 
 
 
 
-bon = np.array(bon_scores)[0] * [0.0, 0.2340688221492937, 0.0, 4.145025774160452, 2.6685081788031746]
+"""bon = np.array(bon_scores)[0] * [0.0, 0.2340688221492937, 0.0, 4.145025774160452, 2.6685081788031746]
 nb = np.array(nb_scores) * [4.867916911159929, 2.8087542061870447, 4.680651902001779, 2.800568004461698, 2.3259421644305305]
 rf = np.array(rf_scores[0]) * [4.462306771553116, 2.1292457216351646, 2.1627039831805654, 2.317301796533924, 0.16322313438788927]
 
@@ -450,4 +521,4 @@ if proba.loc[0].sum() == 0:
 else:
     proba = proba/proba.loc[0].sum()
 print('\nGENETIC:')
-print(proba.iloc[0].tolist())
+print(proba.iloc[0].tolist())"""
