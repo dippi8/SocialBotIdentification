@@ -96,11 +96,11 @@ user_features = pd.DataFrame([[user.id,
 
 # compute context score
 
-porn_words = pd.read_csv('../scripts/data/porn/filtered_main_words.csv', sep=',')
-prop_words = pd.read_csv('../scripts/data/propaganda/filtered_main_words.csv', sep=',')
-spam_words = pd.read_csv('../scripts/data/spam/filtered_main_words.csv', sep=',')
-fake_words = pd.read_csv('../scripts/data/fake_followers/filtered_main_words.csv', sep=',')
-genuine_words = pd.read_csv('../scripts/data/genuine/filtered_main_words.csv', sep=',')
+porn_words = pd.read_csv('data/porn/filtered_main_words.csv', sep=',')
+prop_words = pd.read_csv('data/propaganda/filtered_main_words.csv', sep=',')
+spam_words = pd.read_csv('data/spam/filtered_main_words.csv', sep=',')
+fake_words = pd.read_csv('data/fake_followers/filtered_main_words.csv', sep=',')
+genuine_words = pd.read_csv('data/genuine/filtered_main_words.csv', sep=',')
 
 def compute_score(tweets):
 
@@ -345,6 +345,24 @@ rf = pickle.load(open('../scripts/rf.model', 'rb'))
 rf_scores = rf.predict_proba(full)
 
 
+# BoN classification
+
+full.drop(columns=['porn_words_score', 'prop_words_score', 'spam_words_score', 'fake_words_score', 'genuine_words_score'], inplace=True)
+
+# predict bot or not
+
+bon = pickle.load(open('bot_or_not.model', 'rb'))
+bon_scores = bon.predict_proba(full)
+
+bon_scores = pd.DataFrame(bon_scores, columns=['bon_4', 'bon_3'])
+
+bon_scores['bon_0'] = bon_scores['bon_3']/4
+bon_scores['bon_1'] = bon_scores['bon_3']/4
+bon_scores['bon_2'] = bon_scores['bon_3']/4
+bon_scores['bon_3'] = bon_scores['bon_3']/4
+
+bon_scores = bon_scores.reindex(columns=['bon_0', 'bon_1', 'bon_2', 'bon_3', 'bon_4'])
+
 
 # NB classification
 
@@ -407,8 +425,7 @@ nb_scores = np.mean(pred, axis=0)
 
 # LR final prediction
 
-proba = pd.DataFrame(nb_scores.tolist() + rf_scores[0].tolist()).T
-
+proba = pd.DataFrame(np.array(bon_scores)[0].tolist() + nb_scores.tolist() + rf_scores[0].tolist()).T
 
 # load model
 
@@ -419,12 +436,18 @@ print('STACKING:')
 print(lr.predict_proba(proba).tolist()[0])
 
 
-proba = proba * [1.19, 2.13, 0.96, 1, 1.12, 2.66, 0, 1.8, 2.88, 1.77]
-proba[0] = (proba[0] + proba[5]) / 2
-proba[1] = (proba[1] + proba[6]) / 2
-proba[2] = (proba[2] + proba[7]) / 2
-proba[3] = (proba[3] + proba[8]) / 2
-proba[4] = (proba[4] + proba[9]) / 2
-proba = proba.drop(columns=[5,6,7,8,9])
-print('\nGenetic')
+
+
+
+bon = np.array(bon_scores)[0] * [0.0, 0.2340688221492937, 0.0, 4.145025774160452, 2.6685081788031746]
+nb = np.array(nb_scores) * [4.867916911159929, 2.8087542061870447, 4.680651902001779, 2.800568004461698, 2.3259421644305305]
+rf = np.array(rf_scores[0]) * [4.462306771553116, 2.1292457216351646, 2.1627039831805654, 2.317301796533924, 0.16322313438788927]
+
+proba = pd.DataFrame(bon + nb + rf).T
+
+if proba.loc[0].sum() == 0:
+    proba = np.array([0.2, 0.2, 0.2, 0.2, 0.2])
+else:
+    proba = proba/proba.loc[0].sum()
+print('\nGENETIC:')
 print(proba.iloc[0].tolist())
