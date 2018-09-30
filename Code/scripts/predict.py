@@ -236,7 +236,7 @@ def nsfw_detection(bot_id):
             if nsfw(url) > 0.5:
                 porn += 1
         except:
-            print('cazzo')
+            pass
 
 
     if tot > 0:
@@ -256,6 +256,8 @@ def nsfw_detection(bot_id):
 
 nsfw_profile, nsfw_avg = nsfw_detection(user.id)
 
+print(nsfw_profile, nsfw_avg)
+os.unlink('local-filename.jpg')
 
 # collect descriptive features
 
