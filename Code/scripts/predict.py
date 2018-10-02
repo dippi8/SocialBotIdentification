@@ -128,7 +128,7 @@ if len(tweets) > 0:
     user_score = compute_score(tweets).sum()
     scores = np.divide(user_score,len(tweets))
 else:
-    scores = pd.DataFrame({'porn_words_score': 0, 'prop_words_score': 0, 'spam_words_score': 0, 'fake_words_score': 0, 'genuine_words_score': 0}, index=[0])
+    scores = pd.DataFrame({'porn_words_score': 0, 'prop_words_score': 0, 'spam_words_score': 0, 'fake_words_score': 0, 'genuine_words_score': 0}, index=[0]).T
 
 scores = pd.DataFrame(scores).T
 
@@ -227,22 +227,29 @@ def nsfw(url):
 def nsfw_detection(bot_id):
     
     
-    porn = 0
-    tot = len(tweets.extended_entities[tweets.extended_entities.notnull()][:10])
+    porn, tot = 0, 0
+
     
-    for media in tweets.extended_entities[tweets.extended_entities.notnull()][:10]:
-        try:
-            url = media['media'][0]['media_url_https']
-            if nsfw(url) > 0.5:
-                porn += 1
-        except:
-            pass
+    try:
+	    for media in tweets.extended_entities[tweets.extended_entities.notnull()][:10]:
+	        try:
+	            url = media['media'][0]['media_url_https']
+	            if nsfw(url) > 0.8:
+	                porn += 1
+	            tot+=1
+
+	        except:
+	            pass
 
 
-    if tot > 0:
-        nudity = porn/tot
-    else:
-        nudity = 0
+	    if tot > 0:
+	        nudity = porn/tot
+	    else:
+	        nudity = 0
+
+    except:
+    	nudity = 0
+
 
     try:
         profile = user.profile_image_url_https.replace('normal', '400x400')
@@ -256,7 +263,6 @@ def nsfw_detection(bot_id):
 
 nsfw_profile, nsfw_avg = nsfw_detection(user.id)
 
-print(nsfw_profile, nsfw_avg)
 os.unlink('local-filename.jpg')
 
 # collect descriptive features
@@ -417,7 +423,6 @@ full['nsfw_avg'] = nsfw_avg
 rf = pickle.load(open('../scripts/rf.model', 'rb'))
 rf_scores = rf.predict_proba(full)
 
-
 # BoN classification
 
 full.drop(columns=['porn_words_score', 'prop_words_score', 'spam_words_score', 'fake_words_score', 'genuine_words_score', 'nsfw_profile', 'nsfw_avg'], inplace=True)
@@ -425,9 +430,15 @@ full.drop(columns=['porn_words_score', 'prop_words_score', 'spam_words_score', '
 # predict bot or not
 
 bon = pickle.load(open('bot_or_not.model', 'rb'))
-bon_scores = bon.predict_proba(full)
+bon_pred = bon.predict_proba(full)
 
-bon_scores = pd.DataFrame(bon_scores, columns=['bon_4', 'bon_3'])
+bon_scores = pd.DataFrame(bon_pred, columns=['bon_4', 'bon_3'])
+
+# per usare bon binario:
+# bon_pred = bon.predict(full)
+# bon_scores = pd.DataFrame(, columns=['bon_4', 'bon_3'])
+# bon_scores['bon_3'] = bon_pred.astype(int)
+# bon_scores['bon_4'] = np.logical_not(bon_pred).astype(int)
 
 bon_scores['bon_0'] = bon_scores['bon_3']/4
 bon_scores['bon_1'] = bon_scores['bon_3']/4
@@ -436,64 +447,65 @@ bon_scores['bon_3'] = bon_scores['bon_3']/4
 
 bon_scores = bon_scores.reindex(columns=['bon_0', 'bon_1', 'bon_2', 'bon_3', 'bon_4'])
 
-
 # NB classification
-
-tweets = tweets['full_text']
-
-
-# initialize pipeline
-
-stemmer = SnowballStemmer("english", ignore_stopwords=True)
-
-class StemmedCountVectorizer(CountVectorizer):
-    def build_analyzer(self):
-        analyzer = super(CountVectorizer, self).build_analyzer()
-        return lambda doc:(stemmer.stem(w) for w in analyzer(doc))
+if len(tweets) != 0:
+	tweets = tweets['full_text']
 
 
-# load model
+	# initialize pipeline
 
-nb = pickle.load( open( "nb.model", "rb" ) )
+	stemmer = SnowballStemmer("english", ignore_stopwords=True)
 
-
-# define preprocess functions
-
-def remove_rt(x):
-    if 'RT @' in x:
-        try:
-            return x[x.find(':')+2:]
-        except:
-            return x
-    else:
-        return x
+	class StemmedCountVectorizer(CountVectorizer):
+	    def build_analyzer(self):
+	        analyzer = super(CountVectorizer, self).build_analyzer()
+	        return lambda doc:(stemmer.stem(w) for w in analyzer(doc))
 
 
-stop_words = stopwords.words('english')
+	# load model
 
-def remove_stop(x):
-    return [word for word in x.split() if word not in stop_words]
-
-
-# preprocess tweets
-
-tweets = tweets.apply(lambda x: remove_rt(x))
-tweets = tweets.apply(lambda x: re.sub(r'http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', '', x))
-tweets = tweets.apply(lambda x: re.sub(r'[^\w\s]','',x))
-tweets = tweets.apply(lambda x: x.lower())
-tweets = tweets.apply(lambda x: remove_stop(x))
-tweets = tweets.astype(str)
-tweets = tweets[tweets!='[]']
+	nb = pickle.load( open( "nb.model", "rb" ) )
 
 
-# perform predictions over tweets
+	# define preprocess functions
 
-pred = nb.predict_proba(tweets)
+	def remove_rt(x):
+	    if 'RT @' in x:
+	        try:
+	            return x[x.find(':')+2:]
+	        except:
+	            return x
+	    else:
+	        return x
 
-# return average of NB predictions
 
-nb_scores = np.mean(pred, axis=0)
+	stop_words = stopwords.words('english')
 
+	def remove_stop(x):
+	    return [word for word in x.split() if word not in stop_words]
+
+
+	# preprocess tweets
+
+	tweets = tweets.apply(lambda x: remove_rt(x))
+	tweets = tweets.apply(lambda x: re.sub(r'http[s]?://(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\(\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+', '', x))
+	tweets = tweets.apply(lambda x: re.sub(r'[^\w\s]','',x))
+	tweets = tweets.apply(lambda x: x.lower())
+	tweets = tweets.apply(lambda x: remove_stop(x))
+	tweets = tweets.astype(str)
+	tweets = tweets[tweets!='[]']
+
+
+	# perform predictions over tweets
+
+	pred = nb.predict_proba(tweets)
+
+	# return average of NB predictions
+
+	nb_scores = np.mean(pred, axis=0)
+
+else:
+	nb_scores = np.array([0.2,0.2,0.2,0.2,0.2])
 
 
 # LR final prediction
