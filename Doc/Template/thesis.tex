@@ -1,0 +1,119 @@
+\documentclass[11pt,a4paper,twoside,openright]{report}
+
+\usepackage{graphicx}
+\usepackage{tabularx}
+\usepackage{subfigure}
+\usepackage{afterpage}
+\usepackage{amsmath,amssymb}            
+\usepackage{rotating}  
+\usepackage{fancyhdr}  
+\usepackage{bbding}  
+\usepackage{framed}  
+\usepackage[scriptsize]{caption} 
+
+%\setlength{\paperwidth}{16cm}
+%\setlength{\paperheight}{24cm}
+\setlength{\oddsidemargin} {2. cm}
+\setlength{\evensidemargin} {2. cm}
+\addtolength{\oddsidemargin} {-0.4 cm}
+\addtolength{\evensidemargin} {-0.4 cm}
+\linespread{1.1}
+
+%\usepackage[italian]{babel}
+\usepackage[latin1]{inputenc}
+\renewcommand{\captionfont}{\normalfont \sffamily \itshape \small}
+
+\newcommand{\checklist}[1]{\vspace{1cm}\begin{framed}
+\noindent \textbf{Checklist} #1\end{framed}}
+
+\newcommand{\note}[2]{\begin{framed}\sffamily\small
+\noindent \textbf{#1} \\ #2\end{framed}}
+
+\pagestyle{empty}
+
+\begin{document}
+
+\include{cover_page}
+
+\thispagestyle{empty} \normalfont 
+
+\clearpage
+\note{About this template}{With this template I want to give you some input on how to structure your thesis if you develop your thesis with me in Politecnico di Milano. Next to the pure structure, which you should reuse and adapt to your own needs, the document also contains instructions on how to approach the different sections, the writing and, sometimes, even the work on your thesis project itself. Sometimes you will also find boxes like this one. These are meant to provide you with explanations and insights or hints that go beyond the mere structure of a thesis. 
+
+I hope this template will help you do the best thesis ever, if not in the World, at least in your life.
+
+\hfill Florian Daniel
+
+\hfill October 12, 2017
+
+\bigskip \noindent \emph{Disclaimer:} Sometimes I may make statements that are general, if not over-generalized, personal considerations, or give hints on how to do work or research. Be aware that these are just my own opinions and by no way represent official statements by Politecnico di Milano or its community of professors. If something goes wrong with your thesis or presentation, you cannot refer to these statements as a defense. You are the final responsible of what goes into your thesis and what not.
+
+\medskip \noindent \emph{Acknowledgements:} The original template for this document was not created by me. I would love to acknowledge the real creator, but I actually do not know who it is. The template has been passed on to me by a former student, who also didn't know the exact origin of it. It was circulating among students. However, to the best of my knowledge at the time of writing, it seems that Marco D. Santambrogio and Matto Matteucci may have contributed at some point with considerations on structure and funny citations. Both were helpful and enjoyable when preparing this version of the template. I will be glad to add more precise acknowledgements if properly informed about the origins of this template.} 
+
+\note{Supervisors and co-supervisors}{If the supervisor is internal to Politecnico di Milano (a professor or researcher), then on the first page use ``Supervisor'' plus the titles ``Prof.'' and ``Dr.'' for professors and researches, respectively. If the work was co-supervised by someone else, refer to him/her as the ``Co-supervisor.'' If the work was supervised by someone external to Politecnico di Milano, use ``External supervisor'' for the external supervisor plus ``Internal supervisor'' for the internal supervisor that mandatorily must co-supervise the work with the external supervisor. }
+\clearpage
+
+\include{dedication}
+
+\thispagestyle{empty}  \cleardoublepage
+\pagenumbering{Roman}
+\include{abstract}
+
+\thispagestyle{empty} \vspace*{.75truecm} \cleardoublepage
+\include{acknowledgements}
+
+\thispagestyle{empty} \vspace*{.75truecm} \normalfont \cleardoublepage
+\pagestyle{plain}\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter.\ #1}{}} 
+\renewcommand{\sectionmark}[1]{\markright{\thesection.\ #1}}         
+\fancyhead[LE,RO]{\bfseries\thepage}    
+                                        
+\fancyhead[RE]{\bfseries\leftmark}    
+\fancyhead[LO]{\bfseries\rightmark}     
+\renewcommand{\headrulewidth}{0.3pt} 
+
+\tableofcontents
+\cleardoublepage
+
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+% % Use as many chapters as you need to structure your content
+\include{chapter1/chapter}
+\include{chapter2/chapter}
+\include{chapter3/chapter}
+\include{chapter4/chapter}
+\include{chapter5/chapter}
+\include{chapter6/chapter}
+\include{chapter7/chapter}
+\include{chapter8/chapter}
+
+
+\cleardoublepage
+% ---- Bibliography ----
+\addcontentsline{toc}{chapter}{References}
+\bibliographystyle{plain}
+\bibliography{references}
+%\nocite{*}
+
+\appendix
+
+\pagestyle{fancy} 
+\fancyfoot{}                                               
+\renewcommand{\chaptermark}[1]{\markboth{\appendixname\ \thechapter.\ #1}{}} 
+\renewcommand{\sectionmark}[1]{\markright{\thesection.\ #1}}         
+\fancyhead[LE,RO]{\bfseries\thepage}    
+                                        
+\fancyhead[RE]{\bfseries\leftmark}    
+\fancyhead[LO]{\bfseries\rightmark}     
+\renewcommand{\headrulewidth}{0.3pt} 
+
+% % Use as many appendixes as you need
+\include{appendixA/appendix}
+\include{appendixB/appendix}
+
+\end{document}
+
+
+
+
+

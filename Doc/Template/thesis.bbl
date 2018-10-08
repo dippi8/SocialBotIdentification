@@ -1,0 +1,29 @@
+\begin{thebibliography}{1}
+
+\bibitem{Yang}
+R.~Harkreader C.~Yang and G.~Gu.
+\newblock Empirical evaluation and new design for fighting evolving twitter
+  spammers.
+\newblock 2013.
+
+\bibitem{Lee11sevenmonths}
+Kyumin Lee, Brian~David Eoff, and James Caverlee.
+\newblock Seven months with the devils: a long-term study of content polluters
+  on twitter.
+\newblock 2011.
+
+\bibitem{Varol}
+Clayton A. Davis Filippo Menczer Alessandro~Flammini Onur~Varol,
+  Emilio~Ferrara.
+\newblock Online human-bot interactions: Detection, estimation, and
+  characterization.
+\newblock 2017.
+
+\bibitem{Cresci}
+Marinella Petrocchi Angelo Spognardi Maurizio~Tesconi Stefano~Cresci, Roberto
+  Di~Pietro.
+\newblock The paradigm-shift of social spambots: Evidence, theories, and tools
+  for the arms race.
+\newblock 2017.
+
+\end{thebibliography}

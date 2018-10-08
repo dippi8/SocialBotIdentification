@@ -1,0 +1,86 @@
+This is BibTeX, Version 0.99d (TeX Live 2017/Debian)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: thesis.aux
+A level-1 auxiliary file: cover_page.aux
+A level-1 auxiliary file: dedication.aux
+A level-1 auxiliary file: abstract.aux
+A level-1 auxiliary file: acknowledgements.aux
+A level-1 auxiliary file: chapter1/chapter.aux
+A level-1 auxiliary file: chapter2/chapter.aux
+A level-1 auxiliary file: chapter3/chapter.aux
+A level-1 auxiliary file: chapter4/chapter.aux
+A level-1 auxiliary file: chapter5/chapter.aux
+A level-1 auxiliary file: chapter6/chapter.aux
+A level-1 auxiliary file: chapter7/chapter.aux
+A level-1 auxiliary file: chapter8/chapter.aux
+The style file: plain.bst
+A level-1 auxiliary file: appendixA/appendix.aux
+A level-1 auxiliary file: appendixB/appendix.aux
+Database file #1: references.bib
+Warning--I didn't find a database entry for "von2004design"
+Name 1 in "C. Yang, R. Harkreader, and G. Gu." has a comma at the end for entry Yang
+while executing---line 1049 of file plain.bst
+Too many commas in name 1 of "Stefano Cresci, Roberto Di Pietro, Marinella Petrocchi, Angelo Spognardi, Maurizio Tesconi" for entry Cresci
+while executing---line 1049 of file plain.bst
+Too many commas in name 1 of "Stefano Cresci, Roberto Di Pietro, Marinella Petrocchi, Angelo Spognardi, Maurizio Tesconi" for entry Cresci
+while executing---line 1049 of file plain.bst
+Too many commas in name 1 of "Onur Varol, Emilio Ferrara, Clayton A. Davis, Filippo Menczer, Alessandro Flammini" for entry Varol
+while executing---line 1049 of file plain.bst
+Too many commas in name 1 of "Onur Varol, Emilio Ferrara, Clayton A. Davis, Filippo Menczer, Alessandro Flammini" for entry Varol
+while executing---line 1049 of file plain.bst
+Name 1 in "C. Yang, R. Harkreader, and G. Gu." has a comma at the end for entry Yang
+while executing---line 1090 of file plain.bst
+Warning--empty journal in Yang
+Warning--empty journal in Lee11sevenmonths
+Too many commas in name 1 of "Onur Varol, Emilio Ferrara, Clayton A. Davis, Filippo Menczer, Alessandro Flammini" for entry Varol
+while executing---line 1090 of file plain.bst
+Too many commas in name 1 of "Onur Varol, Emilio Ferrara, Clayton A. Davis, Filippo Menczer, Alessandro Flammini" for entry Varol
+while executing---line 1090 of file plain.bst
+Warning--empty journal in Varol
+Too many commas in name 1 of "Stefano Cresci, Roberto Di Pietro, Marinella Petrocchi, Angelo Spognardi, Maurizio Tesconi" for entry Cresci
+while executing---line 1090 of file plain.bst
+Too many commas in name 1 of "Stefano Cresci, Roberto Di Pietro, Marinella Petrocchi, Angelo Spognardi, Maurizio Tesconi" for entry Cresci
+while executing---line 1090 of file plain.bst
+Warning--empty journal in Cresci
+You've used 4 entries,
+            2118 wiz_defined-function locations,
+            534 strings with 5091 characters,
+and the built_in function-call counts, 937 in all, are:
+= -- 84
+> -- 45
+< -- 0
++ -- 19
+- -- 14
+* -- 47
+:= -- 179
+add.period$ -- 12
+call.type$ -- 4
+change.case$ -- 19
+chr.to.int$ -- 0
+cite$ -- 8
+duplicate$ -- 40
+empty$ -- 69
+format.name$ -- 14
+if$ -- 180
+int.to.chr$ -- 0
+int.to.str$ -- 4
+missing$ -- 4
+newline$ -- 23
+num.names$ -- 8
+pop$ -- 27
+preamble$ -- 1
+purify$ -- 15
+quote$ -- 0
+skip$ -- 29
+stack$ -- 0
+substring$ -- 21
+swap$ -- 0
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 16
+warning$ -- 4
+while$ -- 8
+width$ -- 5
+write$ -- 38
+(There were 10 error messages)

@@ -1,0 +1,139 @@
+% !TEX root = ../thesis.tex
+\chapter{Introduction}
+\label{Introduction}
+\thispagestyle{empty}
+
+% % If you want, in the beginning of each chapter you can add 
+% % a short citation. Some people like to do that. The following lines
+% % of code can be used as a template to replicate in each chapter
+%\begin{quotation}
+%{\footnotesize
+%\noindent{\emph{``Citation...''}
+%}
+%\begin{flushright}
+%Author/source
+%\end{flushright}
+%}
+%\end{quotation}
+%\vspace{0.5cm}
+
+The introduction is one of the core chapters of your thesis. It expands what has already been said in the abstract with additional details on the content and contribution and on the structure of the thesis. It is meant to introduce the reader to the work he/she will be reading in the rest of the document and, most importantly, to get the reader curious about reading on, knowing more about your work.  
+
+\section{Context: [topic]}
+This thesis is about describing the work you are doing in your final thesis project. You have been working on it for months, and nobody knows the work better than you do. This is great and exactly how things should be: by doing your thesis project you became an expert -- if not \emph{the} expert -- in this specific field of research and/or technology. 
+
+But attention: being the expert is also dangerous when it comes to explaining others what you did and why you think you did a great work that deserves attention (I give it for granted that you work does so). There are only very few people around you (your supervisor and possible co-supervisor, some friends, maybe someone else) who are as expert as you are in this topic. So, if you start in a full-impact fashion to tell that you implemented an extraordinarily cool, new algorithm to solve X, or that you discovered this extremely surprising finding Y, or that you mathematically proofed that Z, etc. (you got it), your reader will not understand anything. Therefore, before talking about what you actually did, you need to introduce the reader to the context of your work, provide the necessary core definitions that are needed to understand the terminology you will be using in the rest of the thesis (if it's not standard IT terminology).  
+
+Therefore:
+
+\begin{itemize}
+\item[\Square] Tell the \emph{research area(s)} your work/project focuses on. If you are doing your thesis with me, likely candidates of research areas are Web Engineering, Data Science, Crowdsourcing, Service-Oriented Computing, Business Process Management.
+\item[\Square] Tell possible \emph{sub-areas} that are more specifically related to what you are doing. Again, if you are doing your thesis with me, likely candidates of sub-areas are chatbots, social knowledge extraction, business process matching/modeling, quality control in crowdsourcing, etc.
+\item[\Square] Make the \emph{heading} of your context section self-explaining by substituting ``[topic]'' in heading 1.1 with the sub-area most relevant to your work. It should read like ``Context: quality control in crowdsourcing'' or similar.
+\item[\Square] If needed, introduce some \emph{key definitions} (no need to introduce everything here, but be sure that the introduction does not use terminology the reader may not be familiar with). For instance, if you are working on chatbots, this is definitely a term that needs to be introduced here; it's not yet commonly known but it's crucial for the understanding of the rest of the thesis and introduction. 
+\item[\Square] Use \emph{examples} to make definitions and ideas concrete and clear.
+\item[\Square] Throughout, make \emph{references} to the relevant literature.
+\end{itemize}
+
+
+\note{Use of tenses and pronouns}{Writing a thesis is writing a scientific document like scientific articles or research publications. There are two conventions that are usually applied in this kind of publications (admittedly, they may seem somewhat odd if not used to): 
+
+First, the most used tense is the \emph{simple present}. The thesis is meant to describe a piece of work, from problem statement, to the conception of a solution, its implementation and evaluation. Yet, it's not a novel about your life, and it's not meant to provide a chronological story about what you did and didn't do. Content is presented in an order that is most effective to convey its message, not in time order. In this spirit, it's much more effective to say ``in order to get result A, first we do X, then we do Y and then Z,'' instead of saying ``in order to get result A, we did Y after having done X, then we went on doing Z.'' The order of actions, their interconnections, inputs and outputs already tell the dependency -- if properly described. Most of the times, the most effective way to describe a solution or methodology only becomes clear after trial and error. It's enough to explain the result, not how you got there chronologicallly.
+
+Second, the \emph{pronoun} used to talk about the own work is ``our'' (work). That is, it is custom to say ``we'' instead of ``I,'' even if you are writing your thesis alone. However, don't forget about all the people that helped you get there: your supervisor, co-supervisor, colleagues, etc. This may sound strange at the beginning, but, at the other hand, using ``I'' too often risks to convey the impression that you are self-focused and egoistic, which is never good. }
+
+
+\section{Scenario and Problem Statement}
+\label{sec:scenario}
+Now that the reader got the general context of your work and has an intuition of the problem you will be solving in the rest of the thesis, it's time to be clear about which \emph{specific problems} your thesis project is going to solve. One way of doing so is by describing a \emph{scenario} (a description of a real situation, with all its actors, roles, tasks, instruments, etc.) that provides evidence that there are one or more real problems right now that, with the current technology and understanding of the domain, are hard to solve or not solvable at all. If instead the problem(s) can be solved already, it should be evident from the scenario that this is possible only at a prohibiting cost or with unsatisfying guarantees on the quality of the result or not within useful time for the target user. 
+
+It's important that the scenario is written in such a way that the reader, after reading it, agrees with you that the problem you are focusing on is a relevant one, one that deserves being studied and solved. Consider that if you convince the reader here that your thesis is needed (after all, that's what this section is about), he/she will be very open to possible solutions and happy to see how you solve it. If instead you fail to convince the reader -- let me be harsh -- the whole rest of your thesis is useless in the eyes of the reader. This is the worst outcome you want.
+
+Conclude this section by explicitly stating which of the problems evident in the scenario you are approaching. Don't raise false expectations! Never ever tell the reader there are five core problems and then solve only two of them in the thesis, without telling upfront that this is what you intended to do in the first place. As soon as you list problems, the reader wants to see a solution, unless you stop him/her immediately from thinking so by telling that out of the described problems you focus on a subset only, usually because this subset is already a huge research and development problem in its own.
+
+In summary:
+
+\begin{itemize}
+\item[\Square] Describe a \emph{real scenario} that provides evidence of \emph{real problems}.
+\item[\Square] Convince the \emph{reader} that the problems need to be solved.
+\item[\Square] Use an \emph{illustration} or \emph{figure} to help the reader understand.
+\item[\Square] If possible, provide \emph{references} to literature that backs your assessment of the problem.
+\item[\Square] Provide a clear \emph{problem statement} that summarizes what came out of the scenario and your specific focus.
+\end{itemize}
+
+
+\section{Methodology}
+Fixed the problem(s) you want to approach, you can approach it/them in thousands of different ways. Your way is just one of the thousands, and the reader may have (and very likely will have) a very different intuition of how to solve the problem(s) you just pointed out. So, clarify how you intend to proceed:
+
+\begin{itemize}
+\item[\Square] Tell if you follow an existing \emph{methodology} or not; if yes, name it and provide a reference to literature, if available. For example, Design Science \cite{von2004design} is a likely methodology to cite here.
+\item[\Square] Tell which of the following \emph{procedures}, \emph{techniques}, \emph{methods} you use in your work and for which purpose (put them also into the right order, so that their application or use makes immediate sense to the reader):
+\begin{itemize}
+\item[\Square] \emph{Systematic literature review, survey}
+\item[\Square] \emph{Statistical hypothesis formulation and testing}
+\item[\Square] \emph{Software prototyping}
+\item[\Square] \emph{Iterative development}
+\item[\Square] \emph{Participatory design}
+\item[\Square] \emph{Performance evaluation}
+\item[\Square] \emph{Comparative studies}
+\item[\Square] \emph{User studies}
+\item[\Square] \emph{Expert interviews}
+\item[\Square] \emph{Simulation/emulation}
+\item[\Square] \emph{Live experiments}
+\item[\Square] \emph{Case studies}
+\item[\Square] \emph{Mathematical theorem proofing}
+\item[\Square] \emph{Mathematical modeling}
+\item[\Square] \emph{Pseudocode}
+\item[\Square] \emph{Graphical modeling} (e.g., UML, ER)
+\item[\Square] \emph{Model-driven development}
+\item[\Square] \emph{Automatic code generation}
+\item[\Square] ...
+\end{itemize}
+
+\item[\Square] Tell if you use some special \emph{software instruments} that help you in your work. We are of course not talking about Word or Google Search. Perhaps you can tell that you used R for data analysis or some specific modeling instrument for automated code generation or simulation.
+\end{itemize}
+
+
+
+\section{Contributions}
+\label{sec:contributions}
+Now that the reader knows what you want to solve and how you intend to proceed, you can anticipate the contributions your thesis makes to the state of the art. Attention, a thesis project may produce lots of different \emph{outputs} (e.g., a software prototype, a set of registrations and transcripts of interviews, datasets collected during experiments) and \emph{contributions} (e.g., a demonstration that some software solutions solves a given problem under well defined conditions, a formal proof that some property holds, empirical evidence that something works as expected). The former are all the artifacts produced throughout the work. The latter refer to  \emph{new knowledge} (if you are doing a full thesis) or the most important, \emph{final output} (if you are doing a tesina). Sometimes, outputs and contributions overlap, but not necessarily. 
+
+Typical contributions are (multiple choices may apply to your thesis):
+
+\begin{itemize}
+\item[\Square] A \emph{systematic literature review} of the state of the art providing evidence for some argument
+\item[\Square] The design of a \emph{model} (mathematical, graphical, algebraic, etc.) describing how to solve a real world problem in a reusable fashion
+\item[\Square] The drawing of \emph{conclusions} (findings) from the analysis of a dataset describing some physical or virtual phenomenon
+\item[\Square] The implementation of a \emph{software prototype} solving a real world application problem
+\item[\Square] The design of a \emph{language} (textual, graphical) enabling others to solve own problems or to solve them easier
+\item[\Square] \emph{Formal proofs} of correctness, completeness or other properties of the proposed models or theorems 
+\item[\Square] \emph{Objective evidence} from empirical studies (e.g., performance analyses or simluations) that demonstrate that the proposed prototype or solution works / works better than existing software or solutions that solve the same/similar problem(s)
+\item[\Square] \emph{Subjective evidence} from user studies or expert interviews backing the claims of viability of the proposed problem or solution/artifact
+\item[\Square] A reasoned \emph{argumentation}, e.g., based on a detailed case study, supporting the viability of the proposed problem or solution/artifact
+\end{itemize}
+
+
+\note{Thesis vs. Tesina}{Let me spend some words on the difference between these two. Before that, however, it is important to clarify the very purpose of your final project, be it a thesis or a tesina (a small thesis). The purpose of it is giving you the possibility to show that, after years of attending classes and giving exams, you are also able to \emph{apply} the knowledge you acquired during your studies. In short, it's all about you showing that you are \emph{mature}. Mature form a knowledge perspective, mature from an application perspective, mature from a work/teamwork perspective, mature from an ethical perspective.
+
+It is common that a thesis project is not very well defined in its beginning and that even the supervisor does not really know how to approach a given problem or which problem to focus on in the first place. This may even be annoying to you, but attention: there is no intention behind it. Your supervisor is not withholding information from you to test you or to see if you get something. It's just the nature of real \emph{problem solving}. If things were clear from the beginning, there wouldn't be any problem! Fledging out the problem and agreeing on a solution and methodology is a core part of you demonstrating your maturity -- if not the most important one. \emph{How} you proceed from the inception of the thesis idea to the final solution is as important as \emph{what} you find and/or produce in the end.
+
+This being said, a \emph{thesis} in Politecnico di Milano usually requires you to make a contribution to the literature (the so-called state of the art). Making a contribution -- from a science point of view -- means creating new \emph{knowledge}, that is, finding something that nobody knew before, demonstrating a property that nobody showed before, improving the performance of a given system with a new algorithm, and similar. For a thesis, it is therefore not enough to produce a perfectly engineered solution. It is key that you also demonstrate, provide empirical evidence or proof that your solutions performs as claimed. Well, for a \emph{tesina} this last demonstration is usually not required, and the focus is on the engineering of the solution. In addition, perhaps in the case of the tesina the solution to be engineered is also less complex then for a thesis, but this depends on the context and on how you want to measure complexity. }
+
+
+\section{Structure of Thesis}
+Here you explain the structure of the thesis, so that the reader knows how to read it. Consider that not every reader wants to read through the whole thesis to find some specific information. Actually, only few will do so (your supervisor and co-supervisor, and the possible reviewer for sure). Many more will just leaf through it and look for specific types of information (e.g., the context of your work, your findings, how you implemented something, which technologies you used). It is your duty to accommodate them all. How? By telling them how your thesis is structured. 
+
+Therefore, in this section you provide a brief description (2-3 sentences) for \emph{each} chapter that follows this introduction. Use an itemized or numbered list to structure the text, like this:
+
+\begin{itemize}
+\item[\Square]  Chapter 2 introduces the state of the art and...
+\item[\Square]  Chapter 3 provides...
+\item[\Square]  ...
+\end{itemize}
+
+
+\note{Structuring text}{Besides telling the reader how the content of your thesis is organized into chapters, it is important that you master some basic text structuring techniques. To organize your text there are lots of instruments you can use: chapters, sections, sub-sections, paragraphs, itemized lists, numbered lists, code examples, figures, images, screen shots, captions below figures, tables, and so on. Use them all! Don't write text without structure. Never. 
+
+Be aware that the structure of your text, that is, how you present your work, conveys a lot of information about how well you actually understand what you are writing about, how much you care about being clear and helping your reader understand, and how much value you give yourself to your own thesis. A well structured presentation of content that the reader can understand and agree with is a huge plus in this respect. Text that lacks proper paragraphs, does not use lists where needed, etc. is a minus and also much harder to read (think about how much a well structured text can help you go back ten pages and find concepts you know you read about compared to a text that comes without an easy to memorize formatting and structure). When writing, think about some of your textbooks. Since you are doing an engineering degree, I'm sure these are textbooks that make exemplary use of the different formatting instruments available.}
+
