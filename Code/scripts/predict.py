@@ -96,7 +96,7 @@ user_features = pd.DataFrame([[user.id,
 
 # compute context score
 
-porn_words = pd.read_csv('data/porn/filtered_main_words.csv', sep=',')
+porn_words = pd.read_csv('data/nsfw/filtered_main_words.csv', sep=',')
 prop_words = pd.read_csv('data/propaganda/filtered_main_words.csv', sep=',')
 spam_words = pd.read_csv('data/spam/filtered_main_words.csv', sep=',')
 fake_words = pd.read_csv('data/fake_followers/filtered_main_words.csv', sep=',')
@@ -196,10 +196,10 @@ from ast import literal_eval
 
 # Loads label file, strips off carriage return
 label_lines = [line.rstrip() for line 
-                   in tf.gfile.GFile("../scripts/NSFW-detection/retrained_labels.txt")]
+                   in tf.gfile.GFile("models/NSFW-detection/retrained_labels.txt")]
 
 # Unpersists graph from file
-with tf.gfile.FastGFile("../scripts/NSFW-detection/retrained_graph.pb", 'rb') as f:
+with tf.gfile.FastGFile("models/NSFW-detection/retrained_graph.pb", 'rb') as f:
     graph_def = tf.GraphDef()
     graph_def.ParseFromString(f.read())
     tf.import_graph_def(graph_def, name='')
@@ -234,9 +234,12 @@ def nsfw_detection(bot_id):
 	    for media in tweets.extended_entities[tweets.extended_entities.notnull()][:10]:
 	        try:
 	            url = media['media'][0]['media_url_https']
-	            if nsfw(url) > 0.8:
+	            porno_score = nsfw(url)
+	            if porno_score > 0.8:
 	                porn += 1
 	            tot+=1
+
+	            print(url, porno_score)
 
 	        except:
 	            pass
@@ -420,7 +423,7 @@ full['nsfw_avg'] = nsfw_avg
 
 # load model and predict
 
-rf = pickle.load(open('../scripts/rf.model', 'rb'))
+rf = pickle.load(open('models/rf.model', 'rb'))
 rf_scores = rf.predict_proba(full)
 
 # BoN classification
@@ -429,7 +432,7 @@ full.drop(columns=['porn_words_score', 'prop_words_score', 'spam_words_score', '
 
 # predict bot or not
 
-bon = pickle.load(open('bot_or_not.model', 'rb'))
+bon = pickle.load(open('models/bot_or_not.model', 'rb'))
 bon_pred = bon.predict_proba(full)
 
 bon_scores = pd.DataFrame(bon_pred, columns=['bon_4', 'bon_3'])
@@ -464,7 +467,7 @@ if len(tweets) != 0:
 
 	# load model
 
-	nb = pickle.load( open( "nb.model", "rb" ) )
+	nb = pickle.load( open( "models/nb.model", "rb" ) )
 
 
 	# define preprocess functions
@@ -514,25 +517,8 @@ proba = pd.DataFrame(np.array(bon_scores)[0].tolist() + nb_scores.tolist() + rf_
 
 # load model
 
-lr = pickle.load(open('../scripts/lr.model', 'rb'))
+lr = pickle.load(open('models/lr.model', 'rb'))
 
 # return final prediction
 # print('STACKING:')
 print(lr.predict_proba(proba).tolist()[0])
-
-
-
-
-
-"""bon = np.array(bon_scores)[0] * [0.0, 0.2340688221492937, 0.0, 4.145025774160452, 2.6685081788031746]
-nb = np.array(nb_scores) * [4.867916911159929, 2.8087542061870447, 4.680651902001779, 2.800568004461698, 2.3259421644305305]
-rf = np.array(rf_scores[0]) * [4.462306771553116, 2.1292457216351646, 2.1627039831805654, 2.317301796533924, 0.16322313438788927]
-
-proba = pd.DataFrame(bon + nb + rf).T
-
-if proba.loc[0].sum() == 0:
-    proba = np.array([0.2, 0.2, 0.2, 0.2, 0.2])
-else:
-    proba = proba/proba.loc[0].sum()
-print('\nGENETIC:')
-print(proba.iloc[0].tolist())"""

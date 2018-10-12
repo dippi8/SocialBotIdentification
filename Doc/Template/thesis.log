@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.9.14)  8 OCT 2018 20:38
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.9.14)  12 OCT 2018 17:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -415,7 +415,7 @@ Chapter 2.
  (./chapter3/chapter.tex
 Chapter 3.
 
-Underfull \hbox (badness 10000) in paragraph at lines 24--26
+Underfull \hbox (badness 10000) in paragraph at lines 25--27
 
  []
 
@@ -424,15 +424,15 @@ Underfull \hbox (badness 10000) in paragraph at lines 24--26
 
 
 ]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 112.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 113.
 
  (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 112.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 113.
  [12] [13]
-Overfull \hbox (20.65077pt too wide) in paragraph at lines 152--192
+Overfull \hbox (20.65077pt too wide) in paragraph at lines 154--194
  [] 
  []
 
@@ -444,60 +444,91 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 <chapter3/figure/dendogram.jpg, id=106, 1445.4pt x 722.7pt>
 File: chapter3/figure/dendogram.jpg Graphic file (type jpg)
 <use chapter3/figure/dendogram.jpg>
-Package pdftex.def Info: chapter3/figure/dendogram.jpg  used on input line 201.
+Package pdftex.def Info: chapter3/figure/dendogram.jpg  used on input line 203.
 
 (pdftex.def)             Requested size: 360.0pt x 180.00188pt.
 
 
 LaTeX Font Warning: Font shape `OT1/cmss/m/it' in size <10.95> not available
-(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 202.
+(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 204.
 
 
 <chapter3/figure/kneeelbow.jpg, id=107, 1445.4pt x 722.7pt>
 File: chapter3/figure/kneeelbow.jpg Graphic file (type jpg)
 <use chapter3/figure/kneeelbow.jpg>
-Package pdftex.def Info: chapter3/figure/kneeelbow.jpg  used on input line 210.
+Package pdftex.def Info: chapter3/figure/kneeelbow.jpg  used on input line 212.
 
 (pdftex.def)             Requested size: 360.0pt x 180.00188pt.
 <chapter3/figure/elbow.jpg, id=108, 1445.4pt x 722.7pt>
 File: chapter3/figure/elbow.jpg Graphic file (type jpg)
 <use chapter3/figure/elbow.jpg>
-Package pdftex.def Info: chapter3/figure/elbow.jpg  used on input line 218.
+Package pdftex.def Info: chapter3/figure/elbow.jpg  used on input line 220.
 (pdftex.def)             Requested size: 360.0pt x 180.00188pt.
 [16
 
  <./chapter3/figure/dendogram.jpg>] [17 <./chapter3/figure/kneeelbow.jpg> <./ch
-apter3/figure/elbow.jpg>] [18]) [19]
+apter3/figure/elbow.jpg>] [18]
+<chapter3/figure/news-spreader.jpg, id=118, 643.40375pt x 756.8275pt>
+File: chapter3/figure/news-spreader.jpg Graphic file (type jpg)
+<use chapter3/figure/news-spreader.jpg>
+Package pdftex.def Info: chapter3/figure/news-spreader.jpg  used on input line 
+289.
+(pdftex.def)             Requested size: 250.93842pt x 295.17308pt.
+ [19]
+Underfull \vbox (badness 4403) has occurred while \output is active []
+
+ [20 <./chapter3/figure/news-spreader.jpg>]
+<chapter3/figure/dibebot.png, id=126, 1275.76625pt x 615.29875pt>
+File: chapter3/figure/dibebot.png Graphic file (type png)
+<use chapter3/figure/dibebot.png>
+Package pdftex.def Info: chapter3/figure/dibebot.png  used on input line 324.
+(pdftex.def)             Requested size: 360.0pt x 173.62505pt.
+ [21]
+<chapter3/figure/boxplot_friends.jpg, id=131, 1445.4pt x 1084.05pt>
+File: chapter3/figure/boxplot_friends.jpg Graphic file (type jpg)
+<use chapter3/figure/boxplot_friends.jpg>
+Package pdftex.def Info: chapter3/figure/boxplot_friends.jpg  used on input lin
+e 335.
+(pdftex.def)             Requested size: 176.40198pt x 132.2969pt.
+<chapter3/figure/boxplot_followers.jpg, id=132, 1445.4pt x 1084.05pt>
+File: chapter3/figure/boxplot_followers.jpg Graphic file (type jpg)
+<use chapter3/figure/boxplot_followers.jpg>
+Package pdftex.def Info: chapter3/figure/boxplot_followers.jpg  used on input l
+ine 336.
+(pdftex.def)             Requested size: 176.40198pt x 132.2969pt.
+) [22 <./chapter3/figure/dibebot.png>]
+[23 <./chapter3/figure/boxplot_friends.jpg> <./chapter3/figure/boxplot_follower
+s.jpg>]
 \openout2 = `chapter4/chapter.aux'.
 
- (./chapter4/chapter.tex [20
+ (./chapter4/chapter.tex [24
 
 
 
 ]
 Chapter 4.
-[21] [22]) [23]
+[25] [26]) [27]
 \openout2 = `chapter5/chapter.aux'.
 
- (./chapter5/chapter.tex [24
+ (./chapter5/chapter.tex [28
 
 
 
 ]
 Chapter 5.
-) [25]
+) [29]
 \openout2 = `chapter6/chapter.aux'.
 
- (./chapter6/chapter.tex [26
+ (./chapter6/chapter.tex [30
 
 
 
 ]
 Chapter 6.
-) [27]
+) [31]
 \openout2 = `chapter7/chapter.aux'.
 
- (./chapter7/chapter.tex [28
+ (./chapter7/chapter.tex [32
 
 
 
@@ -506,17 +537,17 @@ Chapter 7.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [29]
-[30] [31]) [32]
+ [33]
+[34] [35]) [36]
 \openout2 = `chapter8/chapter.aux'.
 
  (./chapter8/chapter.tex
 Chapter 8.
-[33
+[37
 
 
 
-] [34] [35]) [36] (./thesis.bbl) [37
+] [38] [39]) [40] (./thesis.bbl) [41
 
 
 
@@ -530,21 +561,21 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[38
+[42
 
 
 ]
 Appendix A.
-) [39]
+) [43]
 \openout2 = `appendixB/appendix.aux'.
 
- (./appendixB/appendix.tex [40
+ (./appendixB/appendix.tex [44
 
 
 
 ]
 Appendix B.
-) [41] (./thesis.aux (./cover_page.aux) (./dedication.aux) (./abstract.aux)
+) [45] (./thesis.aux (./cover_page.aux) (./dedication.aux) (./abstract.aux)
 (./acknowledgements.aux) (./chapter1/chapter.aux) (./chapter2/chapter.aux)
 (./chapter3/chapter.aux) (./chapter4/chapter.aux) (./chapter5/chapter.aux)
 (./chapter6/chapter.aux) (./chapter7/chapter.aux) (./chapter8/chapter.aux)
@@ -554,10 +585,10 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 4356 strings out of 494923
- 63736 string characters out of 6180742
- 126935 words of memory out of 5000000
- 7480 multiletter control sequences out of 15000+600000
+ 4380 strings out of 494923
+ 64458 string characters out of 6180742
+ 126971 words of memory out of 5000000
+ 7499 multiletter control sequences out of 15000+600000
  15131 words of font info for 57 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  41i,11n,43p,1125b,364s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -571,10 +602,10 @@ fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/share/texlive/texmf-dist/font
 s/type1/public/amsfonts/cm/cmssi10.pfb></usr/share/texlive/texmf-dist/fonts/typ
 e1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
 lic/amsfonts/cm/cmti10.pfb>
-Output written on thesis.pdf (53 pages, 527329 bytes).
+Output written on thesis.pdf (57 pages, 1608445 bytes).
 PDF statistics:
- 227 PDF objects out of 1000 (max. 8388607)
- 155 compressed objects within 2 object streams
+ 246 PDF objects out of 1000 (max. 8388607)
+ 165 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 21 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 41 words of extra memory for PDF output out of 10000 (max. 10000000)
 

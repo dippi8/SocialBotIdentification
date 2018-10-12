@@ -37,50 +37,51 @@ while executing---line 1090 of file plain.bst
 Too many commas in name 1 of "Onur Varol, Emilio Ferrara, Clayton A. Davis, Filippo Menczer, Alessandro Flammini" for entry Varol
 while executing---line 1090 of file plain.bst
 Warning--empty journal in Varol
+Warning--empty journal in Disinformation
 Too many commas in name 1 of "Stefano Cresci, Roberto Di Pietro, Marinella Petrocchi, Angelo Spognardi, Maurizio Tesconi" for entry Cresci
 while executing---line 1090 of file plain.bst
 Too many commas in name 1 of "Stefano Cresci, Roberto Di Pietro, Marinella Petrocchi, Angelo Spognardi, Maurizio Tesconi" for entry Cresci
 while executing---line 1090 of file plain.bst
 Warning--empty journal in Cresci
-You've used 4 entries,
+You've used 5 entries,
             2118 wiz_defined-function locations,
-            534 strings with 5091 characters,
-and the built_in function-call counts, 937 in all, are:
-= -- 84
-> -- 45
+            539 strings with 5223 characters,
+and the built_in function-call counts, 1176 in all, are:
+= -- 106
+> -- 58
 < -- 0
-+ -- 19
-- -- 14
-* -- 47
-:= -- 179
-add.period$ -- 12
-call.type$ -- 4
-change.case$ -- 19
++ -- 24
+- -- 18
+* -- 59
+:= -- 223
+add.period$ -- 15
+call.type$ -- 5
+change.case$ -- 24
 chr.to.int$ -- 0
-cite$ -- 8
-duplicate$ -- 40
-empty$ -- 69
-format.name$ -- 14
-if$ -- 180
+cite$ -- 10
+duplicate$ -- 50
+empty$ -- 86
+format.name$ -- 18
+if$ -- 227
 int.to.chr$ -- 0
-int.to.str$ -- 4
-missing$ -- 4
-newline$ -- 23
-num.names$ -- 8
-pop$ -- 27
+int.to.str$ -- 5
+missing$ -- 5
+newline$ -- 28
+num.names$ -- 10
+pop$ -- 34
 preamble$ -- 1
-purify$ -- 15
+purify$ -- 19
 quote$ -- 0
-skip$ -- 29
+skip$ -- 37
 stack$ -- 0
-substring$ -- 21
+substring$ -- 26
 swap$ -- 0
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 16
-warning$ -- 4
-while$ -- 8
-width$ -- 5
-write$ -- 38
+type$ -- 20
+warning$ -- 5
+while$ -- 10
+width$ -- 6
+write$ -- 47
 (There were 10 error messages)
