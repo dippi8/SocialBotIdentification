@@ -26,26 +26,26 @@
 \contentsline {subsection}{\numberline {3.4.1}NSFW}{19}
 \contentsline {subsection}{\numberline {3.4.2}News-spreader}{19}
 \contentsline {subsection}{\numberline {3.4.3}Spam-bots}{21}
-\contentsline {subsection}{\numberline {3.4.4}Fake-followers}{21}
+\contentsline {subsection}{\numberline {3.4.4}Fake-followers}{22}
 \contentsline {subsection}{\numberline {3.4.5}Genuine}{22}
-\contentsline {section}{\numberline {3.5}Data visualization}{22}
-\contentsline {chapter}{\numberline {4}[Core contribution]: Approach}{25}
-\contentsline {section}{\numberline {4.1}Design Decisions}{25}
-\contentsline {section}{\numberline {4.2}Architecture}{26}
-\contentsline {chapter}{\numberline {5}[Solution aspect one]}{29}
-\contentsline {chapter}{\numberline {6}[Solution aspect two]}{31}
-\contentsline {chapter}{\numberline {7}Implementation and Evaluation}{33}
-\contentsline {section}{\numberline {7.1}Implementation}{34}
-\contentsline {section}{\numberline {7.2}Evaluation}{34}
-\contentsline {subsection}{\numberline {7.2.1}Design of Evaluation}{34}
-\contentsline {subsection}{\numberline {7.2.2}Metrics}{35}
-\contentsline {subsection}{\numberline {7.2.3}Results}{36}
-\contentsline {subsection}{\numberline {7.2.4}Discussion}{36}
-\contentsline {chapter}{\numberline {8}Conclusion and Future Work}{37}
-\contentsline {section}{\numberline {8.1}Summary and Lessons Learned}{37}
-\contentsline {section}{\numberline {8.2}Outputs and Contributions}{37}
-\contentsline {section}{\numberline {8.3}Limitations}{38}
-\contentsline {section}{\numberline {8.4}Future Work}{39}
-\contentsline {chapter}{References}{41}
-\contentsline {chapter}{\numberline {A}User Manual}{43}
-\contentsline {chapter}{\numberline {B}Dataset}{45}
+\contentsline {section}{\numberline {3.5}Data visualization}{23}
+\contentsline {chapter}{\numberline {4}[Core contribution]: Approach}{29}
+\contentsline {section}{\numberline {4.1}Design Decisions}{29}
+\contentsline {section}{\numberline {4.2}Architecture}{30}
+\contentsline {chapter}{\numberline {5}[Solution aspect one]}{33}
+\contentsline {chapter}{\numberline {6}[Solution aspect two]}{35}
+\contentsline {chapter}{\numberline {7}Implementation and Evaluation}{37}
+\contentsline {section}{\numberline {7.1}Implementation}{38}
+\contentsline {section}{\numberline {7.2}Evaluation}{38}
+\contentsline {subsection}{\numberline {7.2.1}Design of Evaluation}{38}
+\contentsline {subsection}{\numberline {7.2.2}Metrics}{39}
+\contentsline {subsection}{\numberline {7.2.3}Results}{40}
+\contentsline {subsection}{\numberline {7.2.4}Discussion}{40}
+\contentsline {chapter}{\numberline {8}Conclusion and Future Work}{41}
+\contentsline {section}{\numberline {8.1}Summary and Lessons Learned}{41}
+\contentsline {section}{\numberline {8.2}Outputs and Contributions}{41}
+\contentsline {section}{\numberline {8.3}Limitations}{42}
+\contentsline {section}{\numberline {8.4}Future Work}{43}
+\contentsline {chapter}{References}{45}
+\contentsline {chapter}{\numberline {A}User Manual}{47}
+\contentsline {chapter}{\numberline {B}Dataset}{49}
