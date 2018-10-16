@@ -29,9 +29,12 @@
 \contentsline {subsection}{\numberline {3.4.4}Fake-followers}{22}
 \contentsline {subsection}{\numberline {3.4.5}Genuine}{22}
 \contentsline {section}{\numberline {3.5}Data visualization}{23}
-\contentsline {chapter}{\numberline {4}[Core contribution]: Approach}{29}
-\contentsline {section}{\numberline {4.1}Design Decisions}{29}
-\contentsline {section}{\numberline {4.2}Architecture}{30}
+\contentsline {chapter}{\numberline {4}Features Engineering}{29}
+\contentsline {section}{\numberline {4.1}Baseline}{29}
+\contentsline {section}{\numberline {4.2}Missing values filling}{31}
+\contentsline {section}{\numberline {4.3}Descriptive features}{31}
+\contentsline {section}{\numberline {4.4}Intrinsict features}{31}
+\contentsline {section}{\numberline {4.5}Extrinsic features}{31}
 \contentsline {chapter}{\numberline {5}[Solution aspect one]}{33}
 \contentsline {chapter}{\numberline {6}[Solution aspect two]}{35}
 \contentsline {chapter}{\numberline {7}Implementation and Evaluation}{37}

@@ -1,45 +1,62 @@
 % !TEX root = ../thesis.tex
-\chapter{[Core contribution]: Approach}
+\chapter{Features Engineering}
 \label{capitolo4}
 \thispagestyle{empty}
 
-This is the chapter where you explain how you approach the problem and how you intend to meet the requirements identified in the previous chapter. In short, here you explain your \emph{solution}. But attention: you won't be able to describe every aspect of your thesis project here, in one single chapter. You will need more than one for that. So, this is the chapter where you explain your solution in terms of the general approach and the design decisions that you make:
+In this chapter we want to analyze the set of available features and expand it with new ones, based on the properties of tweets and pictures. 
 
-\begin{itemize}
-\item[\Square] Identify the target \emph{actors} that will benefit from your solution, describe them.
-\end{itemize}
+\section{Baseline}
+Some features are ready to be used in a classifier, while other ones need to be pre-processed to allow them to be more expressive. In this section we analyze the complete set of default profile features and which kind of pre-processing operation we applied. With this default set we trained a classifier to define a baseline and this allowed us to evaluate the improvements made by the features engineering step.
 
+\small
+\begin{center}
+	\begin{tabular}{ccc}
+		\\feature&type&preprocess operation\\
+		\hline\hline
+		id&int&delete\\
+		name&str&delete - non-numeric feature\\
+		screen\_name&str&delete - non-numeric feature\\
+		statuses\_count&int&/\\
+		followers\_count&int&/\\
+		friends\_count&int&/\\
+		favourites\_count&int&/\\
+		listed\_count&int&/\\
+		url&str&replace with hasUrl (0/1)\\
+		lang&str&delete - non-numeric feature\\
+		time\_zone&str&delete - too many missing values\\
+		location&str&delete - too many missing values\\
+		default\_profile&int&delete - too many missing values\\
+		default\_profile\_image&boolean&boolean to int (0/1)\\
+		geo\_enabled&boolean&delete - too many missing values\\
+		profile\_image\_url&str&delete - non-numeric feature\\
+		profile\_use\_background\_image&boolean&boolean to int (0/1)\\
+		profile\_background\_image\_url\_https&str&delete - non-numeric feature\\
+		profile\_text\_color&str&delete - non-numeric feature\\
+		profile\_image\_url\_https&str&delete - non-numeric feature\\
+		profile\_sidebar\_border\_color&str&delete - non-numeric feature\\
+		profile\_background\_tile&boolean&boolean to int (0/1)\\
+		profile\_sidebar\_fill\_color&str&delete - non-numeric feature\\
+		profile\_background\_image\_url&str&delete - non-numeric feature\\
+		profile\_background\_color&str&delete - non-numeric feature\\
+		profile\_link\_color&str&delete - non-numeric feature\\
+		utc\_offset&int&delete - too many missing values\\
+		is\_translator&boolean&delete - too many missing values\\
+		follow\_request\_sent&int&delete - relative feature\\
+		protected&boolean&delete - too many missing values\\
+		verified&boolean&delete - too many missing values\\
+		notifications&boolean&delete - relative feature\\
+		description&str&replace with hasDescription (0/1)\\
+		contributors\_enabled&boolean&delete - too many missing values\\
+		following&boolean&delete - relative feature\\
+		created\_at&str&delete\\\hline\\
+	\end{tabular}
+\end{center}
+\normalsize
 
-\section{Design Decisions}
-Discuss here your decisions and strategy. Defer the details to the following chapters, which you can use to elaborate better on the core aspects of your work. Decide which of the design decisions are easy to explain and do not need any further elaboration and which instead deserve an own chapter. For example, if you work on a modeling language and you introduce new modeling constructs, the modeling constructs represent one of the core contributions of your work, and they should be explained in a chapter on their own. Similarly, if you develop a new algorithm, the design of this algorithm may deserve an own chapter. The rule of thumb is that those aspects of your work that require most effort very likely deserve a chapter on their own with enough space to explain why they required such a lot of effort.
+Features processed as "delete - relative feature" are those ones related to the user who performed the scraping. So we didn't need them.
 
-\begin{itemize}
-\item[\Square] Identify the core \emph{design decisions} that must be taken, name them, and explain them to the reader.
-\item[\Square] Discuss the different \emph{options} that are available for each of these decisions, describe them and possibly discuss pros and cons.
-\item[\Square] For each decision to be taken, \emph{make your choice} and \emph{motivate} your choices with suitable arguments. 
-\end{itemize}
-
-
-
-\section{Architecture}
-\label{sec:architecture}
-Describe here how your software prototype (if developed) is structured. 
-
-\begin{itemize}
-\item[\Square] Identify the core \emph{artifacts} (models, software prototypes, languages, etc.) that are needed to go from the problem to your solution, name and describe them.
-\item[\Square] Identify the most important \emph{dependencies} among these artifacts and make them explicit.
-\item[\Square] Put everything into context in some form of \emph{functional architecture} of your solution (if your solution consists in a software prototype).
-\end{itemize}
-
-I explicitly call the architecture ``functional architecture'' to emphasize that you should not talk about technologies, code, frameworks, or similar here. What instead is needed here is an explanation of the:
-
-\begin{itemize}
-\item[\Square] \emph{software modules} that your prototype will leverage on (all software can be structured into small modules to split the internal logic into smaller, hopefully self-explaining elements),
-\item[\Square] their \emph{interconnection},
-\item[\Square] their \emph{inputs and outputs} (the artifacts identified earlier), 
-\item[\Square] the \emph{actors} involved in the execution of the software.
-\item[\Square] Use one or more \emph{figures} (illustrations) to clarify the above.
-\end{itemize}
-
-\note{Figures and tables}{You are an engineer, and using figures (illustrations) and tables to better convey your ideas should be an obvious practice you should have learned throughout your university career. If not, it's time now. Use illustrations, screen shots, sketches, and so on to help the reader understand. Use tables to summarize complex text (for example, a profound analysis of the state of the art) or to format data in a readable fashion. Each time you use a figure or table, you must also (i) complement it with a so-called caption (a text right underneath or above it) to give it a title and a description and (ii) reference it from within the main text (never just place a figure somewhere without talking about it). If you use Latex, check your Latex documentation for how to use captions and references.}
+\section{Missing values filling}
+\section{Descriptive features}
+\section{Intrinsict features}
+\section{Extrinsic features}
 

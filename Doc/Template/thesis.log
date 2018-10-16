@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.14)  14 OCT 2018 20:21
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.14)  16 OCT 2018 18:11
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -539,7 +539,19 @@ ine 396.
 
 ]
 Chapter 4.
-[29] [30]) [31]
+
+Overfull \hbox (9.73405pt too wide) in paragraph at lines 13--53
+ [] 
+ []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [29])
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [30]
+[31]
 \openout2 = `chapter5/chapter.aux'.
 
  (./chapter5/chapter.tex [32
@@ -570,6 +582,10 @@ Chapter 7.
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [37]
+
+LaTeX Warning: Reference `sec:architecture' on page 38 undefined on input line 
+21.
+
 [38] [39]) [40]
 \openout2 = `chapter8/chapter.aux'.
 
@@ -619,7 +635,7 @@ LaTeX Warning: There were undefined references.
 Here is how much of TeX's memory you used:
  4405 strings out of 494923
  65113 string characters out of 6180741
- 127029 words of memory out of 5000000
+ 127018 words of memory out of 5000000
  7520 multiletter control sequences out of 15000+600000
  15131 words of font info for 57 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
@@ -634,7 +650,7 @@ fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/share/texlive/texmf-dist/font
 s/type1/public/amsfonts/cm/cmssi10.pfb></usr/share/texlive/texmf-dist/fonts/typ
 e1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
 lic/amsfonts/cm/cmti10.pfb>
-Output written on thesis.pdf (61 pages, 1851940 bytes).
+Output written on thesis.pdf (61 pages, 1851032 bytes).
 PDF statistics:
  265 PDF objects out of 1000 (max. 8388607)
  174 compressed objects within 2 object streams
