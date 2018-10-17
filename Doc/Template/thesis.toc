@@ -35,20 +35,20 @@
 \contentsline {section}{\numberline {4.3}Descriptive features}{31}
 \contentsline {section}{\numberline {4.4}Intrinsict features}{32}
 \contentsline {section}{\numberline {4.5}Extrinsic features}{33}
-\contentsline {chapter}{\numberline {5}[Solution aspect one]}{35}
-\contentsline {chapter}{\numberline {6}[Solution aspect two]}{37}
-\contentsline {chapter}{\numberline {7}Implementation and Evaluation}{39}
-\contentsline {section}{\numberline {7.1}Implementation}{40}
-\contentsline {section}{\numberline {7.2}Evaluation}{40}
-\contentsline {subsection}{\numberline {7.2.1}Design of Evaluation}{40}
-\contentsline {subsection}{\numberline {7.2.2}Metrics}{41}
-\contentsline {subsection}{\numberline {7.2.3}Results}{42}
-\contentsline {subsection}{\numberline {7.2.4}Discussion}{42}
-\contentsline {chapter}{\numberline {8}Conclusion and Future Work}{43}
-\contentsline {section}{\numberline {8.1}Summary and Lessons Learned}{43}
-\contentsline {section}{\numberline {8.2}Outputs and Contributions}{43}
-\contentsline {section}{\numberline {8.3}Limitations}{44}
-\contentsline {section}{\numberline {8.4}Future Work}{45}
-\contentsline {chapter}{References}{47}
-\contentsline {chapter}{\numberline {A}User Manual}{49}
-\contentsline {chapter}{\numberline {B}Dataset}{51}
+\contentsline {chapter}{\numberline {5}[Solution aspect one]}{37}
+\contentsline {chapter}{\numberline {6}[Solution aspect two]}{39}
+\contentsline {chapter}{\numberline {7}Implementation and Evaluation}{41}
+\contentsline {section}{\numberline {7.1}Implementation}{42}
+\contentsline {section}{\numberline {7.2}Evaluation}{42}
+\contentsline {subsection}{\numberline {7.2.1}Design of Evaluation}{42}
+\contentsline {subsection}{\numberline {7.2.2}Metrics}{43}
+\contentsline {subsection}{\numberline {7.2.3}Results}{44}
+\contentsline {subsection}{\numberline {7.2.4}Discussion}{44}
+\contentsline {chapter}{\numberline {8}Conclusion and Future Work}{45}
+\contentsline {section}{\numberline {8.1}Summary and Lessons Learned}{45}
+\contentsline {section}{\numberline {8.2}Outputs and Contributions}{45}
+\contentsline {section}{\numberline {8.3}Limitations}{46}
+\contentsline {section}{\numberline {8.4}Future Work}{47}
+\contentsline {chapter}{References}{49}
+\contentsline {chapter}{\numberline {A}User Manual}{51}
+\contentsline {chapter}{\numberline {B}Dataset}{53}

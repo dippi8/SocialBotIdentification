@@ -86,7 +86,7 @@ Here is the list of this first 18 brand new features, introduced by our work:
 		ret\_perc&percentage of retweets, made by the user, over its retrieved tweets\\
 		media\_perc&percentage of media content incorpored in tweets\\
 		url\_perc&percentage of URL links placed inside tweets\\
-		quote\_perc&percentage of quotes, made by the user, over its retrieved tweets\\
+		quote\_perc&percentage of quotes, made by the user, over its retrieved tweets\\\hline\\
 	\end{tabular}
 \end{center}
 \normalsize
@@ -108,7 +108,7 @@ The term frequency factor counts the number \textit{n} of the \textit{i}\textsub
 
 \[ IDF_{i} =\log {\frac {|D|}{|\{d:i\in d\}|}} \]
 Where \textit{d} is the document (tweet).
-The invers document factor aims to highlight the overall magnitude of the  i\textsubscript{th} term in the collection  which it belongs. The collection \textit{D}, in our work, is represented by all the gathered tweets of the examined user.
+The invers document frequency factor aims to highlight the overall magnitude of the  i\textsubscript{th} term in the collection  which it belongs. The collection \textit{D}, in our work, is represented by all the gathered tweets of the examined user.
 \[(TF-IDF)_{i} = TF_{i,j} \times IDF_{i} \]
 After the encoding process, we wanted to map the resulting vectors into an euclidean space, in order to compute the distance of each weighted text, from the total centroid of the collection.\\
 We decided to add each user a measure of the average intra-distance of its tweets.\\
@@ -124,7 +124,7 @@ The resulting 2 features are
 		\\feature&type\\
 		\hline\hline
 		tweet\_intradistance&float\\
-		url\_intradistance&float\\
+		url\_intradistance&float\\\hline\\
 	\end{tabular}
 \end{center}
 \normalsize
@@ -132,4 +132,52 @@ We expected low values for Spam-bot accounts in both features, as well as we exp
 
 
 \section{Extrinsic features}
+Once we have modeled the personal twitting actions, in terms of words and links dissimilarity, we needed to look for those parameters that could be compared with all the users in our dataset.
+We wanted the users to get out of their shells, and to match their timelines with each others.\\
+Once again, sentiment analysis came to our mind. We found lots of paid or limited services that could have only partially supported us during this stage.\\
+We couldn't think about implementing our own semantic analysis, as it is meant to be, due to the effort and time it would had taken.\\
+For semplicity sake, we had the idea to look for the most meaningful words in tweets, that are common to all the users belonging to the same class.\\
+We tried this approach, hoping to find a robust help in separating topics among targets.\\
+The idea was to build five not overlapping dictionaries, one for each class of users, containing the most popular words used by them in their retrieved tweets. Each dictionary is ordered according to the occurrence of each word, in order to have a proper ranking for the terms and to give each of them a score.
+We gathered the 300 most common words for each category of accounts, in order to average about 250 terms, once the overlapping elements would have been discarded.
+Considering more than 300 words led us to uninfluent perfromance boost, instead it required lot of time to process a single user, so we decided to stop early.\\
+We have listed 5 dictionaries: 
+\small
+\begin{center}
+	\begin{tabular}{ccc}
+		\\dictionary&size\\
+		\hline\hline
+		NSFW\_main\_words.csv&209\\
+		spam\_bots\_main\_words.csv&230\\
+		news\_spreders\_main\_words.csv&237\\
+		fake\_followers\_main\_words.csv&233\\
+		genuine\_main\_words.csv&223\\\hline\\
+	\end{tabular}
+\end{center}
+\normalsize
+The overall scores are normalized, so that the most common word, for each class, is associated with a unitary weight, the least common one with a value similar to zero (it depends on the final amount of words included in the dictionary).\\
+In terms of representation, this \textit{keywords score} is built with 5 different values, one for each class.\\
+The dictionaries aren't totally disjointed with each others.
+We decided to strip, from each list, only the top 50 words belonging to the other collections, since the most relevant scores reside in that zone of the ranking. We didn't want to give the user high scores, for the same word, but in different categories.\\
+If some user hit a word that is placed inside more than a dictionary, we wanted to let the relative weights speak and assign scores to each of the targets that contain that word, knowing they are less relevant, as they don't fall in the highest positions.\\
+So we have
+
+\small
+\begin{center}
+	\begin{tabular}{ccc}
+		\\feature&type\\
+		\hline\hline
+		NSFW\_words\_score&float\\
+		spam\_bots\_words\_score&float\\
+		news\_spreders\_words\_score&float\\
+		fake\_followers\_words\_score&float\\
+		genuine\_words\_score&float\\\hline\\
+	\end{tabular}
+\end{center}
+\normalsize
+When we process a new user and infer on him, we scan every words of every tweets and match them with all the dictionary. Every time that we hit a listed word, we assign the user the score of that word.\\
+For instance, If the word we are comparing matches with the most occurrent for NSFW accounts (the top position in its dictionarye), we update the \textit{NSFW\_words\_score} of our user, summing 1 to its current value for that feature.
+We expected to capture patterns about the choice of the words involved in tweets, for each of our categories.
+This extrinsic attributes revealed themsevles as very useful, lately.
+
 

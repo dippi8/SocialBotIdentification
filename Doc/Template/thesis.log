@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.10.16)  17 OCT 2018 09:41
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.10.16)  17 OCT 2018 12:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -563,28 +563,28 @@ Overfull \hbox (1.6282pt too wide) in paragraph at lines 70--91
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [31]
-[32]) [33]
+[32] [33] [34]) [35]
 \openout2 = `chapter5/chapter.aux'.
 
- (./chapter5/chapter.tex [34
+ (./chapter5/chapter.tex [36
 
 
 
 ]
 Chapter 5.
-) [35]
+) [37]
 \openout2 = `chapter6/chapter.aux'.
 
- (./chapter6/chapter.tex [36
+ (./chapter6/chapter.tex [38
 
 
 
 ]
 Chapter 6.
-) [37]
+) [39]
 \openout2 = `chapter7/chapter.aux'.
 
- (./chapter7/chapter.tex [38
+ (./chapter7/chapter.tex [40
 
 
 
@@ -593,21 +593,21 @@ Chapter 7.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [39]
+ [41]
 
-LaTeX Warning: Reference `sec:architecture' on page 40 undefined on input line 
+LaTeX Warning: Reference `sec:architecture' on page 42 undefined on input line 
 21.
 
-[40] [41]) [42]
+[42] [43]) [44]
 \openout2 = `chapter8/chapter.aux'.
 
  (./chapter8/chapter.tex
 Chapter 8.
-[43
+[45
 
 
 
-] [44] [45]) [46] (./thesis.bbl) [47
+] [46] [47]) [48] (./thesis.bbl) [49
 
 
 
@@ -621,21 +621,21 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[48
+[50
 
 
 ]
 Appendix A.
-) [49]
+) [51]
 \openout2 = `appendixB/appendix.aux'.
 
- (./appendixB/appendix.tex [50
+ (./appendixB/appendix.tex [52
 
 
 
 ]
 Appendix B.
-) [51] (./thesis.aux (./cover_page.aux) (./dedication.aux) (./abstract.aux)
+) [53] (./thesis.aux (./cover_page.aux) (./dedication.aux) (./abstract.aux)
 (./acknowledgements.aux) (./chapter1/chapter.aux) (./chapter2/chapter.aux)
 (./chapter3/chapter.aux) (./chapter4/chapter.aux) (./chapter5/chapter.aux)
 (./chapter6/chapter.aux) (./chapter7/chapter.aux) (./chapter8/chapter.aux)
@@ -669,10 +669,10 @@ al/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/loc
 al/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/loca
 l/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/
 texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on thesis.pdf (63 pages, 1913401 bytes).
+Output written on thesis.pdf (65 pages, 1918198 bytes).
 PDF statistics:
- 299 PDF objects out of 1000 (max. 8388607)
- 199 compressed objects within 2 object streams
+ 306 PDF objects out of 1000 (max. 8388607)
+ 203 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
  61 words of extra memory for PDF output out of 10000 (max. 10000000)
 
