@@ -3,7 +3,76 @@
 \label{capitolo4}
 \thispagestyle{empty}
 
-In this chapter we want to analyze the set of available features and expand it with new ones, based on the properties of tweets and pictures. 
+This chapter can be seen as one of the most important of the whole project.\\
+We wouldn't have hit such performances, if it wasn't for feature engineering. We had a large pool of models to pick for our purpose,  and we tried different assets for them, but the difference were made with the reasning behind the construction of the final feature vector.\\
+Twitter APIs provides us two kinds of features: the user attributes and the tweet attributes.
+We knew that user attributes weren't enough to infer on targets, so we started planning how to include tweet attributes and match them with the others.\\
+We were aiming to enhance our data with informations driven by the tweets that our users made.\\
+The choice over the amount of tweets that would have been considered was a trade-off between performance and prediction speed.\\
+We finally chose to retrive up to the latest 100 tweets for each user, because further material led us to a slower, but equivalent, prediction over test samples.\\
+At the end of this stage, the resulting - and final - feature vector will include 38 features, that can be divided in two groups with respective sub-groups:
+\small
+\begin{center}
+	\begin{tabular}{ccc}
+		\hline\hline
+		\textbf{user features}\\
+		\hline\hline
+		age\\
+		default\_profile\\
+		description\_len\\
+		favourites\_count\\
+		friends\_count\\
+		followers\_count\\
+		listed\_count\\
+		profile\_use\_background\_image\\
+		name\_len\\
+		screen\_name\_len\\
+		statuses\_count\\
+		url\\
+		\hline\hline
+		\textbf{tweet  features}\\
+		\hline\hline
+		\textit{descriptive}\\
+		\hline
+		freq\\
+		min\_fav\\
+		avg\_fav\\
+		max\_fav\\
+		min\_hash\\
+		avg\_hash\\
+		max\_hash\\
+		min\_len\\
+		avg\_len\\
+		max\_len\\
+		min\_ret\\
+		avg\_ret\\
+		max\_ret\\
+		media\_perc\\
+		quote\_perc\\
+		ret\_perc\\
+		url\_perc\\
+		\hline
+		\textit{intrinsic}\\
+		\hline
+		tweets\_intradistance\\
+		url\_intradistance\\
+		\hline
+		\textit{extrinsic}\\
+		\hline
+		NSFW\_words\_score\\
+		spam\_bots\_words\_score\\
+		news\_spreders\_words\_score\\
+		fake\_followers\_words\_score\\
+		genuine\_words\_score\\
+		\hline
+		\textit{image}\\
+		\hline
+		NSFW\_profile\\
+		NSFW\_avg\\\hline
+	\end{tabular}
+\end{center}
+\normalsize
+
 
 \section{Baseline}
 Some features are ready to be used in a classifier, while other ones need to be pre-processed to allow them to be more expressive. In this section we analyze the complete set of default profile features and which kind of pre-processing operation we applied. With this default set we trained a classifier to define a baseline and this allowed us to evaluate the improvements made by the features engineering step.
@@ -52,14 +121,11 @@ Some features are ready to be used in a classifier, while other ones need to be 
 	\end{tabular}
 \end{center}
 \normalsize
-
 Features processed as "delete - relative feature" are those ones related to the user who performed the scraping. So we didn't need them.
 
 \section{Missing values filling}
 \section{Descriptive features}
-The feature engineering process started with this idea: we aimed to enhance our data with informations driven by the tweets that our users made.\\
-The choice over the amount of tweets that would have been considered was a trade-off between performance and prediction speed.\\
-We finally chose to retrive up to the latest 100 tweets for each user, because further material led us to a slower, but equivalent, prediction over test samples.
+
 In order to enrich our attributes and to provide support to our algorithms, we decided to add some decriptive "meta" features, such as synthesis statistics and counters.\\
 Their purpose is to describe the tweets in a statistical way, adding ranges and means to the attributes provided by the official APIs.\\
 Each of these new values were been added to the users feature vector, in order to append new informations for each account.
@@ -181,3 +247,13 @@ We expected to capture patterns about the choice of the words involved in tweets
 This extrinsic attributes revealed themsevles as very useful, lately.
 
 
+\section{Image features}
+One of the main issues of our work was to make the NSFW class different, in terms of classifiers vision, with respect of Spam-bots.\\
+According to our user-based, descriptive and intrinsic features, both classes act in a similar way: they spam similar links, have high tweet frequency and their contents are often repeated.\\
+What could be the difference?\\
+We started with "blind" classifier, that was the main problem.\\ Our feature vector lacked in visual components. A Spam-bot could have been detected as a NSFW, as its tweets involved media and URLs. We needed to go deep and actually see what kind of media were broadcasted.\\
+This is the reason for the 2 upcoming features. We've found a small versatile project on GitHub (LINK) for NSFW detection.\\
+The projects involves a pre-trained TensorFlow neural network for image recognition, that looks for adult and violent content inside pictures. It assigns the media a probability to be not safe for work.\\
+We decided to scan our dataset with this new component and to give a NSFW score to both profile pictures and tweets.\\
+For time complexity reasons, we couldn't imagine to scan all the retrieved tweets for each user and to look for a media. We limited the process to the latest ten tweets.\\
+Obviously, the preditcion time has been affected by this new preprocessing stage, but we think that this number of pictures analyzed (up to eleven), makes the generalization duration still reasonable.\\
