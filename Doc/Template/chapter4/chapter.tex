@@ -57,6 +57,79 @@ Features processed as "delete - relative feature" are those ones related to the 
 
 \section{Missing values filling}
 \section{Descriptive features}
+The feature engineering process started with this idea: we aimed to enhance our data with informations driven by the tweets that our users made.\\
+The choice over the amount of tweets that would have been considered was a trade-off between performance and prediction speed.\\
+We finally chose to retrive up to the latest 100 tweets for each user, because further material led us to a slower, but equivalent, prediction over test samples.
+In order to enrich our attributes and to provide support to our algorithms, we decided to add some decriptive "meta" features, such as synthesis statistics and counters.\\
+Their purpose is to describe the tweets in a statistical way, adding ranges and means to the attributes provided by the official APIs.\\
+Each of these new values were been added to the users feature vector, in order to append new informations for each account.
+Here is the list of this first 18 brand new features, introduced by our work:
+
+\small
+\begin{center}
+	\begin{tabular}{ccc}
+		\\feature&description\\
+		\hline\hline
+		avg\_len&average lenght of the tweets (words)\\
+		max\_len&lenght of the longest tweet (words)\\
+		min\_len&lenght of the shortest tweet (words)\\
+		avg\_ret&average amount of retweets (by other users) per tweet\\
+		max\_ret&highest amount of retweets (by other users) on a tweet\\
+		min\_ret&lowest amount of retweets (by other users) on a tweet\\
+		avg\_fav&average amount of favourites (by other users) per tweet\\
+		max\_fav&highest amount of favourites (by other users) on a tweet\\
+		min\_fav&lowest amount of favourites (by other users) on a tweet\\
+		avg\_hash&average amount of hashtags involved in tweets\\
+		max\_hash&highest amount of hashtags involved on a tweet\\
+		min\_hash&highest amount of hashtags involved on a tweet\\
+		freq&amount of tweets per day (up to 100)\\
+		ret\_perc&percentage of retweets, made by the user, over its retrieved tweets\\
+		media\_perc&percentage of media content incorpored in tweets\\
+		url\_perc&percentage of URL links placed inside tweets\\
+		quote\_perc&percentage of quotes, made by the user, over its retrieved tweets\\
+	\end{tabular}
+\end{center}
+\normalsize
+
 \section{Intrinsict features}
+Due the multiclass nature of our dataset, it was impossible to rely on the descriptive meta features only.\\
+We faced the need of better capturing some behaviors, that could have helped us distinguish between targets.\\
+We spent a lot of time analyzing Twitter timelines by ourselves. This was one of the most useful phases of our work.\\
+Indeed, we have learnt a lot about bots acting like humans on the social platform.
+One thing that was easy to notice was the monotony, in terms of words or URLs involved in tweets,  met with Spam-bots, as well as the opposites, for Genuine accounts or Fake-Followers.
+We tried to encapsule this distinctive behavior by adding 2 intrinsic features to the training vector, along with the descriptive ones.\\
+How to portray such monotony?\\
+We though about different approaches, like complex sentiment analysis or entity recognition, but then, we chose to rely on a weighting technique and the euclidean distance.\\
+We looked inside every retrieved tweets for each user, then we encoded each of them with TF-IDF weighting.\\
+Every term (word) of every tweet was represented by a numeric weight, according to TF-IDF.\\
+This weighting formula is a combination of Term Frequency (TF) and Inverse Document Frequency (IDF).
+\[ TF_{i,j} =\frac {n_{i,j}}{|d_{j}|} \]
+The term frequency factor counts the number \textit{n} of the \textit{i}\textsubscript{th} term inside the \textit{j}\textsubscript{th} document (the tweet, in our case), dividing it by the lenght of the latest, in order to give same importance to both short and long collections of texts.
+
+\[ IDF_{i} =\log {\frac {|D|}{|\{d:i\in d\}|}} \]
+Where \textit{d} is the document (tweet).
+The invers document factor aims to highlight the overall magnitude of the  i\textsubscript{th} term in the collection  which it belongs. The collection \textit{D}, in our work, is represented by all the gathered tweets of the examined user.
+\[(TF-IDF)_{i} = TF_{i,j} \times IDF_{i} \]
+After the encoding process, we wanted to map the resulting vectors into an euclidean space, in order to compute the distance of each weighted text, from the total centroid of the collection.\\
+We decided to add each user a measure of the average intra-distance of its tweets.\\
+In order to achieve this goal, we relied on the WSS metric used in K-means clustering, but trying to soften its magnitude. We didn't want huge ranges in our features, in order to minimize the normalizations along the process.\\
+The resulting formula for this brand new attribute is the following:
+\[IntraDistance(U) = \frac{1}{N}\sum _{\mathbf {x} \in U}\left\|\mathbf {x} -{\boldsymbol {\mu }}\right\|^{2}\]
+Where \textit{N} is the number of tweet for user \textit{U}, \textit{x} is the encoded tweet and $\mu$ is the centroid of the tweet collection for that user.
+This formula, as well as the whole process, has been used both for tweet words and URL inside of them.
+The resulting 2 features are
+\small
+\begin{center}
+	\begin{tabular}{ccc}
+		\\feature&type\\
+		\hline\hline
+		tweet\_intradistance&float\\
+		url\_intradistance&float\\
+	\end{tabular}
+\end{center}
+\normalsize
+We expected low values for Spam-bot accounts in both features, as well as we expected the opposite for Genuine and Fake-Follower accounts.
+
+
 \section{Extrinsic features}
 

@@ -33,22 +33,22 @@
 \contentsline {section}{\numberline {4.1}Baseline}{29}
 \contentsline {section}{\numberline {4.2}Missing values filling}{31}
 \contentsline {section}{\numberline {4.3}Descriptive features}{31}
-\contentsline {section}{\numberline {4.4}Intrinsict features}{31}
-\contentsline {section}{\numberline {4.5}Extrinsic features}{31}
-\contentsline {chapter}{\numberline {5}[Solution aspect one]}{33}
-\contentsline {chapter}{\numberline {6}[Solution aspect two]}{35}
-\contentsline {chapter}{\numberline {7}Implementation and Evaluation}{37}
-\contentsline {section}{\numberline {7.1}Implementation}{38}
-\contentsline {section}{\numberline {7.2}Evaluation}{38}
-\contentsline {subsection}{\numberline {7.2.1}Design of Evaluation}{38}
-\contentsline {subsection}{\numberline {7.2.2}Metrics}{39}
-\contentsline {subsection}{\numberline {7.2.3}Results}{40}
-\contentsline {subsection}{\numberline {7.2.4}Discussion}{40}
-\contentsline {chapter}{\numberline {8}Conclusion and Future Work}{41}
-\contentsline {section}{\numberline {8.1}Summary and Lessons Learned}{41}
-\contentsline {section}{\numberline {8.2}Outputs and Contributions}{41}
-\contentsline {section}{\numberline {8.3}Limitations}{42}
-\contentsline {section}{\numberline {8.4}Future Work}{43}
-\contentsline {chapter}{References}{45}
-\contentsline {chapter}{\numberline {A}User Manual}{47}
-\contentsline {chapter}{\numberline {B}Dataset}{49}
+\contentsline {section}{\numberline {4.4}Intrinsict features}{32}
+\contentsline {section}{\numberline {4.5}Extrinsic features}{33}
+\contentsline {chapter}{\numberline {5}[Solution aspect one]}{35}
+\contentsline {chapter}{\numberline {6}[Solution aspect two]}{37}
+\contentsline {chapter}{\numberline {7}Implementation and Evaluation}{39}
+\contentsline {section}{\numberline {7.1}Implementation}{40}
+\contentsline {section}{\numberline {7.2}Evaluation}{40}
+\contentsline {subsection}{\numberline {7.2.1}Design of Evaluation}{40}
+\contentsline {subsection}{\numberline {7.2.2}Metrics}{41}
+\contentsline {subsection}{\numberline {7.2.3}Results}{42}
+\contentsline {subsection}{\numberline {7.2.4}Discussion}{42}
+\contentsline {chapter}{\numberline {8}Conclusion and Future Work}{43}
+\contentsline {section}{\numberline {8.1}Summary and Lessons Learned}{43}
+\contentsline {section}{\numberline {8.2}Outputs and Contributions}{43}
+\contentsline {section}{\numberline {8.3}Limitations}{44}
+\contentsline {section}{\numberline {8.4}Future Work}{45}
+\contentsline {chapter}{References}{47}
+\contentsline {chapter}{\numberline {A}User Manual}{49}
+\contentsline {chapter}{\numberline {B}Dataset}{51}
