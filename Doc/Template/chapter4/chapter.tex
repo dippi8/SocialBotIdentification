@@ -252,8 +252,20 @@ One of the main issues of our work was to make the NSFW class different, in term
 According to our user-based, descriptive and intrinsic features, both classes act in a similar way: they spam similar links, have high tweet frequency and their contents are often repeated.\\
 What could be the difference?\\
 We started with "blind" classifier, that was the main problem.\\ Our feature vector lacked in visual components. A Spam-bot could have been detected as a NSFW, as its tweets involved media and URLs. We needed to go deep and actually see what kind of media were broadcasted.\\
-This is the reason for the 2 upcoming features. We've found a small versatile project on GitHub (LINK) for NSFW detection.\\
+This is the reason for the 2 upcoming features. We've found a small versatile project on GitHub for NSFW detection.\\
 The projects involves a pre-trained TensorFlow neural network for image recognition, that looks for adult and violent content inside pictures. It assigns the media a probability to be not safe for work.\\
 We decided to scan our dataset with this new component and to give a NSFW score to both profile pictures and tweets.\\
-For time complexity reasons, we couldn't imagine to scan all the retrieved tweets for each user and to look for a media. We limited the process to the latest ten tweets.\\
+For time complexity reasons, we couldn't imagine to scan all the retrieved tweets for each user and to look for media encorpored. We limited the process to the latest ten tweets.\\
 Obviously, the preditcion time has been affected by this new preprocessing stage, but we think that this number of pictures analyzed (up to eleven), makes the generalization duration still reasonable.\\
+The project creators claim to reach 98.2\% of accuracy in their final test, so we thought that the bias introduced with this new features would have been under control and that it wouldn't compromise the final results of our models.
+The brand new attributes that helped us in better sperating NSFW class are:
+\small
+\begin{center}
+	\begin{tabular}{ccc}
+		\\feature&type\\
+		\hline\hline
+		NSFW\_profile&float\\
+		NSFW\_avg&float\\\hline
+	\end{tabular}
+\end{center}
+\normalsize
