@@ -75,7 +75,13 @@ At the end of this stage, the resulting - and final - feature vector will includ
 
 
 \section{Baseline}
-Some features are ready to be used in a classifier, while other ones need to be pre-processed to allow them to be more expressive. In this section we analyze the complete set of default profile features and which kind of pre-processing operation we applied. With this default set we trained a classifier to define a baseline and this allowed us to evaluate the improvements made by the features engineering step.
+In this section we analyze the complete set of default profile features and which kind of pre-processing operation we applied. With this default set we trained several classifiers to define some baselines for the upcoming work and this allowed us to evaluate the improvements made by the features engineering step.\\
+Some features are ready to be used in a classifier, while other ones need to be pre-processed to allow them to be more expressive.
+We wanted to rely on user features only for this experiment, in order to have a large improvement margin to exploit, once we would have gone deeper in the study.
+During the data exlporation stage, we identified the most and least meaningful attributes to trace a baseline, so we started from that. We simply tried to improve and to homologate the features highlitghted in the previous chapters.
+We faced a lot of missing values as well as non numeric ones.\\
+Even if the goal was to build a raw model with semi-raw data, we needed feasible and manageble attributes to work with.
+Her we list all the pre-processing operations applied to each feature belonging to the ones provided by the method \textit{get\_user()}, of the official Twitter APIs.
 
 \small
 \begin{center}
@@ -204,7 +210,7 @@ Once again, sentiment analysis came to our mind. We found lots of paid or limite
 We couldn't think about implementing our own semantic analysis, as it is meant to be, due to the effort and time it would had taken.\\
 For semplicity sake, we had the idea to look for the most meaningful words in tweets, that are common to all the users belonging to the same class.\\
 We tried this approach, hoping to find a robust help in separating topics among targets.\\
-The idea was to build five not overlapping dictionaries, one for each class of users, containing the most popular words used by them in their retrieved tweets. Each dictionary is ordered according to the occurrence of each word, in order to have a proper ranking for the terms and to give each of them a score.
+The idea was to build five partially-non-overlapping dictionaries, one for each class of users, containing the most popular words used by them in their retrieved tweets, stripped of stopwords. Each dictionary is ordered according to the occurrence of each word, in order to have a proper ranking for the terms and to give each of them a score.
 We gathered the 300 most common words for each category of accounts, in order to average about 250 terms, once the overlapping elements would have been discarded.
 Considering more than 300 words led us to uninfluent perfromance boost, instead it required lot of time to process a single user, so we decided to stop early.\\
 We have listed 5 dictionaries: 

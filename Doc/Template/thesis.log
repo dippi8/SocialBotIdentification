@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.10.16)  18 OCT 2018 00:47
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.10.16)  18 OCT 2018 01:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -550,7 +550,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [30]
-Overfull \hbox (9.73405pt too wide) in paragraph at lines 82--122
+Overfull \hbox (9.73405pt too wide) in paragraph at lines 88--128
  [] 
  []
 
@@ -561,7 +561,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [32]
-Overfull \hbox (1.6282pt too wide) in paragraph at lines 136--157
+Overfull \hbox (1.6282pt too wide) in paragraph at lines 142--163
  [] 
  []
 
@@ -671,7 +671,7 @@ al/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/loc
 al/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/loca
 l/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/
 texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on thesis.pdf (67 pages, 1922230 bytes).
+Output written on thesis.pdf (67 pages, 1923022 bytes).
 PDF statistics:
  313 PDF objects out of 1000 (max. 8388607)
  208 compressed objects within 3 object streams
