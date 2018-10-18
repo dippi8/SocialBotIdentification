@@ -79,7 +79,7 @@ In this section we analyze the complete set of default profile features and whic
 Some features are ready to be used in a classifier, while other ones need to be pre-processed to allow them to be more expressive.
 We wanted to rely on user features only for this experiment, in order to have a large improvement margin to exploit, once we would have gone deeper in the study.
 During the data exlporation stage, we identified the most and least meaningful attributes to trace a baseline, so we started from that. We simply tried to improve and to homologate the features highlitghted in the previous chapters.
-We faced a lot of missing values as well as non numeric ones.\\
+We faced a lot of missing values as well as non-numeric ones.\\
 Even if the goal was to build a raw model with semi-raw data, we needed feasible and manageble attributes to work with.
 Her we list all the pre-processing operations applied to each feature belonging to the ones provided by the method \textit{get\_user()}, of the official Twitter APIs.
 
@@ -178,7 +178,7 @@ This weighting formula is a combination of Term Frequency (TF) and Inverse Docum
 \[ TF_{i,j} =\frac {n_{i,j}}{|d_{j}|} \]
 The term frequency factor counts the number \textit{n} of the \textit{i}\textsubscript{th} term inside the \textit{j}\textsubscript{th} document (the tweet, in our case), dividing it by the lenght of the latest, in order to give same importance to both short and long collections of texts.
 
-\[ IDF_{i} =\log {\frac {|D|}{|\{d:i\in d\}|}} \]
+\[ IDF_{i} =\log {\frac {|D|}{|\{d:i\in d\}| + 1}} \]
 Where \textit{d} is the document (tweet).
 The invers document frequency factor aims to highlight the overall magnitude of the  i\textsubscript{th} term in the collection  which it belongs. The collection \textit{D}, in our work, is represented by all the gathered tweets of the examined user.
 \[(TF-IDF)_{i} = TF_{i,j} \times IDF_{i} \]
