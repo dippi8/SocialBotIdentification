@@ -36,7 +36,12 @@
 \contentsline {section}{\numberline {4.4}Intrinsict features}{33}
 \contentsline {section}{\numberline {4.5}Extrinsic features}{35}
 \contentsline {section}{\numberline {4.6}Image features}{37}
-\contentsline {chapter}{\numberline {5}[Solution aspect one]}{39}
+\contentsline {chapter}{\numberline {5}Model selection}{39}
+\contentsline {section}{\numberline {5.1}Baselines}{39}
+\contentsline {section}{\numberline {5.2}Binary Random Forest}{39}
+\contentsline {section}{\numberline {5.3}Multiclass Random Forest}{39}
+\contentsline {section}{\numberline {5.4}Naive Bayes text classifier}{39}
+\contentsline {section}{\numberline {5.5}Stacking ensemble}{39}
 \contentsline {chapter}{\numberline {6}[Solution aspect two]}{41}
 \contentsline {chapter}{\numberline {7}Implementation and Evaluation}{43}
 \contentsline {section}{\numberline {7.1}Implementation}{44}

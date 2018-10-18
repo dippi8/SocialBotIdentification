@@ -1,6 +1,18 @@
 % !TEX root = ../thesis.tex
-\chapter{[Solution aspect one]}
+\chapter{Model selection}
 \label{capitolo5}
 \thispagestyle{empty}
 
-Elaborate here better on the first aspect.
+In this chapter we will show the choices and stages behind the final model.
+Starting from baseline models, we enhanced the chosen model with handcrafted features from the last chapter.\\
+We saw and studied the performance improvements with validation approaches, and this phase led us to our current solution.\\
+The result is a stacking ensemble, involving three models: two Random Forests, working on different purposes, and a Naive Bayes classifier.\\
+The first Random Forest classifier has been used to provide an early filter on the separation between Genuine accounts and Bots.\\
+The second Random Forest gives a classification among the five studied categories.\\
+The last model, a Naive Bayes classifier, has been used over the same classes of the second Random Forest, but it reads and labels the users, according on their tweets only.
+
+\section{Baselines}
+\section{Binary Random Forest}
+\section{Multiclass Random Forest}
+\section{Naive Bayes text classifier}
+\section{Stacking ensemble}
