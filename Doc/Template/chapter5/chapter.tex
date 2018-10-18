@@ -19,6 +19,24 @@ The features involved are the ones described in that chapter, but we started fro
 Each classifier has been fitted with the entire dataset, but considering obly baselines features.
 Furhtermore, no parameters tuning has been applied, in order to minimize the results of our baslines classifier, with their standard assets.
 \subsection{Random Forest}
+The Random Forest was tested with the Scikit-Learn library, wit the following method and asset:\\
+\textit{RandomForestClassifier(n\_estimators = 10, criterion = 'entropy', random\_state = 42)}\\
+At first, it was tested with a holdout approach, with 75\% of the sample in the training set, and the 25\% in the test set.\\
+The resulting confusion matrix is the following:\\
+
+\begin{tabular}{cc|cc}
+	\multicolumn{1}{c}{} &\multicolumn{1}{c}{} &\multicolumn{2}{c}{Predicted} \\ 
+	\multicolumn{1}{c|}{} & 
+	\multicolumn{1}{c}{NSFW} & 
+	\multicolumn{1}{c}{News-Spreaders} & 
+	\multicolumn{1}{c}{Spam-Bots} & 
+	\multicolumn{1}{c}{Fake-Followers} & 
+	\multicolumn{1}{c}{Genuines} & \\\hline
+	\multirow[c]{2}{*}{\rotatebox[origin=tr]{90}{Actual}}
+	& Yes  & 100 & 0   \\[1.5ex]
+	& No  & 10   & 80 \\ \hline
+\end{tabular}
+
 \subsection{Logistic Regression}
 \subsection{KNN}
 \subsection{Support Vector Machine}
