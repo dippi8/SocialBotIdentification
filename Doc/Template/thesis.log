@@ -1,75 +1,73 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.10.16)  18 OCT 2018 12:36
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.14)  18 OCT 2018 13:19
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **thesis.tex
 (./thesis.tex
-LaTeX2e <2018-04-01> patch level 2
-Babel <3.18> and hyphenation patterns for 84 language(s) loaded.
-(/usr/local/texlive/2018/texmf-dist/tex/latex/base/report.cls
+LaTeX2e <2017-04-15>
+Babel <3.18> and hyphenation patterns for 3 language(s) loaded.
+(/usr/share/texlive/texmf-dist/tex/latex/base/report.cls
 Document Class: report 2014/09/29 v1.4h Standard LaTeX document class
-(/usr/local/texlive/2018/texmf-dist/tex/latex/base/size11.clo
+(/usr/share/texlive/texmf-dist/tex/latex/base/size11.clo
 File: size11.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 )
-\c@part=\count80
-\c@chapter=\count81
-\c@section=\count82
-\c@subsection=\count83
-\c@subsubsection=\count84
-\c@paragraph=\count85
-\c@subparagraph=\count86
-\c@figure=\count87
-\c@table=\count88
+\c@part=\count79
+\c@chapter=\count80
+\c@section=\count81
+\c@subsection=\count82
+\c@subsubsection=\count83
+\c@paragraph=\count84
+\c@subparagraph=\count85
+\c@figure=\count86
+\c@table=\count87
 \abovecaptionskip=\skip41
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
 )
-(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics/graphicx.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
 
-(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics/keyval.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks14
 )
-(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics/graphics.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
 Package: graphics 2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
 
-(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics/trig.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
 )
-(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 99.
 
-(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics-def/pdftex.def
+(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def
 File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 ))
 \Gin@req@height=\dimen103
 \Gin@req@width=\dimen104
 )
-(/usr/local/texlive/2018/texmf-dist/tex/latex/tools/tabularx.sty
-Package: tabularx 2016/02/03 v2.11b `tabularx' package (DPC)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/tabularx.sty
+Package: tabularx 2016/02/03 v2.11 `tabularx' package (DPC)
 
-(/usr/local/texlive/2018/texmf-dist/tex/latex/tools/array.sty
-Package: array 2018/04/07 v2.4g Tabular extension package (FMi)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty
+Package: array 2016/10/06 v2.4d Tabular extension package (FMi)
 \col@sep=\dimen105
-\ar@mcellbox=\box26
 \extrarowheight=\dimen106
 \NC@list=\toks15
 \extratabsurround=\skip43
 \backup@length=\skip44
-\ar@cellbox=\box27
 )
 \TX@col@width=\dimen107
 \TX@old@table=\dimen108
 \TX@old@col=\dimen109
 \TX@target=\dimen110
 \TX@delta=\dimen111
-\TX@cols=\count89
+\TX@cols=\count88
 \TX@ftn=\toks16
 )
-(/usr/local/texlive/2018/texmf-dist/tex/latex/subfigure/subfigure.sty
+(/usr/share/texlive/texmf-dist/tex/latex/subfigure/subfigure.sty
 Package: subfigure 2002/03/15 v2.1.5 subfigure package
 \subfigtopskip=\skip45
 \subfigcapskip=\skip46
@@ -77,68 +75,68 @@ Package: subfigure 2002/03/15 v2.1.5 subfigure package
 \subfigbottomskip=\skip47
 \subfigcapmargin=\dimen113
 \subfiglabelskip=\skip48
-\c@subfigure=\count90
-\c@lofdepth=\count91
-\c@subtable=\count92
-\c@lotdepth=\count93
+\c@subfigure=\count89
+\c@lofdepth=\count90
+\c@subtable=\count91
+\c@lotdepth=\count92
 
 ****************************************
 * Local config file subfigure.cfg used *
 ****************************************
-(/usr/local/texlive/2018/texmf-dist/tex/latex/subfigure/subfigure.cfg)
+(/usr/share/texlive/texmf-dist/tex/latex/subfigure/subfigure.cfg)
 \subfig@top=\skip49
 \subfig@bottom=\skip50
 )
-(/usr/local/texlive/2018/texmf-dist/tex/latex/tools/afterpage.sty
+(/usr/share/texlive/texmf-dist/tex/latex/tools/afterpage.sty
 Package: afterpage 2014/10/28 v1.08 After-Page Package (DPC)
 \AP@output=\toks17
-\AP@partial=\box28
-\AP@footins=\box29
+\AP@partial=\box26
+\AP@footins=\box27
 )
-(/usr/local/texlive/2018/texmf-dist/tex/latex/amsmath/amsmath.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2017/09/02 v2.17a AMS math features
 \@mathmargin=\skip51
 
 For additional information on amsmath, use the `?' option.
-(/usr/local/texlive/2018/texmf-dist/tex/latex/amsmath/amstext.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
 Package: amstext 2000/06/29 v2.01 AMS text
 
-(/usr/local/texlive/2018/texmf-dist/tex/latex/amsmath/amsgen.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
 \@emptytoks=\toks18
 \ex@=\dimen114
 ))
-(/usr/local/texlive/2018/texmf-dist/tex/latex/amsmath/amsbsy.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 \pmbraise@=\dimen115
 )
-(/usr/local/texlive/2018/texmf-dist/tex/latex/amsmath/amsopn.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2016/03/08 v2.02 operator names
 )
-\inf@bad=\count94
+\inf@bad=\count93
 LaTeX Info: Redefining \frac on input line 213.
-\uproot@=\count95
-\leftroot@=\count96
+\uproot@=\count94
+\leftroot@=\count95
 LaTeX Info: Redefining \overline on input line 375.
-\classnum@=\count97
-\DOTSCASE@=\count98
+\classnum@=\count96
+\DOTSCASE@=\count97
 LaTeX Info: Redefining \ldots on input line 472.
 LaTeX Info: Redefining \dots on input line 475.
 LaTeX Info: Redefining \cdots on input line 596.
-\Mathstrutbox@=\box30
-\strutbox@=\box31
+\Mathstrutbox@=\box28
+\strutbox@=\box29
 \big@size=\dimen116
 LaTeX Font Info:    Redeclaring font encoding OML on input line 712.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
-\macc@depth=\count99
-\c@MaxMatrixCols=\count100
+\macc@depth=\count98
+\c@MaxMatrixCols=\count99
 \dotsspace@=\muskip10
-\c@parentequation=\count101
-\dspbrk@lvl=\count102
+\c@parentequation=\count100
+\dspbrk@lvl=\count101
 \tag@help=\toks19
-\row@=\count103
-\column@=\count104
-\maxfields@=\count105
+\row@=\count102
+\column@=\count103
+\maxfields@=\count104
 \andhelp@=\toks20
 \eqnshift@=\dimen117
 \alignsep@=\dimen118
@@ -153,29 +151,29 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
 LaTeX Info: Redefining \[ on input line 2817.
 LaTeX Info: Redefining \] on input line 2818.
 )
-(/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/amssymb.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
 
-(/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \symAMSa=\mathgroup4
 \symAMSb=\mathgroup5
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 ))
-(/usr/local/texlive/2018/texmf-dist/tex/latex/graphics/rotating.sty
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/rotating.sty
 Package: rotating 2016/08/11 v2.16d rotated objects in LaTeX
 
-(/usr/local/texlive/2018/texmf-dist/tex/latex/base/ifthen.sty
+(/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 )
-\c@r@tfl@t=\count106
+\c@r@tfl@t=\count105
 \rotFPtop=\skip54
 \rotFPbot=\skip55
-\rot@float@box=\box32
+\rot@float@box=\box30
 \rot@mess@toks=\toks23
 )
-(/usr/local/texlive/2018/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
+(/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
 Package: fancyhdr 2017/06/30 v3.9a Extensive control of page headers and footer
 s
 \f@nch@headwidth=\skip56
@@ -188,10 +186,10 @@ s
 \f@nch@O@olf=\skip63
 \f@nch@O@orf=\skip64
 )
-(/usr/local/texlive/2018/texmf-dist/tex/latex/bbding/bbding.sty
+(/usr/share/texlive/texmf-dist/tex/latex/bbding/bbding.sty
 Package: bbding 1999/04/15 v1.01 Dingbats symbols
 )
-(/usr/local/texlive/2018/texmf-dist/tex/latex/framed/framed.sty
+(/usr/share/texlive/texmf-dist/tex/latex/framed/framed.sty
 Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
 \OuterFrameSep=\skip65
 \fb@frw=\dimen123
@@ -199,10 +197,10 @@ Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
 \FrameRule=\dimen125
 \FrameSep=\dimen126
 )
-(/usr/local/texlive/2018/texmf-dist/tex/latex/caption/caption.sty
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
 Package: caption 2016/02/21 v3.3-144 Customizing captions (AR)
 
-(/usr/local/texlive/2018/texmf-dist/tex/latex/caption/caption3.sty
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty
 Package: caption3 2016/05/22 v1.7-166 caption3 kernel (AR)
 Package caption3 Info: TeX engine: e-TeX on input line 67.
 \captionmargin=\dimen127
@@ -213,17 +211,17 @@ Package caption3 Info: TeX engine: e-TeX on input line 67.
 \caption@parindent=\dimen132
 \caption@hangindent=\dimen133
 )
-\c@ContinuedFloat=\count107
+\c@ContinuedFloat=\count106
 Package caption Info: rotating package is loaded.
 Package caption Info: subfigure package is loaded.
 )
-(/usr/local/texlive/2018/texmf-dist/tex/latex/base/inputenc.sty
-Package: inputenc 2018/04/06 v1.3b Input encoding file
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+Package: inputenc 2015/03/17 v1.2c Input encoding file
 \inpenc@prehook=\toks24
 \inpenc@posthook=\toks25
 
-(/usr/local/texlive/2018/texmf-dist/tex/latex/base/latin1.def
-File: latin1.def 2018/04/06 v1.3b Input encoding file
+(/usr/share/texlive/texmf-dist/tex/latex/base/latin1.def
+File: latin1.def 2015/03/17 v1.2c Input encoding file
 )) (./thesis.aux
 (./cover_page.aux) (./dedication.aux) (./abstract.aux) (./acknowledgements.aux)
 (./chapter1/chapter.aux) (./chapter2/chapter.aux) (./chapter3/chapter.aux)
@@ -245,44 +243,44 @@ LaTeX Font Info:    ... okay on input line 34.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 34.
 LaTeX Font Info:    ... okay on input line 34.
 
-(/usr/local/texlive/2018/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+(/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count108
+\scratchcounter=\count107
 \scratchdimen=\dimen134
-\scratchbox=\box33
-\nofMPsegments=\count109
-\nofMParguments=\count110
+\scratchbox=\box31
+\nofMPsegments=\count108
+\nofMParguments=\count109
 \everyMPshowfont=\toks26
-\MPscratchCnt=\count111
+\MPscratchCnt=\count110
 \MPscratchDim=\dimen135
-\MPnumerator=\count112
-\makeMPintoPDFobject=\count113
+\MPnumerator=\count111
+\makeMPintoPDFobject=\count112
 \everyMPtoPDFconversion=\toks27
-) (/usr/local/texlive/2018/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
 
-(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/infwarerr.sty
 Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
 )
-(/usr/local/texlive/2018/texmf-dist/tex/latex/oberdiek/grfext.sty
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/grfext.sty
 Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
 
-(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
 Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
 
-(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
 Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
 )))
-(/usr/local/texlive/2018/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
 Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
 
-(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
 Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
 
-(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
 Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
 
-(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifluatex.sty
 Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
 Package ifluatex Info: LuaTeX not detected.
 )
@@ -291,11 +289,11 @@ Package etexcmds Info: Could not find \expanded.
 (etexcmds)             that some package has redefined \expanded.
 (etexcmds)             In the latter case, load this package earlier.
 )))
-(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
-Package: pdftexcmds 2018/01/30 v0.27 Utility functions of pdfTeX for LuaTeX (HO
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2018/01/21 v0.26 Utility functions of pdfTeX for LuaTeX (HO
 )
 
-(/usr/local/texlive/2018/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
 Package: ifpdf 2017/03/15 v3.2 Provides the ifpdf switch
 )
 Package pdftexcmds Info: LuaTeX not detected.
@@ -310,7 +308,7 @@ Package grfext Info: Graphics extension search list:
 G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 456.
 
-(/usr/local/texlive/2018/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
@@ -328,8 +326,7 @@ Package pdftex.def Info: logo_polimi.pdf  used on input line 24.
  [1
 
 
-{/usr/local/texlive/2018/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./logo_
-polimi.pdf>])
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./logo_polimi.pdf>])
 
 LaTeX Font Warning: Font shape `OT1/cmss/m/it' in size <10> not available
 (Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 51.
@@ -353,20 +350,20 @@ LaTeX Font Warning: Font shape `OT1/cmss/m/it' in size <10> not available
  (./abstract.tex
 LaTeX Font Info:    Try loading font information for U+ding on input line 11.
 
-(/usr/local/texlive/2018/texmf-dist/tex/latex/bbding/Uding.fd
+(/usr/share/texlive/texmf-dist/tex/latex/bbding/Uding.fd
 File: Uding.fd 1996/02/01 v1.0 BBding font definitions
 ) [1
 
 
-] [2])
-[3
+] [2]) [3
 
 ] [4
 
 ]
 \openout2 = `acknowledgements.aux'.
 
- (./acknowledgements.tex) [5
+
+(./acknowledgements.tex) [5
 
 
 
@@ -375,28 +372,29 @@ File: Uding.fd 1996/02/01 v1.0 BBding font definitions
 ] (./thesis.toc
 LaTeX Font Info:    Try loading font information for U+msa on input line 5.
 
-(/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsa.fd
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
 LaTeX Font Info:    Try loading font information for U+msb on input line 5.
 
-(/usr/local/texlive/2018/texmf-dist/tex/latex/amsfonts/umsb.fd
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [7
 
 
-])
+] [8])
 \tf@toc=\write3
 \openout3 = `thesis.toc'.
 
- [8]
+ [9]
+[10
+
+]
 \openout2 = `chapter1/chapter.aux'.
 
-
-(./chapter1/chapter.tex
+ (./chapter1/chapter.tex
 Chapter 1.
 [1
-
 
 
 ] [2] [3]
@@ -429,13 +427,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 25--27
 ]
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 113.
 
- (/usr/local/texlive/2018/texmf-dist/tex/latex/base/omscmr.fd
+ (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 113.
- [12]
-[13]
+ [12] [13]
 Overfull \hbox (20.65077pt too wide) in paragraph at lines 154--194
  [] 
  []
@@ -445,7 +442,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [14]
 [15]
-<chapter3/figure/dendogram.jpg, id=106, 1445.4pt x 722.7pt>
+<chapter3/figure/dendogram.jpg, id=112, 1445.4pt x 722.7pt>
 File: chapter3/figure/dendogram.jpg Graphic file (type jpg)
 <use chapter3/figure/dendogram.jpg>
 Package pdftex.def Info: chapter3/figure/dendogram.jpg  used on input line 203.
@@ -462,7 +459,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 208--209
 
  []
 
-<chapter3/figure/kneeelbow.jpg, id=107, 1445.4pt x 722.7pt>
+<chapter3/figure/kneeelbow.jpg, id=113, 1445.4pt x 722.7pt>
 File: chapter3/figure/kneeelbow.jpg Graphic file (type jpg)
 <use chapter3/figure/kneeelbow.jpg>
 Package pdftex.def Info: chapter3/figure/kneeelbow.jpg  used on input line 211.
@@ -474,7 +471,7 @@ Underfull \vbox (badness 1968) has occurred while \output is active []
  [16
 
  <./chapter3/figure/dendogram.jpg> <./chapter3/figure/kneeelbow.jpg>]
-<chapter3/figure/elbow.jpg, id=111, 1445.4pt x 722.7pt>
+<chapter3/figure/elbow.jpg, id=117, 1445.4pt x 722.7pt>
 File: chapter3/figure/elbow.jpg Graphic file (type jpg)
 <use chapter3/figure/elbow.jpg>
 Package pdftex.def Info: chapter3/figure/elbow.jpg  used on input line 222.
@@ -483,7 +480,7 @@ Package pdftex.def Info: chapter3/figure/elbow.jpg  used on input line 222.
 Underfull \vbox (badness 1968) has occurred while \output is active []
 
  [17 <./chapter3/figure/elbow.jpg>] [18]
-<chapter3/figure/news-spreader.jpg, id=118, 643.40375pt x 756.8275pt>
+<chapter3/figure/news-spreader.jpg, id=125, 643.40375pt x 756.8275pt>
 File: chapter3/figure/news-spreader.jpg Graphic file (type jpg)
 <use chapter3/figure/news-spreader.jpg>
 Package pdftex.def Info: chapter3/figure/news-spreader.jpg  used on input line 
@@ -491,43 +488,43 @@ Package pdftex.def Info: chapter3/figure/news-spreader.jpg  used on input line
 (pdftex.def)             Requested size: 250.93842pt x 295.17308pt.
  [19] [20 <./chapter3/figure/news-spreader.jpg>]
 [21]
-<chapter3/figure/dibebot.png, id=129, 1275.76625pt x 615.29875pt>
+<chapter3/figure/dibebot.png, id=135, 1275.76625pt x 615.29875pt>
 File: chapter3/figure/dibebot.png Graphic file (type png)
 <use chapter3/figure/dibebot.png>
 Package pdftex.def Info: chapter3/figure/dibebot.png  used on input line 326.
 (pdftex.def)             Requested size: 360.0pt x 173.62505pt.
  [22 <./chapter3/figure/dibebot.png>]
-<chapter3/figure/bubble.png, id=135, 1450.41875pt x 661.47125pt>
+<chapter3/figure/bubble.png, id=141, 1450.41875pt x 661.47125pt>
 File: chapter3/figure/bubble.png Graphic file (type png)
 <use chapter3/figure/bubble.png>
 Package pdftex.def Info: chapter3/figure/bubble.png  used on input line 354.
 (pdftex.def)             Requested size: 360.0pt x 164.1764pt.
-<chapter3/figure/heatmap.jpg, id=136, 1084.05pt x 813.0375pt>
+<chapter3/figure/heatmap.jpg, id=142, 1084.05pt x 813.0375pt>
 File: chapter3/figure/heatmap.jpg Graphic file (type jpg)
 <use chapter3/figure/heatmap.jpg>
 Package pdftex.def Info: chapter3/figure/heatmap.jpg  used on input line 362.
 (pdftex.def)             Requested size: 360.0pt x 270.00282pt.
-<chapter3/figure/msno.png, id=137, 1563.8425pt x 805.0075pt>
+<chapter3/figure/msno.png, id=143, 1563.8425pt x 805.0075pt>
 File: chapter3/figure/msno.png Graphic file (type png)
 <use chapter3/figure/msno.png>
 Package pdftex.def Info: chapter3/figure/msno.png  used on input line 371.
 (pdftex.def)             Requested size: 360.0pt x 185.30751pt.
  [23 <./chapter3/figure/bubble.png>]
 [24 <./chapter3/figure/heatmap.jpg> <./chapter3/figure/msno.png>]
-<chapter3/figure/boxplot_statuses.jpg, id=146, 1445.4pt x 1084.05pt>
+<chapter3/figure/boxplot_statuses.jpg, id=153, 1445.4pt x 1084.05pt>
 File: chapter3/figure/boxplot_statuses.jpg Graphic file (type jpg)
 <use chapter3/figure/boxplot_statuses.jpg>
 Package pdftex.def Info: chapter3/figure/boxplot_statuses.jpg  used on input li
 ne 381.
 (pdftex.def)             Requested size: 360.0pt x 270.00282pt.
  [25 <./chapter3/figure/boxplot_statuses.jpg>]
-<chapter3/figure/boxplot_friends.jpg, id=151, 1445.4pt x 1084.05pt>
+<chapter3/figure/boxplot_friends.jpg, id=157, 1445.4pt x 1084.05pt>
 File: chapter3/figure/boxplot_friends.jpg Graphic file (type jpg)
 <use chapter3/figure/boxplot_friends.jpg>
 Package pdftex.def Info: chapter3/figure/boxplot_friends.jpg  used on input lin
 e 389.
 (pdftex.def)             Requested size: 360.0pt x 270.00282pt.
-<chapter3/figure/boxplot_followers.jpg, id=152, 1445.4pt x 1084.05pt>
+<chapter3/figure/boxplot_followers.jpg, id=158, 1445.4pt x 1084.05pt>
 File: chapter3/figure/boxplot_followers.jpg Graphic file (type jpg)
 <use chapter3/figure/boxplot_followers.jpg>
 Package pdftex.def Info: chapter3/figure/boxplot_followers.jpg  used on input l
@@ -550,6 +547,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [30]
+[31]
 Overfull \hbox (9.73405pt too wide) in paragraph at lines 88--128
  [] 
  []
@@ -557,36 +555,39 @@ Overfull \hbox (9.73405pt too wide) in paragraph at lines 88--128
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [31]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
  [32]
-Overfull \hbox (1.6282pt too wide) in paragraph at lines 142--163
+Overfull \hbox (2.04999pt too wide) in paragraph at lines 159--160
+[]\OT1/cmr/bx/n/10.95 profile[]background[]tile\OT1/cmr/m/n/10.95 : As for "de-
+fault[]profile[]image", all the miss-
+ []
+
+[33]
+Overfull \hbox (1.6282pt too wide) in paragraph at lines 214--235
  [] 
  []
 
-[33] [34] [35] [36]) [37]
+[34] [35] [36] [37] [38]) [39]
 \openout2 = `chapter5/chapter.aux'.
 
- (./chapter5/chapter.tex [38
+ (./chapter5/chapter.tex [40
 
 
 
 ]
 Chapter 5.
-[39]) [40]
+[41]) [42]
 \openout2 = `chapter6/chapter.aux'.
 
  (./chapter6/chapter.tex
 Chapter 6.
-) [41
+) [43
 
 
 
 ]
 \openout2 = `chapter7/chapter.aux'.
 
- (./chapter7/chapter.tex [42
+ (./chapter7/chapter.tex [44
 
 
 
@@ -595,21 +596,21 @@ Chapter 7.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [43]
+ [45]
 
-LaTeX Warning: Reference `sec:architecture' on page 44 undefined on input line 
+LaTeX Warning: Reference `sec:architecture' on page 46 undefined on input line 
 21.
 
-[44] [45]) [46]
+[46] [47]) [48]
 \openout2 = `chapter8/chapter.aux'.
 
  (./chapter8/chapter.tex
 Chapter 8.
-[47
+[49
 
 
 
-] [48] [49]) [50] (./thesis.bbl) [51
+] [50] [51]) [52] (./thesis.bbl) [53
 
 
 
@@ -623,21 +624,21 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[52
+[54
 
 
 ]
 Appendix A.
-) [53]
+) [55]
 \openout2 = `appendixB/appendix.aux'.
 
- (./appendixB/appendix.tex [54
+ (./appendixB/appendix.tex [56
 
 
 
 ]
 Appendix B.
-) [55] (./thesis.aux (./cover_page.aux) (./dedication.aux) (./abstract.aux)
+) [57] (./thesis.aux (./cover_page.aux) (./dedication.aux) (./abstract.aux)
 (./acknowledgements.aux) (./chapter1/chapter.aux) (./chapter2/chapter.aux)
 (./chapter3/chapter.aux) (./chapter4/chapter.aux) (./chapter5/chapter.aux)
 (./chapter6/chapter.aux) (./chapter7/chapter.aux) (./chapter8/chapter.aux)
@@ -647,34 +648,33 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 4424 strings out of 492649
- 65831 string characters out of 6129621
- 137254 words of memory out of 5000000
- 8096 multiletter control sequences out of 15000+600000
+ 4427 strings out of 494923
+ 65349 string characters out of 6180741
+ 127018 words of memory out of 5000000
+ 7532 multiletter control sequences out of 15000+600000
  18866 words of font info for 69 fonts, out of 8000000 for 9000
- 1141 hyphenation exceptions out of 8191
+ 14 hyphenation exceptions out of 8191
  41i,11n,43p,1170b,364s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2018/texmf-dist/fonts/type1/public/niceframe-type1/bbding
-10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx1
-0.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12
-.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.p
-fb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pf
-b></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb
-></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><
-/usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb><
-/usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></u
-sr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/
-local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/loc
-al/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/loca
-l/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/loc
-al/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/loc
-al/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/loca
-l/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/
-texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on thesis.pdf (67 pages, 1925097 bytes).
+</usr/share/texlive/texmf-dist/fonts/type1/public/niceframe-type1/bbding10.pf
+b></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/shar
+e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cm
+ss10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10
+.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb>
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/
+share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/t
+exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+Output written on thesis.pdf (71 pages, 1928298 bytes).
 PDF statistics:
- 313 PDF objects out of 1000 (max. 8388607)
- 208 compressed objects within 3 object streams
+ 325 PDF objects out of 1000 (max. 8388607)
+ 216 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
  61 words of extra memory for PDF output out of 10000 (max. 10000000)
 

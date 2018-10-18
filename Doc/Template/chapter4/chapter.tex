@@ -82,7 +82,7 @@ During the data exlporation stage, we identified the most and least meaningful a
 We faced a lot of missing values as well as non-numeric ones.\\
 Even if the goal was to build a raw model with semi-raw data, we needed feasible and manageble attributes to work with.
 Her we list all the pre-processing operations applied to each feature belonging to the ones provided by the method \textit{get\_user()}, of the official Twitter APIs.
-
+\newpage
 \small
 \begin{center}
 	\begin{tabular}{ccc}
@@ -130,6 +130,78 @@ Her we list all the pre-processing operations applied to each feature belonging 
 Features processed as "delete - relative feature" are those ones related to the user who performed the scraping. So we didn't need them.
 
 \section{Missing values filling}
+Features with few missing values was not deleted from the dataset, but we needed to fill that fields.
+In this section we analyze how we performed this task for each features.
+\begin{itemize}
+	\item[\PencilRight]\textbf{default\_profile\_image}: Thanks to the figure \ref{fig:msno} we could see that all the missing values was at the bottom, in particular, all of them was in tuples with target 3 or 4. In order to uderstand the behaviour of this feature, we printed its values count for each indicted target.
+	\begin{center}
+		\begin{tabular}{ccc}
+			\\target&3\\
+			\hline\hline
+			value&mean\\
+			\hline\hline
+			0&2868\\
+			1&228\\\hline\\
+		\end{tabular}
+		
+		\begin{tabular}{ccc}
+			\\target&4\\
+			\hline\hline
+			value&mean\\
+			\hline\hline
+			0&181\\
+			1&19\\\hline\\
+		\end{tabular}
+	\end{center}
+	
+	In both cases the value "0" is more frequent then "1", so we filled al the missing values with the mode (0).
+	
+	\item[\PencilRight]\textbf{profile\_background\_tile}: As for "default\_profile\_image", all the missing values belonged to target 3 and 4. We used the same approach and we obtained:
+	\begin{center}
+		\begin{tabular}{ccc}
+			\\target&3\\
+			\hline\hline
+			value&mean\\
+			\hline\hline
+			0&3086\\
+			1&99\\\hline\\
+		\end{tabular}
+		
+		\begin{tabular}{ccc}
+			\\target&4\\
+			\hline\hline
+			value&mean\\
+			\hline\hline
+			0&1347\\
+			1&147\\\hline\\
+		\end{tabular}
+	\end{center}
+	In this case we decided to fill these fields with the mode (0). Since most of the data are 0, this choise allowed us not to dirty the dataset.
+	
+	
+	\item[\PencilRight]\textbf{profile\_use\_background\_image}: All the missing values are still in the last two classes.
+	\begin{center}
+		\begin{tabular}{ccc}
+			\\target&3\\
+			\hline\hline
+			value&mean\\
+			\hline\hline
+			0&12\\
+			1&4983\\\hline\\
+		\end{tabular}
+		
+		\begin{tabular}{ccc}
+			\\target&4\\
+			\hline\hline
+			value&mean\\
+			\hline\hline
+			0&25\\
+			1&3246\\\hline\\
+		\end{tabular}
+	\end{center}
+	This data is really unbalanced, so filling the null fields with the mode (1) is still the better solution.
+	
+\end{itemize}
 \section{Descriptive features}
 
 In order to enrich our attributes and to provide support to our algorithms, we decided to add some decriptive "meta" features, such as synthesis statistics and counters.\\

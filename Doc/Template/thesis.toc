@@ -32,33 +32,33 @@
 \contentsline {chapter}{\numberline {4}Features Engineering}{29}
 \contentsline {section}{\numberline {4.1}Baseline}{31}
 \contentsline {section}{\numberline {4.2}Missing values filling}{33}
-\contentsline {section}{\numberline {4.3}Descriptive features}{33}
-\contentsline {section}{\numberline {4.4}Intrinsict features}{33}
-\contentsline {section}{\numberline {4.5}Extrinsic features}{35}
-\contentsline {section}{\numberline {4.6}Image features}{37}
-\contentsline {chapter}{\numberline {5}Model selection}{39}
-\contentsline {section}{\numberline {5.1}Baselines}{39}
-\contentsline {subsection}{\numberline {5.1.1}Random Forest}{40}
-\contentsline {subsection}{\numberline {5.1.2}Logistic Regression}{40}
-\contentsline {subsection}{\numberline {5.1.3}KNN}{40}
-\contentsline {subsection}{\numberline {5.1.4}Support Vector Machine}{40}
-\contentsline {section}{\numberline {5.2}Bots vs Genuines}{40}
-\contentsline {section}{\numberline {5.3}Multiclass classifier}{40}
-\contentsline {section}{\numberline {5.4}Text classifier}{40}
-\contentsline {section}{\numberline {5.5}Stacking ensemble}{40}
-\contentsline {chapter}{\numberline {6}[Solution aspect two]}{41}
-\contentsline {chapter}{\numberline {7}Implementation and Evaluation}{43}
-\contentsline {section}{\numberline {7.1}Implementation}{44}
-\contentsline {section}{\numberline {7.2}Evaluation}{44}
-\contentsline {subsection}{\numberline {7.2.1}Design of Evaluation}{44}
-\contentsline {subsection}{\numberline {7.2.2}Metrics}{45}
-\contentsline {subsection}{\numberline {7.2.3}Results}{46}
-\contentsline {subsection}{\numberline {7.2.4}Discussion}{46}
-\contentsline {chapter}{\numberline {8}Conclusion and Future Work}{47}
-\contentsline {section}{\numberline {8.1}Summary and Lessons Learned}{47}
-\contentsline {section}{\numberline {8.2}Outputs and Contributions}{47}
-\contentsline {section}{\numberline {8.3}Limitations}{48}
-\contentsline {section}{\numberline {8.4}Future Work}{49}
-\contentsline {chapter}{References}{51}
-\contentsline {chapter}{\numberline {A}User Manual}{53}
-\contentsline {chapter}{\numberline {B}Dataset}{55}
+\contentsline {section}{\numberline {4.3}Descriptive features}{34}
+\contentsline {section}{\numberline {4.4}Intrinsict features}{35}
+\contentsline {section}{\numberline {4.5}Extrinsic features}{37}
+\contentsline {section}{\numberline {4.6}Image features}{38}
+\contentsline {chapter}{\numberline {5}Model selection}{41}
+\contentsline {section}{\numberline {5.1}Baselines}{41}
+\contentsline {subsection}{\numberline {5.1.1}Random Forest}{42}
+\contentsline {subsection}{\numberline {5.1.2}Logistic Regression}{42}
+\contentsline {subsection}{\numberline {5.1.3}KNN}{42}
+\contentsline {subsection}{\numberline {5.1.4}Support Vector Machine}{42}
+\contentsline {section}{\numberline {5.2}Bots vs Genuines}{42}
+\contentsline {section}{\numberline {5.3}Multiclass classifier}{42}
+\contentsline {section}{\numberline {5.4}Text classifier}{42}
+\contentsline {section}{\numberline {5.5}Stacking ensemble}{42}
+\contentsline {chapter}{\numberline {6}[Solution aspect two]}{43}
+\contentsline {chapter}{\numberline {7}Implementation and Evaluation}{45}
+\contentsline {section}{\numberline {7.1}Implementation}{46}
+\contentsline {section}{\numberline {7.2}Evaluation}{46}
+\contentsline {subsection}{\numberline {7.2.1}Design of Evaluation}{46}
+\contentsline {subsection}{\numberline {7.2.2}Metrics}{47}
+\contentsline {subsection}{\numberline {7.2.3}Results}{48}
+\contentsline {subsection}{\numberline {7.2.4}Discussion}{48}
+\contentsline {chapter}{\numberline {8}Conclusion and Future Work}{49}
+\contentsline {section}{\numberline {8.1}Summary and Lessons Learned}{49}
+\contentsline {section}{\numberline {8.2}Outputs and Contributions}{49}
+\contentsline {section}{\numberline {8.3}Limitations}{50}
+\contentsline {section}{\numberline {8.4}Future Work}{51}
+\contentsline {chapter}{References}{53}
+\contentsline {chapter}{\numberline {A}User Manual}{55}
+\contentsline {chapter}{\numberline {B}Dataset}{57}
