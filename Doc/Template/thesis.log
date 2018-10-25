@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.10.16)  25 OCT 2018 16:43
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.10.16)  25 OCT 2018 17:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -599,26 +599,26 @@ Underfull \hbox (badness 10000) in paragraph at lines 366--368
 ]
 Chapter 5.
 [41] [42]
-Overfull \hbox (14.69057pt too wide) in paragraph at lines 57--61
+Overfull \hbox (14.69057pt too wide) in paragraph at lines 69--73
 \OT1/cmr/m/it/10.95 RandomForestClassifier(n[]estimators = 10, cri-te-rion = 'e
 n-tropy', ran-dom[]state
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 57--61
+Underfull \hbox (badness 10000) in paragraph at lines 69--73
 
  []
 
-) [43]
+) [43] [44]
 \openout2 = `chapter6/chapter.aux'.
 
- (./chapter6/chapter.tex [44
+ (./chapter6/chapter.tex
+Chapter 6.
+) [45
 
 
 
 ]
-Chapter 6.
-) [45]
 \openout2 = `chapter7/chapter.aux'.
 
  (./chapter7/chapter.tex [46
@@ -682,11 +682,11 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 4424 strings out of 492649
- 65831 string characters out of 6129621
+ 4428 strings out of 492649
+ 65869 string characters out of 6129621
  137254 words of memory out of 5000000
- 8096 multiletter control sequences out of 15000+600000
- 18866 words of font info for 69 fonts, out of 8000000 for 9000
+ 8098 multiletter control sequences out of 15000+600000
+ 19567 words of font info for 71 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  41i,11n,43p,1170b,364s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2018/texmf-dist/fonts/type1/public/niceframe-type1/bbding
@@ -706,11 +706,12 @@ texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local
 /texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/local
 /texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/
 texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/te
-xlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on thesis.pdf (73 pages, 1944008 bytes).
+xlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/tex
+live/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb>
+Output written on thesis.pdf (73 pages, 1953495 bytes).
 PDF statistics:
- 337 PDF objects out of 1000 (max. 8388607)
- 225 compressed objects within 3 object streams
+ 341 PDF objects out of 1000 (max. 8388607)
+ 228 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
  61 words of extra memory for PDF output out of 10000 (max. 10000000)
 

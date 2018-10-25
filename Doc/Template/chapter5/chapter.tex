@@ -27,7 +27,18 @@ Furthermore, no parameters tuning has been applied, in order to minimize the res
 Random forest is an ensemble learning method used in classification tasks and prediction ones as well.
 
 The algorithm builds several \textit{decision trees} and the resulting output is provided by the mode of the predictions coming from the estimators in the forest.
-Each decision tree is trained on a subset of the original data, formed by sampling with replacements the whole training set. They share the same splitting criterion, in order to build subtrees. The feature set considered by each tree is a random subset of the original one.
+
+Each decision tree is trained on a subset of the original data, formed by sampling with replacements the whole training set. They share the same splitting criterion, in order to build subtrees, which is the entropy:\\
+Every tree computes the Information Gain of each feature, which is the difference, in terms of entropy, between the information gained on the data \textit{D}, before splitting on the attribute \textit{X}, and the one gained after the split, which provides \textit{n} subsets of \textit{D}.
+\[{ \mathit{InformationGain(X)} = \mathit{Information(D)} - \mathit{Information_{X}(D)}}\]
+where
+\[{ \mathit{Information(D)} = - p_{1}\log p_{1} - ... - p_{n} \log p_{n}}\]
+and
+\[{ \mathit{Information_{X}(D)} = \frac{|D_{1}|}{|D|}Information(D_{1}) + ... + \frac{|D_{n}|}{|D|}Information(D_{n}) }\]
+
+
+
+The feature set considered by each tree is a random subset of the original one.
 
 Due to its ability to face overfitting and to the feature importance ranking that it can provide, this tool is often preferred over other models belonging to the same category.
 
@@ -52,6 +63,7 @@ In multiclasses tasks, there are two possible approaches to face the problem:
 We decided to stick with the default settings of the libraries involved, so OvR was the approach used for the baseline.
 
 \subsection{KNN}
+
 \subsection{Support Vector Machine}
 \subsection{Comparison and baseline selection}
 The Random Forest was tested with the Scikit-Learn library, wit the following method and asset:\\
