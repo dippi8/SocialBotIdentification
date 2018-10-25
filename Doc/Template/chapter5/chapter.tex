@@ -24,15 +24,40 @@ Each classifier has been fitted with the entire dataset, but considering only ba
 
 Furthermore, no parameters tuning has been applied, in order to minimize the results of our baselines classifier, with their standard assets.
 \subsection{Random Forest}
+Random forest is an ensemble learning method used in classification tasks and prediction ones as well.
+
+The algorithm builds several \textit{decision trees} and the resulting output is provided by the mode of the predictions coming from the estimators in the forest.
+Each decision tree is trained on a subset of the original data, formed by sampling with replacements the whole training set. They share the same splitting criterion, in order to build subtrees. The feature set considered by each tree is a random subset of the original one.
+
+Due to its ability to face overfitting and to the feature importance ranking that it can provide, this tool is often preferred over other models belonging to the same category.
+
+The advantage of preventing overfitting usually comes with a slower prediction time, because it needs enough estimators for this task.
+But, for our purpose, there were enough estimators to face the variance problem without affecting the generalization speed.
+\subsection{Logistic Regression}
+Logistic regression is a common statistical model, that uses a sigmoid function to map the output of a linear regression on a normalized score, giving the probability, for each sample, to belong to the positive class, given its features and a weighting vector:
+\[{\displaystyle P(\hat{y}_{i} = +1 | \vec{x}_{i}, \vec{w})={\frac {1}{1+e^{-\vec{w}h(\vec{x}_{i})}}}}\]
+
+Where $ \hat{y}_{i} $ is the predicted target, over the  \textit{$i_{th}$} sample, \textit{$ \vec{x}_{i} $} is the feature vector of that sample, \textit{$ \vec{w} $} represents the weighting vector that has to be learned and \textit{h} is the activation function of the linear regression.
+
+Logistic Regression searches for the weighting vector that matches the highest likelihood and, in order to do that, it minimizes a cross-entropy
+error function, provided by the negative log of the likelihood:
+\[{ \mathbf{L}(\vec{w}) = -\ln \prod\limits_{i=1}^{n} P(\hat{y}_{i} = +1 | \vec{x}_{i}, \vec{w})}\]
+
+In multiclasses tasks, there are two possible approaches to face the problem:
+\begin{itemize}
+	\item[\PencilRight] a more general \textit{softmax} function to replace the logistic sigmoid, which assigns the probability, for the  \textit{$i_{th}$} sample, to belong to the class \textit{C}:
+	\[{\displaystyle P(\mathbf{C}_{i} | \vec{x}_{i}, \vec{w})={\frac {e^{-\vec{w}h(\vec{x}_{i})}}{\sum\limits_{j = 1}^{n}e^{-\vec{w}h(\vec{x}_{j})}}}}\]
+	\item[\PencilRight] "One-vs-Rest" method, which for each class, it builds a model that predicts the target class against all the others.
+\end{itemize}
+We decided to stick with the default settings of the libraries involved, so OvR was the approach used for the baseline.
+
+\subsection{KNN}
+\subsection{Support Vector Machine}
+\subsection{Comparison and baseline selection}
 The Random Forest was tested with the Scikit-Learn library, wit the following method and asset:\\
 \textit{RandomForestClassifier(n\_estimators = 10, criterion = 'entropy', random\_state = 42)}\\
 At first, it was tested with a holdout approach, with 75\% of the sample in the training set, and the 25\% in the test set.\\
 The resulting confusion matrix is the following:\\
-
-\subsection{Logistic Regression}
-\subsection{KNN}
-\subsection{Support Vector Machine}
-\subsection{Comparison and baseline selection}
 \section{Bots vs Genuines}
 \section{Multiclass classifier}
 \section{Text classifier}
