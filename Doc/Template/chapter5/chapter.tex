@@ -35,10 +35,9 @@ where
 \[{ \mathit{Information(D)} = - p_{1}\log p_{1} - ... - p_{n} \log p_{n}}\]
 and
 \[{ \mathit{Information_{X}(D)} = \frac{|D_{1}|}{|D|}Information(D_{1}) + ... + \frac{|D_{n}|}{|D|}Information(D_{n}) }\]
+The attribute providing the highest InformationGain, against the others at the same level of the tree, is chosen to perform a split.
 
-
-
-The feature set considered by each tree is a random subset of the original one.
+The feature set considered by each tree is a random subset of the original pool.
 
 Due to its ability to face overfitting and to the feature importance ranking that it can provide, this tool is often preferred over other models belonging to the same category.
 
