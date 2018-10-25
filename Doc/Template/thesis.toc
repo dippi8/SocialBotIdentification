@@ -40,27 +40,29 @@
 \contentsline {section}{\numberline {5.1}Baselines}{41}
 \contentsline {subsection}{\numberline {5.1.1}Random Forest}{42}
 \contentsline {subsection}{\numberline {5.1.2}Logistic Regression}{42}
-\contentsline {subsection}{\numberline {5.1.3}KNN}{43}
+\contentsline {subsection}{\numberline {5.1.3}K-Nearest Neighbors}{43}
 \contentsline {subsection}{\numberline {5.1.4}Support Vector Machine}{44}
-\contentsline {subsection}{\numberline {5.1.5}Comparison and baseline selection}{44}
-\contentsline {section}{\numberline {5.2}Bots vs Genuines}{44}
-\contentsline {section}{\numberline {5.3}Multiclass classifier}{44}
-\contentsline {section}{\numberline {5.4}Text classifier}{44}
-\contentsline {section}{\numberline {5.5}Stacking meta-classifier}{44}
-\contentsline {section}{\numberline {5.6}Validation}{44}
-\contentsline {chapter}{\numberline {6}[Solution aspect two]}{45}
-\contentsline {chapter}{\numberline {7}Implementation and Evaluation}{47}
-\contentsline {section}{\numberline {7.1}Implementation}{48}
-\contentsline {section}{\numberline {7.2}Evaluation}{48}
-\contentsline {subsection}{\numberline {7.2.1}Design of Evaluation}{48}
-\contentsline {subsection}{\numberline {7.2.2}Metrics}{49}
-\contentsline {subsection}{\numberline {7.2.3}Results}{50}
-\contentsline {subsection}{\numberline {7.2.4}Discussion}{50}
-\contentsline {chapter}{\numberline {8}Conclusion and Future Work}{51}
-\contentsline {section}{\numberline {8.1}Summary and Lessons Learned}{51}
-\contentsline {section}{\numberline {8.2}Outputs and Contributions}{51}
-\contentsline {section}{\numberline {8.3}Limitations}{52}
-\contentsline {section}{\numberline {8.4}Future Work}{53}
-\contentsline {chapter}{References}{55}
-\contentsline {chapter}{\numberline {A}User Manual}{57}
-\contentsline {chapter}{\numberline {B}Dataset}{59}
+\contentsline {subsection}{\numberline {5.1.5}Comparison and baseline selection}{45}
+\contentsline {subsubsection}{Holdout evaluation}{45}
+\contentsline {subsubsection}{Crossvalidation}{47}
+\contentsline {section}{\numberline {5.2}Bots vs Genuines}{47}
+\contentsline {section}{\numberline {5.3}Multiclass classifier}{47}
+\contentsline {section}{\numberline {5.4}Text classifier}{47}
+\contentsline {section}{\numberline {5.5}Stacking meta-classifier}{47}
+\contentsline {section}{\numberline {5.6}Validation}{47}
+\contentsline {chapter}{\numberline {6}[Solution aspect two]}{49}
+\contentsline {chapter}{\numberline {7}Implementation and Evaluation}{51}
+\contentsline {section}{\numberline {7.1}Implementation}{52}
+\contentsline {section}{\numberline {7.2}Evaluation}{52}
+\contentsline {subsection}{\numberline {7.2.1}Design of Evaluation}{52}
+\contentsline {subsection}{\numberline {7.2.2}Metrics}{53}
+\contentsline {subsection}{\numberline {7.2.3}Results}{54}
+\contentsline {subsection}{\numberline {7.2.4}Discussion}{54}
+\contentsline {chapter}{\numberline {8}Conclusion and Future Work}{55}
+\contentsline {section}{\numberline {8.1}Summary and Lessons Learned}{55}
+\contentsline {section}{\numberline {8.2}Outputs and Contributions}{55}
+\contentsline {section}{\numberline {8.3}Limitations}{56}
+\contentsline {section}{\numberline {8.4}Future Work}{57}
+\contentsline {chapter}{References}{59}
+\contentsline {chapter}{\numberline {A}User Manual}{61}
+\contentsline {chapter}{\numberline {B}Dataset}{63}

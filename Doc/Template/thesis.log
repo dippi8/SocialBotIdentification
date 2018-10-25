@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.10.16)  25 OCT 2018 18:18
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.10.16)  26 OCT 2018 01:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -69,25 +69,32 @@ Package: array 2018/04/07 v2.4g Tabular extension package (FMi)
 \TX@cols=\count89
 \TX@ftn=\toks16
 )
+(/usr/local/texlive/2018/texmf-dist/tex/latex/multirow/multirow.sty
+Package: multirow 2016/11/25 v2.2 Span multiple rows of a table
+\multirow@colwidth=\skip45
+\multirow@cntb=\count90
+\multirow@dima=\skip46
+\bigstrutjot=\dimen112
+)
 (/usr/local/texlive/2018/texmf-dist/tex/latex/subfigure/subfigure.sty
 Package: subfigure 2002/03/15 v2.1.5 subfigure package
-\subfigtopskip=\skip45
-\subfigcapskip=\skip46
-\subfigcaptopadj=\dimen112
-\subfigbottomskip=\skip47
-\subfigcapmargin=\dimen113
-\subfiglabelskip=\skip48
-\c@subfigure=\count90
-\c@lofdepth=\count91
-\c@subtable=\count92
-\c@lotdepth=\count93
+\subfigtopskip=\skip47
+\subfigcapskip=\skip48
+\subfigcaptopadj=\dimen113
+\subfigbottomskip=\skip49
+\subfigcapmargin=\dimen114
+\subfiglabelskip=\skip50
+\c@subfigure=\count91
+\c@lofdepth=\count92
+\c@subtable=\count93
+\c@lotdepth=\count94
 
 ****************************************
 * Local config file subfigure.cfg used *
 ****************************************
 (/usr/local/texlive/2018/texmf-dist/tex/latex/subfigure/subfigure.cfg)
-\subfig@top=\skip49
-\subfig@bottom=\skip50
+\subfig@top=\skip51
+\subfig@bottom=\skip52
 )
 (/usr/local/texlive/2018/texmf-dist/tex/latex/tools/afterpage.sty
 Package: afterpage 2014/10/28 v1.08 After-Page Package (DPC)
@@ -97,7 +104,7 @@ Package: afterpage 2014/10/28 v1.08 After-Page Package (DPC)
 )
 (/usr/local/texlive/2018/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2017/09/02 v2.17a AMS math features
-\@mathmargin=\skip51
+\@mathmargin=\skip53
 
 For additional information on amsmath, use the `?' option.
 (/usr/local/texlive/2018/texmf-dist/tex/latex/amsmath/amstext.sty
@@ -106,49 +113,49 @@ Package: amstext 2000/06/29 v2.01 AMS text
 (/usr/local/texlive/2018/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
 \@emptytoks=\toks18
-\ex@=\dimen114
+\ex@=\dimen115
 ))
 (/usr/local/texlive/2018/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
-\pmbraise@=\dimen115
+\pmbraise@=\dimen116
 )
 (/usr/local/texlive/2018/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2016/03/08 v2.02 operator names
 )
-\inf@bad=\count94
+\inf@bad=\count95
 LaTeX Info: Redefining \frac on input line 213.
-\uproot@=\count95
-\leftroot@=\count96
+\uproot@=\count96
+\leftroot@=\count97
 LaTeX Info: Redefining \overline on input line 375.
-\classnum@=\count97
-\DOTSCASE@=\count98
+\classnum@=\count98
+\DOTSCASE@=\count99
 LaTeX Info: Redefining \ldots on input line 472.
 LaTeX Info: Redefining \dots on input line 475.
 LaTeX Info: Redefining \cdots on input line 596.
 \Mathstrutbox@=\box30
 \strutbox@=\box31
-\big@size=\dimen116
+\big@size=\dimen117
 LaTeX Font Info:    Redeclaring font encoding OML on input line 712.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
-\macc@depth=\count99
-\c@MaxMatrixCols=\count100
+\macc@depth=\count100
+\c@MaxMatrixCols=\count101
 \dotsspace@=\muskip10
-\c@parentequation=\count101
-\dspbrk@lvl=\count102
+\c@parentequation=\count102
+\dspbrk@lvl=\count103
 \tag@help=\toks19
-\row@=\count103
-\column@=\count104
-\maxfields@=\count105
+\row@=\count104
+\column@=\count105
+\maxfields@=\count106
 \andhelp@=\toks20
-\eqnshift@=\dimen117
-\alignsep@=\dimen118
-\tagshift@=\dimen119
-\tagwidth@=\dimen120
-\totwidth@=\dimen121
-\lineht@=\dimen122
+\eqnshift@=\dimen118
+\alignsep@=\dimen119
+\tagshift@=\dimen120
+\tagwidth@=\dimen121
+\totwidth@=\dimen122
+\lineht@=\dimen123
 \@envbody=\toks21
-\multlinegap=\skip52
-\multlinetaggap=\skip53
+\multlinegap=\skip54
+\multlinetaggap=\skip55
 \mathdisplay@stack=\toks22
 LaTeX Info: Redefining \[ on input line 2817.
 LaTeX Info: Redefining \] on input line 2818.
@@ -169,35 +176,35 @@ Package: rotating 2016/08/11 v2.16d rotated objects in LaTeX
 (/usr/local/texlive/2018/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 )
-\c@r@tfl@t=\count106
-\rotFPtop=\skip54
-\rotFPbot=\skip55
+\c@r@tfl@t=\count107
+\rotFPtop=\skip56
+\rotFPbot=\skip57
 \rot@float@box=\box32
 \rot@mess@toks=\toks23
 )
 (/usr/local/texlive/2018/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
 Package: fancyhdr 2017/06/30 v3.9a Extensive control of page headers and footer
 s
-\f@nch@headwidth=\skip56
-\f@nch@O@elh=\skip57
-\f@nch@O@erh=\skip58
-\f@nch@O@olh=\skip59
-\f@nch@O@orh=\skip60
-\f@nch@O@elf=\skip61
-\f@nch@O@erf=\skip62
-\f@nch@O@olf=\skip63
-\f@nch@O@orf=\skip64
+\f@nch@headwidth=\skip58
+\f@nch@O@elh=\skip59
+\f@nch@O@erh=\skip60
+\f@nch@O@olh=\skip61
+\f@nch@O@orh=\skip62
+\f@nch@O@elf=\skip63
+\f@nch@O@erf=\skip64
+\f@nch@O@olf=\skip65
+\f@nch@O@orf=\skip66
 )
 (/usr/local/texlive/2018/texmf-dist/tex/latex/bbding/bbding.sty
 Package: bbding 1999/04/15 v1.01 Dingbats symbols
 )
 (/usr/local/texlive/2018/texmf-dist/tex/latex/framed/framed.sty
 Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
-\OuterFrameSep=\skip65
-\fb@frw=\dimen123
-\fb@frh=\dimen124
-\FrameRule=\dimen125
-\FrameSep=\dimen126
+\OuterFrameSep=\skip67
+\fb@frw=\dimen124
+\fb@frh=\dimen125
+\FrameRule=\dimen126
+\FrameSep=\dimen127
 )
 (/usr/local/texlive/2018/texmf-dist/tex/latex/caption/caption.sty
 Package: caption 2016/02/21 v3.3-144 Customizing captions (AR)
@@ -205,15 +212,15 @@ Package: caption 2016/02/21 v3.3-144 Customizing captions (AR)
 (/usr/local/texlive/2018/texmf-dist/tex/latex/caption/caption3.sty
 Package: caption3 2016/05/22 v1.7-166 caption3 kernel (AR)
 Package caption3 Info: TeX engine: e-TeX on input line 67.
-\captionmargin=\dimen127
-\captionmargin@=\dimen128
-\captionwidth=\dimen129
-\caption@tempdima=\dimen130
-\caption@indent=\dimen131
-\caption@parindent=\dimen132
-\caption@hangindent=\dimen133
+\captionmargin=\dimen128
+\captionmargin@=\dimen129
+\captionwidth=\dimen130
+\caption@tempdima=\dimen131
+\caption@indent=\dimen132
+\caption@parindent=\dimen133
+\caption@hangindent=\dimen134
 )
-\c@ContinuedFloat=\count107
+\c@ContinuedFloat=\count108
 Package caption Info: rotating package is loaded.
 Package caption Info: subfigure package is loaded.
 )
@@ -232,31 +239,31 @@ File: latin1.def 2018/04/06 v1.3b Input encoding file
 (./appendixB/appendix.aux))
 \openout1 = `thesis.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
 
 (/usr/local/texlive/2018/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count108
-\scratchdimen=\dimen134
+\scratchcounter=\count109
+\scratchdimen=\dimen135
 \scratchbox=\box33
-\nofMPsegments=\count109
-\nofMParguments=\count110
+\nofMPsegments=\count110
+\nofMParguments=\count111
 \everyMPshowfont=\toks26
-\MPscratchCnt=\count111
-\MPscratchDim=\dimen135
-\MPnumerator=\count112
-\makeMPintoPDFobject=\count113
+\MPscratchCnt=\count112
+\MPscratchDim=\dimen136
+\MPnumerator=\count113
+\makeMPintoPDFobject=\count114
 \everyMPtoPDFconversion=\toks27
 ) (/usr/local/texlive/2018/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
@@ -332,7 +339,7 @@ Package pdftex.def Info: logo_polimi.pdf  used on input line 24.
 polimi.pdf>])
 
 LaTeX Font Warning: Font shape `OT1/cmss/m/it' in size <10> not available
-(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 51.
+(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 52.
 
 [2
 
@@ -598,30 +605,19 @@ Underfull \hbox (badness 10000) in paragraph at lines 366--368
 
 ]
 Chapter 5.
-[41] [42] [43]
-Overfull \hbox (14.69057pt too wide) in paragraph at lines 76--80
-\OT1/cmr/m/it/10.95 RandomForestClassifier(n[]estimators = 10, cri-te-rion = 'e
-n-tropy', ran-dom[]state
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 76--80
-
- []
-
-) [44]
+[41] [42] [43] [44] [45] [46]) [47]
 \openout2 = `chapter6/chapter.aux'.
 
- (./chapter6/chapter.tex
-Chapter 6.
-) [45
+ (./chapter6/chapter.tex [48
 
 
 
 ]
+Chapter 6.
+) [49]
 \openout2 = `chapter7/chapter.aux'.
 
- (./chapter7/chapter.tex [46
+ (./chapter7/chapter.tex [50
 
 
 
@@ -630,21 +626,21 @@ Chapter 7.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [47]
+ [51]
 
-LaTeX Warning: Reference `sec:architecture' on page 48 undefined on input line 
+LaTeX Warning: Reference `sec:architecture' on page 52 undefined on input line 
 21.
 
-[48] [49]) [50]
+[52] [53]) [54]
 \openout2 = `chapter8/chapter.aux'.
 
  (./chapter8/chapter.tex
 Chapter 8.
-[51
+[55
 
 
 
-] [52] [53]) [54] (./thesis.bbl) [55
+] [56] [57]) [58] (./thesis.bbl) [59
 
 
 
@@ -658,21 +654,21 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[56
+[60
 
 
 ]
 Appendix A.
-) [57]
+) [61]
 \openout2 = `appendixB/appendix.aux'.
 
- (./appendixB/appendix.tex [58
+ (./appendixB/appendix.tex [62
 
 
 
 ]
 Appendix B.
-) [59] (./thesis.aux (./cover_page.aux) (./dedication.aux) (./abstract.aux)
+) [63] (./thesis.aux (./cover_page.aux) (./dedication.aux) (./abstract.aux)
 (./acknowledgements.aux) (./chapter1/chapter.aux) (./chapter2/chapter.aux)
 (./chapter3/chapter.aux) (./chapter4/chapter.aux) (./chapter5/chapter.aux)
 (./chapter6/chapter.aux) (./chapter7/chapter.aux) (./chapter8/chapter.aux)
@@ -682,10 +678,10 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 4428 strings out of 492649
- 65869 string characters out of 6129621
- 137254 words of memory out of 5000000
- 8098 multiletter control sequences out of 15000+600000
+ 4479 strings out of 492649
+ 66682 string characters out of 6129621
+ 137783 words of memory out of 5000000
+ 8145 multiletter control sequences out of 15000+600000
  19567 words of font info for 71 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  41i,11n,43p,1205b,364s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -708,10 +704,10 @@ texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local
 texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/te
 xlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/tex
 live/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb>
-Output written on thesis.pdf (73 pages, 1955443 bytes).
+Output written on thesis.pdf (77 pages, 1966113 bytes).
 PDF statistics:
- 341 PDF objects out of 1000 (max. 8388607)
- 228 compressed objects within 3 object streams
+ 353 PDF objects out of 1000 (max. 8388607)
+ 236 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
  61 words of extra memory for PDF output out of 10000 (max. 10000000)
 

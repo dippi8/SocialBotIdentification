@@ -61,7 +61,7 @@ In multiclasses tasks, there are two possible approaches to face the problem:
 \end{itemize}
 We decided to stick with the default settings of the libraries involved, so OvR was the approach used for the baseline.
 
-\subsection{KNN}
+\subsection{K-Nearest Neighbors}
 K-Nearest Neighbors is an instance-based model used for classification, regression and pattern recognition. It is considered as a lazy learning algorithm, because all the computation is deferred until the prediction phase.
 When it performs a classification over a new point, it looks for the \textit{K} nearest samples in the training set, according to a chosen metric, and it assigns, to the unseen sample, the mode of the targets of the retrieved neighbors.
 
@@ -69,14 +69,168 @@ The choices to make are the ones regarding the number \textit{K} of neighbors to
 We used the default settings for the metric (\textit{Euclidean distance}) and for the weighting technique (\textit{uniform}), but we chose to consider 10 neighbors, because the automatic setting was \textit{K} = 5, which is the number of our possible targets.
 We chose a \textit{K} that is large enough to make the model not too sensible to outliers, and restricted enough to sharpen the classes boundaries.
 
+We first normalized the training data and then we fitted the algorithm on them, in order to simplify the distance computations.
 
 \subsection{Support Vector Machine}
+Support Vector Machine is a smart way to do instance-based learning. It can be seen as a generalization of the weighted KNN algorithm, with an arbitrary and feasible \textit{kernel function}, instead of the more generic dot product.
+
+It can be summarised with a support vector $ \mathbf{\vec{x}} $ (a subset of the training set), a weighting vector $ \mathbf{\vec{w}} $ for them and a \textbf{kernel} \textit{K(x, x')} (a similarity function).
+
+In order to make it work properly, three choices must be made:
+\begin{itemize}
+	\item[\PencilRight] a proper kernel, which is often selected according to experience and domain knowledge of the problem
+	\item[\PencilRight] the weights $ \vec{w} $, which are obtained by maximizing the margin that splits the records belonging to different classes. Each samples are mapped into a space, thanks to what is known as the \textit{kernel trick}. The "trick" helps a linear classifier to work on a non-linear problem, applying the kernel function in the prediction phase.\\This process highlights the boundary that separates the points belonging to different classes.
+	SVM aims to draw the boundary for the classes, in order to maximize the "margin" formed between the closest points that have different targets
+	\item[\PencilRight] the support vector $ \vec{x} $, which comes as a consequence of choosing weights
+\end{itemize}
+Since we were still facing a multitarget problem, the binary nature of SVM must had been adapted to our needs. We decided, once again, to stick with the default setting for non-binary classifications, in order to have only raw baselines to compare.
+
+The multitarget classification is handled with "One-vs-One" approach.
+It considers all possible pairwise binary classifiers and so it leads to $\frac{N(N-1)}{2}$ individual binary classifiers, where N is the number of the classes in the problem.
+
+In comparison with "One-vs-Rest" approach, "One-vs-One" is less sensitive to an imbalanced dataset, but it's more computationally expensive then the the other, which only builds N binary classifiers.
+Despite our choices over methods and parameters weren't accurate in this stage as they were in the other ones, we decided to stick with this setting for SVM, because otherwise it would have led us to an irrelevant algorithm, in comparison with the above-mentioned.
 
 \subsection{Comparison and baseline selection}
-The Random Forest was tested with the Scikit-Learn library, wit the following method and asset:\\
-\textit{RandomForestClassifier(n\_estimators = 10, criterion = 'entropy', random\_state = 42)}\\
-At first, it was tested with a holdout approach, with 75\% of the sample in the training set, and the 25\% in the test set.\\
-The resulting confusion matrix is the following:\\
+The selected baseline models were tested with a holdout approach at first, then with a crossvalidation method.
+We built a Confusion Matrix for each model, in order to bring out goodness indices for each class, such as \textit{True Positive} (TP), \textit{False Positive} (FP) and \textit{False Negative} (FN).
+The evaluation metrics considered are \textit{Precision}, \textit{Recall} and \textit{F1 score} and they work on the mentioned indices.
+\begin{itemize}
+	\item[\PencilRight] $ Precision = \frac{TP}{TP+FP} $\\
+	It measures the proportion of positive identifications, for a given target, that was actually correct
+	\item[\PencilRight] $ Recall = \frac{TP}{TP+FN} $\\
+	It measures the proportion of actual positive classifications that was identified correctly
+	\item[\PencilRight] $ F1 score = \frac{2(Precision \times Recall )}{Precision+Recall} $\\
+	It calculates the harmonic mean of the previous metrics
+\end{itemize}
+Every metric is adapted to fit a multiclass problem. For each class, it has been computed this set of measures, and then they were averaged without weights (macro average), in order to not take label imbalance into account.
+
+The results are pretty similar between the two methods, however we used the one coming from crossvalidation to select the model to build.
+\subsubsection{Holdout evaluation}
+The holdout stage is performed separating the samples in the dataset into training and test subsets. The splitting process is randomized, and we decided to use the 75\% of the data for the training set and the 25\% for the test set. This choice is a little bit different from the most common one, which builds the training set with 2/3 of the whole data, because we didn't dispose of a huge amount of records, so we preferred this ratio and then trying an other validation method for comparison.
+Here we list the algorithm and their parameters, as they were written according to the Scikit-llearn library for Python, their confusion matrix and their scores:
+\begin{itemize}
+	\item[\PencilRight] \textit{RandomForestClassifier(n\_estimators = 10, criterion = 'entropy')}\\
+	Confusion matrix:
+	
+	{
+		\centering
+		\begin{tabular}{@{}cc|ccccc@{}}
+			\multicolumn{1}{c}{} &\multicolumn{1}{c}{} &\multicolumn{5}{c}{Predicted class} \\ 
+			\multicolumn{1}{c}{} & 
+			\multicolumn{1}{c|}{} & 
+			\multicolumn{1}{c}{NSFW} & 
+			\multicolumn{1}{c}{NS} &
+			\multicolumn{1}{c}{SB} & 
+			\multicolumn{1}{c}{FF} & 
+			\multicolumn{1}{c}{GEN}\\
+			\cline{2-7}
+			\multirow[c]{5}{*}{\rotatebox[origin=tr]{90}{Actual class}}
+			& NSFW  & 1654 & 23 & 14 & 4 & 68\\
+			& NS  & 30 & 716 &  31 &  3 & 81\\
+			& SB  & 6 &  27 & 1223  &   3  & 53\\
+			& FF  & 15  &  4  &   6  & 1212  &  3\\
+			& GEN  & 67 &  74   & 45  &   3 & 718 \\
+			\cline{2-7}\\
+		\end{tabular}\\
+	}
+	
+	Precision: 0.895\\
+	Recall: 0.894\\
+	F1 score: 0.894
+
+	\item[\PencilRight] \textit{LogisticRegression(fit\_intercept=True, max\_iter=100, penalty='l2')}\\
+	Confusion matrix:
+	
+	{
+		\centering
+		\begin{tabular}{@{}cc|ccccc@{}}
+			\multicolumn{1}{c}{} &\multicolumn{1}{c}{} &\multicolumn{5}{c}{Predicted class} \\ 
+			\multicolumn{1}{c}{} & 
+			\multicolumn{1}{c|}{} & 
+			\multicolumn{1}{c}{NSFW} & 
+			\multicolumn{1}{c}{NS} &
+			\multicolumn{1}{c}{SB} & 
+			\multicolumn{1}{c}{FF} & 
+			\multicolumn{1}{c}{GEN}\\
+			\cline{2-7}
+			\multirow[c]{5}{*}{\rotatebox[origin=tr]{90}{Actual class}}
+			& NSFW  & 1310 & 176 &  78 &   40 & 159\\
+			& NS  & 26 & 676 &  54 &  1 & 104\\
+			& SB  & 25 &  60 & 947 &  221  & 59\\
+			& FF  & 167 &  27  & 11 & 1032 &   3\\
+			& GEN  & 118 & 295 & 172  &   8 & 314 \\
+			\cline{2-7}\\
+		\end{tabular}\\
+	}
+	
+	Precision: 0.675\\
+	Recall: 0.685\\
+	F1 score: 0.673
+	
+	\item[\PencilRight] \textit{KNeighborsClassifier(n\_neighbors=10)}\\
+	Confusion matrix:
+	
+	{
+		\centering
+		\begin{tabular}{@{}cc|ccccc@{}}
+			\multicolumn{1}{c}{} &\multicolumn{1}{c}{} &\multicolumn{5}{c}{Predicted class} \\ 
+			\multicolumn{1}{c}{} & 
+			\multicolumn{1}{c|}{} & 
+			\multicolumn{1}{c}{NSFW} & 
+			\multicolumn{1}{c}{NS} &
+			\multicolumn{1}{c}{SB} & 
+			\multicolumn{1}{c}{FF} & 
+			\multicolumn{1}{c}{GEN}\\
+			\cline{2-7}
+			\multirow[c]{5}{*}{\rotatebox[origin=tr]{90}{Actual class}}
+			& NSFW  & 1512 &  39  &  50  &  82 &  80\\
+			& NS  & 46 & 674  &  28  &  14  & 99\\
+			& SB  & 45 &  24 & 1077  &  38 & 128\\
+			& FF  & 88  &  4  &  94 & 1018  & 36\\
+			& GEN  & 138 &  69  & 132  &  86 & 482\\
+			\cline{2-7}\\
+		\end{tabular}\\
+	}
+	
+	Precision: 0.769\\
+	Recall: 0.762\\
+	F1 score: 0.765
+	
+	\item[\PencilRight] \textit{SVC(decision\_function\_shape='ovo')}\\
+	Confusion matrix:
+	
+	{
+		\centering
+		\begin{tabular}{@{}cc|ccccc@{}}
+			\multicolumn{1}{c}{} &\multicolumn{1}{c}{} &\multicolumn{5}{c}{Predicted class} \\ 
+			\multicolumn{1}{c}{} & 
+			\multicolumn{1}{c|}{} & 
+			\multicolumn{1}{c}{NSFW} & 
+			\multicolumn{1}{c}{NS} &
+			\multicolumn{1}{c}{SB} & 
+			\multicolumn{1}{c}{FF} & 
+			\multicolumn{1}{c}{GEN}\\
+			\cline{2-7}
+			\multirow[c]{5}{*}{\rotatebox[origin=tr]{90}{Actual class}}
+			& NSFW  & 1761 & 0 &   1  &  0 & 1\\
+			& NS  & 861 &  0 & 0 &   0 &  0\\
+			& SB  & 1068 & 0 & 244  &  0 & 0\\
+			& FF  & 449  & 0 &  0 & 791 & 0\\
+			& GEN  & 907 &  0  & 0  &  0 & 0\\
+			\cline{2-7}\\
+		\end{tabular}\\
+	}
+	
+	Precision: 0.468\\
+	Recall: 0.364\\
+	F1 score: 0.321
+	
+\end{itemize}
+\subsubsection{Crossvalidation}
+
+
+
 \section{Bots vs Genuines}
 \section{Multiclass classifier}
 \section{Text classifier}
