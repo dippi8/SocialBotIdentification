@@ -26,7 +26,7 @@
 \contentsline {subsection}{\numberline {3.4.1}NSFW}{19}
 \contentsline {subsection}{\numberline {3.4.2}News-spreader}{19}
 \contentsline {subsection}{\numberline {3.4.3}Spam-bots}{21}
-\contentsline {subsection}{\numberline {3.4.4}Fake-followers}{22}
+\contentsline {subsection}{\numberline {3.4.4}Fake-followers}{21}
 \contentsline {subsection}{\numberline {3.4.5}Genuine}{22}
 \contentsline {section}{\numberline {3.5}Data visualization}{23}
 \contentsline {chapter}{\numberline {4}Features Engineering}{29}
