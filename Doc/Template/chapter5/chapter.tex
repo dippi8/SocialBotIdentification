@@ -4,20 +4,25 @@
 \thispagestyle{empty}
 
 In this chapter we will show the choices and stages behind the final model.
-Starting from baseline models, we enhanced the chosen model with handcrafted features from the last chapter.\\
-We saw and studied the performance improvements with validation approaches, and this phase led us to our current solution.\\
-The result involves three models: two Random Forests, working on different purposes, and a Naive Bayes classifier.\\
-The first Random Forest classifier has been used to provide an early filter on the separation between Genuine accounts and Bots.\\
-The second Random Forest gives a classification among the five studied categories.\\
-Then, a Naive Bayes classifier has been used over the same classes of the second Random Forest, but it reads and labels the users, according on their tweets only.\\
+Starting from baseline models, we enhanced the chosen classifiers with handcrafted features coming from the last chapter.\\
+We saw and studied the performance improvements with validation approaches, and this phase led us to our current solution.
+
+The result involves three models:
+\begin{itemize}
+	\item[\PencilRight] a first Random Forest classifier that has been used to provide an early filter on the separation between Genuine accounts and Bots
+	\item[\PencilRight] a second Random Forest that gives a classification among the five studied categories
+	\item[\PencilRight] a Naive Bayes classifier, used over the same classes of the second Random Forest, but it reads and labels the users, according on their tweets only
+\end{itemize}
 All the above mentioned algorithms were combined with a stacking ensemble methods, after considering different possibilities.
 
 \section{Baselines}
-The choices explained in this section were made at the same time of the ones listed in the Baseline section of the last chapter.\\
+The choices explained in this section were made at the same time of the ones listed in the Baseline section of the last chapter.
+
 This is, basically, the same stage of the above-mentioned, but in a model-driven perspective.
-The features involved are the ones described in that chapter, but we started from that base, to try deifferent classifers over it.
-Each classifier has been fitted with the entire dataset, but considering obly baselines features.
-Furhtermore, no parameters tuning has been applied, in order to minimize the results of our baslines classifier, with their standard assets.
+The features involved are the ones described in that chapter, but we started from that base, to try different classifiers over it.
+Each classifier has been fitted with the entire dataset, but considering only baselines features.
+
+Furthermore, no parameters tuning has been applied, in order to minimize the results of our baselines classifier, with their standard assets.
 \subsection{Random Forest}
 The Random Forest was tested with the Scikit-Learn library, wit the following method and asset:\\
 \textit{RandomForestClassifier(n\_estimators = 10, criterion = 'entropy', random\_state = 42)}\\

@@ -5,11 +5,11 @@
 
 This chapter can be seen as one of the most important of the whole project.
 
-We wouldn't have hit such performances, if it wasn't for feature engineering. We had a large pool of models to pick for our purpose,  and we tried different assets for them, but the difference were made with the reasning behind the construction of the final feature vector.
+We wouldn't have hit such performances, if it wasn't for feature engineering. We had a large pool of models to pick for our purpose,  and we tried different assets for them, but the difference were made with the reasoning behind the construction of the final feature vector.
 
 Twitter APIs provides us two kinds of features: the user attributes and the tweet attributes.
-We knew that user attributes weren't enough to infer on targets, so we started planning how to include tweet attributes and match them with the others.\\
-We were aiming to enhance our data with informations driven by the tweets that our users made.\\
+We knew that user attributes weren't enough to infer on targets, so we started planning how to include tweet informations and enhance our data with them.
+
 The choice over the amount of tweets that would have been considered was a trade-off between performance and prediction speed.\\
 We finally chose to retrive up to the latest 100 tweets for each user, because further material led us to a slower, but equivalent, prediction over test samples.\\
 At the end of this stage, the resulting - and final - feature vector will include 38 features, that can be divided in two groups with respective sub-groups:
@@ -77,12 +77,16 @@ At the end of this stage, the resulting - and final - feature vector will includ
 
 
 \section{Baseline}
-In this section we analyze the complete set of default profile features and which kind of pre-processing operation we applied. With this default set we trained several classifiers to define some baselines for the upcoming work and this allowed us to evaluate the improvements made by the features engineering step.\\
-Some features are ready to be used in a classifier, while other ones need to be pre-processed to allow them to be more expressive.
+In this section we analyse the complete set of default profile features and which kind of pre-processing operation we applied. With this default set we trained several classifiers to define some baselines for the upcoming work and this allowed us to evaluate the improvements made by the features engineering step.
+
+Some features are ready to be used in a classifier, while other ones need to be pre-processed, in order to allow them to be more expressive.
 We wanted to rely on user features only for this experiment, in order to have a large improvement margin to exploit, once we would have gone deeper in the study.
-During the data exlporation stage, we identified the most and least meaningful attributes to trace a baseline, so we started from that. We simply tried to improve and to homologate the features highlitghted in the previous chapters.
-We faced a lot of missing values as well as non-numeric ones.\\
-Even if the goal was to build a raw model with semi-raw data, we needed feasible and manageble attributes to work with.
+
+During the data exploration stage, we identified the most and least meaningful attributes to trace a baseline, so we started from that. We simply tried to improve and to homologate the features highlighted in the previous chapters.
+
+We faced a lot of missing values as well as non-numeric ones.
+Even if the goal was to build a raw model with semi-raw data, we needed feasible and manageable attributes to work with.
+
 Her we list all the pre-processing operations applied to each feature belonging to the ones provided by the method \textit{get\_user()}, of the official Twitter APIs.
 \newpage
 \small
@@ -206,7 +210,8 @@ In this section we analyze how we performed this task for each features.
 \end{itemize}
 \section{Descriptive features}
 
-In order to enrich our attributes and to provide support to our algorithms, we decided to add some decriptive "meta" features, such as synthesis statistics and counters.\\
+In order to enrich our attributes and to provide support to our algorithms, we decided to add some descriptive "meta" features, such as synthesis statistics and counters.
+
 Their purpose is to describe the tweets in a statistical way, adding ranges and means to the attributes provided by the official APIs.\\
 Each of these new values were been added to the users feature vector, in order to append new informations for each account.
 Here is the list of this first 18 brand new features, introduced by our work:
@@ -238,30 +243,40 @@ Here is the list of this first 18 brand new features, introduced by our work:
 \normalsize
 
 \section{Intrinsic features}
-Due the multiclass nature of our dataset, it was impossible to rely on the descriptive meta features only.\\
-We faced the need of better capturing some behaviors, that could have helped us distinguish between targets.\\
-We spent a lot of time analyzing Twitter timelines by ourselves. This was one of the most useful phases of our work.\\
+Due the multiclass nature of our dataset, it was impossible to rely on the descriptive meta features only.
+
+We faced the need of better capturing some behaviours, that could have helped us distinguish between targets.\\
+We spent a lot of time analysing Twitter timelines by ourselves. This was one of the most useful phases of our work.\\
 Indeed, we have learnt a lot about bots acting like humans on the social platform.
-One thing that was easy to notice was the monotony, in terms of words or URLs involved in tweets,  met with Spam-bots, as well as the opposites, for Genuine accounts or Fake-Followers.
-We tried to encapsule this distinctive behavior by adding 2 intrinsic features to the training vector, along with the descriptive ones.\\
+One thing that was easy to notice was the monotony, in terms of words or URLs involved in tweets, met with Spam-bots, as well as the opposites, for Genuine accounts or Fake-Followers.
+
+We tried to encapsule this distinctive behaviour by adding two intrinsic features to the training vector, along with the descriptive ones.\\
+
 How to portray such monotony?\\
 We though about different approaches, like complex sentiment analysis or entity recognition, but then, we chose to rely on a weighting technique and the euclidean distance.\\
 We looked inside every retrieved tweets for each user, then we encoded each of them with TF-IDF weighting.\\
+
 Every term (word) of every tweet was represented by a numeric weight, according to TF-IDF.\\
 This weighting formula is a combination of Term Frequency (TF) and Inverse Document Frequency (IDF).
 \[ TF_{i,j} =\frac {n_{i,j}}{|d_{j}|} \]
+
 The term frequency factor counts the number \textit{n} of the \textit{i}\textsubscript{th} term inside the \textit{j}\textsubscript{th} document (the tweet, in our case), dividing it by the lenght of the latest, in order to give same importance to both short and long collections of texts.
 
 \[ IDF_{i} =\log {\frac {|D|}{|\{d:i\in d\}| + 1}} \]
 Where \textit{d} is the document (tweet).
+
 The inverse document frequency factor aims to highlight the overall magnitude of the  i\textsubscript{th} term in the collection  which it belongs. The collection \textit{D}, in our work, is represented by all the gathered tweets of the examined user.
 \[(TF-IDF)_{i} = TF_{i,j} \times IDF_{i} \]
-After the encoding process, we wanted to map the resulting vectors into an euclidean space, in order to compute the distance of each weighted text, from the total centroid of the collection.\\
+
+After the encoding process, we wanted to map the resulting vectors into an euclidean space, in order to compute the distance of each weighted text, from the total centroid of the collection.
+
 We decided to add each user a measure of the average intra-distance of its tweets.\\
-In order to achieve this goal, we relied on the WSS metric used in K-means clustering, but trying to soften its magnitude. We didn't want huge ranges in our features, in order to minimize the normalizations along the process.\\
+In order to achieve this goal, we relied on the WSS metric used in K-means clustering, but trying to soften its magnitude. We didn't want huge ranges in our features, in order to minimize the normalizations along the process.
+
 The resulting formula for this brand new attribute is the following:
 \[IntraDistance(U) = \frac{1}{N}\sum _{\mathbf {x} \in U}\left\|\mathbf {x} -{\boldsymbol {\mu }}\right\|^{2}\]
 Where \textit{N} is the number of tweet for user \textit{U}, \textit{x} is the encoded tweet and $\mu$ is the centroid of the tweet collection for that user.
+
 This formula, as well as the whole process, has been used both for tweet words and URLs inside of them.
 The resulting 2 features are
 \small
@@ -278,15 +293,19 @@ We expected low values for Spam-bot accounts in both features, as well as we exp
 
 
 \section{Extrinsic features}
-Once we have modeled the personal twitting actions, in terms of words and links dissimilarity, we needed to look for those parameters that could be compared with all the users in our dataset.
-We wanted the users to get out of their shells, and to match their timelines with each others.\\
+Once we have modelled the personal twitting actions, in terms of words and links dissimilarity, we needed to look for those parameters that could be compared with all the users in our dataset.
+We wanted the users to get out of their shells, and to match their timelines with each others.
+
 Once again, sentiment analysis came to our mind. We found lots of paid or limited services that could have only partially supported us during this stage.\\
 We couldn't think about implementing our own semantic analysis, as it is meant to be, due to the effort and time it would had taken.\\
-For semplicity sake, we had the idea to look for the most meaningful words in tweets, that are common to all the users belonging to the same class.\\
-We tried this approach, hoping to find a robust help in separating topics among targets.\\
+For simplicity sake, we had the idea to look for the most meaningful words in tweets, that are common to all the users belonging to the same class.\\
+We tried this approach, hoping to find a robust help in separating topics among targets.
+
 The idea was to build five partially-non-overlapping dictionaries, one for each class of users, containing the most popular words used by them in their retrieved tweets, stripped of stopwords. Each dictionary is ordered according to the occurrence of each word, in order to have a proper ranking for the terms and to give each of them a score.
+
 We gathered the 300 most common words for each category of accounts, in order to average about 250 terms, once the overlapping elements would have been discarded.
-Considering more than 300 words led us to uninfluent perfromance boost, instead it required lot of time to process a single user, so we decided to stop early.\\
+Considering more than 300 words led us to irrelevant performance boost, instead it required lot of time to process a single user, so we decided to stop early.
+
 We have listed 5 dictionaries: 
 \small
 \begin{center}
@@ -301,10 +320,13 @@ We have listed 5 dictionaries:
 	\end{tabular}
 \end{center}
 \normalsize
-The overall scores are normalized, so that the most common word, for each class, is associated with a unitary weight, the least common one with a value similar to zero (it depends on the final amount of words included in the dictionary).\\
+
+The overall scores are normalized, so that the most common word, for each class, is associated with a unitary weight, the least common one with a value similar to zero (it depends on the final amount of words included in the dictionary).
+
 In terms of representation, this \textit{keywords score} is built with 5 different values, one for each class.\\
 The dictionaries aren't totally disjointed with each others.
-We decided to strip, from each list, only the top 50 words belonging to the other collections, since the most relevant scores reside in that zone of the ranking. We didn't want to give the user high scores, for the same word, but in different categories.\\
+We decided to strip, from each list, only the top 50 words belonging to the other collections, since the most relevant scores reside in that zone of the ranking. We didn't want to give the user high scores, for the same word, but in different categories.
+
 If some user hit a word that is placed inside more than a dictionary, we wanted to let the relative weights speak and assign scores to each of the targets that contain that word, knowing they are less relevant, as they don't fall in the highest positions.\\
 So we have
 
@@ -321,23 +343,32 @@ So we have
 	\end{tabular}
 \end{center}
 \normalsize
-When we process a new user and infer on him, we scan every words of every tweets and match them with all the dictionary. Every time that we hit a listed word, we assign the user the score of that word.\\
-For instance, If the word we are comparing matches with the most occurrent for NSFW accounts (the top position in its dictionarye), we update the \textit{NSFW\_words\_score} of our user, summing 1 to its current value for that feature.
+When we process a new user and infer on him, we scan every words of every tweets and match them with all the dictionary. Every time that we hit a listed word, we assign the user the score of that word.
+
+For instance, If the word we are comparing matches with the most frequent for NSFW accounts (the top position in its dictionary), we update the \textit{NSFW\_words\_score} of our user, summing 1 to its current value for that feature.
+
 We expected to capture patterns about the choice of the words involved in tweets, for each of our categories.
-This extrinsic attributes revealed themsevles as very useful, lately.
+This extrinsic attributes revealed themselves as very useful, lately.
 
 
 \section{Image features}
-One of the main issues of our work was to make the NSFW class different, in terms of classifiers vision, with respect of Spam-bots.\\
+One of the main issues of our work was to make the NSFW class different, in terms of classifiers vision, with respect of Spam-bots.
+
 According to our user-based, descriptive and intrinsic features, both classes act in a similar way: they spam similar links, have high tweet frequency and their contents are often repeated.\\
-What could be the difference?\\
-We started with "blind" classifier, that was the main problem.\\ Our feature vector lacked in visual components. A Spam-bot could have been detected as a NSFW, as its tweets involved media and URLs. We needed to go deep and actually see what kind of media were broadcasted.\\
-This is the reason for the 2 upcoming features. We've found a small versatile project on GitHub for NSFW detection.\\
-The projects involves a pre-trained TensorFlow neural network for image recognition, that looks for adult and violent content inside pictures. It assigns the media a probability to be not safe for work.\\
+What could be the difference?
+
+We started with "blind" classifier, that was the main problem. Our feature vector lacked in visual components. A Spam-bot could have been detected as a NSFW, as its tweets involved media and URLs. We needed to go deep and actually see what kind of media were broadcast.\\
+This is the reason for presence of the upcoming features.
+
+We've found a small versatile project on GitHub for NSFW detection.\\
+The projects involves a pre-trained TensorFlow neural network for image recognition, that looks for adult and violent content inside pictures. It assigns the media a probability to be not safe for work.
+
 We decided to scan our dataset with this new component and to give a NSFW score to both profile pictures and tweets.\\
-For time complexity reasons, we couldn't imagine to scan all the retrieved tweets for each user and to look for media encorpored. We limited the process to the latest ten tweets.\\
-Obviously, the preditcion time has been affected by this new preprocessing stage, but we think that this number of pictures analyzed (up to eleven), makes the generalization duration still reasonable.\\
-The project creators claim to reach 98.2\% of accuracy in their final test, so we thought that the bias introduced with this new features would have been under control and that it wouldn't compromise the final results of our models.\\
+For time complexity reasons, we couldn't imagine to scan all the retrieved tweets for each user and to look for embedded media. We limited the process to the latest ten tweets.\\
+
+Obviously, the prediction time has been affected by this new preprocessing stage, but we think that this number of pictures analysed (up to eleven), makes the generalization duration still reasonable.\\
+The project creators claim to reach 98.2\% of accuracy in their final test, so we thought that the bias introduced with this new features would have been under control and that it wouldn't compromise the final results of our models.
+
 The brand new attributes that helped us in better sperating NSFW class are:
 \small
 \begin{center}

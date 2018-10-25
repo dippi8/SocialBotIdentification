@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.10.16)  18 OCT 2018 16:33
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.10.16)  25 OCT 2018 14:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -552,7 +552,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [30]
 [31]
-Overfull \hbox (9.7341pt too wide) in paragraph at lines 90--130
+Overfull \hbox (9.7341pt too wide) in paragraph at lines 94--134
  [] 
  []
 
@@ -560,17 +560,36 @@ Overfull \hbox (9.7341pt too wide) in paragraph at lines 90--130
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [32]
-Overfull \hbox (2.04999pt too wide) in paragraph at lines 161--162
+Overfull \hbox (2.04999pt too wide) in paragraph at lines 165--166
 []\OT1/cmr/bx/n/10.95 profile[]background[]tile\OT1/cmr/m/n/10.95 : As for "de-
 fault[]profile[]image", all the miss-
  []
 
 [33]
-Overfull \hbox (1.62823pt too wide) in paragraph at lines 216--237
+Overfull \hbox (1.62823pt too wide) in paragraph at lines 221--242
  [] 
  []
 
-[34] [35] [36] [37] [38]) [39]
+[34]
+Underfull \hbox (badness 10000) in paragraph at lines 253--254
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 255--258
+
+ []
+
+[35] [36]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [37]
+[38]
+Underfull \hbox (badness 10000) in paragraph at lines 366--368
+
+ []
+
+) [39]
 \openout2 = `chapter5/chapter.aux'.
 
  (./chapter5/chapter.tex [40
@@ -580,13 +599,13 @@ Overfull \hbox (1.62823pt too wide) in paragraph at lines 216--237
 ]
 Chapter 5.
 [41]
-Overfull \hbox (14.69057pt too wide) in paragraph at lines 22--26
+Overfull \hbox (14.69057pt too wide) in paragraph at lines 27--31
 \OT1/cmr/m/it/10.95 RandomForestClassifier(n[]estimators = 10, cri-te-rion = 'e
 n-tropy', ran-dom[]state
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 22--26
+Underfull \hbox (badness 10000) in paragraph at lines 27--31
 
  []
 
@@ -687,7 +706,7 @@ al/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/loc
 al/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/loca
 l/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/
 texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on thesis.pdf (71 pages, 1929490 bytes).
+Output written on thesis.pdf (71 pages, 1929393 bytes).
 PDF statistics:
  325 PDF objects out of 1000 (max. 8388607)
  216 compressed objects within 3 object streams
