@@ -62,6 +62,13 @@ In multiclasses tasks, there are two possible approaches to face the problem:
 We decided to stick with the default settings of the libraries involved, so OvR was the approach used for the baseline.
 
 \subsection{KNN}
+K-Nearest Neighbors is an instance-based model used for classification, regression and pattern recognition. It is considered as a lazy learning algorithm, because all the computation is deferred until the prediction phase.
+When it performs a classification over a new point, it looks for the \textit{K} nearest samples in the training set, according to a chosen metric, and it assigns, to the unseen sample, the mode of the targets of the retrieved neighbors.
+
+The choices to make are the ones regarding the number \textit{K} of neighbors to consider, the weights to assign to them and the metric to calculate the distance with.
+We used the default settings for the metric (\textit{Euclidean distance}) and for the weighting technique (\textit{uniform}), but we chose to consider 10 neighbors, because the automatic setting was \textit{K} = 5, which is the number of our possible targets.
+We chose a \textit{K} that is large enough to make the model not too sensible to outliers, and restricted enough to sharpen the classes boundaries.
+
 
 \subsection{Support Vector Machine}
 \subsection{Comparison and baseline selection}

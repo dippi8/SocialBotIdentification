@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.10.16)  25 OCT 2018 17:46
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.10.16)  25 OCT 2018 18:12
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -598,18 +598,18 @@ Underfull \hbox (badness 10000) in paragraph at lines 366--368
 
 ]
 Chapter 5.
-[41] [42]
-Overfull \hbox (14.69057pt too wide) in paragraph at lines 68--72
+[41] [42] [43]
+Overfull \hbox (14.69057pt too wide) in paragraph at lines 75--79
 \OT1/cmr/m/it/10.95 RandomForestClassifier(n[]estimators = 10, cri-te-rion = 'e
 n-tropy', ran-dom[]state
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 68--72
+Underfull \hbox (badness 10000) in paragraph at lines 75--79
 
  []
 
-) [43] [44]
+) [44]
 \openout2 = `chapter6/chapter.aux'.
 
  (./chapter6/chapter.tex
@@ -708,7 +708,7 @@ texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local
 texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/te
 xlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/tex
 live/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb>
-Output written on thesis.pdf (73 pages, 1953584 bytes).
+Output written on thesis.pdf (73 pages, 1954676 bytes).
 PDF statistics:
  341 PDF objects out of 1000 (max. 8388607)
  228 compressed objects within 3 object streams
