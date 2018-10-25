@@ -3,8 +3,10 @@
 \label{capitolo4}
 \thispagestyle{empty}
 
-This chapter can be seen as one of the most important of the whole project.\\
-We wouldn't have hit such performances, if it wasn't for feature engineering. We had a large pool of models to pick for our purpose,  and we tried different assets for them, but the difference were made with the reasning behind the construction of the final feature vector.\\
+This chapter can be seen as one of the most important of the whole project.
+
+We wouldn't have hit such performances, if it wasn't for feature engineering. We had a large pool of models to pick for our purpose,  and we tried different assets for them, but the difference were made with the reasning behind the construction of the final feature vector.
+
 Twitter APIs provides us two kinds of features: the user attributes and the tweet attributes.
 We knew that user attributes weren't enough to infer on targets, so we started planning how to include tweet attributes and match them with the others.\\
 We were aiming to enhance our data with informations driven by the tweets that our users made.\\
@@ -13,7 +15,7 @@ We finally chose to retrive up to the latest 100 tweets for each user, because f
 At the end of this stage, the resulting - and final - feature vector will include 38 features, that can be divided in two groups with respective sub-groups:
 \small
 \begin{center}
-	\begin{tabular}{ccc}
+	\begin{tabular}{lll}
 		\hline\hline
 		\textbf{user features}\\
 		\hline\hline
@@ -85,17 +87,17 @@ Her we list all the pre-processing operations applied to each feature belonging 
 \newpage
 \small
 \begin{center}
-	\begin{tabular}{ccc}
+	\begin{tabular}{lll}
 		\\feature&type&preprocess operation\\
 		\hline\hline
 		id&int&delete\\
 		name&str&delete - non-numeric feature\\
 		screen\_name&str&delete - non-numeric feature\\
-		statuses\_count&int&/\\
-		followers\_count&int&/\\
-		friends\_count&int&/\\
-		favourites\_count&int&/\\
-		listed\_count&int&/\\
+		statuses\_count&int&---\\
+		followers\_count&int&---\\
+		friends\_count&int&---\\
+		favourites\_count&int&---\\
+		listed\_count&int&---\\
 		url&str&replace with hasUrl (0/1)\\
 		lang&str&delete - non-numeric feature\\
 		time\_zone&str&delete - too many missing values\\
@@ -211,7 +213,7 @@ Here is the list of this first 18 brand new features, introduced by our work:
 
 \small
 \begin{center}
-	\begin{tabular}{ccc}
+	\begin{tabular}{ll}
 		\\feature&description\\
 		\hline\hline
 		avg\_len&average lenght of the tweets (words)\\
@@ -235,7 +237,7 @@ Here is the list of this first 18 brand new features, introduced by our work:
 \end{center}
 \normalsize
 
-\section{Intrinsict features}
+\section{Intrinsic features}
 Due the multiclass nature of our dataset, it was impossible to rely on the descriptive meta features only.\\
 We faced the need of better capturing some behaviors, that could have helped us distinguish between targets.\\
 We spent a lot of time analyzing Twitter timelines by ourselves. This was one of the most useful phases of our work.\\
@@ -252,7 +254,7 @@ The term frequency factor counts the number \textit{n} of the \textit{i}\textsub
 
 \[ IDF_{i} =\log {\frac {|D|}{|\{d:i\in d\}| + 1}} \]
 Where \textit{d} is the document (tweet).
-The invers document frequency factor aims to highlight the overall magnitude of the  i\textsubscript{th} term in the collection  which it belongs. The collection \textit{D}, in our work, is represented by all the gathered tweets of the examined user.
+The inverse document frequency factor aims to highlight the overall magnitude of the  i\textsubscript{th} term in the collection  which it belongs. The collection \textit{D}, in our work, is represented by all the gathered tweets of the examined user.
 \[(TF-IDF)_{i} = TF_{i,j} \times IDF_{i} \]
 After the encoding process, we wanted to map the resulting vectors into an euclidean space, in order to compute the distance of each weighted text, from the total centroid of the collection.\\
 We decided to add each user a measure of the average intra-distance of its tweets.\\
@@ -264,7 +266,7 @@ This formula, as well as the whole process, has been used both for tweet words a
 The resulting 2 features are
 \small
 \begin{center}
-	\begin{tabular}{ccc}
+	\begin{tabular}{ll}
 		\\feature&type\\
 		\hline\hline
 		tweet\_intradistance&float\\
@@ -288,7 +290,7 @@ Considering more than 300 words led us to uninfluent perfromance boost, instead 
 We have listed 5 dictionaries: 
 \small
 \begin{center}
-	\begin{tabular}{ccc}
+	\begin{tabular}{ll}
 		\\dictionary&size\\
 		\hline\hline
 		NSFW\_main\_words.csv&209\\
@@ -308,7 +310,7 @@ So we have
 
 \small
 \begin{center}
-	\begin{tabular}{ccc}
+	\begin{tabular}{ll}
 		\\feature&type\\
 		\hline\hline
 		NSFW\_words\_score&float\\
@@ -339,7 +341,7 @@ The project creators claim to reach 98.2\% of accuracy in their final test, so w
 The brand new attributes that helped us in better sperating NSFW class are:
 \small
 \begin{center}
-	\begin{tabular}{ccc}
+	\begin{tabular}{ll}
 		\\feature&type\\
 		\hline\hline
 		NSFW\_profile&float\\

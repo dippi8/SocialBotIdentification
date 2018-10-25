@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.10.16)  18 OCT 2018 15:19
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.10.16)  18 OCT 2018 16:33
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -419,7 +419,7 @@ Chapter 2.
  (./chapter3/chapter.tex
 Chapter 3.
 
-Underfull \hbox (badness 10000) in paragraph at lines 25--27
+Underfull \hbox (badness 10000) in paragraph at lines 26--28
 
  []
 
@@ -428,16 +428,16 @@ Underfull \hbox (badness 10000) in paragraph at lines 25--27
 
 
 ]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 113.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 114.
 
  (/usr/local/texlive/2018/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 113.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 114.
  [12]
 [13]
-Overfull \hbox (20.65077pt too wide) in paragraph at lines 154--194
+Overfull \hbox (20.65077pt too wide) in paragraph at lines 155--195
  [] 
  []
 
@@ -449,24 +449,24 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 <chapter3/figure/dendogram.jpg, id=112, 1445.4pt x 722.7pt>
 File: chapter3/figure/dendogram.jpg Graphic file (type jpg)
 <use chapter3/figure/dendogram.jpg>
-Package pdftex.def Info: chapter3/figure/dendogram.jpg  used on input line 203.
+Package pdftex.def Info: chapter3/figure/dendogram.jpg  used on input line 204.
 
 (pdftex.def)             Requested size: 360.0pt x 180.00188pt.
 
 
 LaTeX Font Warning: Font shape `OT1/cmss/m/it' in size <10.95> not available
-(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 204.
+(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 205.
 
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 208--209
+Underfull \hbox (badness 10000) in paragraph at lines 209--210
 
  []
 
 <chapter3/figure/kneeelbow.jpg, id=113, 1445.4pt x 722.7pt>
 File: chapter3/figure/kneeelbow.jpg Graphic file (type jpg)
 <use chapter3/figure/kneeelbow.jpg>
-Package pdftex.def Info: chapter3/figure/kneeelbow.jpg  used on input line 211.
+Package pdftex.def Info: chapter3/figure/kneeelbow.jpg  used on input line 212.
 
 (pdftex.def)             Requested size: 360.0pt x 180.00188pt.
 
@@ -478,7 +478,7 @@ Underfull \vbox (badness 1968) has occurred while \output is active []
 <chapter3/figure/elbow.jpg, id=117, 1445.4pt x 722.7pt>
 File: chapter3/figure/elbow.jpg Graphic file (type jpg)
 <use chapter3/figure/elbow.jpg>
-Package pdftex.def Info: chapter3/figure/elbow.jpg  used on input line 222.
+Package pdftex.def Info: chapter3/figure/elbow.jpg  used on input line 223.
 (pdftex.def)             Requested size: 360.0pt x 180.00188pt.
 
 Underfull \vbox (badness 1968) has occurred while \output is active []
@@ -488,30 +488,30 @@ Underfull \vbox (badness 1968) has occurred while \output is active []
 File: chapter3/figure/news-spreader.jpg Graphic file (type jpg)
 <use chapter3/figure/news-spreader.jpg>
 Package pdftex.def Info: chapter3/figure/news-spreader.jpg  used on input line 
-291.
+292.
 (pdftex.def)             Requested size: 250.93842pt x 295.17308pt.
  [19] [20 <./chapter3/figure/news-spreader.jpg>]
 [21]
 <chapter3/figure/dibebot.png, id=135, 1275.76625pt x 615.29875pt>
 File: chapter3/figure/dibebot.png Graphic file (type png)
 <use chapter3/figure/dibebot.png>
-Package pdftex.def Info: chapter3/figure/dibebot.png  used on input line 326.
+Package pdftex.def Info: chapter3/figure/dibebot.png  used on input line 327.
 (pdftex.def)             Requested size: 360.0pt x 173.62505pt.
  [22 <./chapter3/figure/dibebot.png>]
 <chapter3/figure/bubble.png, id=141, 1450.41875pt x 661.47125pt>
 File: chapter3/figure/bubble.png Graphic file (type png)
 <use chapter3/figure/bubble.png>
-Package pdftex.def Info: chapter3/figure/bubble.png  used on input line 354.
+Package pdftex.def Info: chapter3/figure/bubble.png  used on input line 355.
 (pdftex.def)             Requested size: 360.0pt x 164.1764pt.
 <chapter3/figure/heatmap.jpg, id=142, 1084.05pt x 813.0375pt>
 File: chapter3/figure/heatmap.jpg Graphic file (type jpg)
 <use chapter3/figure/heatmap.jpg>
-Package pdftex.def Info: chapter3/figure/heatmap.jpg  used on input line 362.
+Package pdftex.def Info: chapter3/figure/heatmap.jpg  used on input line 363.
 (pdftex.def)             Requested size: 360.0pt x 270.00282pt.
 <chapter3/figure/msno.png, id=143, 1563.8425pt x 805.0075pt>
 File: chapter3/figure/msno.png Graphic file (type png)
 <use chapter3/figure/msno.png>
-Package pdftex.def Info: chapter3/figure/msno.png  used on input line 371.
+Package pdftex.def Info: chapter3/figure/msno.png  used on input line 372.
 (pdftex.def)             Requested size: 360.0pt x 185.30751pt.
  [23 <./chapter3/figure/bubble.png>]
 [24 <./chapter3/figure/heatmap.jpg> <./chapter3/figure/msno.png>]
@@ -519,20 +519,20 @@ Package pdftex.def Info: chapter3/figure/msno.png  used on input line 371.
 File: chapter3/figure/boxplot_statuses.jpg Graphic file (type jpg)
 <use chapter3/figure/boxplot_statuses.jpg>
 Package pdftex.def Info: chapter3/figure/boxplot_statuses.jpg  used on input li
-ne 381.
+ne 382.
 (pdftex.def)             Requested size: 360.0pt x 270.00282pt.
  [25 <./chapter3/figure/boxplot_statuses.jpg>]
 <chapter3/figure/boxplot_friends.jpg, id=157, 1445.4pt x 1084.05pt>
 File: chapter3/figure/boxplot_friends.jpg Graphic file (type jpg)
 <use chapter3/figure/boxplot_friends.jpg>
 Package pdftex.def Info: chapter3/figure/boxplot_friends.jpg  used on input lin
-e 389.
+e 390.
 (pdftex.def)             Requested size: 360.0pt x 270.00282pt.
 <chapter3/figure/boxplot_followers.jpg, id=158, 1445.4pt x 1084.05pt>
 File: chapter3/figure/boxplot_followers.jpg Graphic file (type jpg)
 <use chapter3/figure/boxplot_followers.jpg>
 Package pdftex.def Info: chapter3/figure/boxplot_followers.jpg  used on input l
-ine 396.
+ine 397.
 (pdftex.def)             Requested size: 360.0pt x 270.00282pt.
 ) [26 <./chapter3/figure/boxplot_friends.jpg>]
 [27 <./chapter3/figure/boxplot_followers.jpg>]
@@ -552,7 +552,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [30]
 [31]
-Overfull \hbox (9.73405pt too wide) in paragraph at lines 88--128
+Overfull \hbox (9.7341pt too wide) in paragraph at lines 90--130
  [] 
  []
 
@@ -560,13 +560,13 @@ Overfull \hbox (9.73405pt too wide) in paragraph at lines 88--128
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [32]
-Overfull \hbox (2.04999pt too wide) in paragraph at lines 159--160
+Overfull \hbox (2.04999pt too wide) in paragraph at lines 161--162
 []\OT1/cmr/bx/n/10.95 profile[]background[]tile\OT1/cmr/m/n/10.95 : As for "de-
 fault[]profile[]image", all the miss-
  []
 
 [33]
-Overfull \hbox (1.6282pt too wide) in paragraph at lines 214--235
+Overfull \hbox (1.62823pt too wide) in paragraph at lines 216--237
  [] 
  []
 
@@ -589,26 +589,6 @@ n-tropy', ran-dom[]state
 Underfull \hbox (badness 10000) in paragraph at lines 22--26
 
  []
-
-! Extra alignment tab has been changed to \cr.
-<template> \endtemplate 
-                        
-l.32 	\multicolumn{1}{c}{Spam-Bots} &
-                                     
-You have given more \span or & marks than there were
-in the preamble to the \halign or \valign now in progress.
-So I'll assume that you meant to type \cr instead.
-
-! Undefined control sequence.
-<recently read> \multirow 
-                          
-l.35 	\multirow
-               [c]{2}{*}{\rotatebox[origin=tr]{90}{Actual}}
-The control sequence at the end of the top line
-of your error message was never \def'ed. If you have
-misspelled it (e.g., `\hobx'), type `I' and the correct
-spelling (e.g., `I\hbox'). Otherwise just continue,
-and I'll forget about whatever was undefined.
 
 ) [42]
 \openout2 = `chapter6/chapter.aux'.
@@ -683,10 +663,10 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 4425 strings out of 492649
- 65839 string characters out of 6129621
+ 4424 strings out of 492649
+ 65831 string characters out of 6129621
  137254 words of memory out of 5000000
- 8097 multiletter control sequences out of 15000+600000
+ 8096 multiletter control sequences out of 15000+600000
  18866 words of font info for 69 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  41i,11n,43p,1170b,364s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -707,7 +687,7 @@ al/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/loc
 al/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/loca
 l/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/
 texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on thesis.pdf (71 pages, 1930260 bytes).
+Output written on thesis.pdf (71 pages, 1929490 bytes).
 PDF statistics:
  325 PDF objects out of 1000 (max. 8388607)
  216 compressed objects within 3 object streams

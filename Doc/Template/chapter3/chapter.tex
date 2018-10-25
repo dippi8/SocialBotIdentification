@@ -1,3 +1,4 @@
+
 % !TEX root = ../thesis.tex
 \chapter{Data Collection}
 \label{capitolo3}
@@ -369,12 +370,12 @@ Moreover in figure (\ref{fig:msno}) it is possible to see the distribution of th
 \begin{figure}
 	\centering
 	\includegraphics[width=\columnwidth]{chapter3/figure/msno.png}
-	\caption{missing values}
+	\caption{heatmap}
 	\label{fig:msno}
 \end{figure}
 
 \newpage
-Finally we performed three further analisys. With the heatmap we could not detect which features were more important. Anyway,during the hand-labeling step, we understood that some of these features were instead very usefull to identify a few classes of our dataset. These attributes are "followers\_count", "friends\_count" and "statuses\_count". For each of them we plotted a boxplot. It is a method used to represent groups of numerical data through their quartiles. In figure \ref{fig:box_statuses} we can analyze the statuses count for each target. We collected up to 100 tweets for each user, so this chart is limited to 100. Here we can notice an interesting behavior: "news-spreaders" and "spambots" are the classes with more tweets, while "fake-followers" have less statuses. By reflecting on the gols of the bots, this result is exactly what we expected to see. In fact "fake-followers" don't need to tweet, they just need to exist, while other types of bots have to publish many statuses, to draw attention on their contents.
+Finally we performed three further analisys. With the heatmap we could not detect which features were more important. Anyway,during the hand-labeling step, we understood that some of these features were instead very usefull to identify a few classes of our dataset. These attributes are "followers\_count", "friends\_count" and "statuses\_count". For each of them we plotted a boxplot. It is a method used to represent groups of numerical data through their quartiles. In Figure \ref{fig:box_statuses} we can analyze the statuses count for each target. We collected up to 100 tweets for each user, so this chart is limited to 100. Here we can notice an interesting behavior: "news-spreaders" and "spambots" are the classes with more tweets, while "fake-followers" have less statuses. By reflecting on the gols of the bots, this result is exactly what we expected to see. In fact "fake-followers" don't need to tweet, they just need to exist, while other types of bots have to publish many statuses, to draw attention on their contents.
 
 \begin{figure}
 	\centering
