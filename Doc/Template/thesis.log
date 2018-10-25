@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.10.16)  25 OCT 2018 14:49
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.10.16)  25 OCT 2018 17:46
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -598,30 +598,30 @@ Underfull \hbox (badness 10000) in paragraph at lines 366--368
 
 ]
 Chapter 5.
-[41]
-Overfull \hbox (14.69057pt too wide) in paragraph at lines 27--31
+[41] [42]
+Overfull \hbox (14.69057pt too wide) in paragraph at lines 68--72
 \OT1/cmr/m/it/10.95 RandomForestClassifier(n[]estimators = 10, cri-te-rion = 'e
 n-tropy', ran-dom[]state
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 27--31
+Underfull \hbox (badness 10000) in paragraph at lines 68--72
 
  []
 
-) [42]
+) [43] [44]
 \openout2 = `chapter6/chapter.aux'.
 
  (./chapter6/chapter.tex
 Chapter 6.
-) [43
+) [45
 
 
 
 ]
 \openout2 = `chapter7/chapter.aux'.
 
- (./chapter7/chapter.tex [44
+ (./chapter7/chapter.tex [46
 
 
 
@@ -630,21 +630,21 @@ Chapter 7.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [45]
+ [47]
 
-LaTeX Warning: Reference `sec:architecture' on page 46 undefined on input line 
+LaTeX Warning: Reference `sec:architecture' on page 48 undefined on input line 
 21.
 
-[46] [47]) [48]
+[48] [49]) [50]
 \openout2 = `chapter8/chapter.aux'.
 
  (./chapter8/chapter.tex
 Chapter 8.
-[49
+[51
 
 
 
-] [50] [51]) [52] (./thesis.bbl) [53
+] [52] [53]) [54] (./thesis.bbl) [55
 
 
 
@@ -658,21 +658,21 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[54
+[56
 
 
 ]
 Appendix A.
-) [55]
+) [57]
 \openout2 = `appendixB/appendix.aux'.
 
- (./appendixB/appendix.tex [56
+ (./appendixB/appendix.tex [58
 
 
 
 ]
 Appendix B.
-) [57] (./thesis.aux (./cover_page.aux) (./dedication.aux) (./abstract.aux)
+) [59] (./thesis.aux (./cover_page.aux) (./dedication.aux) (./abstract.aux)
 (./acknowledgements.aux) (./chapter1/chapter.aux) (./chapter2/chapter.aux)
 (./chapter3/chapter.aux) (./chapter4/chapter.aux) (./chapter5/chapter.aux)
 (./chapter6/chapter.aux) (./chapter7/chapter.aux) (./chapter8/chapter.aux)
@@ -682,11 +682,11 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 4424 strings out of 492649
- 65831 string characters out of 6129621
+ 4428 strings out of 492649
+ 65869 string characters out of 6129621
  137254 words of memory out of 5000000
- 8096 multiletter control sequences out of 15000+600000
- 18866 words of font info for 69 fonts, out of 8000000 for 9000
+ 8098 multiletter control sequences out of 15000+600000
+ 19567 words of font info for 71 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  41i,11n,43p,1170b,364s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2018/texmf-dist/fonts/type1/public/niceframe-type1/bbding
@@ -695,21 +695,23 @@ Here is how much of TeX's memory you used:
 .pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.p
 fb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pf
 b></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb
-></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb><
-/usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb><
-/usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></u
-sr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/
-local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/loc
-al/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/loca
-l/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/loc
-al/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/loc
-al/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/loca
-l/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/
-texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on thesis.pdf (71 pages, 1929393 bytes).
+></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb><
+/usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></u
+sr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></u
+sr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr
+/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/lo
+cal/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local
+/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/local/
+texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local
+/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/local
+/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/
+texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/te
+xlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/tex
+live/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb>
+Output written on thesis.pdf (73 pages, 1953584 bytes).
 PDF statistics:
- 325 PDF objects out of 1000 (max. 8388607)
- 216 compressed objects within 3 object streams
+ 341 PDF objects out of 1000 (max. 8388607)
+ 228 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
  61 words of extra memory for PDF output out of 10000 (max. 10000000)
 
