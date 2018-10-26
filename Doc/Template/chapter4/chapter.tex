@@ -8,73 +8,14 @@ This chapter can be seen as one of the most important of the whole project.
 We wouldn't have hit such performances, if it wasn't for feature engineering. We had a large pool of models to pick for our purpose,  and we tried different assets for them, but the difference were made with the reasoning behind the construction of the final feature vector.
 
 Twitter APIs provides us two kinds of features: the user attributes and the tweet attributes.
-We knew that user attributes weren't enough to infer on targets, so we started planning how to include tweet informations and enhance our data with them.
+We knew that user attributes weren't enough to infer on targets, so we started planning how to include tweet informations and enhance our data with them. This was the bulk of the work, but it helped us to catch characteristic behaviors of some user.
+We created many features. Some of them are descriptive, like the lenght of strings (name, description ecc) or the count (miminimum, maximum, average) of other aspects like hashtags per tweet and tweet's lenght. Features describing the tweeting activity (frequency, how often a tweet contains a media or a url or it is just a retweet) have been considered too.
+Other kind of features are more behaviour-oriented, like the monotony of different tweets of the same user,while others are oriented to the most used words in tweets.
+Finally we also added features related to image analysis.
 
 The choice over the amount of tweets that would have been considered was a trade-off between performance and prediction speed.\\
 We finally chose to retrive up to the latest 100 tweets for each user, because further material led us to a slower, but equivalent, prediction over test samples.\\
-At the end of this stage, the resulting - and final - feature vector will include 38 features, that can be divided in two groups with respective sub-groups:
-\small
-\begin{center}
-	\begin{tabular}{lll}
-		\hline\hline
-		\textbf{user features}\\
-		\hline\hline
-		age\\
-		default\_profile\\
-		description\_len\\
-		favourites\_count\\
-		friends\_count\\
-		followers\_count\\
-		listed\_count\\
-		profile\_use\_background\_image\\
-		name\_len\\
-		screen\_name\_len\\
-		statuses\_count\\
-		url\\
-		\hline\hline
-		\textbf{tweet  features}\\
-		\hline\hline
-		\textit{descriptive}\\
-		\hline
-		freq\\
-		min\_fav\\
-		avg\_fav\\
-		max\_fav\\
-		min\_hash\\
-		avg\_hash\\
-		max\_hash\\
-		min\_len\\
-		avg\_len\\
-		max\_len\\
-		min\_ret\\
-		avg\_ret\\
-		max\_ret\\
-		media\_perc\\
-		quote\_perc\\
-		ret\_perc\\
-		url\_perc\\
-		\hline
-		\textit{intrinsic}\\
-		\hline
-		tweets\_intradistance\\
-		url\_intradistance\\
-		\hline
-		\textit{extrinsic}\\
-		\hline
-		NSFW\_words\_score\\
-		spam\_bots\_words\_score\\
-		news\_spreders\_words\_score\\
-		fake\_followers\_words\_score\\
-		genuine\_words\_score\\
-		\hline
-		\textit{image}\\
-		\hline
-		NSFW\_profile\\
-		NSFW\_avg\\\hline
-	\end{tabular}
-\end{center}
-\normalsize
-
+At the end of this stage, the resulting - and final - feature vector will include 38 features.
 
 \section{Baseline}
 In this section we analyse the complete set of default profile features and which kind of pre-processing operation we applied. With this default set we trained several classifiers to define some baselines for the upcoming work and this allowed us to evaluate the improvements made by the features engineering step.
@@ -94,7 +35,7 @@ Her we list all the pre-processing operations applied to each feature belonging 
 	\begin{tabular}{lll}
 		\\feature&type&preprocess operation\\
 		\hline\hline
-		id&int&delete\\
+		id&int&delete - useless feature\\
 		name&str&delete - non-numeric feature\\
 		screen\_name&str&delete - non-numeric feature\\
 		statuses\_count&int&---\\
@@ -129,7 +70,7 @@ Her we list all the pre-processing operations applied to each feature belonging 
 		description&str&replace with hasDescription (0/1)\\
 		contributors\_enabled&boolean&delete - too many missing values\\
 		following&boolean&delete - relative feature\\
-		created\_at&str&delete\\\hline\\
+		created\_at&str&delete - useless feature\\\hline\\
 	\end{tabular}
 \end{center}
 \normalsize
@@ -141,7 +82,7 @@ In this section we analyze how we performed this task for each features.
 \begin{itemize}
 	\item[\PencilRight]\textbf{default\_profile\_image}: Thanks to the figure \ref{fig:msno} we could see that all the missing values was at the bottom, in particular, all of them was in tuples with target 3 or 4. In order to uderstand the behaviour of this feature, we printed its values count for each indicted target.
 	\begin{center}
-		\begin{tabular}{ccc}
+		\begin{tabular}{lll}
 			\\target&3\\
 			\hline\hline
 			value&mean\\
@@ -150,7 +91,7 @@ In this section we analyze how we performed this task for each features.
 			1&228\\\hline\\
 		\end{tabular}
 		
-		\begin{tabular}{ccc}
+		\begin{tabular}{lll}
 			\\target&4\\
 			\hline\hline
 			value&mean\\
@@ -164,7 +105,7 @@ In this section we analyze how we performed this task for each features.
 	
 	\item[\PencilRight]\textbf{profile\_background\_tile}: As for "default\_profile\_image", all the missing values belonged to target 3 and 4. We used the same approach and we obtained:
 	\begin{center}
-		\begin{tabular}{ccc}
+		\begin{tabular}{lll}
 			\\target&3\\
 			\hline\hline
 			value&mean\\
@@ -173,7 +114,7 @@ In this section we analyze how we performed this task for each features.
 			1&99\\\hline\\
 		\end{tabular}
 		
-		\begin{tabular}{ccc}
+		\begin{tabular}{lll}
 			\\target&4\\
 			\hline\hline
 			value&mean\\
@@ -187,7 +128,7 @@ In this section we analyze how we performed this task for each features.
 	
 	\item[\PencilRight]\textbf{profile\_use\_background\_image}: All the missing values are still in the last two classes.
 	\begin{center}
-		\begin{tabular}{ccc}
+		\begin{tabular}{lll}
 			\\target&3\\
 			\hline\hline
 			value&mean\\
@@ -196,7 +137,7 @@ In this section we analyze how we performed this task for each features.
 			1&4983\\\hline\\
 		\end{tabular}
 		
-		\begin{tabular}{ccc}
+		\begin{tabular}{lll}
 			\\target&4\\
 			\hline\hline
 			value&mean\\
@@ -380,3 +321,95 @@ The brand new attributes that helped us in better sperating NSFW class are:
 	\end{tabular}
 \end{center}
 \normalsize
+
+\section{final feature vector}
+\label{sec:feature_vector}
+At the end of this process we obtained a feature vector composed of 38 elements, 12 based on the user and 26 based on his tweets.
+
+\subsection{User features}
+
+
+\small
+\begin{center}
+	\begin{tabular}{lll}
+		\textbf{Features}\\
+		\hline\hline
+		age\\
+		default\_profile\\
+		description\_len\\
+		favourites\_count\\
+		friends\_count\\
+		followers\_count\\
+		listed\_count\\
+		profile\_use\_background\_image\\
+		name\_len\\
+		screen\_name\_len\\
+		statuses\_count\\
+		url\\
+		\hline
+		
+	\end{tabular}
+\end{center}
+\normalsize
+
+\subsection{Tweets features}
+\small
+\begin{center}
+	\begin{tabular}{lll}
+		\textbf{Descriptive features}\\
+		\hline\hline
+		freq\\
+		min\_fav\\
+		avg\_fav\\
+		max\_fav\\
+		min\_hash\\
+		avg\_hash\\
+		max\_hash\\
+		min\_len\\
+		avg\_len\\
+		max\_len\\
+		min\_ret\\
+		avg\_ret\\
+		max\_ret\\
+		media\_perc\\
+		quote\_perc\\
+		ret\_perc\\
+		url\_perc\\\hline
+	\end{tabular}
+\end{center}
+\newpage
+\begin{center}
+	\begin{tabular}{lll}
+		\textbf{Intrinsic features}\\
+		\hline\hline
+		tweets\_intradistance\\
+		url\_intradistance\\\hline\\\\
+	\end{tabular}
+\end{center}
+
+
+\begin{center}
+	\begin{tabular}{lll}
+		\textbf{Extrinsic features}\\
+		\hline\hline
+		NSFW\_words\_score\\
+		spam\_bots\_words\_score\\
+		news\_spreders\_words\_score\\
+		fake\_followers\_words\_score\\
+		genuine\_words\_score\\
+		\hline\\\\
+	\end{tabular}
+\end{center}
+
+\begin{center}
+	\begin{tabular}{lll}
+		\textbf{Images features}\\
+		\hline\hline
+		NSFW\_profile\\
+		NSFW\_avg\\\hline
+	\end{tabular}
+\end{center}
+
+\normalsize
+
+
