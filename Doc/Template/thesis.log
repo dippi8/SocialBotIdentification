@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.14)  26 OCT 2018 17:17
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.14)  26 OCT 2018 19:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -675,10 +675,10 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 4482 strings out of 494923
- 66190 string characters out of 6180741
- 128558 words of memory out of 5000000
- 7581 multiletter control sequences out of 15000+600000
+ 4484 strings out of 494923
+ 66217 string characters out of 6180741
+ 128574 words of memory out of 5000000
+ 7583 multiletter control sequences out of 15000+600000
  19221 words of font info for 70 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  41i,11n,43p,1205b,364s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -700,7 +700,7 @@ hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/t
 exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-
 dist/fonts/type1/public/amsfonts/cm/cmti8.pfb>
-Output written on thesis.pdf (77 pages, 1970063 bytes).
+Output written on thesis.pdf (81 pages, 1976189 bytes).
 PDF statistics:
  366 PDF objects out of 1000 (max. 8388607)
  245 compressed objects within 3 object streams
