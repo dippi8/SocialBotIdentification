@@ -6,6 +6,11 @@ R.~Harkreader C.~Yang and G.~Gu.
   spammers.
 \newblock 2013.
 
+\bibitem{Botometer}
+Emilio Ferrara Alessandro Flammini Filippo~Menczer Clayton A.~Davis,
+  Onur~Varol.
+\newblock Botornot: A system to evaluate social bots, 2016.
+
 \bibitem{Lee11sevenmonths}
 Kyumin Lee, Brian~David Eoff, and James Caverlee.
 \newblock Seven months with the devils: a long-term study of content polluters
