@@ -30,12 +30,15 @@
 \contentsline {subsection}{\numberline {3.4.5}Genuine}{22}
 \contentsline {section}{\numberline {3.5}Data visualization}{23}
 \contentsline {chapter}{\numberline {4}Features Engineering}{29}
-\contentsline {section}{\numberline {4.1}Baseline}{31}
-\contentsline {section}{\numberline {4.2}Missing values filling}{33}
-\contentsline {section}{\numberline {4.3}Descriptive features}{34}
-\contentsline {section}{\numberline {4.4}Intrinsic features}{35}
-\contentsline {section}{\numberline {4.5}Extrinsic features}{37}
-\contentsline {section}{\numberline {4.6}Image features}{39}
+\contentsline {section}{\numberline {4.1}Baseline}{30}
+\contentsline {section}{\numberline {4.2}Missing values filling}{32}
+\contentsline {section}{\numberline {4.3}Descriptive features}{33}
+\contentsline {section}{\numberline {4.4}Intrinsic features}{34}
+\contentsline {section}{\numberline {4.5}Extrinsic features}{36}
+\contentsline {section}{\numberline {4.6}Image features}{38}
+\contentsline {section}{\numberline {4.7}final feature vector}{39}
+\contentsline {subsection}{\numberline {4.7.1}User features}{39}
+\contentsline {subsection}{\numberline {4.7.2}Tweets features}{39}
 \contentsline {chapter}{\numberline {5}Model selection}{41}
 \contentsline {section}{\numberline {5.1}Baselines}{41}
 \contentsline {subsection}{\numberline {5.1.1}Random Forest}{42}
