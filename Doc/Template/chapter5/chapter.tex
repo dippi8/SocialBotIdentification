@@ -110,7 +110,7 @@ Every metric is adapted to fit a multiclass problem. For each class, it has been
 The results are pretty similar between the two methods, however we used the one coming from crossvalidation to select the model to build.
 \subsubsection{Holdout evaluation}
 The holdout stage is performed separating the samples in the dataset into training and test subsets. The splitting process is randomized, and we decided to use the 75\% of the data for the training set and the 25\% for the test set. This choice is a little bit different from the most common one, which builds the training set with 2/3 of the whole data, because we didn't dispose of a huge amount of records, so we preferred this ratio and then trying an other validation method for comparison.
-Here we list the algorithm and their parameters, as they were written according to the Scikit-llearn library for Python, their confusion matrix and their scores:
+Here we list the algorithm and their parameters, as they were written according to the Scikit-learn library for Python, their confusion matrix and their scores:
 \begin{itemize}
 	\item[\PencilRight] \textit{RandomForestClassifier(n\_estimators = 10, criterion = 'entropy')}\\
 	Confusion matrix:
@@ -308,7 +308,7 @@ We wanted a term of comparison, so we evaluated this metric even in the baseline
 \end{itemize}
  Once again, Random Forest won the comparison with the other baselines.
 We decided to let it perform this job and try to improve its overall score.
-The feature vector we used is the same that came out from the feature engineering process\label{feature_vector}, except for the image features, that weren't considered, because crafted for the inner separation between NSFW and Spam-Bots, that wasn't necessary for this task.
+The feature vector we used is the same that came out from the feature engineering process\label{sec:feature_vector}, except for the image features, that weren't considered, because crafted for the inner separation between NSFW and Spam-Bots, that wasn't necessary for this task.
 
 The algorithm has had its parameters tuned during the validation phase.
 We decided to stick with 10-fold crossvalidation, as it was done for the baselines.
@@ -326,6 +326,9 @@ It also corresponds to the AUC shown in Figure (NUMBER).
 
 
 \section{Multiclass classifier}
+\subsection{Dataset}
+\subsection{Model}
+
 \section{Text classifier}
 \section{Stacking meta-classifier}
 \section{Validation}
