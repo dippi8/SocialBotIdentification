@@ -78,7 +78,9 @@ It can be summarised with a support vector $ \mathbf{\vec{x}} $ (a subset of the
 
 In order to make it work properly, three choices must be made:
 \begin{itemize}
-	\item[\PencilRight] a proper kernel, which is often selected according to experience and domain knowledge of the problem
+	\item[\PencilRight] a proper kernel, which is often selected according to experience and domain knowledge of the problem. We wanted to make things simple in this stage, so we used the default kernel function, which is the Radial Basis Function:
+	\[ K(x, x') = exp(- \frac{||x-x'||^{2}}{2\sigma^{2}}) \]
+	with $ \sigma $ as a free parameter
 	\item[\PencilRight] the weights $ \vec{w} $, which are obtained by maximizing the margin that splits the records belonging to different classes. Each samples are mapped into a space, thanks to what is known as the \textit{kernel trick}. The "trick" helps a linear classifier to work on a non-linear problem, applying the kernel function in the prediction phase.\\This process highlights the boundary that separates the points belonging to different classes.
 	SVM aims to draw the boundary for the classes, in order to maximize the "margin" formed between the closest points that have different targets
 	\item[\PencilRight] the support vector $ \vec{x} $, which comes as a consequence of choosing weights
@@ -197,7 +199,7 @@ Here we list the algorithm and their parameters, as they were written according 
 	Recall: 0.762\\
 	F1 score: 0.765
 	
-	\item[\PencilRight] \textit{SVC(decision\_function\_shape='ovo')}\\
+	\item[\PencilRight] \textit{SVC(kernel='rbf', decision\_function\_shape='ovo')}\\
 	Confusion matrix:
 	
 	{
@@ -228,6 +230,35 @@ Here we list the algorithm and their parameters, as they were written according 
 	
 \end{itemize}
 \subsubsection{Crossvalidation}
+This approach is based on repeated holdouts. It is performed by splitting the whole data in \textit{K} non-overlapping folds, leading to \textit{K} different holdout evaluations. The results for each step are stored and the final evaluation is given by the mean of the \textit{K} evaluations. For each evaluation, one fold is used for testing, the other ones for training the models. A common practice is to set \textit{K = 10} and thus averaging 10 different evaluations.
+This method is also known as \textit{K-fold crossvalidation}. We used a stratified approach, which takes care about keeping the labels balanced on each fold.
+
+Due the need of performing ten steps, it is computationally more expensive then a simple holdout validation. In our case, it was feasible, in term of speed, because of the models complexity and the data amount.
+
+The obtained scores are also more meaningful, with regards to holdout, because they are less sensitive to "lucky" or "unlucky" splits.
+
+Here is the results for every baseline model:
+
+\begin{itemize}
+	\item[\PencilRight] \textit{RandomForestClassifier(n\_estimators = 10, criterion = 'entropy')}\\
+	Mean precision: 0.895\\
+	Mean recall: 0.891\\
+	Mean f1 score: 0.890
+	\item[\PencilRight]\textit{LogisticRegression(fit\_intercept=True, max\_iter=100, penalty='l2')}\\
+	Mean precision: 0.729\\
+	Mean recall: 0.704\\
+	Mean f1 score: 0.707
+	\item[\PencilRight]\textit{KNeighborsClassifier(n\_neighbors=10)}\\
+	Mean precision: 0.785\\
+	Mean recall: 0.763\\
+	Mean f1 score: 0.764
+	\item[\PencilRight]\textit{SVC(kernel='rbf', decision\_function\_shape='ovo')}\\
+	Mean precision: 0.443\\
+	Mean recall: 0.364\\
+	Mean f1 score: 0.314
+\end{itemize}
+
+As the results show, the random forest algorithm is the one that achieves the best performances, even with default settings, on both holdout and 10-fold crossvalidation. We thus decided to consider it as the main tool to build our solution. 
 
 
 
