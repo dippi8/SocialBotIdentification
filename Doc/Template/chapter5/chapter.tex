@@ -260,7 +260,7 @@ Here is the results for every baseline model:
 
 As the results show, the random forest algorithm is the one that achieves the best performances, even with default settings, on both holdout and 10-fold crossvalidation. We thus decided to consider it as the main tool to build our solution. 
 
-\section{Bots vs Genuines}
+\section{Binary Classifier}
 This is the first algorithm involved in our final model.\\
 Since our dataset was pretty balanced and we couldn't retrieve much more genuine accounts, we didn't want our instruments to treat this category of users just as one the other bot kinds. It was important to perform a previous filter that was able to give importance to the separation between bots and genuine accounts.
 
@@ -278,8 +278,9 @@ We setted the APIs to retrieve up tu 6,000 ids for both genuines and bots, from 
 Then we added some new records, randomly sampling our data. This led us to reach 7,660 human accounts and 7,795 bots, forming a new dataset of 15,455 entries, with binary target.
 \subsection{Model}
 We wanted to evaluate new baselines for this binary classification.
-Another round of crossvalidation with default settings was performed on this new dataset, exploiting the binary nature to show the \textit{Area Under the Curve} score (AUC). The motivation behind the adding of this new metric is that Botmoter claims to reach 0.95 in this test, with a 10-fold crossvalidation. 
+Another round of crossvalidation with default settings was performed on this new dataset, exploiting the binary nature to show the \textit{Area Under the Curve} score (AUC).
 Area Under the Curve represents the goodnes of a classifier, in terms of the integral of the \textit{Receiver Operating Characteristic} (ROC curve), defined over the variation of a decision treshold.
+The motivation behind the adding of this new metric is that we had a balanced binary dataset, and this metric is a good fit for this kind of problem. Moreover, Botmoter claims to have accomplished an AUC of 0.95, on a 10-fold crossvalidation test.
 
 The ROC curve lies in a bi-dimensional space, which has the \textit{True Positive Ratio} ($ TPR =  \frac{TP}{TP+FN}$) on the Y-axis, and the False Positive Ratio ($ FPR =  \frac{FP}{FP+TN}$ ) on the X-axis.
 
@@ -306,8 +307,8 @@ We wanted a term of comparison, so we evaluated this metric even in the baseline
 	Mean recall: 0.364\\
 	Mean f1 score: 0.095
 \end{itemize}
- Once again, Random Forest won the comparison with the other baselines.
-We decided to let it perform this job and try to improve its overall score.
+Once again, Random Forest won the comparison with the other baselines.
+We decided to let it perform this job and try to improve its AUC score, keeping one eye on the overall score too.
 The feature vector we used is the same that came out from the feature engineering process\label{sec:feature_vector}, except for the image features, that weren't considered, because crafted for the inner separation between NSFW and Spam-Bots, that wasn't necessary for this task.
 
 The algorithm has had its parameters tuned during the validation phase.
@@ -315,15 +316,16 @@ We decided to stick with 10-fold crossvalidation, as it was done for the baselin
 
 In order to try different hyperparameter assets, we set up a \textit{Grid Search}, using the homonymous function of the Scikit-learn library for Python.
 Basically, this method allowed us to define value ranges for the desired hyperparameters, and it permuted all the possible combination of them, returning the associated metric scores.
-We wanted to play with the number of trees in the forest, the maximum depth reachable by each tree and the splitting criterion:
+We wanted to play with the number of trees in the forest, the maximum depth reachable by each tree and the splitting criterion. After several tries, the last search computed had this hyperparameters to combine:
 \begin{itemize}
-	\item[\PencilRight] \textit{n\_estimators} = [20, 25, 30, 35, 40, 45, 50, 55]
-	\item[\PencilRight]\textit{max\_depth} = [20, 22, 24, 26, 28, 30]
+	\item[\PencilRight] \textit{n\_estimators} = [100, 115, 130, 150, 175, 200]
+	\item[\PencilRight]\textit{max\_depth} = [24, 26, 28]
 	\item[\PencilRight]\textit{criterion} = ['entropy', 'gini']
 \end{itemize}
-As we can see in Figure (NUMBER), the highest F1 score is reached with the following setting:\textit{ n\_estimators} = 35, \textit{max\_depth} = 26 and \textit{criterion} = 'gini'.
-It also corresponds to the AUC shown in Figure (NUMBER).
+As we can see in Figure (NUMBER), the highest AUC score is reached with the following setting:\textit{ n\_estimators} = ?, \textit{max\_depth} = ? and \textit{criterion} = 'entropy'.
 
+The AUC obtained is equal to 0.935, which is a positive accomplishment, in comparison with the one claimed by the Botometer group, which dedicated its work on this binary separations and that disposed of a largest amount of data, features and models.
+Once we fitted the model, it was ready to be the first element of our solution pool.
 
 \section{Multiclass classifier}
 \subsection{Dataset}
@@ -331,4 +333,6 @@ It also corresponds to the AUC shown in Figure (NUMBER).
 
 \section{Text classifier}
 \section{Stacking meta-classifier}
+\subsection{Genetic algorithm}
+\subsection{Logistic Regression}
 \section{Validation}
