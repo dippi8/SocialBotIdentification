@@ -350,11 +350,11 @@ After several grid search runs, the last round computed had this hyperparameters
 	\caption{ROC curve}
 	\label{fig:auc}
 \end{figure}
-As we can see in Figure \ref{fig:grid_search}, the AUC is increasing with the number of the estimators in the forest, but this trend slows down after 100 trees reached. We decided t stop at 175, in order to prefer a lighter model and a faster prediction time, which currently is set to 21,6ms.
+As we can see in Figure \ref{fig:grid_search}, the AUC is increasing with the number of the estimators in the forest, but this trend slows down after 100 trees reached. We decided t stop at 175, which corresponds to a local maximum, in order to prefer a lighter model and a faster prediction time, which currently is set to 27ms.
 
-The AUC obtained with this asset is equal to 0.935, as shown in Figure \ref{fig:auc}, which is a positive accomplishment, considering that it will be used only as support for the identification of humans among bots, but we didn't crafted specific features as the ones involved in the Botmoter project and we didn't have the same amount of data neither.
+The AUC obtained with this asset is equal to 0.936, as shown in Figure \ref{fig:auc}, which is a positive accomplishment, considering that it will be used only as support for the identification of humans among bots, but we didn't crafted specific features as the ones involved in the Botmoter project and we didn't have the same amount of data neither.
 
-The final model has been fitted with the hole data, with this settings: \textit{ n\_estimators} = 175, \textit{max\_depth} = 24 and \textit{criterion} = 'entropy'.
+The final model has been fitted with the hole data, with this settings: \textit{ n\_estimators} = 175, \textit{max\_depth} = 26 and \textit{criterion} = 'entropy'.
 Once we fitted the model, it was ready to be the first element of our solution pool.
 
 \section{Text classifier}
