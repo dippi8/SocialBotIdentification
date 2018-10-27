@@ -271,13 +271,31 @@ The workflow was the same as before, starting from the data with basis and handc
 During this phase, we used the previously described dataset\ref{sec:dataset} with its five different labels.
 The algorithm was fed with 26,357 samples and 38 features. the amount of records were light enough to consider K-fold crossvalidation, without slow the validation down too much.
 \subsection{Model}
-The model chosen from the baselines is the Random Forest, which proved to perform well with F1 score.
+We found ourselves in the situation in which we had some brand new features and we didn't know how useful they were. Obviously, we could appeal to heathmaps or other tools, to highlight the correlations among variables and targets.
+However, the model we wanted to develop was the Random Forest, which proved to perform well with F1 score. Since this kind of model exploits its criteria to employ the features, we needed to prove them with a direct approach.
 
-Due to multiclass nature and some imbalances with the labels, we decided to follow the F1 score metric to asses the value of our model.
+A useful advantage of the Random Forest algorithm is the ability to provide a feature ranking, according to its splitting criterion.
+We retrieved the 12 most important attributes, in order to see if we would have found some of the ones coming out from feature engineering.
+The algorithm ranking ranked the features this way: 1. \textit{favourites\_count} (0.199402), 2. \textit{followers\_count} (0.110830), 3. \textit{statuses\_count} (0.100810), 4. \textit{avg\_len} (0.058260), 5. \textit{freq} (0.055419), 6. \textit{friends\_count} (0.043405), 7. \textit{ret\_perc} (0.039126), 8. \textit{tweet\_intradistance} (0.033718), 9. \textit{max\_ret} (0.030654), 10. \textit{min\_len} (0.029731), 11. \textit{NSFW\_words\_score} (0.029323), 12. \textit{default\_profile} (0.022897).
+
+\begin{figure}[htp!]
+	\centering
+	\includegraphics[width=\columnwidth]{chapter5/figure/feature_importances.png}
+	\caption{Random Forest feature ranking}
+	\label{fig:feature_rank}
+\end{figure}
+
+As Figure \ref{fig:feature_rank} shows, we could find some of our crafted features inside this list: lots of tweets descriptive features (\textit{avg\_len, freq, ret\_perc}, etc...), as well as the \textit{tweet\_intradistance} attribute and the \textit{NSFW\_words\_score}.
+This picture confirmed us that the idea behind those features was useful.
+
+Since those attributes were thought to belong to different clusters, we decided to try several combinations of those feature clusters, validating the model on them with a crossvalidation. The purpose of this stage was to see if some groups of features were enough to describe the real problem, or if some group would shown up as irrelevant.
+
+Due to the multiclass nature and some imbalances with the labels, we decided to follow the F1 score metric to asses the value of our model.
 The crossvalidation was set with 10 folds, as for the baselines tests.
 In order to try different hyperparameter assets, we set up a \textit{Grid Search}, using the homonymous function of the Scikit-learn library for Python.
 Basically, this method allowed us to define value ranges for the desired hyperparameters, and it permuted all the possible combination of them, returning the associated metric scores.
 We wanted to play with the number of trees in the forest, the maximum depth reachable by each tree and the splitting criterion.
+
 
 \section{Binary Classifier}
 Since our dataset was pretty balanced and we couldn't retrieve much more genuine accounts, we didn't want our instruments to treat this category of users just as one the other bot kinds. It was important to perform a previous filter that was able to give importance to the separation between bots and genuine accounts.

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.10.16)  26 OCT 2018 22:55
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.10.16)  27 OCT 2018 12:43
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -649,28 +649,46 @@ Chapter 5.
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [46]
-[47] [48] [49] [50]
-<chapter5/figure/gridSearch.png, id=248, 1156.32pt x 867.24pt>
+[47] [48]
+Overfull \hbox (3.80899pt too wide) in paragraph at lines 277--280
+\OT1/cmr/m/n/10.95 (0.029731), 11. \OT1/cmr/m/it/10.95 NSFW[]words[]score \OT1/
+cmr/m/n/10.95 (0.029323), 12. \OT1/cmr/m/it/10.95 de-fault[]profile \OT1/cmr/m/
+n/10.95 (0.022897). 
+ []
+
+<chapter5/figure/feature_importances.png, id=242, 1445.4pt x 722.7pt>
+File: chapter5/figure/feature_importances.png Graphic file (type png)
+<use chapter5/figure/feature_importances.png>
+Package pdftex.def Info: chapter5/figure/feature_importances.png  used on input
+ line 283.
+(pdftex.def)             Requested size: 360.0pt x 180.00188pt.
+[49 <./chapter5/figure/feature_importances.png>]
+Underfull \vbox (badness 1199) has occurred while \output is active []
+
+ [50]
+[51]
+<chapter5/figure/gridSearch.png, id=253, 1156.32pt x 867.24pt>
 File: chapter5/figure/gridSearch.png Graphic file (type png)
 <use chapter5/figure/gridSearch.png>
-Package pdftex.def Info: chapter5/figure/gridSearch.png  used on input line 343
+Package pdftex.def Info: chapter5/figure/gridSearch.png  used on input line 361
 .
 (pdftex.def)             Requested size: 360.0pt x 269.99289pt.
-<chapter5/figure/auc.png, id=249, 1156.32pt x 867.24pt>
+<chapter5/figure/auc.png, id=254, 1156.32pt x 867.24pt>
 File: chapter5/figure/auc.png Graphic file (type png)
 <use chapter5/figure/auc.png>
-Package pdftex.def Info: chapter5/figure/auc.png  used on input line 349.
+Package pdftex.def Info: chapter5/figure/auc.png  used on input line 367.
 (pdftex.def)             Requested size: 360.0pt x 269.99289pt.
- [51] [52 <./chapter5/figure/gridSearch.png> <./chapter5/figure/auc.png>]) [53]
+ [52] [53 <./chapter5/figure/gridSearch.png> <./chapter5/figure/auc.png>])
+[54]
 \openout2 = `chapter6/chapter.aux'.
 
- (./chapter6/chapter.tex [54
+ (./chapter6/chapter.tex
+Chapter 6.
+) [55
 
 
 
 ]
-Chapter 6.
-) [55]
 \openout2 = `chapter7/chapter.aux'.
 
  (./chapter7/chapter.tex [56
@@ -734,10 +752,10 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 5690 strings out of 492649
- 87179 string characters out of 6129621
- 185231 words of memory out of 5000000
- 9322 multiletter control sequences out of 15000+600000
+ 5696 strings out of 492649
+ 87395 string characters out of 6129621
+ 185242 words of memory out of 5000000
+ 9327 multiletter control sequences out of 15000+600000
  19221 words of font info for 70 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  48i,11n,47p,1205b,367s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -760,10 +778,10 @@ texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local
 texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/te
 xlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/tex
 live/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb>
-Output written on thesis.pdf (83 pages, 2141320 bytes).
+Output written on thesis.pdf (83 pages, 2165029 bytes).
 PDF statistics:
- 376 PDF objects out of 1000 (max. 8388607)
+ 378 PDF objects out of 1000 (max. 8388607)
  249 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
- 71 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 76 words of extra memory for PDF output out of 10000 (max. 10000000)
 
