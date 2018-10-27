@@ -268,7 +268,7 @@ We started from the baselines identified earlier and we tried to refined them, a
 
 The workflow was the same as before, starting from the data with basis and handcrafted features, we took the best looking algorithm from the baselines pool and performed hyperparameters tuning on it, supported by a validation technique.
 \subsection{Dataset}
-During this phase, we used the previously described dataset\ref{sec:dataset} with its five different labels.
+During this phase, we used the previously described dataset \ref{sec:dataset} with its five different labels.
 The algorithm was fed with 26,357 samples and 38 features. the amount of records were light enough to consider K-fold crossvalidation, without slow the validation down too much.
 \subsection{Model}
 We found ourselves in the situation in which we had some brand new features and we didn't know how useful they were. Obviously, we could appeal to heathmaps or other tools, to highlight the correlations among variables and targets.
@@ -289,13 +289,28 @@ As Figure \ref{fig:feature_rank} shows, we could find some of our crafted featur
 This picture confirmed us that the idea behind those features was useful.
 
 Since those attributes were thought to belong to different clusters, we decided to try several combinations of those feature clusters, validating the model on them with a crossvalidation. The purpose of this stage was to see if some groups of features were enough to describe the real problem, or if some group would shown up as irrelevant.
+To face this evaluation, we performed a light-weighted Grid Search, which is a method that takes desired ranges of hyperparameters and tries all the possible permutations of them, looking for the best combination, in terms of a certain metric.
 
+We are talking about a light-weight version of this tool, because we just went through different numbers of tree estimators in the forest. The different feature groups are not considered as hyperparameters and are not handled by the Scikit-learn implementation of the Grid Search.
+We had to manage the different training by our own, looking how the test score would have changed along with the increasing number of estimators and the different set of features.
+
+Grid Search uses crossvalidation to find the better estimators for the models, and this approach was right for our situation.
 Due to the multiclass nature and some imbalances with the labels, we decided to follow the F1 score metric to asses the value of our model.
-The crossvalidation was set with 10 folds, as for the baselines tests.
-In order to try different hyperparameter assets, we set up a \textit{Grid Search}, using the homonymous function of the Scikit-learn library for Python.
-Basically, this method allowed us to define value ranges for the desired hyperparameters, and it permuted all the possible combination of them, returning the associated metric scores.
-We wanted to play with the number of trees in the forest, the maximum depth reachable by each tree and the splitting criterion.
 
+The features were organized in clusters, as described in Chapter \ref{capitolo4}.
+We had the user features, the descriptive features, the intrinsic features, the extrinsic and the image features. Then we tried the model with the entire set of 38 attributes.
+As shown in Figure \ref{fig:feature_clusters}, the best asset seems to involve the whole set of features, as it reaches these scores, with 70 estimators: \textit{Precision} = 0.946, \textit{Recall} = 0.945, \textbf{\textit{F1}}= 0.943.
+\begin{figure}[htp!]
+	\centering
+	\includegraphics[width=\columnwidth]{chapter5/figure/feature_cluster_f1.png}
+	\caption{Performance over different feature clusters}
+	\label{fig:feature_clusters}
+\end{figure}
+
+The model has been tested with the default value for the maximum depth in the trees, which is set to 'None'. It means that the trees are expanded until every leaf is pure, or all leaves contain one sample.
+Tuning the hyperparameters wasn't the goal of this experiment, since its aim was only to find the best configuration of features to fit the model with.
+
+We then continued with a proper Grid Search over the whole number of features.
 
 \section{Binary Classifier}
 Since our dataset was pretty balanced and we couldn't retrieve much more genuine accounts, we didn't want our instruments to treat this category of users just as one the other bot kinds. It was important to perform a previous filter that was able to give importance to the separation between bots and genuine accounts.

@@ -52,26 +52,26 @@
 \contentsline {subsection}{\numberline {5.2.1}Dataset}{49}
 \contentsline {subsection}{\numberline {5.2.2}Model}{49}
 \contentsline {section}{\numberline {5.3}Binary Classifier}{50}
-\contentsline {subsection}{\numberline {5.3.1}Dataset}{51}
-\contentsline {subsection}{\numberline {5.3.2}Model}{51}
-\contentsline {section}{\numberline {5.4}Text classifier}{54}
-\contentsline {section}{\numberline {5.5}Stacking meta-classifier}{54}
-\contentsline {subsection}{\numberline {5.5.1}Genetic algorithm}{54}
-\contentsline {subsection}{\numberline {5.5.2}Logistic Regression}{54}
-\contentsline {section}{\numberline {5.6}Validation}{54}
-\contentsline {chapter}{\numberline {6}[Solution aspect two]}{55}
-\contentsline {chapter}{\numberline {7}Implementation and Evaluation}{57}
-\contentsline {section}{\numberline {7.1}Implementation}{58}
-\contentsline {section}{\numberline {7.2}Evaluation}{58}
-\contentsline {subsection}{\numberline {7.2.1}Design of Evaluation}{58}
-\contentsline {subsection}{\numberline {7.2.2}Metrics}{59}
-\contentsline {subsection}{\numberline {7.2.3}Results}{60}
-\contentsline {subsection}{\numberline {7.2.4}Discussion}{60}
-\contentsline {chapter}{\numberline {8}Conclusion and Future Work}{61}
-\contentsline {section}{\numberline {8.1}Summary and Lessons Learned}{61}
-\contentsline {section}{\numberline {8.2}Outputs and Contributions}{61}
-\contentsline {section}{\numberline {8.3}Limitations}{62}
-\contentsline {section}{\numberline {8.4}Future Work}{63}
-\contentsline {chapter}{References}{65}
-\contentsline {chapter}{\numberline {A}User Manual}{67}
-\contentsline {chapter}{\numberline {B}Dataset}{69}
+\contentsline {subsection}{\numberline {5.3.1}Dataset}{52}
+\contentsline {subsection}{\numberline {5.3.2}Model}{52}
+\contentsline {section}{\numberline {5.4}Text classifier}{55}
+\contentsline {section}{\numberline {5.5}Stacking meta-classifier}{55}
+\contentsline {subsection}{\numberline {5.5.1}Genetic algorithm}{55}
+\contentsline {subsection}{\numberline {5.5.2}Logistic Regression}{55}
+\contentsline {section}{\numberline {5.6}Validation}{55}
+\contentsline {chapter}{\numberline {6}[Solution aspect two]}{57}
+\contentsline {chapter}{\numberline {7}Implementation and Evaluation}{59}
+\contentsline {section}{\numberline {7.1}Implementation}{60}
+\contentsline {section}{\numberline {7.2}Evaluation}{60}
+\contentsline {subsection}{\numberline {7.2.1}Design of Evaluation}{60}
+\contentsline {subsection}{\numberline {7.2.2}Metrics}{61}
+\contentsline {subsection}{\numberline {7.2.3}Results}{62}
+\contentsline {subsection}{\numberline {7.2.4}Discussion}{62}
+\contentsline {chapter}{\numberline {8}Conclusion and Future Work}{63}
+\contentsline {section}{\numberline {8.1}Summary and Lessons Learned}{63}
+\contentsline {section}{\numberline {8.2}Outputs and Contributions}{63}
+\contentsline {section}{\numberline {8.3}Limitations}{64}
+\contentsline {section}{\numberline {8.4}Future Work}{65}
+\contentsline {chapter}{References}{67}
+\contentsline {chapter}{\numberline {A}User Manual}{69}
+\contentsline {chapter}{\numberline {B}Dataset}{71}
