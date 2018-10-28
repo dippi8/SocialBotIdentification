@@ -311,6 +311,31 @@ The model has been tested with the default value for the maximum depth in the tr
 Tuning the hyperparameters wasn't the goal of this experiment, since its aim was only to find the best configuration of features to fit the model with.
 
 We then continued with a proper Grid Search over the whole number of features.
+\begin{figure}[htp!]
+	\centering
+	\includegraphics[width=\columnwidth]{chapter5/figure/gini.png}
+	\caption{F1 scores with 'Gini' criterion}
+	\label{fig:gini}
+\end{figure}
+\begin{figure}[htp!]
+	\centering
+	\includegraphics[width=\columnwidth]{chapter5/figure/entropy.png}
+	\caption{F1 scores with ''Entropy'' criterion}
+	\label{fig:entropy}
+\end{figure}
+
+The Figures \ref{fig:gini}, \ref{fig:entropy} show how the average F1 score, measured on 10-fold crossvalidation, changes with the increasing of the number of estimators in the forest.
+The different coloured lines represent \textit{max\_depth} hyperparameter.
+The first Figure (\ref{fig:gini}) shows the Grid Search results, with the \textit{gini} splitting criterion.
+The second one (\ref{fig:entropy}) represent the situation having \textit{entropy} as a splitting choice.
+We combined five numbers of estimators (100, 150, 200, 250, 300), together with four different depths of the trees (None, 24, 26, 28) and the two above-mentioned splitting criteria.
+
+We could find a local maximum in \ref{fig:gini}, marked by the green line (\textit{max\_depth = 26}), matching \textit{n\_estimators = 100}. Observing the overall trend for that line, we couldn't rely on that peak, because it seemed to be a lucky hit, due the following lower values accomplished by this configuration. The entropy criterion seemed to be a more stable adjustments of scores, especially with the \textit{None} setting for \textit{max\_depth} hyperparameter.
+
+The highlighted point represent what we pick as our current configuration, and it sees 250 trees, the longest possible depth and the entropy mode for choosing the features on witch separate the trees. 
+We decided to stick with the following configuration without continuing with further explorations, because we could observe a flat improvements from 250 to 300 estimators, with that depth. Furthermore, we decided to have a light model, in order to keep the prediction time fast enough, which is currently measured in 33ms.
+
+The first algorithm of our solution was completed and ready to be combined with the following two models.
 
 \section{Binary Classifier}
 Since our dataset was pretty balanced and we couldn't retrieve much more genuine accounts, we didn't want our instruments to treat this category of users just as one the other bot kinds. It was important to perform a previous filter that was able to give importance to the separation between bots and genuine accounts.

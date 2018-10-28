@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.10.16)  27 OCT 2018 20:14
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.10.16)  28 OCT 2018 12:46
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -669,31 +669,45 @@ File: chapter5/figure/feature_cluster_f1.png Graphic file (type png)
 Package pdftex.def Info: chapter5/figure/feature_cluster_f1.png  used on input 
 line 305.
 (pdftex.def)             Requested size: 360.0pt x 269.99289pt.
- [50]
-Underfull \vbox (badness 10000) has occurred while \output is active []
+<chapter5/figure/gini.png, id=248, 1156.32pt x 867.24pt>
+File: chapter5/figure/gini.png Graphic file (type png)
+<use chapter5/figure/gini.png>
+Package pdftex.def Info: chapter5/figure/gini.png  used on input line 316.
+(pdftex.def)             Requested size: 360.0pt x 269.99289pt.
+<chapter5/figure/entropy.png, id=249, 1156.32pt x 867.24pt>
+File: chapter5/figure/entropy.png Graphic file (type png)
+<use chapter5/figure/entropy.png>
+Package pdftex.def Info: chapter5/figure/entropy.png  used on input line 322.
+(pdftex.def)             Requested size: 360.0pt x 269.99289pt.
+ [50] [51 <./chapter5/figure/feature_cluster_f1.png> <./chapter5/figure/gini.pn
+g>]
+Overfull \hbox (7.2504pt too wide) in paragraph at lines 333--334
+[]\OT1/cmr/m/n/10.95 We could find a lo-cal max-i-mum in 5.3[], marked by the g
+reen line (\OT1/cmr/m/it/10.95 max[]depth
+ []
 
- [51 <./chapter5/figure/feature_cluster_f1.png>] [52]
-<chapter5/figure/gridSearch.png, id=259, 1156.32pt x 867.24pt>
+[52 <./chapter5/figure/entropy.png>] [53] [54]
+<chapter5/figure/gridSearch.png, id=270, 1156.32pt x 867.24pt>
 File: chapter5/figure/gridSearch.png Graphic file (type png)
 <use chapter5/figure/gridSearch.png>
-Package pdftex.def Info: chapter5/figure/gridSearch.png  used on input line 376
+Package pdftex.def Info: chapter5/figure/gridSearch.png  used on input line 401
 .
 (pdftex.def)             Requested size: 360.0pt x 269.99289pt.
-<chapter5/figure/auc.png, id=260, 1156.32pt x 867.24pt>
+<chapter5/figure/auc.png, id=271, 1156.32pt x 867.24pt>
 File: chapter5/figure/auc.png Graphic file (type png)
 <use chapter5/figure/auc.png>
-Package pdftex.def Info: chapter5/figure/auc.png  used on input line 382.
+Package pdftex.def Info: chapter5/figure/auc.png  used on input line 407.
 (pdftex.def)             Requested size: 360.0pt x 269.99289pt.
- [53] [54 <./chapter5/figure/gridSearch.png> <./chapter5/figure/auc.png>]) [55]
+ [55 <./chapter5/figure/gridSearch.png>]) [56 <./chapter5/figure/auc.png>]
 \openout2 = `chapter6/chapter.aux'.
 
- (./chapter6/chapter.tex [56
+ (./chapter6/chapter.tex
+Chapter 6.
+) [57
 
 
 
 ]
-Chapter 6.
-) [57]
 \openout2 = `chapter7/chapter.aux'.
 
  (./chapter7/chapter.tex [58
@@ -757,10 +771,10 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 5704 strings out of 492649
- 87637 string characters out of 6129621
- 185253 words of memory out of 5000000
- 9333 multiletter control sequences out of 15000+600000
+ 5716 strings out of 492649
+ 87921 string characters out of 6129621
+ 185275 words of memory out of 5000000
+ 9343 multiletter control sequences out of 15000+600000
  19580 words of font info for 71 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  48i,11n,47p,1205b,367s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -784,10 +798,10 @@ l/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local
 /texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/t
 exlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/te
 xlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb>
-Output written on thesis.pdf (85 pages, 2231412 bytes).
+Output written on thesis.pdf (85 pages, 2383366 bytes).
 PDF statistics:
- 391 PDF objects out of 1000 (max. 8388607)
+ 395 PDF objects out of 1000 (max. 8388607)
  257 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
- 81 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 91 words of extra memory for PDF output out of 10000 (max. 10000000)
 

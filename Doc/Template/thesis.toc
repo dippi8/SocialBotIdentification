@@ -51,14 +51,14 @@
 \contentsline {section}{\numberline {5.2}Multiclass classifier}{48}
 \contentsline {subsection}{\numberline {5.2.1}Dataset}{49}
 \contentsline {subsection}{\numberline {5.2.2}Model}{49}
-\contentsline {section}{\numberline {5.3}Binary Classifier}{50}
-\contentsline {subsection}{\numberline {5.3.1}Dataset}{52}
-\contentsline {subsection}{\numberline {5.3.2}Model}{52}
-\contentsline {section}{\numberline {5.4}Text classifier}{55}
-\contentsline {section}{\numberline {5.5}Stacking meta-classifier}{55}
-\contentsline {subsection}{\numberline {5.5.1}Genetic algorithm}{55}
-\contentsline {subsection}{\numberline {5.5.2}Logistic Regression}{55}
-\contentsline {section}{\numberline {5.6}Validation}{55}
+\contentsline {section}{\numberline {5.3}Binary Classifier}{53}
+\contentsline {subsection}{\numberline {5.3.1}Dataset}{53}
+\contentsline {subsection}{\numberline {5.3.2}Model}{53}
+\contentsline {section}{\numberline {5.4}Text classifier}{56}
+\contentsline {section}{\numberline {5.5}Stacking meta-classifier}{56}
+\contentsline {subsection}{\numberline {5.5.1}Genetic algorithm}{56}
+\contentsline {subsection}{\numberline {5.5.2}Logistic Regression}{56}
+\contentsline {section}{\numberline {5.6}Validation}{56}
 \contentsline {chapter}{\numberline {6}[Solution aspect two]}{57}
 \contentsline {chapter}{\numberline {7}Implementation and Evaluation}{59}
 \contentsline {section}{\numberline {7.1}Implementation}{60}
