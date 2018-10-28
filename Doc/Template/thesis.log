@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.10.16)  28 OCT 2018 20:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.10.16)  28 OCT 2018 21:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -698,30 +698,39 @@ File: chapter5/figure/auc.png Graphic file (type png)
 <use chapter5/figure/auc.png>
 Package pdftex.def Info: chapter5/figure/auc.png  used on input line 409.
 (pdftex.def)             Requested size: 360.0pt x 269.99289pt.
- [55 <./chapter5/figure/gridSearch.png>] [56 <./chapter5/figure/auc.png>] [57] 
-[58]
-Overfull \hbox (52.1013pt too wide) in paragraph at lines 520--543
+ [55 <./chapter5/figure/gridSearch.png>] [56 <./chapter5/figure/auc.png>] [57]
+Overfull \hbox (1.959pt too wide) in paragraph at lines 472--496
+ [] 
+ []
+
+<chapter5/figure/stacking.png, id=283, 2187.17125pt x 696.6025pt>
+File: chapter5/figure/stacking.png Graphic file (type png)
+<use chapter5/figure/stacking.png>
+Package pdftex.def Info: chapter5/figure/stacking.png  used on input line 501.
+(pdftex.def)             Requested size: 360.0pt x 114.65808pt.
+[58] [59 <./chapter5/figure/stacking.png>]
+Overfull \hbox (52.1013pt too wide) in paragraph at lines 539--562
  [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 546--547
+Underfull \hbox (badness 10000) in paragraph at lines 565--566
 
  []
 
-[59] [60] [61]) [62]
+[60] [61] [62] [63]) [64]
 \openout2 = `chapter6/chapter.aux'.
 
  (./chapter6/chapter.tex
 Chapter 6.
-) [63
+) [65
 
 
 
 ]
 \openout2 = `chapter7/chapter.aux'.
 
- (./chapter7/chapter.tex [64
+ (./chapter7/chapter.tex [66
 
 
 
@@ -730,21 +739,21 @@ Chapter 7.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [65]
+ [67]
 
-LaTeX Warning: Reference `sec:architecture' on page 66 undefined on input line 
+LaTeX Warning: Reference `sec:architecture' on page 68 undefined on input line 
 21.
 
-[66] [67]) [68]
+[68] [69]) [70]
 \openout2 = `chapter8/chapter.aux'.
 
  (./chapter8/chapter.tex
 Chapter 8.
-[69
+[71
 
 
 
-] [70] [71]) [72] (./thesis.bbl) [73
+] [72] [73]) [74] (./thesis.bbl) [75
 
 
 
@@ -758,21 +767,21 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[74
+[76
 
 
 ]
 Appendix A.
-) [75]
+) [77]
 \openout2 = `appendixB/appendix.aux'.
 
- (./appendixB/appendix.tex [76
+ (./appendixB/appendix.tex [78
 
 
 
 ]
 Appendix B.
-) [77] (./thesis.aux (./cover_page.aux) (./dedication.aux) (./abstract.aux)
+) [79] (./thesis.aux (./cover_page.aux) (./dedication.aux) (./abstract.aux)
 (./acknowledgements.aux) (./chapter1/chapter.aux) (./chapter2/chapter.aux)
 (./chapter3/chapter.aux) (./chapter4/chapter.aux) (./chapter5/chapter.aux)
 (./chapter6/chapter.aux) (./chapter7/chapter.aux) (./chapter8/chapter.aux)
@@ -782,10 +791,10 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 5716 strings out of 492649
- 87921 string characters out of 6129621
- 185275 words of memory out of 5000000
- 9343 multiletter control sequences out of 15000+600000
+ 5722 strings out of 492649
+ 88087 string characters out of 6129621
+ 185286 words of memory out of 5000000
+ 9348 multiletter control sequences out of 15000+600000
  19580 words of font info for 71 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  48i,11n,47p,1205b,367s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -809,10 +818,10 @@ l/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local
 /texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/t
 exlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/te
 xlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb>
-Output written on thesis.pdf (91 pages, 2401392 bytes).
+Output written on thesis.pdf (93 pages, 2541991 bytes).
 PDF statistics:
- 414 PDF objects out of 1000 (max. 8388607)
- 270 compressed objects within 3 object streams
+ 422 PDF objects out of 1000 (max. 8388607)
+ 274 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
- 91 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 96 words of extra memory for PDF output out of 10000 (max. 10000000)
 
