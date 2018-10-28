@@ -22,7 +22,7 @@ This is, basically, the same stage of the above-mentioned, but in a model-driven
 The features involved are the ones described in that chapter, but we started from that base, to try different classifiers over it.
 Each classifier has been fitted with the entire dataset, but considering only baselines features.
 
-Furthermore, no parameters tuning has been applied, in order to minimize the results of our baselines classifier, with their standard assets.
+Furthermore, no parameters tuning has been applied, in order to minimize the results of our baselines classifier, with their standard settings.
 \subsection{Random Forest}
 Random forest is an ensemble learning method used in classification tasks and prediction ones as well.
 
@@ -299,7 +299,7 @@ Due to the multiclass nature and some imbalances with the labels, we decided to 
 
 The features were organized in clusters, as described in Chapter \ref{capitolo4}.
 We had the user features, the descriptive features, the intrinsic features, the extrinsic and the image features. Then we tried the model with the entire set of 38 attributes.
-As shown in Figure \ref{fig:feature_clusters}, the best asset seems to involve the whole set of features, as it reaches these scores, with 70 estimators: \textit{Precision} = 0.946, \textit{Recall} = 0.945, \textbf{\textit{F1}}= 0.943.
+As shown in Figure \ref{fig:feature_clusters}, the best configuration seems to involve the whole set of features, as it reaches these scores, with 70 estimators: \textit{Precision} = 0.946, \textit{Recall} = 0.945, \textbf{\textit{F1}}= 0.943.
 \begin{figure}[htp!]
 	\centering
 	\includegraphics[width=\columnwidth]{chapter5/figure/feature_cluster_f1.png}
@@ -333,12 +333,14 @@ We combined five numbers of estimators (100, 150, 200, 250, 300), together with 
 We could find a local maximum in \ref{fig:gini}, marked by the green line (\textit{max\_depth = 26}), matching \textit{n\_estimators = 100}. Observing the overall trend for that line, we couldn't rely on that peak, because it seemed to be a lucky hit, due the following lower values accomplished by this configuration. The entropy criterion seemed to be a more stable adjustments of scores, especially with the \textit{None} setting for \textit{max\_depth} hyperparameter.
 
 The highlighted point represent what we pick as our current configuration, and it sees 250 trees, the longest possible depth and the entropy mode for choosing the features on witch separate the trees. 
-We decided to stick with the following configuration without continuing with further explorations, because we could observe a flat improvements from 250 to 300 estimators, with that depth. Furthermore, we decided to have a light model, in order to keep the prediction time fast enough, which is currently measured in 33ms.
+
+We decided to stick with the following configuration without continuing with further explorations, because we could observe a flat improvements from 250 to 300 estimators, with that depth.
+Furthermore, we were aware that, in the generalization stage, the computation of the image features and the calls to the Twitter APIs would have been taking much more time than the models' predictions, so we decided to have a light model, in order to keep the prediction time fast enough, which is currently measured in 33ms. 
 
 The first algorithm of our solution was completed and ready to be combined with the following two models.
 
 \section{Binary Classifier}
-Since our dataset was pretty balanced and we couldn't retrieve much more genuine accounts, we didn't want our instruments to treat this category of users just as one the other bot kinds. It was important to perform a previous filter that was able to give importance to the separation between bots and genuine accounts.
+Since our dataset was pretty balanced and we couldn't retrieve much more genuine accounts, we didn't want our instrument to treat this category of users just as one the other bot kinds. It was important to perform a previous filter that was able to give importance to the separation between bots and genuine accounts.
 
 We was inspired by the work made with Botometer\cite{Botometer}, which involved a binary labelled dataset, with bot and genuine accounts.
 They built their features, grouped them in six main categories, then they ran a Random Forest algorithm per group.
@@ -353,9 +355,9 @@ This dataset has been involved to build Botometer as well, but we decided to use
 We setted the APIs to retrieve up tu 6,000 ids for both genuines and bots, from the Carvelee list. The process provided us 5,161 legitimate user ids, and 5,297 general bot ids (without inner classifications), because some accounts have been deleted in time.
 Then we added some new records, randomly sampling our data. This led us to reach 7,660 human accounts and 7,795 bots, forming a new dataset of 15,455 entries, with binary target.
 \subsection{Model}
-Since the different purpose of this model, we couldn't rely on the above-mentioned baselines. We wanted to evaluate new raw algorithms for this binary classification.
-Another round of crossvalidation with default settings was performed on this new dataset, exploiting the binary nature to show the \textit{Area Under the Curve} score (AUC).
-Area Under the Curve represents the goodnes of a classifier, in terms of the integral of the \textit{Receiver Operating Characteristic} (ROC curve), defined over the variation of a decision treshold.
+Since the different purpose of this model, we couldn't rely on the same baselines tested with the multiclass dataset. We wanted to evaluate new raw algorithms for this binary classification.
+Another round of crossvalidation, with default settings, was performed on this new dataset, exploiting the binary nature to show the \textit{Area Under the Curve} score (AUC).
+Area Under the Curve represents the goodness of a classifier, in terms of the integral of the \textit{Receiver Operating Characteristic} (ROC curve), defined over the variation of a decision treshold.
 The motivation behind the adding of this new metric is that we had a balanced binary dataset, and this metric is a good fit for this kind of problem. Moreover, Botmoter claims to have accomplished an AUC of 0.95, on a 10-fold crossvalidation test.
 
 The ROC curve lies in a bi-dimensional space, which has the \textit{True Positive Ratio} ($ TPR =  \frac{TP}{TP+FN}$) on the Y-axis, and the False Positive Ratio ($ FPR =  \frac{FP}{FP+TN}$ ) on the X-axis.
@@ -390,7 +392,7 @@ The feature vector we used is the same that came out from the feature engineerin
 The algorithm has had its parameters tuned during the validation phase.
 We decided to stick with 10-fold crossvalidation, as it was done for the baselines.
 
-After several grid search runs, the last round computed had this hyperparameters to combine together:
+After several Grid Search runs, the last round computed had this hyperparameters to combine together:
 \begin{itemize}
 	\item[\PencilRight] \textit{n\_estimators} = [100, 115, 130, 150, 175, 200]
 	\item[\PencilRight]\textit{max\_depth} = [24, 26, 28]
@@ -408,15 +410,209 @@ After several grid search runs, the last round computed had this hyperparameters
 	\caption{ROC curve}
 	\label{fig:auc}
 \end{figure}
-As we can see in Figure \ref{fig:grid_search}, the AUC is increasing with the number of the estimators in the forest, but this trend slows down after 100 trees reached. We decided t stop at 175, which corresponds to a local maximum, in order to prefer a lighter model and a faster prediction time, which currently is set to 27ms.
+As we can see in Figure \ref{fig:grid_search}, the AUC is increasing with the number of the estimators in the forest, but this trend slows down after 100 trees reached. We decided t stop at 175, which corresponds to a local maximum, in order to prefer, once again, a lighter model and a faster prediction time, which is currently set to 27ms.
 
-The AUC obtained with this asset is equal to 0.936, as shown in Figure \ref{fig:auc}, which is a positive accomplishment, considering that it will be used only as support for the identification of humans among bots, but we didn't crafted specific features as the ones involved in the Botmoter project and we didn't have the same amount of data neither.
+The AUC obtained with this arrangement is equal to 0.936, as shown in Figure \ref{fig:auc}, which is a positive accomplishment, considering that it will be used only as support for the identification of humans among bots, but we didn't crafted specific features as the ones involved in the Botmoter project and we didn't have the same amount of data neither.
 
 The final model has been fitted with the hole data, with this settings: \textit{ n\_estimators} = 175, \textit{max\_depth} = 26 and \textit{criterion} = 'entropy'.
-Once we fitted the model, it was ready to be the first element of our solution pool.
+Once we fitted the model, it was ready to be the second element entering in our solution pool.
 
 \section{Text classifier}
 \section{Stacking meta-classifier}
+We had three models, each with different purposes, but they had to cooperate for the bots' behaviour identification.
+The initial idea was to use only the multiclass Random Forest to classify the bot categories, using the other two models as meta-models to build extra features with their outcome.
+Those features would have had the dataset enhanced, but their meaning would have been bounded to the multiclass classifier limits.
+We wanted to give the right importance to each model, hoping they would help each other to better distinguish the patterns end to better model the real problem.
+
+We thought about several methods to exploit their strengths and combine them.
+The first idea was to build a pipeline with weights for each classifier. The binary Random Forest would had been the first filter between humans and bots. Following this lead, the multiclass and the text classifiers would have been weighted in order to assign the final label.
+
+This approach would have been less empirical then other tools we could dispose. We decided to rely on different methods to blend the outcomes of our three algorithms. In particular, we thought about a genetic approach and a stacking ensemble with a meta-classifier. 
+We wanted to evaluate the performance obtained by these methods and chose the one that fitted our need.
+
+Both the genetic and the meta-model were trained with holdout technique, splitting the whole dataset into training and test sets. The 80\% of the samples ended up into the training set, the 20\% in the validation set.
+The data that fed the stacking methods were the predictions of the tree classifiers, over the validation set.
+In order to make those prediction without cheating, we couldn't use the models that were already fitted with the hole data. We had to retrain them with the 80\% of the records. 
+We didn't perform further Grid Search to find the best hyperparameters in this stage, because the final script that we were going to assemble was taking into account the entire dataset to train the models. Furthermore, this small variation, in terms of amount of training data, wouldn't had led us into a misinterpretation of the problem, if we had kept the same hyperparameters found earlier.
+We decided to stick with the configurations already found and to train the model with fewer data.
+
+Once the model were fitted, we used the \textit{predict\_proba()} method of the Scikit-learn implementations of the classifiers, in order to retrieve "soft classifications".
+We didn't want our model to assign a strict label to an unseen sample, indeed, we were interested in the percentage of categories membership.
+The predict\_proba() method computes the probability, for a sample, to belong to the highlighted target, by considering the impurity of the leaves inside the forest.
+We used this method to construct the output vectors needed to train the stacking models.
+
+In order to combine the outputs of three classifiers properly, we had to homologate them.
+With the multiclass and the text models there weren't issues, since their outcomes are stored into vectors with five elements, containing probability values, one for each category.
+The case to handle was the binary one, because the output of that Random Forest was represented by a 2-sized vector (the bot probability and the genuine one).
+We extended the array adding three more cells. Then we took the bot probability and spread it on the four cells that didn't mark the genuine probability.
+The reason behind that is that our binary classifier didn't take care about the inner separation in bot behaviours. It was uncertain about the belonging category, it just used to recognize bots, so each non-human category should had been assigned the same coefficient, and their sum must had match the original probability to be detected as a bot.
+For instance, if the binary classifies detects an account with 80\% chance to be a bot and 20\% to be genuine, it will result in this final outcome vector:
+\begin{center}
+	\begin{tabular}{ccccc}
+		\\Bot&Genuine\\
+		\hline
+		0.8&0.2\\
+		\hline\\
+	\end{tabular}\\
+Original binary output
+\end{center}
+	
+\begin{center}
+	\begin{tabular}{ccccc}
+		\\NSFW&News-Spreader&Spam-Bot&Fake-Follower&Genuine\\
+		\hline
+		0.2&0.2&0.2&0.2&0.2\\
+		\hline\\
+	\end{tabular}\\
+Adapted multiclass output
+\end{center}
+
+Each sample of this new dataset contains 15 elements, 5 soft predictions (one for each category) for each classifier (binary, multiclass, text-based).
+\begin{center}
+	\begin{tabular}{@{}c|c|c|c|c|c|c|c|c|c|c|c|c|c|c@{}}
+		\multicolumn{15}{c}{New sample} \\
+		\hline
+		\multicolumn{5}{c|}{Binary probability} & 
+		\multicolumn{5}{c|}{Multiclass probability} & 
+		\multicolumn{5}{c}{Text-based probability}\\
+		\hline
+		p\textsubscript{0} &
+		p\textsubscript{1} &
+		p\textsubscript{2} &
+		p\textsubscript{3} &
+		p\textsubscript{4} &
+		p\textsubscript{5} &
+		p\textsubscript{6} &
+		p\textsubscript{7} &
+		p\textsubscript{8} &
+		p\textsubscript{9} &
+		p\textsubscript{10} &
+		p\textsubscript{11} &
+		p\textsubscript{12} &
+		p\textsubscript{13} &
+		p\textsubscript{14}\\
+		\hline
+	\end{tabular}\\
+\end{center}
+A new training set was born and it was built with the soft classifications of the models in the pool, over the validation set. It was ready to proceed and to serve the ensemble models.
+After several parallel attempts were done, the blending system was built with the meta-classifier.
 \subsection{Genetic algorithm}
-\subsection{Logistic Regression}
+This approach started as a side way, when we were already testing the stacking ensemble.
+
+The idea behind genetic programming, is to emulate the natural species evolution, by encoding the the \textit{chromosomes} in the process with data structures.
+The chromosomes represent the possible solutions for the problem and they have to "evolve", in order to get fitter and fitter for the goal.
+Several operators must be determined to perform this evolution.
+Once a first \textit{generation} of feasible chromosomes has been formed, they have to be evaluate according to a \textit{fitness function}, which asses how well a chromosome faces the problem.
+The best portion of chromosomes are picked to be part of the next generation, and this is called \textit{elitism}. The solutions left are given a probabilities to join the elite ones, in order to form a new generation with about the same size as the previous. This step is called \textit{selection}.
+The chromosomes picked in the selection stage are assigned a high \textit{crossover} probability.
+The crossover operator handles the "born" of new chromosomes, mixing parents alleles in a certain way. The mixing method is highly correlated to the chosen encoding strategy.
+Each newborn is give a low probability to undergo a mutation. This step often seems useless, but it's pretty important, in order to explore a higher spectrum of solutions, which couldn't be expanded by the mating operators only.
+After the new population has been accepted, it is ready to be validated through the previously define fitness function.
+The loop holds, until a solution is found, or, like in our case, the process sticks to a local or global maximum.
+
+\subsubsection{Genetic operators}
+
+We setted the genetic algorithm with the support of the Deap library for Python, setting these operators:
+\begin{itemize}
+	\item[\PencilRight]\textit{Encoding}: each chromosomes represented a weighting vector for the outcome of our three classifiers. Each allele of the chromosome was float valued, with numbers between 0 and 5, generated randomly, with a uniform distribution. We started with normalized weights, but the spectrum of the solution explored was way too poor to fit the needs.
+	This range was given after observing the weights that the Logistic Regression model were assigning to the inputs received, that was wider and involved even negative values.
+	\begin{center}
+		\begin{tabular}{@{}c|c|c|c|c|c|c|c|c|c|c|c|c|c|c@{}}
+			\multicolumn{15}{c}{Chromosome} \\
+			\hline
+			\multicolumn{5}{c|}{Binary Weights} & 
+			\multicolumn{5}{c|}{Multiclass Weights} & 
+			\multicolumn{5}{c}{Text-based Weights}\\
+			\hline
+			w\textsubscript{0} &
+			w\textsubscript{1} &
+			w\textsubscript{2} &
+			w\textsubscript{3} &
+			w\textsubscript{4} &
+			w\textsubscript{5} &
+			w\textsubscript{6} &
+			w\textsubscript{7} &
+			w\textsubscript{8} &
+			w\textsubscript{9} &
+			w\textsubscript{10} &
+			w\textsubscript{11} &
+			w\textsubscript{12} &
+			w\textsubscript{13} &
+			w\textsubscript{14}\\
+			\hline
+		\end{tabular}\\
+	\end{center}
+
+	We randomly generated 200 chromosomes for the initial population.\\
+	\item[\PencilRight]\textit{Fitness evaluation}: the fitness function that assessed the value of the solutions was somehow similar to the one used in the other stacking method.
+	We applied the weights of our chromosomes to the samples in our dataset.
+	
+	For each sample, we made pairwise additions, among the outputs of different classifiers, multiplied by the chromosome's weights, for the same category:
+	\begin{center}
+		\begin{tabular}{@{}c@{}}
+			
+			\multicolumn{1}{c}{Binary Components}\\
+			\hline
+			\multicolumn{1}{c}{p\textsubscript{0} * w\textsubscript{0} ... p\textsubscript{4} * w\textsubscript{4}}\\
+			\hline\\
+			\multicolumn{1}{c}{+}\\
+			
+			\\\multicolumn{1}{c}{Multiclass Components}\\
+			\hline
+			\multicolumn{1}{c}{p\textsubscript{0} * w\textsubscript{0} ... p\textsubscript{4} * w\textsubscript{4}}\\
+			\hline\\
+			\multicolumn{1}{c}{+}\\
+			
+			\\\multicolumn{1}{c}{Text-based Components}\\
+			\hline
+			\multicolumn{1}{c}{p\textsubscript{0} * w\textsubscript{0} ... p\textsubscript{4} * w\textsubscript{4}}\\
+			\hline\\
+			\multicolumn{1}{c}{=}\\
+			
+			\\\multicolumn{1}{c}{Resulting Prediction}\\
+			\hline
+			\multicolumn{1}{c}{\textbf{p\textsubscript{0}} \textbf{p\textsubscript{1}} \textbf{p\textsubscript{2}} \textbf{p\textsubscript{3}} \textbf{p\textsubscript{4}}}\\
+			\hline\\
+		\end{tabular}
+	\end{center}
+	
+	In order to stick to the probabilities nature, the computed prediction had been normalized.
+	
+	That prediction has been compared with the known real target for the examined sample.
+	Since the targets of our dataset aren't soft valued, we took the maximum probability of the computed prediction to make the comparison with the actual class.
+	Our fitness function aims to favourite those solutions which maximizes the F1 macro score, as it has been for the validation of the classifiers, until this stage.
+	
+	During this process, the problem we had to face was that we wanted to produce soft classifications, because we knew that our collected data presents similar patterns within the same categories. This means that the algorithms easily classify our test set, because of the distinctive traits found for each target. In order to mitigate the real test error, over unseen samples, we wanted the prediction to be as smooth as possible, without confusing the F1 score interpretation. In addition, the multiclass Random Forest was setted with the maximum depth possible for its estimators, that implies a drastic reduction of impure leaves, leading to hard classifications.
+	
+	We faced the problem involving a smoothing factor to our fitness function.\\
+	When computing a sample, we populated a Confusion Matrix of the prediction, using the above-mentioned method to match predicted and actual classes. The matrix helped us computing the F1 macro score easily. At the same time, we counted every hard classification, marking as 'hard' every computed prediction that contained a probability greater or equal to \textbf{0.8}, among its five stored values.
+	This count was used as a penalty, it has been averaged for the number of samples, and then subtracted to the computed F1 score of that chromosome. In order to privilege the maximization of the F1 factor, instead of the minimization of the penalty, the final fitness function assigned this score to each chromosome:
+	\[ Fitness = 3 \times F1\_score - Penalty \]
+	This way to operate didn't affect the overall F1 of the sample, since penalizing hard classifications didn't discourage the system to look for values high enough to have a dominant category in the prediction.
+	
+	Once every chromosome has been evaluated, they could proceed to the next steps of the algorithm.
+	
+	\item[\PencilRight]\textit{Selection}: the selection phase handles the choice over which chromosomes pick for mating. Several pre-implemented methods are available, but we used the tournament method. It works selecting the size \textit{K} of the tournament, which we chose to be 3. Then, it randomly selects \textit{K} (3) chromosomes from the population and places it inside a pool. Then it compares their fitness. The chromosome with the best fitness has probability \textit{p} (the crossover probability) to be selected for mating. The second has $ p*(1-p) $ chance to get selected, the third $ p*((1-p)^{2}) $.
+	\item[\PencilRight]\textit{Crossover}: The crossover probability has been setted to 95\%.
+	The crossover operator wasn't something already implemented by the library, as for the fitness function. Our operator used to produce two brand new chromosomes for the next generations.
+	The first child is the unweighted mean of its parents:
+	\[ [x_{0}, x_{1}, ... x_{14}] \oplus [y_{0}, y_{1}, ... y_{14}] = [\frac{x_{0}+y_{0}}{2}, \frac{x_{1}+y_{1}}{2}, ... \frac{x_{14}+y_{14}}{2}]\]
+	The second child is the weighted mean of its parents, computing the weights with respect to the fitness of the two mating chromosomes:
+	\[ f_{x} = \frac{fitness_{x}}{fitness_{x}+fitness_{y}} \]
+	\[ f_{y} = \frac{fitness_{y}}{fitness_{x}+fitness_{y}} \]
+		\[ [x_{0}, x_{1}, ..., x_{14}] \oplus [y_{0}, y_{1}, ..., y_{14}] = [x_{0}*f_{x}+y_{0}*f_{y}, ... x_{14}*f_{x}+y_{14}*f_{y} ]\]
+		
+	The retrieved children used to be part of the upcoming generation.
+	\item[\PencilRight]\textit{Elitism}: This part was necessary, in order to not lose the best solutions found so far. It is a sort of insurance, which guarantees to keep, at least, the best situation until this stage, and to let it take part of the next generations of solution. We preserved our three best chromosomes for each generations and move them to the next stages.
+	\item[\PencilRight]\textit{Mutation}: The mutation probability is generally setted to low values, like what happens in nature. It represent the error in DNA replications from the parents and it shouldn't reach the 1\% of probability to occur.
+	Although, we wanted to force some mutation, because, as said before, we needed a wider space of solutions and the elitism helped us in containing the damages of such mutations. In the worst cases, all the chromosomes have had been damaged and resulted as useless, but the elitism had preserved the best ones and kept it untouched. So we imposed a 45\% of mutation probability, for each newborn solutions, before entering the pool.
+	
+	Our mutation operator was a decoration of the value changing method already implemented: we randomly used to pick three elements from the chromosome and set them to zero.
+\end{itemize}
+
+\subsubsection{Results}
+
+
+
+\subsection{Logistic regression}
 \section{Validation}
