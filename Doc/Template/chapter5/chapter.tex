@@ -497,12 +497,12 @@ Each sample of this new dataset contains 15 elements, 5 soft predictions (one fo
 		\hline
 	\end{tabular}
 \end{center}
-A new training set was born and it was built with the soft classifications of the models in the pool, over the validation set. It was ready to proceed and to serve the ensemble models.
+A new training set was born and it was built with the soft classifications of the models in the pool, over the validation set. It was ready to proceed and to serve the ensemble models.\\
 
 \begin{figure}[htp!]
 	\centering
 	\includegraphics[width=\columnwidth]{chapter5/figure/stacking.png}
-	\caption{Prediction pipeline with stacking ensemble}
+	\caption{Training pipeline of theNodv stacking ensemble}
 	\label{fig:stacking_pipeline}
 \end{figure}
 The pipeline for perform the training of the ensemble models is resumed in Figure \ref{fig:stacking_pipeline}.
@@ -842,7 +842,13 @@ The algorithms seem to not improve after 75 maximum iterations setted.
 Moreover, the SAGA solver gains slightly better results, in terms of F1 score, as it reaches 0.9734 in this metric, compared with the score obtained with LIBLINEAR solver, which is 0.9727.
 
 The final Logistic Regression meta-classifier has been fitted with the Scikit-learn library, with this setting:\\
-\textit{LogisticRegression(max\_iter = 100, penalty = "l1", solver = "saga", C = 1, multi\_class = "multinomial", fit\_intercept = True)}.\\
+\textit{LogisticRegression(max\_iter = 100, penalty = "l1", solver = "saga", C = 1, multi\_class = "multinomial", fit\_intercept = True, class\_weight = "balanced")}.\\
 The \textit{C} parameter stands for $ \frac{1}{\lambda} $, the regularization coefficient.
-
+The balanced class weights means that the model automatically adjusts class weights inversely proportional to class frequencies in training set.\\
+This setting obtained the following scores in a 10-fold crossvalidation:
+\begin{itemize}
+	\item[\PencilRight] \textit{Precision}: 0.972
+	\item[\PencilRight] \textit{Recall}: 0.974
+	\item[\PencilRight] \textit{F1 score}: 0.973
+\end{itemize}
 \section{Validation}

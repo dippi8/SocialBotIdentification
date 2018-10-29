@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.10.16)  29 OCT 2018 20:31
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.10.16)  29 OCT 2018 20:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -762,12 +762,18 @@ Overfull \hbox (1.959pt too wide) in paragraph at lines 475--499
  [] 
  []
 
-<chapter5/figure/stacking.png, id=283, 1613.02625pt x 2023.56pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 500--501
+
+ []
+
+[58]
+<chapter5/figure/stacking.png, id=286, 1613.02625pt x 2023.56pt>
 File: chapter5/figure/stacking.png Graphic file (type png)
 <use chapter5/figure/stacking.png>
 Package pdftex.def Info: chapter5/figure/stacking.png  used on input line 504.
 (pdftex.def)             Requested size: 360.0pt x 451.607pt.
-[58] [59 <./chapter5/figure/stacking.png>] [60]
+ [59 <./chapter5/figure/stacking.png>] [60]
 Overfull \hbox (24.72624pt too wide) in paragraph at lines 544--567
  [] 
  []
@@ -821,12 +827,8 @@ File: chapter5/figure/logreg_l1_far.png Graphic file (type png)
 Package pdftex.def Info: chapter5/figure/logreg_l1_far.png  used on input line 
 826.
 (pdftex.def)             Requested size: 175.0pt x 131.24489pt.
- [69])
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [70 <./chapter5/figure/logreg_l1_close.png> <./chapter5/figure/logreg_l1_far.p
-ng>]
-[71]
+ [69] [70 <./chapter5/figure/logreg_l1_close.png> <./chapter5/figure/logreg_l1_
+far.png>]) [71]
 \openout2 = `chapter6/chapter.aux'.
 
  (./chapter6/chapter.tex [72
@@ -926,7 +928,7 @@ l/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local
 /texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/t
 exlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/te
 xlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb>
-Output written on thesis.pdf (101 pages, 2864374 bytes).
+Output written on thesis.pdf (101 pages, 2864876 bytes).
 PDF statistics:
  459 PDF objects out of 1000 (max. 8388607)
  291 compressed objects within 3 object streams
