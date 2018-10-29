@@ -1,5 +1,12 @@
 \begin{thebibliography}{1}
 
+\bibitem{SAGA}
+LIENS MSR INRIA) Simon Lacoste-Julien (INRIA Paris Rocquencourt LIENS
+  MSR~INRIA) Aaron~Defazio, Francis Bach (INRIA Paris~Rocquencourt.
+\newblock Saga: A fast incremental gradient method with support for
+  non-strongly convex composite objectives.
+\newblock 2014.
+
 \bibitem{Yang}
 R.~Harkreader C.~Yang and G.~Gu.
 \newblock Empirical evaluation and new design for fighting evolving twitter
@@ -16,6 +23,11 @@ Kyumin Lee, Brian~David Eoff, and James Caverlee.
 \newblock Seven months with the devils: a long-term study of content polluters
   on twitter.
 \newblock 2011.
+
+\bibitem{SAG}
+Francis~Bach Mark~Schmidt, Nicolas Le~Roux.
+\newblock Minimizing finite sums with the stochastic average gradient.
+\newblock 2017.
 
 \bibitem{Varol}
 Clayton A. Davis Filippo Menczer Alessandro~Flammini Onur~Varol,

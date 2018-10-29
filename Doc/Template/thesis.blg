@@ -17,9 +17,17 @@ The style file: plain.bst
 A level-1 auxiliary file: appendixA/appendix.aux
 A level-1 auxiliary file: appendixB/appendix.aux
 Database file #1: references.bib
+Repeated entry---line 32 of file references.bib
+ : @article{Lee11sevenmonths
+ :                          ,
+I'm skipping whatever remains of this entry
 Warning--entry type for "Botometer" isn't style-file defined
---line 43 of file references.bib
+--line 65 of file references.bib
 Warning--I didn't find a database entry for "von2004design"
+Too many commas in name 1 of "Clayton A. Davis, Onur Varol, Emilio Ferrara, Alessandro Flammini, Filippo Menczer" for entry Botometer
+while executing---line 1049 of file plain.bst
+Too many commas in name 1 of "Clayton A. Davis, Onur Varol, Emilio Ferrara, Alessandro Flammini, Filippo Menczer" for entry Botometer
+while executing---line 1049 of file plain.bst
 Name 1 in "C. Yang, R. Harkreader, and G. Gu." has a comma at the end for entry Yang
 while executing---line 1049 of file plain.bst
 Too many commas in name 1 of "Stefano Cresci, Roberto Di Pietro, Marinella Petrocchi, Angelo Spognardi, Maurizio Tesconi" for entry Cresci
@@ -30,10 +38,23 @@ Too many commas in name 1 of "Onur Varol, Emilio Ferrara, Clayton A. Davis, Fili
 while executing---line 1049 of file plain.bst
 Too many commas in name 1 of "Onur Varol, Emilio Ferrara, Clayton A. Davis, Filippo Menczer, Alessandro Flammini" for entry Varol
 while executing---line 1049 of file plain.bst
-Too many commas in name 1 of "Clayton A. Davis, Onur Varol, Emilio Ferrara, Alessandro Flammini, Filippo Menczer" for entry Botometer
+Too many commas in name 1 of "Aaron Defazio, Francis Bach (INRIA Paris - Rocquencourt, LIENS, MSR - INRIA), Simon Lacoste-Julien (INRIA Paris - Rocquencourt, LIENS, MSR - INRIA)" for entry SAGA
 while executing---line 1049 of file plain.bst
-Too many commas in name 1 of "Clayton A. Davis, Onur Varol, Emilio Ferrara, Alessandro Flammini, Filippo Menczer" for entry Botometer
+Too many commas in name 1 of "Aaron Defazio, Francis Bach (INRIA Paris - Rocquencourt, LIENS, MSR - INRIA), Simon Lacoste-Julien (INRIA Paris - Rocquencourt, LIENS, MSR - INRIA)" for entry SAGA
 while executing---line 1049 of file plain.bst
+Too many commas in name 1 of "Aaron Defazio, Francis Bach (INRIA Paris - Rocquencourt, LIENS, MSR - INRIA), Simon Lacoste-Julien (INRIA Paris - Rocquencourt, LIENS, MSR - INRIA)" for entry SAGA
+while executing---line 1049 of file plain.bst
+Too many commas in name 1 of "Aaron Defazio, Francis Bach (INRIA Paris - Rocquencourt, LIENS, MSR - INRIA), Simon Lacoste-Julien (INRIA Paris - Rocquencourt, LIENS, MSR - INRIA)" for entry SAGA
+while executing---line 1049 of file plain.bst
+Too many commas in name 1 of "Aaron Defazio, Francis Bach (INRIA Paris - Rocquencourt, LIENS, MSR - INRIA), Simon Lacoste-Julien (INRIA Paris - Rocquencourt, LIENS, MSR - INRIA)" for entry SAGA
+while executing---line 1090 of file plain.bst
+Too many commas in name 1 of "Aaron Defazio, Francis Bach (INRIA Paris - Rocquencourt, LIENS, MSR - INRIA), Simon Lacoste-Julien (INRIA Paris - Rocquencourt, LIENS, MSR - INRIA)" for entry SAGA
+while executing---line 1090 of file plain.bst
+Too many commas in name 1 of "Aaron Defazio, Francis Bach (INRIA Paris - Rocquencourt, LIENS, MSR - INRIA), Simon Lacoste-Julien (INRIA Paris - Rocquencourt, LIENS, MSR - INRIA)" for entry SAGA
+while executing---line 1090 of file plain.bst
+Too many commas in name 1 of "Aaron Defazio, Francis Bach (INRIA Paris - Rocquencourt, LIENS, MSR - INRIA), Simon Lacoste-Julien (INRIA Paris - Rocquencourt, LIENS, MSR - INRIA)" for entry SAGA
+while executing---line 1090 of file plain.bst
+Warning--empty journal in SAGA
 Name 1 in "C. Yang, R. Harkreader, and G. Gu." has a comma at the end for entry Yang
 while executing---line 1090 of file plain.bst
 Warning--empty journal in Yang
@@ -42,6 +63,7 @@ while executing---line 1090 of file plain.bst
 Too many commas in name 1 of "Clayton A. Davis, Onur Varol, Emilio Ferrara, Alessandro Flammini, Filippo Menczer" for entry Botometer
 while executing---line 1090 of file plain.bst
 Warning--empty journal in Lee11sevenmonths
+Warning--empty journal in SAG
 Too many commas in name 1 of "Onur Varol, Emilio Ferrara, Clayton A. Davis, Filippo Menczer, Alessandro Flammini" for entry Varol
 while executing---line 1090 of file plain.bst
 Too many commas in name 1 of "Onur Varol, Emilio Ferrara, Clayton A. Davis, Filippo Menczer, Alessandro Flammini" for entry Varol
@@ -53,45 +75,45 @@ while executing---line 1090 of file plain.bst
 Too many commas in name 1 of "Stefano Cresci, Roberto Di Pietro, Marinella Petrocchi, Angelo Spognardi, Maurizio Tesconi" for entry Cresci
 while executing---line 1090 of file plain.bst
 Warning--empty journal in Cresci
-You've used 6 entries,
+You've used 8 entries,
             2118 wiz_defined-function locations,
-            544 strings with 5369 characters,
-and the built_in function-call counts, 1373 in all, are:
-= -- 123
-> -- 65
+            554 strings with 5761 characters,
+and the built_in function-call counts, 1779 in all, are:
+= -- 161
+> -- 79
 < -- 0
-+ -- 27
-- -- 20
-* -- 65
-:= -- 255
-add.period$ -- 17
-call.type$ -- 6
-change.case$ -- 28
++ -- 33
+- -- 24
+* -- 81
+:= -- 331
+add.period$ -- 23
+call.type$ -- 8
+change.case$ -- 36
 chr.to.int$ -- 0
-cite$ -- 11
-duplicate$ -- 57
-empty$ -- 108
-format.name$ -- 20
-if$ -- 270
+cite$ -- 15
+duplicate$ -- 77
+empty$ -- 142
+format.name$ -- 24
+if$ -- 350
 int.to.chr$ -- 0
-int.to.str$ -- 6
-missing$ -- 5
-newline$ -- 32
-num.names$ -- 12
-pop$ -- 43
+int.to.str$ -- 8
+missing$ -- 7
+newline$ -- 42
+num.names$ -- 16
+pop$ -- 55
 preamble$ -- 1
-purify$ -- 22
+purify$ -- 28
 quote$ -- 0
-skip$ -- 45
+skip$ -- 59
 stack$ -- 0
-substring$ -- 31
+substring$ -- 41
 swap$ -- 1
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 24
-warning$ -- 5
-while$ -- 12
-width$ -- 7
-write$ -- 55
-(There were 14 error messages)
+type$ -- 32
+warning$ -- 7
+while$ -- 16
+width$ -- 9
+write$ -- 73
+(There were 23 error messages)
