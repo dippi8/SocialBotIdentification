@@ -687,51 +687,162 @@ Thus, we discarded the idea of using the genetic programming to emulate a Logist
 In order to mitigate the lacking of soft classifications, we chose to rely on the regularization factors that belong to the training algorithm of the Logistic Regression.
 This kind of models is often involved in stacking other classifiers, with a binary purpose.
 
-
+\subsubsection{Dataset}
+The same training set has been used for train both the Genetic and Logistic models.
+Since we were managing a multilabel datasets, we knew that the ensemble meta-model would had been adapted to this job. The most common tool used for stacking purposes is the Logistic Regression, which performs well on binary separations. We decided to test this model on a multinomial approach, with a softmax activation function, instead of trying the already visited One-vs-Rest method.
 
 \subsubsection{Comparison with Random Forest}
 We didn't wanted to blindly select this model over some others tool, especially over Random Forest, which proved us to perform well in multiclass classifications.
 Thus, we tested these two algorithms with the new dataset.
+We ran some default configurations of the models, in order to have a raw comparison to trace a line between them.
 
-We tried two regularization terms for the Logistic model.
-Those terms are parameters added to the minimization of the characteristic loss function. Their purpose is to avoid the weights to explode and the model to become more sensitive to noisy data. In other words, they are involved to prevent overfitting.
+\begin{figure}{htp!}
+	\begin{multicols}{2}
+		\includegraphics[width=\linewidth]{chapter5/figure/logreg_default.png}\par 
+		\caption{LogReg with raw settings}
+		\label{fig:lr_def}
+		\includegraphics[width=\linewidth]{chapter5/figure/random_forest_default.png}\par 
+		\caption{Random Forest with raw settings}
+		\label{fig:rf_def}
+	\end{multicols}
+	\caption{Stacking models comparison}
+\end{figure}
+
+Figure \ref{fig:lr_def} shows the early convergence of the Logistic model's F1 score, with low maximum iterations. The model has been tested with Lasso penalty and two different solvers, but the results, over the increasing of the training epochs, are way similar.
+The Random Forest, as shown in Figure \ref{fig:rf_def}, needs lot of estimators to top the performance of the Logistic Regression. It was tested over the number of features to consider for the splits ($ \log(|features|) $ and $ \sqrt{|features|} $), along with an increasing number of trees.
+
+We preferred the lighter Logistic model over the Forest ensemble, for performance matters and prediction time: Logistic predictions take 0.6ms in average, in comparison with Random Forest with those settings, which averages 100ms to provide an outcome over a single sample.
+
+\subsubsection{Hyperparameters tuning}
+We tried two regularization terms for the Logistic model and several numbers of maximum iterations for the training algorithms.
+The regularization terms are parameters computed in addition with the minimization of the characteristic loss function. Their purpose is to avoid the weights to explode and the model to become more sensitive to noisy data. In other words, they are involved to prevent overfitting.
 The idea is that the loss function, gets modified as follows
 \[ \mathbf{L(w)} = L_{D}(w) + \lambda L_{W}(w)\]
 Where $ L_{D}(w)  $ represent the error on the data and $ L_{W}(w)  $ is the term representing the model complexity. In general, smoother weights implies lower model complexity. The lighter the complexity, the lower the variance of the model and the risk perform overfitting.
+The parameter $ \mathit{\lambda} $ has to be tuned with a validation method.
+
 The penalties that we explored were:
 \begin{itemize}
-	\item[\PencilRight] \textit{Lasso (L1)}:
-	\item[\PencilRight] \textit{Ridge (L2)}:
+	\item[\PencilRight] \textit{Lasso (L\textsubscript{1})}:
+	\[ \mathbf{L_{1}(w) }= \frac{\lambda}{2} ||\mathbf{w}||_{1} \]
+	where $ ||\mathbf{w}||_{1} = \sum_{i=1}^{N}|w_{i}| $
+		
+	This regularization function is non-linear and doesn't provide a closed-form solution. It tends to cut out some features from the model, yielding to sparse and lighter model. It can be seen as an implicit way to apply features selection.
+	
+	\item[\PencilRight] \textit{Ridge (L\textsubscript{2})}:
+	\[ \mathbf{L_{2}(w) }= \frac{\lambda}{2} ||\mathbf{w}||^{2}_{2} \]
+	where $ ||\mathbf{w}||^{2}_{2} = \sum_{i=1}^{N}w_{i}^{2} $
+	
+	This softer term tends to shrink the weights, keeping the loss function quadratic in \textbf{w} and closed forum solution exists.
 \end{itemize}
+\begin{figure}
+	\includegraphics[width=\columnwidth]{chapter5/figure/logreg_l1_lambda.png}\par 
+	\caption{Lasso, $ \lambda$ = [0.1, 1, 10, 100]}
+	\label{fig:lr_lasso_lambda}
+\end{figure}
+\begin{figure}
+	\includegraphics[width=\columnwidth]{chapter5/figure/logreg_l2_lambda.png}\par 
+	\caption{Ridge, $ \lambda$ = [0.1, 1, 10, 100}
+	\label{fig:lr_ridge_lambda}
+\end{figure}
+
+Figure \ref{fig:lr_lasso_lambda} highlights the slightly better results obtained with the Lasso penalty, with unitary $ \lambda $ coefficient (Lasso F1 score: 0.973).
+The ridge penalty needs to be weakened ($ \lambda $ = 0.1) in order to top the Lasso performance, which is a compromise hard to deal with. The smaller the regularization coefficient, the higher the model complexity, as said before.
+Moreover, we decided to gather further consideration, by looking inside the weighting applied by those two terms.
+
+\begin{center}
+	\begin{tabular}{@{}ccccc@{}}
+		\multicolumn{5}{c}{\textbf{Ridge regularization}}\\
+		\hline\hline
+		\multicolumn{5}{c}{Binary Weights}\\
+		\hline
+		\multicolumn{1}{c|}{$ 5.1e^{-16} $}&
+		\multicolumn{1}{c|}{$ 5.1e^{-16} $}&
+		\multicolumn{1}{c|}{$ 5.1e^{-16} $}&
+		\multicolumn{1}{c|}{$ 5.1e^{-16} $}&
+		\multicolumn{1}{c}{$ -8.8e^{-17} $}\\
+		\hline
+		\multicolumn{5}{c}{Text-based Weights}\\
+		\hline
+		\multicolumn{1}{c|}{$ -2.2e^{-15} $}&
+		\multicolumn{1}{c|}{$ -1.4e^{-14} $}&
+		\multicolumn{1}{c|}{$ -5.1e^{-15} $}&
+		\multicolumn{1}{c|}{$ -4.2e^{-15} $}&
+		\multicolumn{1}{c}{$ 1.1e^{-16} $}\\
+		\hline
+		\multicolumn{5}{c}{Multiclass Weights}\\
+		\hline
+		\multicolumn{1}{c|}{$ -3.0e^{-15} $}&
+		\multicolumn{1}{c|}{$ 2.0e^{-15} $}&
+		\multicolumn{1}{c|}{$ -1.5e^{-16} $}&
+		\multicolumn{1}{c|}{$ 5.7e^{-15} $}&
+		\multicolumn{1}{c|}{$ -4.2e^{-15} $}\\
+		\hline\hline\\
+	\end{tabular}
+\end{center}
+The Ridge regularization leads to very small weights, and negative ones too. Even with unitary $ \lambda  $ coefficient, it is hard to distinguish a discrimination among features. This approach would have yielded a smoother model, but with the ability to give a chance to every classifier to distinguish among targets.
+We wanted to get some further insights from the other weighting.
+
+\begin{center}
+	\begin{tabular}{@{}ccccc@{}}
+		\multicolumn{5}{c}{\textbf{Lasso regularization}}\\
+		\hline\hline
+		\multicolumn{5}{c}{Binary Weights}\\
+		\hline
+		\multicolumn{1}{c|}{0.0}&
+		\multicolumn{1}{c|}{0.0}&
+		\multicolumn{1}{c|}{0.0}&
+		\multicolumn{1}{c|}{0.0}&
+		\multicolumn{1}{c}{1.391}\\
+		\hline
+		\multicolumn{5}{c}{Text-based Weights}\\
+		\hline
+		\multicolumn{1}{c|}{0.020}&
+		\multicolumn{1}{c|}{1.297}&
+		\multicolumn{1}{c|}{0.0}&
+		\multicolumn{1}{c|}{0.182}&
+		\multicolumn{1}{c}{0.952}\\
+		\hline
+		\multicolumn{5}{c}{Multiclass Weights}\\
+		\hline
+		\multicolumn{1}{c|}{1.316}&
+		\multicolumn{1}{c|}{0.480}&
+		\multicolumn{1}{c|}{1.457}&
+		\multicolumn{1}{c|}{2.087}&
+		\multicolumn{1}{c}{0.435}\\
+		\hline\hline\\
+	\end{tabular}
+\end{center}
+The L\textsubscript{1} term, as expected cut out some features from the model.
+Looking at the excluded attributes, we noticed that the regularization caught the nature of the binary classifier. It wasn't supposed to give some contributes to the bots inner separation, its main purpose was to detect humans from content polluters.
+Lasso seemed to understand this behaviour and decided to not consider the opinion of that classifier, when it comes to bot categories.
+Another insight got from L\textsubscript{1} is about the treatment of the text-based classifier. the Naive Bayes model couldn't distinguish with certainty between NSFW and Spam-Bots, since they act in a similar way. They just tweets click-baiting links, with catchy captions. A "blind" classifier struggles in understand the nature of those links. This is the reason that almost two contributes of Naive Bayes had been discarded from the stacking model.
+
 \begin{figure}
 	\begin{multicols}{2}
 		\includegraphics[width=\linewidth]{chapter5/figure/logreg_l1_close.png}\par 
-		\caption{LR F1 score - Lasso - low iterations}
+		\caption{Up to 150 iterations}
 		\label{fig:lr_lasso_close}
 		\includegraphics[width=\linewidth]{chapter5/figure/logreg_l1_far.png}\par 
-		\caption{LR F1 score - Lasso - high iterations}
+		\caption{Up to 5000 iterations}
 		\label{fig:lr_lasso_far}
 	\end{multicols}
-	\begin{multicols}{2}
-		\includegraphics[width=\linewidth]{chapter5/figure/logreg_l2_close.png}\par 
-		\caption{LR F1 score - Ridge - high iterations}
-		\label{fig:lr_ridge_close}
-		\includegraphics[width=\linewidth]{chapter5/figure/logreg_l2_far.png}\par 
-		\caption{LR F1 score - Ridge - low iterations}
-		\label{fig:lr_ridge_far}
-	\end{multicols}
-	\caption{Logistic Regression scores}
+	\caption{Lasso Logistic Regression scores over solvers}
 \end{figure}
-Figure \ref{fig:lr_lasso_close} shows the trend in the F1 score, along with the increasing number of iterations, applying a Lasso Regularization, the \textit{SAGA}\cite{SAGA} solver (a variant of the \textit{Stochastic Average Gradient}\cite{SAG} optimization that supports Lasso penalty).
-Figure \ref{fig:lr_ridge_close} explains the same situation, but with a Ridge penalty. Different coloured curves represent the solvers tested with the increasing number of iterations for the training phase. More precisely, we tried \textit{SAG} solver, the \textit{Newton's Method} (newton-cg), which minimizes a quadratic approximation of the cost function, finally, the  \textit{Limited-memory BFGS} (lbfgs), which is the analogue of the Newton's method, but approximating the Hessian matrix, usingan estimation to the inverse Hessian matrix. The last solver should perform well with small dataset, due to the memory required, but it may not converge.
 
-As it can be seen in Figures \ref{fig:lr_lasso_far}, \ref{fig:lr_ridge_far}, by increasing the number of maximum iterations, up to 5000, the performances remain stable in both configurations, with every solver.
-The algorithms seem to not improve after 50 maximum iterations setted.
-Moreover, the Lasso penalty gains slightly better results, in terms of F1 score, as it reaches 0.973 in this metric, compared with the score obtained with the Ridge penalty, which is 0.972.
+Since we knew our dataset and we were aware of the bias it might contain, we preferred a lighter and sparser model, over a more complete one, even when the F1 scores used to match. We wanted our model to infer on new unseen data and to be ready to give a representative statistical description of the actual situation on Twitter.
+We had to be far-sighted and not to recline on the accomplishments of the 10-fold crossvalidation. We thought that the Lasso model wuld had been performing better in out-of-box predictions.
 
+We kept the L\textsubscript{1} penalty, with $ \lambda  = 1 $   and proceeded with the hyperparameters tuning.
 
+Figure \ref{fig:lr_lasso_close} shows the trend in the F1 score, along with the increasing number of iterations, applying the \textit{SAGA}\cite{SAGA} solver (a variant of the \textit{Stochastic Average Gradient}\cite{SAG} optimization that supports Lasso penalty) and the \textit{LIBLINEAR}\cite{Liblinear}, an open source library for large-scale linear classification.
 
-\subsubsection{Dataset}
-The same training set has been used for train both the Genetic and Logistic models.
-\subsubsection{Hyperparameters tuning}
+As it can be seen in Figures \ref{fig:lr_lasso_far}, by increasing the number of maximum iterations, up to 5000, the performances remain stable with every solver.
+The algorithms seem to not improve after 75 maximum iterations setted.
+Moreover, the SAGA solver gains slightly better results, in terms of F1 score, as it reaches 0.9734 in this metric, compared with the score obtained with LIBLINEAR solver, which is 0.9727.
+
+The final Logistic Regression meta-classifier has been fitted with the Scikit-learn library, with this setting:\\
+\textit{LogisticRegression(max\_iter = 100, penalty = "l1", solver = "saga", C = 1, multi\_class = "multinomial", fit\_intercept = True)}.\\
+The \textit{C} parameter stands for $ \frac{1}{\lambda} $, the regularization coefficient.
+
 \section{Validation}
