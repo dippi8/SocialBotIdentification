@@ -354,6 +354,9 @@ This dataset has been involved to build Botometer as well, but we decided to use
 
 We setted the APIs to retrieve up tu 6,000 ids for both genuines and bots, from the Carvelee list. The process provided us 5,161 legitimate user ids, and 5,297 general bot ids (without inner classifications), because some accounts have been deleted in time.
 Then we added some new records, randomly sampling our data. This led us to reach 7,660 human accounts and 7,795 bots, forming a new dataset of 15,455 entries, with binary target.
+
+The feature vector we used is the same that came out from the feature engineering process\ref{sec:feature_vector}, except for the specific characterizing features, that weren't considered, because crafted for the inner separation among bots. We excluded the image features (\textit{NSWF\_profile} and \textit{NSFW\_avg}) and the extrinsic keywords scores (\textit{NSFW\_words\_score}, \textit{news\_spreaders\_words\_score}, \textit{spam\_bots\_words\_score}, \textit{fake\_followers\_words\_score}, \textit{genuine\_words\_score}).It has been fitted with 32 features.
+
 \subsection{Model}
 Since the different purpose of this model, we couldn't rely on the same baselines tested with the multiclass dataset. We wanted to evaluate new raw algorithms for this binary classification.
 Another round of crossvalidation, with default settings, was performed on this new dataset, exploiting the binary nature to show the \textit{Area Under the Curve} score (AUC).
@@ -387,7 +390,6 @@ We wanted a term of comparison, so we evaluated this metric even in the baseline
 \end{itemize}
 Once again, Random Forest won the comparison with the other baselines.
 We decided to let it perform this job and try to improve its AUC score, keeping one eye on the overall score too.
-The feature vector we used is the same that came out from the feature engineering process\ref{sec:feature_vector}, except for the image features, that weren't considered, because crafted for the inner separation between NSFW and Spam-Bots, that wasn't necessary for this task. It has been fitted with 36 features.
 
 The algorithm has had its parameters tuned during the validation phase.
 We decided to stick with 10-fold crossvalidation, as it was done for the baselines.
@@ -431,6 +433,7 @@ This approach would have been less empirical then other tools we could dispose. 
 We wanted to evaluate the performance obtained by these methods and chose the one that fitted our need.
 
 Both the genetic and the meta-model were trained with holdout technique, splitting the whole dataset into training and test sets. The 80\% of the samples ended up into the training set, the 20\% in the validation set.
+We had a training set for the ensemble models that contains 5022 entries.
 The data that fed the stacking methods were the predictions of the tree classifiers, over the validation set.
 In order to make those prediction without cheating, we couldn't use the models that were already fitted with the hole data. We had to retrain them with the 80\% of the records. 
 We didn't perform further Grid Search to find the best hyperparameters in this stage, because the final script that we were going to assemble was taking into account the entire dataset to train the models. Furthermore, this small variation, in terms of amount of training data, wouldn't had led us into a misinterpretation of the problem, if we had kept the same hyperparameters found earlier.
@@ -535,6 +538,8 @@ We setted the genetic algorithm with the support of the Deap library for Python,
 \begin{itemize}
 	\item[\PencilRight]\textit{Encoding}: each chromosomes represented a weighting vector for the outcome of our three classifiers. Each allele of the chromosome was float valued, with numbers between 0 and 5, generated randomly, with a uniform distribution. We started with normalized weights, but the spectrum of the solution explored was way too poor to fit the needs.
 	This range was given after observing the weights that the Logistic Regression model were assigning to the inputs received, that was wider and involved even negative values.
+	We randomly generated 200 chromosomes for the initial population, with this form.
+\end{itemize}
 	\begin{center}
 		\begin{tabular}{@{}c|c|c|c|c|c|c|c|c|c|c|c|c|c|c@{}}
 			\multicolumn{15}{c}{Chromosome} \\
@@ -561,8 +566,7 @@ We setted the genetic algorithm with the support of the Deap library for Python,
 			\hline
 		\end{tabular}\\
 	\end{center}
-
-	We randomly generated 200 chromosomes for the initial population.\\
+\begin{itemize}
 	\item[\PencilRight]\textit{Fitness evaluation}: the fitness function that assessed the value of the solutions was somehow similar to the one used in the other stacking method.
 	We applied the weights of our chromosomes to the samples in our dataset.
 	
@@ -666,7 +670,7 @@ In the last run, from the 5\textsubscript{th} generation there was no improvemen
 	\end{center}
 	\item[\PencilRight] \textit{Fitness}: 2.184
 	\item[\PencilRight] \textit{F1 score}: 0.964
-	\item[\PencilRight] \textit{Percentage of hard classifications}: 0.708
+	\item[\PencilRight] \textit{Percentage of hard classifications}: 70.8\%
 \end{itemize}
 The solution found didn't take into account the first and the third element of the input, which correspond with the outcome of the binary classifier, for both the NSFW and the Spam-Bot categories. It seemed legit, because the main difference between that model and the multiclass classifier, except the binary task, is the lacking of the NSFW specific features. It makes sense that this model wasn't able to contribute to the separation between those kinds of bot.
 That feature vector should had been involved in the final model, simply as a weight for the weighted mean of the probability of each classifier, for each sample to predict over.
@@ -676,5 +680,58 @@ Although the result seemed promising, we knew that a "simple" weighted mean of t
 We decided to test this final weighting vector with new unseen samples, selected manually for the purpose.
 The comparison with picked samples didn't match the expectations given by the metric evaluation, so we tried a different and more sophisticated stacking method.
 
-\subsection{Logistic regression}
+\subsection{Logistic Regression}
+The reason behind the choice of a meta-classifier is that we wanted a more complex way to perform inner weighting of the outcomes that we had from other models.
+A simple weighted mean wasn't enough for this purpose. Furthermore, implementing a logistic-like loss to evaluate the fitness of a genetic algorithm would have mean to apply the Logistic Regression training model, without performing gradient descent, but with a genetic approach. It would have been just unnecessary and computationally expensive.
+Thus, we discarded the idea of using the genetic programming to emulate a Logistic model, even if the smoothing factor used for that try was a good insight for our task.
+In order to mitigate the lacking of soft classifications, we chose to rely on the regularization factors that belong to the training algorithm of the Logistic Regression.
+This kind of models is often involved in stacking other classifiers, with a binary purpose.
+
+
+
+\subsubsection{Comparison with Random Forest}
+We didn't wanted to blindly select this model over some others tool, especially over Random Forest, which proved us to perform well in multiclass classifications.
+Thus, we tested these two algorithms with the new dataset.
+
+We tried two regularization terms for the Logistic model.
+Those terms are parameters added to the minimization of the characteristic loss function. Their purpose is to avoid the weights to explode and the model to become more sensitive to noisy data. In other words, they are involved to prevent overfitting.
+The idea is that the loss function, gets modified as follows
+\[ \mathbf{L(w)} = L_{D}(w) + \lambda L_{W}(w)\]
+Where $ L_{D}(w)  $ represent the error on the data and $ L_{W}(w)  $ is the term representing the model complexity. In general, smoother weights implies lower model complexity. The lighter the complexity, the lower the variance of the model and the risk perform overfitting.
+The penalties that we explored were:
+\begin{itemize}
+	\item[\PencilRight] \textit{Lasso (L1)}:
+	\item[\PencilRight] \textit{Ridge (L2)}:
+\end{itemize}
+\begin{figure}
+	\begin{multicols}{2}
+		\includegraphics[width=\linewidth]{chapter5/figure/logreg_l1_close.png}\par 
+		\caption{LR F1 score - Lasso - low iterations}
+		\label{fig:lr_lasso_close}
+		\includegraphics[width=\linewidth]{chapter5/figure/logreg_l1_far.png}\par 
+		\caption{LR F1 score - Lasso - high iterations}
+		\label{fig:lr_lasso_far}
+	\end{multicols}
+	\begin{multicols}{2}
+		\includegraphics[width=\linewidth]{chapter5/figure/logreg_l2_close.png}\par 
+		\caption{LR F1 score - Ridge - high iterations}
+		\label{fig:lr_ridge_close}
+		\includegraphics[width=\linewidth]{chapter5/figure/logreg_l2_far.png}\par 
+		\caption{LR F1 score - Ridge - low iterations}
+		\label{fig:lr_ridge_far}
+	\end{multicols}
+	\caption{Logistic Regression scores}
+\end{figure}
+Figure \ref{fig:lr_lasso_close} shows the trend in the F1 score, along with the increasing number of iterations, applying a Lasso Regularization, the \textit{SAGA}\cite{SAGA} solver (a variant of the \textit{Stochastic Average Gradient}\cite{SAG} optimization that supports Lasso penalty).
+Figure \ref{fig:lr_ridge_close} explains the same situation, but with a Ridge penalty. Different coloured curves represent the solvers tested with the increasing number of iterations for the training phase. More precisely, we tried \textit{SAG} solver, the \textit{Newton's Method} (newton-cg), which minimizes a quadratic approximation of the cost function, finally, the  \textit{Limited-memory BFGS} (lbfgs), which is the analogue of the Newton's method, but approximating the Hessian matrix, usingan estimation to the inverse Hessian matrix. The last solver should perform well with small dataset, due to the memory required, but it may not converge.
+
+As it can be seen in Figures \ref{fig:lr_lasso_far}, \ref{fig:lr_ridge_far}, by increasing the number of maximum iterations, up to 5000, the performances remain stable in both configurations, with every solver.
+The algorithms seem to not improve after 50 maximum iterations setted.
+Moreover, the Lasso penalty gains slightly better results, in terms of F1 score, as it reaches 0.973 in this metric, compared with the score obtained with the Ridge penalty, which is 0.972.
+
+
+
+\subsubsection{Dataset}
+The same training set has been used for train both the Genetic and Logistic models.
+\subsubsection{Hyperparameters tuning}
 \section{Validation}

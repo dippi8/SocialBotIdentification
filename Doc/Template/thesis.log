@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.10.16)  28 OCT 2018 21:28
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.10.16)  29 OCT 2018 16:12
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -114,63 +114,112 @@ Package: transparent 2016/05/16 v1.1 Transparency via pdfTeX's color stack (HO)
 (/usr/local/texlive/2018/texmf-dist/tex/latex/oberdiek/auxhook.sty
 Package: auxhook 2016/05/16 v1.4 Hooks for auxiliary files (HO)
 ))
+(/usr/local/texlive/2018/texmf-dist/tex/latex/tools/multicol.sty
+Package: multicol 2018/04/01 v1.8r multicolumn formatting (FMi)
+\c@tracingmulticols=\count91
+\mult@box=\box26
+\multicol@leftmargin=\dimen105
+\c@unbalance=\count92
+\c@collectmore=\count93
+\doublecol@number=\count94
+\multicoltolerance=\count95
+\multicolpretolerance=\count96
+\full@width=\dimen106
+\page@free=\dimen107
+\premulticols=\dimen108
+\postmulticols=\dimen109
+\multicolsep=\skip43
+\multicolbaselineskip=\skip44
+\partial@page=\box27
+\last@line=\box28
+\maxbalancingoverflow=\dimen110
+\mult@rightbox=\box29
+\mult@grightbox=\box30
+\mult@gfirstbox=\box31
+\mult@firstbox=\box32
+\@tempa=\box33
+\@tempa=\box34
+\@tempa=\box35
+\@tempa=\box36
+\@tempa=\box37
+\@tempa=\box38
+\@tempa=\box39
+\@tempa=\box40
+\@tempa=\box41
+\@tempa=\box42
+\@tempa=\box43
+\@tempa=\box44
+\@tempa=\box45
+\@tempa=\box46
+\@tempa=\box47
+\@tempa=\box48
+\@tempa=\box49
+\c@columnbadness=\count97
+\c@finalcolumnbadness=\count98
+\last@try=\dimen111
+\multicolovershoot=\dimen112
+\multicolundershoot=\dimen113
+\mult@nat@firstbox=\box50
+\colbreak@box=\box51
+\mc@col@check@num=\count99
+)
 (/usr/local/texlive/2018/texmf-dist/tex/latex/tools/tabularx.sty
 Package: tabularx 2016/02/03 v2.11b `tabularx' package (DPC)
 
 (/usr/local/texlive/2018/texmf-dist/tex/latex/tools/array.sty
 Package: array 2018/04/07 v2.4g Tabular extension package (FMi)
-\col@sep=\dimen105
-\ar@mcellbox=\box26
-\extrarowheight=\dimen106
+\col@sep=\dimen114
+\ar@mcellbox=\box52
+\extrarowheight=\dimen115
 \NC@list=\toks15
-\extratabsurround=\skip43
-\backup@length=\skip44
-\ar@cellbox=\box27
+\extratabsurround=\skip45
+\backup@length=\skip46
+\ar@cellbox=\box53
 )
-\TX@col@width=\dimen107
-\TX@old@table=\dimen108
-\TX@old@col=\dimen109
-\TX@target=\dimen110
-\TX@delta=\dimen111
-\TX@cols=\count91
+\TX@col@width=\dimen116
+\TX@old@table=\dimen117
+\TX@old@col=\dimen118
+\TX@target=\dimen119
+\TX@delta=\dimen120
+\TX@cols=\count100
 \TX@ftn=\toks16
 )
 (/usr/local/texlive/2018/texmf-dist/tex/latex/multirow/multirow.sty
 Package: multirow 2016/11/25 v2.2 Span multiple rows of a table
-\multirow@colwidth=\skip45
-\multirow@cntb=\count92
-\multirow@dima=\skip46
-\bigstrutjot=\dimen112
+\multirow@colwidth=\skip47
+\multirow@cntb=\count101
+\multirow@dima=\skip48
+\bigstrutjot=\dimen121
 )
 (/usr/local/texlive/2018/texmf-dist/tex/latex/subfigure/subfigure.sty
 Package: subfigure 2002/03/15 v2.1.5 subfigure package
-\subfigtopskip=\skip47
-\subfigcapskip=\skip48
-\subfigcaptopadj=\dimen113
-\subfigbottomskip=\skip49
-\subfigcapmargin=\dimen114
-\subfiglabelskip=\skip50
-\c@subfigure=\count93
-\c@lofdepth=\count94
-\c@subtable=\count95
-\c@lotdepth=\count96
+\subfigtopskip=\skip49
+\subfigcapskip=\skip50
+\subfigcaptopadj=\dimen122
+\subfigbottomskip=\skip51
+\subfigcapmargin=\dimen123
+\subfiglabelskip=\skip52
+\c@subfigure=\count102
+\c@lofdepth=\count103
+\c@subtable=\count104
+\c@lotdepth=\count105
 
 ****************************************
 * Local config file subfigure.cfg used *
 ****************************************
 (/usr/local/texlive/2018/texmf-dist/tex/latex/subfigure/subfigure.cfg)
-\subfig@top=\skip51
-\subfig@bottom=\skip52
+\subfig@top=\skip53
+\subfig@bottom=\skip54
 )
 (/usr/local/texlive/2018/texmf-dist/tex/latex/tools/afterpage.sty
 Package: afterpage 2014/10/28 v1.08 After-Page Package (DPC)
 \AP@output=\toks17
-\AP@partial=\box28
-\AP@footins=\box29
+\AP@partial=\box54
+\AP@footins=\box55
 )
 (/usr/local/texlive/2018/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2017/09/02 v2.17a AMS math features
-\@mathmargin=\skip53
+\@mathmargin=\skip55
 
 For additional information on amsmath, use the `?' option.
 (/usr/local/texlive/2018/texmf-dist/tex/latex/amsmath/amstext.sty
@@ -179,49 +228,49 @@ Package: amstext 2000/06/29 v2.01 AMS text
 (/usr/local/texlive/2018/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
 \@emptytoks=\toks18
-\ex@=\dimen115
+\ex@=\dimen124
 ))
 (/usr/local/texlive/2018/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
-\pmbraise@=\dimen116
+\pmbraise@=\dimen125
 )
 (/usr/local/texlive/2018/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 2016/03/08 v2.02 operator names
 )
-\inf@bad=\count97
+\inf@bad=\count106
 LaTeX Info: Redefining \frac on input line 213.
-\uproot@=\count98
-\leftroot@=\count99
+\uproot@=\count107
+\leftroot@=\count108
 LaTeX Info: Redefining \overline on input line 375.
-\classnum@=\count100
-\DOTSCASE@=\count101
+\classnum@=\count109
+\DOTSCASE@=\count110
 LaTeX Info: Redefining \ldots on input line 472.
 LaTeX Info: Redefining \dots on input line 475.
 LaTeX Info: Redefining \cdots on input line 596.
-\Mathstrutbox@=\box30
-\strutbox@=\box31
-\big@size=\dimen117
+\Mathstrutbox@=\box56
+\strutbox@=\box57
+\big@size=\dimen126
 LaTeX Font Info:    Redeclaring font encoding OML on input line 712.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 713.
-\macc@depth=\count102
-\c@MaxMatrixCols=\count103
+\macc@depth=\count111
+\c@MaxMatrixCols=\count112
 \dotsspace@=\muskip10
-\c@parentequation=\count104
-\dspbrk@lvl=\count105
+\c@parentequation=\count113
+\dspbrk@lvl=\count114
 \tag@help=\toks19
-\row@=\count106
-\column@=\count107
-\maxfields@=\count108
+\row@=\count115
+\column@=\count116
+\maxfields@=\count117
 \andhelp@=\toks20
-\eqnshift@=\dimen118
-\alignsep@=\dimen119
-\tagshift@=\dimen120
-\tagwidth@=\dimen121
-\totwidth@=\dimen122
-\lineht@=\dimen123
+\eqnshift@=\dimen127
+\alignsep@=\dimen128
+\tagshift@=\dimen129
+\tagwidth@=\dimen130
+\totwidth@=\dimen131
+\lineht@=\dimen132
 \@envbody=\toks21
-\multlinegap=\skip54
-\multlinetaggap=\skip55
+\multlinegap=\skip56
+\multlinetaggap=\skip57
 \mathdisplay@stack=\toks22
 LaTeX Info: Redefining \[ on input line 2817.
 LaTeX Info: Redefining \] on input line 2818.
@@ -242,35 +291,35 @@ Package: rotating 2016/08/11 v2.16d rotated objects in LaTeX
 (/usr/local/texlive/2018/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
 )
-\c@r@tfl@t=\count109
-\rotFPtop=\skip56
-\rotFPbot=\skip57
-\rot@float@box=\box32
+\c@r@tfl@t=\count118
+\rotFPtop=\skip58
+\rotFPbot=\skip59
+\rot@float@box=\box58
 \rot@mess@toks=\toks23
 )
 (/usr/local/texlive/2018/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
 Package: fancyhdr 2017/06/30 v3.9a Extensive control of page headers and footer
 s
-\f@nch@headwidth=\skip58
-\f@nch@O@elh=\skip59
-\f@nch@O@erh=\skip60
-\f@nch@O@olh=\skip61
-\f@nch@O@orh=\skip62
-\f@nch@O@elf=\skip63
-\f@nch@O@erf=\skip64
-\f@nch@O@olf=\skip65
-\f@nch@O@orf=\skip66
+\f@nch@headwidth=\skip60
+\f@nch@O@elh=\skip61
+\f@nch@O@erh=\skip62
+\f@nch@O@olh=\skip63
+\f@nch@O@orh=\skip64
+\f@nch@O@elf=\skip65
+\f@nch@O@erf=\skip66
+\f@nch@O@olf=\skip67
+\f@nch@O@orf=\skip68
 )
 (/usr/local/texlive/2018/texmf-dist/tex/latex/bbding/bbding.sty
 Package: bbding 1999/04/15 v1.01 Dingbats symbols
 )
 (/usr/local/texlive/2018/texmf-dist/tex/latex/framed/framed.sty
 Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
-\OuterFrameSep=\skip67
-\fb@frw=\dimen124
-\fb@frh=\dimen125
-\FrameRule=\dimen126
-\FrameSep=\dimen127
+\OuterFrameSep=\skip69
+\fb@frw=\dimen133
+\fb@frh=\dimen134
+\FrameRule=\dimen135
+\FrameSep=\dimen136
 )
 (/usr/local/texlive/2018/texmf-dist/tex/latex/caption/caption.sty
 Package: caption 2016/02/21 v3.3-144 Customizing captions (AR)
@@ -278,15 +327,15 @@ Package: caption 2016/02/21 v3.3-144 Customizing captions (AR)
 (/usr/local/texlive/2018/texmf-dist/tex/latex/caption/caption3.sty
 Package: caption3 2016/05/22 v1.7-166 caption3 kernel (AR)
 Package caption3 Info: TeX engine: e-TeX on input line 67.
-\captionmargin=\dimen128
-\captionmargin@=\dimen129
-\captionwidth=\dimen130
-\caption@tempdima=\dimen131
-\caption@indent=\dimen132
-\caption@parindent=\dimen133
-\caption@hangindent=\dimen134
+\captionmargin=\dimen137
+\captionmargin@=\dimen138
+\captionwidth=\dimen139
+\caption@tempdima=\dimen140
+\caption@indent=\dimen141
+\caption@parindent=\dimen142
+\caption@hangindent=\dimen143
 )
-\c@ContinuedFloat=\count110
+\c@ContinuedFloat=\count119
 Package caption Info: rotating package is loaded.
 Package caption Info: subfigure package is loaded.
 )
@@ -305,31 +354,31 @@ File: latin1.def 2018/04/06 v1.3b Input encoding file
 (./appendixB/appendix.aux))
 \openout1 = `thesis.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 36.
-LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 37.
+LaTeX Font Info:    ... okay on input line 37.
 
 (/usr/local/texlive/2018/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count111
-\scratchdimen=\dimen135
-\scratchbox=\box33
-\nofMPsegments=\count112
-\nofMParguments=\count113
+\scratchcounter=\count120
+\scratchdimen=\dimen144
+\scratchbox=\box59
+\nofMPsegments=\count121
+\nofMParguments=\count122
 \everyMPshowfont=\toks26
-\MPscratchCnt=\count114
-\MPscratchDim=\dimen136
-\MPnumerator=\count115
-\makeMPintoPDFobject=\count116
+\MPscratchCnt=\count123
+\MPscratchDim=\dimen145
+\MPnumerator=\count124
+\makeMPintoPDFobject=\count125
 \everyMPtoPDFconversion=\toks27
 ) (/usr/local/texlive/2018/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
@@ -382,7 +431,7 @@ Package pdftex.def Info: logo_polimi.pdf  used on input line 24.
 polimi.pdf>])
 
 LaTeX Font Warning: Font shape `OT1/cmss/m/it' in size <10> not available
-(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 53.
+(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 54.
 
 [2
 
@@ -686,51 +735,91 @@ Overfull \hbox (7.2504pt too wide) in paragraph at lines 333--334
 reen line (\OT1/cmr/m/it/10.95 max[]depth
  []
 
-[52 <./chapter5/figure/entropy.png>] [53] [54]
+[52 <./chapter5/figure/entropy.png>]
+Overfull \hbox (10.32324pt too wide) in paragraph at lines 358--359
+\OT1/cmr/m/it/10.95 spam[]bots[]words[]score\OT1/cmr/m/n/10.95 , \OT1/cmr/m/it/
+10.95 fake[]followers[]words[]score\OT1/cmr/m/n/10.95 , \OT1/cmr/m/it/10.95 gen
+-uine[]words[]score\OT1/cmr/m/n/10.95 ).It has
+ []
+
+[53] [54]
 <chapter5/figure/gridSearch.png, id=270, 1156.32pt x 867.24pt>
 File: chapter5/figure/gridSearch.png Graphic file (type png)
 <use chapter5/figure/gridSearch.png>
-Package pdftex.def Info: chapter5/figure/gridSearch.png  used on input line 403
+Package pdftex.def Info: chapter5/figure/gridSearch.png  used on input line 405
 .
 (pdftex.def)             Requested size: 360.0pt x 269.99289pt.
 <chapter5/figure/auc.png, id=271, 1156.32pt x 867.24pt>
 File: chapter5/figure/auc.png Graphic file (type png)
 <use chapter5/figure/auc.png>
-Package pdftex.def Info: chapter5/figure/auc.png  used on input line 409.
+Package pdftex.def Info: chapter5/figure/auc.png  used on input line 411.
 (pdftex.def)             Requested size: 360.0pt x 269.99289pt.
- [55 <./chapter5/figure/gridSearch.png>] [56 <./chapter5/figure/auc.png>] [57]
-Overfull \hbox (1.959pt too wide) in paragraph at lines 472--496
+ [55 <./chapter5/figure/gridSearch.png>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [56 <./chapter5/figure/auc.png>] [57]
+Overfull \hbox (1.959pt too wide) in paragraph at lines 475--499
  [] 
  []
 
-<chapter5/figure/stacking.png, id=283, 2187.17125pt x 696.6025pt>
+<chapter5/figure/stacking.png, id=283, 1613.02625pt x 2023.56pt>
 File: chapter5/figure/stacking.png Graphic file (type png)
 <use chapter5/figure/stacking.png>
-Package pdftex.def Info: chapter5/figure/stacking.png  used on input line 501.
-(pdftex.def)             Requested size: 360.0pt x 114.65808pt.
-[58] [59 <./chapter5/figure/stacking.png>]
-Overfull \hbox (52.1013pt too wide) in paragraph at lines 539--562
+Package pdftex.def Info: chapter5/figure/stacking.png  used on input line 504.
+(pdftex.def)             Requested size: 360.0pt x 451.607pt.
+[58] [59 <./chapter5/figure/stacking.png>] [60]
+Overfull \hbox (24.72624pt too wide) in paragraph at lines 544--567
  [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 565--566
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
- []
+ [61]
+[62] [63] [64]
+Underfull \vbox (badness 1748) has occurred while \output is active []
 
-[60] [61] [62] [63]) [64]
+ [65]
+<chapter5/figure/logreg_l1_close.png, id=311, 1156.32pt x 867.24pt>
+File: chapter5/figure/logreg_l1_close.png Graphic file (type png)
+<use chapter5/figure/logreg_l1_close.png>
+Package pdftex.def Info: chapter5/figure/logreg_l1_close.png  used on input lin
+e 708.
+(pdftex.def)             Requested size: 175.0pt x 131.24489pt.
+<chapter5/figure/logreg_l1_far.png, id=312, 1156.32pt x 867.24pt>
+File: chapter5/figure/logreg_l1_far.png Graphic file (type png)
+<use chapter5/figure/logreg_l1_far.png>
+Package pdftex.def Info: chapter5/figure/logreg_l1_far.png  used on input line 
+711.
+(pdftex.def)             Requested size: 175.0pt x 131.24489pt.
+<chapter5/figure/logreg_l2_close.png, id=313, 1156.32pt x 867.24pt>
+File: chapter5/figure/logreg_l2_close.png Graphic file (type png)
+<use chapter5/figure/logreg_l2_close.png>
+Package pdftex.def Info: chapter5/figure/logreg_l2_close.png  used on input lin
+e 716.
+(pdftex.def)             Requested size: 175.0pt x 131.24489pt.
+<chapter5/figure/logreg_l2_far.png, id=314, 1156.32pt x 867.24pt>
+File: chapter5/figure/logreg_l2_far.png Graphic file (type png)
+<use chapter5/figure/logreg_l2_far.png>
+Package pdftex.def Info: chapter5/figure/logreg_l2_far.png  used on input line 
+719.
+(pdftex.def)             Requested size: 175.0pt x 131.24489pt.
+
+[66] [67 <./chapter5/figure/logreg_l1_close.png> <./chapter5/figure/logreg_l1_f
+ar.png> <./chapter5/figure/logreg_l2_close.png> <./chapter5/figure/logreg_l2_fa
+r.png>]) [68]
 \openout2 = `chapter6/chapter.aux'.
 
  (./chapter6/chapter.tex
 Chapter 6.
-) [65
+) [69
 
 
 
 ]
 \openout2 = `chapter7/chapter.aux'.
 
- (./chapter7/chapter.tex [66
+ (./chapter7/chapter.tex [70
 
 
 
@@ -739,21 +828,21 @@ Chapter 7.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [67]
+ [71]
 
-LaTeX Warning: Reference `sec:architecture' on page 68 undefined on input line 
+LaTeX Warning: Reference `sec:architecture' on page 72 undefined on input line 
 21.
 
-[68] [69]) [70]
+[72] [73]) [74]
 \openout2 = `chapter8/chapter.aux'.
 
  (./chapter8/chapter.tex
 Chapter 8.
-[71
+[75
 
 
 
-] [72] [73]) [74] (./thesis.bbl) [75
+] [76] [77]) [78] (./thesis.bbl) [79
 
 
 
@@ -767,21 +856,21 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[76
+[80
 
 
 ]
 Appendix A.
-) [77]
+) [81]
 \openout2 = `appendixB/appendix.aux'.
 
- (./appendixB/appendix.tex [78
+ (./appendixB/appendix.tex [82
 
 
 
 ]
 Appendix B.
-) [79] (./thesis.aux (./cover_page.aux) (./dedication.aux) (./abstract.aux)
+) [83] (./thesis.aux (./cover_page.aux) (./dedication.aux) (./abstract.aux)
 (./acknowledgements.aux) (./chapter1/chapter.aux) (./chapter2/chapter.aux)
 (./chapter3/chapter.aux) (./chapter4/chapter.aux) (./chapter5/chapter.aux)
 (./chapter6/chapter.aux) (./chapter7/chapter.aux) (./chapter8/chapter.aux)
@@ -791,13 +880,13 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 5722 strings out of 492649
- 88087 string characters out of 6129621
- 185286 words of memory out of 5000000
- 9348 multiletter control sequences out of 15000+600000
+ 5864 strings out of 492649
+ 90617 string characters out of 6129621
+ 189999 words of memory out of 5000000
+ 9483 multiletter control sequences out of 15000+600000
  19580 words of font info for 71 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 48i,11n,47p,1205b,367s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 48i,11n,47p,1205b,396s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2018/texmf-dist/fonts/type1/public/niceframe-type1/bbding
 10.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx1
 0.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12
@@ -818,10 +907,10 @@ l/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local
 /texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/t
 exlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/te
 xlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb>
-Output written on thesis.pdf (93 pages, 2541991 bytes).
+Output written on thesis.pdf (97 pages, 2749289 bytes).
 PDF statistics:
- 422 PDF objects out of 1000 (max. 8388607)
- 274 compressed objects within 3 object streams
+ 443 PDF objects out of 1000 (max. 8388607)
+ 283 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
- 96 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 116 words of extra memory for PDF output out of 10000 (max. 10000000)
 
