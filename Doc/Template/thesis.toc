@@ -29,7 +29,7 @@
 \contentsline {subsection}{\numberline {3.4.4}Fake-followers}{21}
 \contentsline {subsection}{\numberline {3.4.5}Genuine}{22}
 \contentsline {section}{\numberline {3.5}Data visualization}{23}
-\contentsline {chapter}{\numberline {4}Features Engineering}{29}
+\contentsline {chapter}{\numberline {4}Features engineering}{29}
 \contentsline {section}{\numberline {4.1}Baseline}{30}
 \contentsline {section}{\numberline {4.2}Missing values filling}{32}
 \contentsline {section}{\numberline {4.3}Descriptive features}{33}
@@ -57,14 +57,19 @@
 \contentsline {section}{\numberline {5.4}Text classifier}{57}
 \contentsline {section}{\numberline {5.5}Stacking meta-classifier}{57}
 \contentsline {subsection}{\numberline {5.5.1}Genetic algorithm}{60}
-\contentsline {subsubsection}{Genetic operators}{61}
+\contentsline {subsubsection}{Genetic operators}{60}
 \contentsline {subsubsection}{Results}{64}
 \contentsline {subsection}{\numberline {5.5.2}Logistic Regression}{65}
-\contentsline {subsubsection}{Dataset}{66}
-\contentsline {subsubsection}{Comparison with Random Forest}{66}
-\contentsline {subsubsection}{Hyperparameters tuning}{67}
-\contentsline {section}{\numberline {5.6}Prediction pipeline}{71}
-\contentsline {chapter}{\numberline {6}[Solution aspect two]}{73}
+\contentsline {subsubsection}{Dataset}{65}
+\contentsline {subsubsection}{Comparison with Random Forest}{65}
+\contentsline {subsubsection}{Hyperparameters tuning}{66}
+\contentsline {section}{\numberline {5.6}Prediction pipeline}{70}
+\contentsline {chapter}{\numberline {6}Web application - BotBuster}{73}
+\contentsline {section}{\numberline {6.1}Engine}{73}
+\contentsline {section}{\numberline {6.2}Backend}{73}
+\contentsline {section}{\numberline {6.3}Frontend}{73}
+\contentsline {section}{\numberline {6.4}Deployment platform}{73}
+\contentsline {section}{\numberline {6.5}Validation}{73}
 \contentsline {chapter}{\numberline {7}Implementation and Evaluation}{75}
 \contentsline {section}{\numberline {7.1}Implementation}{76}
 \contentsline {section}{\numberline {7.2}Evaluation}{76}

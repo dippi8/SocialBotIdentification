@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.10.16)  30 OCT 2018 11:24
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.10.16)  30 OCT 2018 15:12
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -771,70 +771,75 @@ File: chapter5/figure/stacking.png Graphic file (type png)
 Package pdftex.def Info: chapter5/figure/stacking.png  used on input line 507.
 (pdftex.def)             Requested size: 360.0pt x 451.607pt.
  [59 <./chapter5/figure/stacking.png>] [60]
-Overfull \hbox (24.72624pt too wide) in paragraph at lines 547--570
+Overfull \hbox (24.72624pt too wide) in paragraph at lines 538--561
  [] 
  []
 
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [61]
-[62] [63] [64]
-Underfull \vbox (badness 1748) has occurred while \output is active []
-
- [65]
-<chapter5/figure/logreg_default.png, id=311, 1156.32pt x 867.24pt>
+[61] [62] [63] [64]
+<chapter5/figure/logreg_default.png, id=307, 1156.32pt x 867.24pt>
 File: chapter5/figure/logreg_default.png Graphic file (type png)
 <use chapter5/figure/logreg_default.png>
 Package pdftex.def Info: chapter5/figure/logreg_default.png  used on input line
- 704.
+ 695.
 (pdftex.def)             Requested size: 175.0pt x 131.24489pt.
-<chapter5/figure/random_forest_default.png, id=312, 1156.32pt x 867.24pt>
+<chapter5/figure/random_forest_default.png, id=308, 1156.32pt x 867.24pt>
 File: chapter5/figure/random_forest_default.png Graphic file (type png)
 <use chapter5/figure/random_forest_default.png>
 Package pdftex.def Info: chapter5/figure/random_forest_default.png  used on inp
-ut line 707.
+ut line 698.
 (pdftex.def)             Requested size: 175.0pt x 131.24489pt.
-
-[66 <./chapter5/figure/logreg_default.png> <./chapter5/figure/random_forest_def
-ault.png>]
+ [65] [66 <./chapter5/figure/logreg_default.png> <./chapter5/figure/random_fore
+st_default.png>]
 <chapter5/figure/logreg_l1_lambda.png, id=318, 1156.32pt x 867.24pt>
 File: chapter5/figure/logreg_l1_lambda.png Graphic file (type png)
 <use chapter5/figure/logreg_l1_lambda.png>
 Package pdftex.def Info: chapter5/figure/logreg_l1_lambda.png  used on input li
-ne 742.
+ne 733.
 (pdftex.def)             Requested size: 360.0pt x 269.99289pt.
 <chapter5/figure/logreg_l2_lambda.png, id=319, 1156.32pt x 867.24pt>
 File: chapter5/figure/logreg_l2_lambda.png Graphic file (type png)
 <use chapter5/figure/logreg_l2_lambda.png>
 Package pdftex.def Info: chapter5/figure/logreg_l2_lambda.png  used on input li
-ne 747.
+ne 738.
 (pdftex.def)             Requested size: 360.0pt x 269.99289pt.
- [67] [68 <./chapter5/figure/logreg_l1_lambda.png> <./chapter5/figure/logreg_l2
-_lambda.png>]
+ [67 <./chapter5/figure/logreg_l1_lambda.png>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [68 <./chapter5/figure/logreg_l2_lambda.png>]
 <chapter5/figure/logreg_l1_close.png, id=328, 1156.32pt x 867.24pt>
 File: chapter5/figure/logreg_l1_close.png Graphic file (type png)
 <use chapter5/figure/logreg_l1_close.png>
 Package pdftex.def Info: chapter5/figure/logreg_l1_close.png  used on input lin
-e 826.
+e 817.
 (pdftex.def)             Requested size: 175.0pt x 131.24489pt.
 <chapter5/figure/logreg_l1_far.png, id=329, 1156.32pt x 867.24pt>
 File: chapter5/figure/logreg_l1_far.png Graphic file (type png)
 <use chapter5/figure/logreg_l1_far.png>
 Package pdftex.def Info: chapter5/figure/logreg_l1_far.png  used on input line 
-829.
+820.
 (pdftex.def)             Requested size: 175.0pt x 131.24489pt.
- [69] [70 <./chapter5/figure/logreg_l1_close.png> <./chapter5/figure/logreg_l1_
-far.png>]) [71]
+ [69 <./chapter5/figure/logreg_l1_close.png> <./chapter5/figure/logreg_l1_far.p
+ng>] [70]
+<chapter5/figure/prediction.png, id=338, 1459.4525pt x 3353.52875pt>
+File: chapter5/figure/prediction.png Graphic file (type png)
+<use chapter5/figure/prediction.png>
+Package pdftex.def Info: chapter5/figure/prediction.png  used on input line 867
+.
+(pdftex.def)             Requested size: 288.0011pt x 661.73901pt.
+
+
+LaTeX Warning: Float too large for page by 101.13881pt on input line 871.
+
+) [71] [72 <./chapter5/figure/prediction.png>]
 \openout2 = `chapter6/chapter.aux'.
 
- (./chapter6/chapter.tex [72
+ (./chapter6/chapter.tex
+Chapter 6.
+) [73
 
 
 
 ]
-Chapter 6.
-) [73]
 \openout2 = `chapter7/chapter.aux'.
 
  (./chapter7/chapter.tex [74
@@ -898,10 +903,10 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 5880 strings out of 492649
- 91100 string characters out of 6129621
- 190026 words of memory out of 5000000
- 9497 multiletter control sequences out of 15000+600000
+ 5886 strings out of 492649
+ 91278 string characters out of 6129621
+ 190038 words of memory out of 5000000
+ 9502 multiletter control sequences out of 15000+600000
  20624 words of font info for 74 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  48i,11n,47p,1205b,387s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -925,10 +930,10 @@ l/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local
 /texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/t
 exlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/te
 xlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb>
-Output written on thesis.pdf (101 pages, 2858496 bytes).
+Output written on thesis.pdf (101 pages, 3093651 bytes).
 PDF statistics:
- 459 PDF objects out of 1000 (max. 8388607)
+ 461 PDF objects out of 1000 (max. 8388607)
  291 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
- 126 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 131 words of extra memory for PDF output out of 10000 (max. 10000000)
 

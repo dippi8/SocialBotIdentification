@@ -510,15 +510,6 @@ A new training set was born and it was built with the soft classifications of th
 \end{figure}
 The pipeline for perform the training of the ensemble models is resumed in Figure \ref{fig:stacking_pipeline}.
 
-In order to perform a prediction over a new sample the process is the following:
-\begin{itemize}
-	\item[\PencilRight]User and tweets data retrieving by Twitter APIs
-	\item[\PencilRight]Prepare and features engineering to perform multiclass probability prediction
-	\item[\PencilRight]Prepare and strip image features to perform binary probability prediction
-	\item[\PencilRight]Prepare and treat text to perform text-based probability prediction
-	\item[\PencilRight]Feed the stacking model with the previously computed predictions and assess the final probabilities 
-\end{itemize}
-
 After several parallel attempts were done, the blending system was built with the meta-classifier.
 
 \subsection{Genetic algorithm}
@@ -855,3 +846,26 @@ This setting obtained the following scores in a 10-fold crossvalidation:
 	\item[\PencilRight] \textit{F1 score}: 0.973
 \end{itemize}
 \section{Prediction pipeline}
+The final model is represented by a stacking ensemble with a defined execution pipeline for predictions.
+
+As described by figure \ref{fig:prediction_pipeline}, In order to perform a prediction over a new sample the process is the following:
+\begin{itemize}
+	\item[\PencilRight]User and tweets data retrieving with Twitter APIs
+	\item[\PencilRight]Prepare data and perform features engineering to output multiclass probability prediction (\textbf{Multiclass Random Forest})
+	\item[\PencilRight]Prepare data and strip multiclass features to output binary probability prediction (\textbf{Binary Random Forest})
+	\item[\PencilRight]Prepare and treat text to perform text-based probability prediction (\textbf{Text-based Naive Bayes})
+	\item[\PencilRight]Build new features vector with the stacked outcomes of the previous classifiers
+	\item[\PencilRight]Compute the final mutliclass probabilistic prediction with the meta-classifier (\textbf{Multinomial Logistic Regression})
+\end{itemize}
+The produced probability vector assesses the nature of the examined user.
+It will be handled by a web application, in order to provide a useful classification tool for every internet user.
+The engine of this web application is mainly composed by a python script, which, given a Twitter user name, resumes this prediction pipeline and executes it, providing the classification.
+
+This last lines anticipate the content of the following chapter of our thesis.
+\begin{figure}
+	\begin{center}
+		\includegraphics[width=0.8\columnwidth]{chapter5/figure/prediction.png}\par 
+	\end{center}
+	\caption{Final prediction pipeline}
+	\label{fig:prediction_pipeline}
+\end{figure}
