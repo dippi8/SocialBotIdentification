@@ -63,7 +63,7 @@
 \contentsline {subsubsection}{Dataset}{66}
 \contentsline {subsubsection}{Comparison with Random Forest}{66}
 \contentsline {subsubsection}{Hyperparameters tuning}{67}
-\contentsline {section}{\numberline {5.6}Validation}{71}
+\contentsline {section}{\numberline {5.6}Prediction pipeline}{71}
 \contentsline {chapter}{\numberline {6}[Solution aspect two]}{73}
 \contentsline {chapter}{\numberline {7}Implementation and Evaluation}{75}
 \contentsline {section}{\numberline {7.1}Implementation}{76}
