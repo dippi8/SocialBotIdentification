@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.10.16)  29 OCT 2018 20:59
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.10.16)  30 OCT 2018 00:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -754,16 +754,13 @@ File: chapter5/figure/auc.png Graphic file (type png)
 <use chapter5/figure/auc.png>
 Package pdftex.def Info: chapter5/figure/auc.png  used on input line 411.
 (pdftex.def)             Requested size: 360.0pt x 269.99289pt.
- [55 <./chapter5/figure/gridSearch.png>]
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [56 <./chapter5/figure/auc.png>] [57]
-Overfull \hbox (1.959pt too wide) in paragraph at lines 475--499
+ [55 <./chapter5/figure/gridSearch.png>] [56 <./chapter5/figure/auc.png>] [57]
+Overfull \hbox (1.959pt too wide) in paragraph at lines 478--502
  [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 500--501
+Underfull \hbox (badness 10000) in paragraph at lines 503--504
 
  []
 
@@ -771,10 +768,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 500--501
 <chapter5/figure/stacking.png, id=286, 1613.02625pt x 2023.56pt>
 File: chapter5/figure/stacking.png Graphic file (type png)
 <use chapter5/figure/stacking.png>
-Package pdftex.def Info: chapter5/figure/stacking.png  used on input line 504.
+Package pdftex.def Info: chapter5/figure/stacking.png  used on input line 507.
 (pdftex.def)             Requested size: 360.0pt x 451.607pt.
  [59 <./chapter5/figure/stacking.png>] [60]
-Overfull \hbox (24.72624pt too wide) in paragraph at lines 544--567
+Overfull \hbox (24.72624pt too wide) in paragraph at lines 547--570
  [] 
  []
 
@@ -790,13 +787,13 @@ Underfull \vbox (badness 1748) has occurred while \output is active []
 File: chapter5/figure/logreg_default.png Graphic file (type png)
 <use chapter5/figure/logreg_default.png>
 Package pdftex.def Info: chapter5/figure/logreg_default.png  used on input line
- 701.
+ 704.
 (pdftex.def)             Requested size: 175.0pt x 131.24489pt.
 <chapter5/figure/random_forest_default.png, id=312, 1156.32pt x 867.24pt>
 File: chapter5/figure/random_forest_default.png Graphic file (type png)
 <use chapter5/figure/random_forest_default.png>
 Package pdftex.def Info: chapter5/figure/random_forest_default.png  used on inp
-ut line 704.
+ut line 707.
 (pdftex.def)             Requested size: 175.0pt x 131.24489pt.
 
 [66 <./chapter5/figure/logreg_default.png> <./chapter5/figure/random_forest_def
@@ -805,13 +802,13 @@ ault.png>]
 File: chapter5/figure/logreg_l1_lambda.png Graphic file (type png)
 <use chapter5/figure/logreg_l1_lambda.png>
 Package pdftex.def Info: chapter5/figure/logreg_l1_lambda.png  used on input li
-ne 739.
+ne 742.
 (pdftex.def)             Requested size: 360.0pt x 269.99289pt.
 <chapter5/figure/logreg_l2_lambda.png, id=319, 1156.32pt x 867.24pt>
 File: chapter5/figure/logreg_l2_lambda.png Graphic file (type png)
 <use chapter5/figure/logreg_l2_lambda.png>
 Package pdftex.def Info: chapter5/figure/logreg_l2_lambda.png  used on input li
-ne 744.
+ne 747.
 (pdftex.def)             Requested size: 360.0pt x 269.99289pt.
  [67] [68 <./chapter5/figure/logreg_l1_lambda.png> <./chapter5/figure/logreg_l2
 _lambda.png>]
@@ -819,13 +816,13 @@ _lambda.png>]
 File: chapter5/figure/logreg_l1_close.png Graphic file (type png)
 <use chapter5/figure/logreg_l1_close.png>
 Package pdftex.def Info: chapter5/figure/logreg_l1_close.png  used on input lin
-e 823.
+e 826.
 (pdftex.def)             Requested size: 175.0pt x 131.24489pt.
 <chapter5/figure/logreg_l1_far.png, id=329, 1156.32pt x 867.24pt>
 File: chapter5/figure/logreg_l1_far.png Graphic file (type png)
 <use chapter5/figure/logreg_l1_far.png>
 Package pdftex.def Info: chapter5/figure/logreg_l1_far.png  used on input line 
-826.
+829.
 (pdftex.def)             Requested size: 175.0pt x 131.24489pt.
  [69] [70 <./chapter5/figure/logreg_l1_close.png> <./chapter5/figure/logreg_l1_
 far.png>]) [71]
@@ -928,7 +925,7 @@ l/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local
 /texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/t
 exlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/te
 xlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb>
-Output written on thesis.pdf (101 pages, 2864876 bytes).
+Output written on thesis.pdf (101 pages, 2858525 bytes).
 PDF statistics:
  459 PDF objects out of 1000 (max. 8388607)
  291 compressed objects within 3 object streams

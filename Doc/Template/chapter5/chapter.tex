@@ -397,8 +397,8 @@ We decided to stick with 10-fold crossvalidation, as it was done for the baselin
 After several Grid Search runs, the last round computed had this hyperparameters to combine together:
 \begin{itemize}
 	\item[\PencilRight] \textit{n\_estimators} = [100, 115, 130, 150, 175, 200]
-	\item[\PencilRight]\textit{max\_depth} = [24, 26, 28]
-	\item[\PencilRight]\textit{criterion} = ['entropy', 'gini']
+	\item[\PencilRight]\textit{max\_depth} = [None, 26, 28]
+	\item[\PencilRight]\textit{criterion} = 'entropy'
 \end{itemize}
 \begin{figure}[htp!]
 	\centering
@@ -412,11 +412,14 @@ After several Grid Search runs, the last round computed had this hyperparameters
 	\caption{ROC curve}
 	\label{fig:auc}
 \end{figure}
-As we can see in Figure \ref{fig:grid_search}, the AUC is increasing with the number of the estimators in the forest, but this trend slows down after 100 trees reached. We decided t stop at 175, which corresponds to a local maximum, in order to prefer, once again, a lighter model and a faster prediction time, which is currently set to 27ms.
+As we can see in Figure \ref{fig:grid_search}, the AUC is increasing with the number of the estimators in the forest. We decided t stop at 250, which corresponds to the highest AUC score, with a low risk to perform overfitting.
 
 The AUC obtained with this arrangement is equal to 0.936, as shown in Figure \ref{fig:auc}, which is a positive accomplishment, considering that it will be used only as support for the identification of humans among bots, but we didn't crafted specific features as the ones involved in the Botmoter project and we didn't have the same amount of data neither.
 
-The final model has been fitted with the hole data, with this settings: \textit{ n\_estimators} = 175, \textit{max\_depth} = 26 and \textit{criterion} = 'entropy'.
+The final model has been fitted with the hole data, with this settings: \textit{ n\_estimators} = 250, \textit{max\_depth} = None and \textit{criterion} = 'entropy'.
+The max\_depth parameters states how deep the tree should be expanded. When set to \textit{None}, the algorithms tries to expand them until every leaf if pure.
+We were looking for this approach, because we wanted this filter classifier to be ensure the hardest classifications possible, among a soft classification system. We wanted some loose detections, when there were no certainties. But we wanted the prediction to be as sure as possible, when no uncertainties were met. 
+
 Once we fitted the model, it was ready to be the second element entering in our solution pool.
 
 \section{Text classifier}
