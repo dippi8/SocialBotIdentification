@@ -1,87 +1,87 @@
-\contentsline {chapter}{Abstract}{I}
-\contentsline {chapter}{Sommario}{III}
-\contentsline {chapter}{Acknowledgements}{V}
-\contentsline {chapter}{\numberline {1}Introduction}{1}
-\contentsline {section}{\numberline {1.1}Context: [topic]}{1}
-\contentsline {section}{\numberline {1.2}Scenario and Problem Statement}{3}
-\contentsline {section}{\numberline {1.3}Methodology}{4}
-\contentsline {section}{\numberline {1.4}Contributions}{5}
-\contentsline {section}{\numberline {1.5}Structure of Thesis}{7}
-\contentsline {chapter}{\numberline {2}State of the Art}{9}
-\contentsline {section}{\numberline {2.1}[Topic one]}{9}
-\contentsline {section}{\numberline {2.2}[Topic two]}{10}
-\contentsline {section}{\numberline {2.3}Summary}{10}
-\contentsline {chapter}{\numberline {3}Data Collection}{11}
-\contentsline {section}{\numberline {3.1}Tools}{11}
-\contentsline {subsection}{\numberline {3.1.1}Tweepy}{11}
-\contentsline {subsection}{\numberline {3.1.2}Botometer}{12}
-\contentsline {subsection}{\numberline {3.1.3}Hoaxy}{12}
-\contentsline {section}{\numberline {3.2}Datasets}{12}
-\contentsline {subsection}{\numberline {3.2.1}Caverlee-2011}{12}
-\contentsline {subsection}{\numberline {3.2.2}Cresci-2017}{12}
-\contentsline {subsection}{\numberline {3.2.3}Varol-2017}{13}
-\contentsline {subsection}{\numberline {3.2.4}BotBlock}{14}
-\contentsline {section}{\numberline {3.3}Varol clustering}{14}
-\contentsline {section}{\numberline {3.4}Collection}{18}
-\contentsline {subsection}{\numberline {3.4.1}NSFW}{19}
-\contentsline {subsection}{\numberline {3.4.2}News-spreader}{19}
-\contentsline {subsection}{\numberline {3.4.3}Spam-bots}{21}
-\contentsline {subsection}{\numberline {3.4.4}Fake-followers}{21}
-\contentsline {subsection}{\numberline {3.4.5}Genuine}{22}
-\contentsline {section}{\numberline {3.5}Data visualization}{23}
-\contentsline {chapter}{\numberline {4}Features engineering}{29}
-\contentsline {section}{\numberline {4.1}Baseline}{30}
-\contentsline {section}{\numberline {4.2}Missing values filling}{32}
-\contentsline {section}{\numberline {4.3}Descriptive features}{33}
-\contentsline {section}{\numberline {4.4}Intrinsic features}{34}
-\contentsline {section}{\numberline {4.5}Extrinsic features}{36}
-\contentsline {section}{\numberline {4.6}Image features}{38}
-\contentsline {section}{\numberline {4.7}final feature vector}{39}
-\contentsline {subsection}{\numberline {4.7.1}User features}{39}
-\contentsline {subsection}{\numberline {4.7.2}Tweets features}{39}
-\contentsline {chapter}{\numberline {5}Model selection}{41}
-\contentsline {section}{\numberline {5.1}Baselines}{41}
-\contentsline {subsection}{\numberline {5.1.1}Random Forest}{42}
-\contentsline {subsection}{\numberline {5.1.2}Logistic Regression}{42}
-\contentsline {subsection}{\numberline {5.1.3}K-Nearest Neighbors}{43}
-\contentsline {subsection}{\numberline {5.1.4}Support Vector Machine}{44}
-\contentsline {subsection}{\numberline {5.1.5}Comparison and baseline selection}{45}
-\contentsline {subsubsection}{Holdout evaluation}{45}
-\contentsline {subsubsection}{Crossvalidation}{47}
-\contentsline {section}{\numberline {5.2}Multiclass classifier}{48}
-\contentsline {subsection}{\numberline {5.2.1}Dataset}{49}
-\contentsline {subsection}{\numberline {5.2.2}Model}{49}
-\contentsline {section}{\numberline {5.3}Binary Classifier}{53}
-\contentsline {subsection}{\numberline {5.3.1}Dataset}{53}
-\contentsline {subsection}{\numberline {5.3.2}Model}{54}
-\contentsline {section}{\numberline {5.4}Text classifier}{57}
-\contentsline {section}{\numberline {5.5}Stacking meta-classifier}{57}
-\contentsline {subsection}{\numberline {5.5.1}Genetic algorithm}{60}
-\contentsline {subsubsection}{Genetic operators}{60}
-\contentsline {subsubsection}{Results}{64}
-\contentsline {subsection}{\numberline {5.5.2}Logistic Regression}{65}
-\contentsline {subsubsection}{Dataset}{65}
-\contentsline {subsubsection}{Comparison with Random Forest}{65}
-\contentsline {subsubsection}{Hyperparameters tuning}{66}
-\contentsline {section}{\numberline {5.6}Prediction pipeline}{70}
-\contentsline {chapter}{\numberline {6}Web application - BotBuster}{73}
-\contentsline {section}{\numberline {6.1}Engine}{73}
-\contentsline {section}{\numberline {6.2}Backend}{73}
-\contentsline {section}{\numberline {6.3}Frontend}{73}
-\contentsline {section}{\numberline {6.4}Deployment platform}{73}
-\contentsline {section}{\numberline {6.5}Validation}{73}
-\contentsline {chapter}{\numberline {7}Implementation and Evaluation}{75}
-\contentsline {section}{\numberline {7.1}Implementation}{76}
-\contentsline {section}{\numberline {7.2}Evaluation}{76}
-\contentsline {subsection}{\numberline {7.2.1}Design of Evaluation}{76}
-\contentsline {subsection}{\numberline {7.2.2}Metrics}{77}
-\contentsline {subsection}{\numberline {7.2.3}Results}{78}
-\contentsline {subsection}{\numberline {7.2.4}Discussion}{78}
-\contentsline {chapter}{\numberline {8}Conclusion and Future Work}{79}
-\contentsline {section}{\numberline {8.1}Summary and Lessons Learned}{79}
-\contentsline {section}{\numberline {8.2}Outputs and Contributions}{79}
-\contentsline {section}{\numberline {8.3}Limitations}{80}
-\contentsline {section}{\numberline {8.4}Future Work}{81}
-\contentsline {chapter}{References}{83}
-\contentsline {chapter}{\numberline {A}User Manual}{85}
-\contentsline {chapter}{\numberline {B}Dataset}{87}
+\contentsline {chapter}{Abstract}{I}{chapter*.2}
+\contentsline {chapter}{Sommario}{III}{chapter*.3}
+\contentsline {chapter}{Acknowledgements}{V}{chapter*.4}
+\contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}
+\contentsline {section}{\numberline {1.1}Context: [topic]}{1}{section.1.1}
+\contentsline {section}{\numberline {1.2}Scenario and Problem Statement}{3}{section.1.2}
+\contentsline {section}{\numberline {1.3}Methodology}{4}{section.1.3}
+\contentsline {section}{\numberline {1.4}Contributions}{5}{section.1.4}
+\contentsline {section}{\numberline {1.5}Structure of Thesis}{7}{section.1.5}
+\contentsline {chapter}{\numberline {2}State of the Art}{9}{chapter.2}
+\contentsline {section}{\numberline {2.1}[Topic one]}{9}{section.2.1}
+\contentsline {section}{\numberline {2.2}[Topic two]}{10}{section.2.2}
+\contentsline {section}{\numberline {2.3}Summary}{10}{section.2.3}
+\contentsline {chapter}{\numberline {3}Data Collection}{11}{chapter.3}
+\contentsline {section}{\numberline {3.1}Tools}{11}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}Tweepy}{11}{subsection.3.1.1}
+\contentsline {subsection}{\numberline {3.1.2}Botometer}{12}{subsection.3.1.2}
+\contentsline {subsection}{\numberline {3.1.3}Hoaxy}{12}{subsection.3.1.3}
+\contentsline {section}{\numberline {3.2}Datasets}{12}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Caverlee-2011}{12}{subsection.3.2.1}
+\contentsline {subsection}{\numberline {3.2.2}Cresci-2017}{12}{subsection.3.2.2}
+\contentsline {subsection}{\numberline {3.2.3}Varol-2017}{13}{subsection.3.2.3}
+\contentsline {subsection}{\numberline {3.2.4}BotBlock}{14}{subsection.3.2.4}
+\contentsline {section}{\numberline {3.3}Varol clustering}{14}{section.3.3}
+\contentsline {section}{\numberline {3.4}Collection}{18}{section.3.4}
+\contentsline {subsection}{\numberline {3.4.1}NSFW}{19}{subsection.3.4.1}
+\contentsline {subsection}{\numberline {3.4.2}News-spreader}{19}{subsection.3.4.2}
+\contentsline {subsection}{\numberline {3.4.3}Spam-bots}{21}{subsection.3.4.3}
+\contentsline {subsection}{\numberline {3.4.4}Fake-followers}{21}{subsection.3.4.4}
+\contentsline {subsection}{\numberline {3.4.5}Genuine}{22}{subsection.3.4.5}
+\contentsline {section}{\numberline {3.5}Data visualization}{23}{section.3.5}
+\contentsline {chapter}{\numberline {4}Features engineering}{29}{chapter.4}
+\contentsline {section}{\numberline {4.1}Baseline}{30}{section.4.1}
+\contentsline {section}{\numberline {4.2}Missing values filling}{32}{section.4.2}
+\contentsline {section}{\numberline {4.3}Descriptive features}{33}{section.4.3}
+\contentsline {section}{\numberline {4.4}Intrinsic features}{34}{section.4.4}
+\contentsline {section}{\numberline {4.5}Extrinsic features}{36}{section.4.5}
+\contentsline {section}{\numberline {4.6}Image features}{38}{section.4.6}
+\contentsline {section}{\numberline {4.7}final feature vector}{39}{section.4.7}
+\contentsline {subsection}{\numberline {4.7.1}User features}{39}{subsection.4.7.1}
+\contentsline {subsection}{\numberline {4.7.2}Tweets features}{39}{subsection.4.7.2}
+\contentsline {chapter}{\numberline {5}Model selection}{41}{chapter.5}
+\contentsline {section}{\numberline {5.1}Baselines}{41}{section.5.1}
+\contentsline {subsection}{\numberline {5.1.1}Random Forest}{42}{subsection.5.1.1}
+\contentsline {subsection}{\numberline {5.1.2}Logistic Regression}{42}{subsection.5.1.2}
+\contentsline {subsection}{\numberline {5.1.3}K-Nearest Neighbors}{43}{subsection.5.1.3}
+\contentsline {subsection}{\numberline {5.1.4}Support Vector Machine}{44}{subsection.5.1.4}
+\contentsline {subsection}{\numberline {5.1.5}Comparison and baseline selection}{45}{subsection.5.1.5}
+\contentsline {subsubsection}{Holdout evaluation}{45}{section*.17}
+\contentsline {subsubsection}{Crossvalidation}{47}{section*.18}
+\contentsline {section}{\numberline {5.2}Multiclass classifier}{48}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}Dataset}{49}{subsection.5.2.1}
+\contentsline {subsection}{\numberline {5.2.2}Model}{49}{subsection.5.2.2}
+\contentsline {section}{\numberline {5.3}Binary Classifier}{53}{section.5.3}
+\contentsline {subsection}{\numberline {5.3.1}Dataset}{53}{subsection.5.3.1}
+\contentsline {subsection}{\numberline {5.3.2}Model}{54}{subsection.5.3.2}
+\contentsline {section}{\numberline {5.4}Text classifier}{57}{section.5.4}
+\contentsline {section}{\numberline {5.5}Stacking meta-classifier}{57}{section.5.5}
+\contentsline {subsection}{\numberline {5.5.1}Genetic algorithm}{60}{subsection.5.5.1}
+\contentsline {subsubsection}{Genetic operators}{60}{section*.26}
+\contentsline {subsubsection}{Results}{64}{section*.27}
+\contentsline {subsection}{\numberline {5.5.2}Logistic Regression}{65}{subsection.5.5.2}
+\contentsline {subsubsection}{Dataset}{65}{section*.28}
+\contentsline {subsubsection}{Comparison with Random Forest}{65}{section*.29}
+\contentsline {subsubsection}{Hyperparameters tuning}{66}{section*.31}
+\contentsline {section}{\numberline {5.6}Prediction pipeline}{70}{section.5.6}
+\contentsline {chapter}{\numberline {6}Web application - BotBuster}{73}{chapter.6}
+\contentsline {section}{\numberline {6.1}Engine}{74}{section.6.1}
+\contentsline {section}{\numberline {6.2}Backend}{74}{section.6.2}
+\contentsline {section}{\numberline {6.3}Frontend}{74}{section.6.3}
+\contentsline {section}{\numberline {6.4}Deployment platform}{74}{section.6.4}
+\contentsline {section}{\numberline {6.5}Validation}{74}{section.6.5}
+\contentsline {chapter}{\numberline {7}Implementation and Evaluation}{75}{chapter.7}
+\contentsline {section}{\numberline {7.1}Implementation}{76}{section.7.1}
+\contentsline {section}{\numberline {7.2}Evaluation}{76}{section.7.2}
+\contentsline {subsection}{\numberline {7.2.1}Design of Evaluation}{76}{subsection.7.2.1}
+\contentsline {subsection}{\numberline {7.2.2}Metrics}{77}{subsection.7.2.2}
+\contentsline {subsection}{\numberline {7.2.3}Results}{78}{subsection.7.2.3}
+\contentsline {subsection}{\numberline {7.2.4}Discussion}{78}{subsection.7.2.4}
+\contentsline {chapter}{\numberline {8}Conclusion and Future Work}{79}{chapter.8}
+\contentsline {section}{\numberline {8.1}Summary and Lessons Learned}{79}{section.8.1}
+\contentsline {section}{\numberline {8.2}Outputs and Contributions}{79}{section.8.2}
+\contentsline {section}{\numberline {8.3}Limitations}{80}{section.8.3}
+\contentsline {section}{\numberline {8.4}Future Work}{81}{section.8.4}
+\contentsline {chapter}{References}{83}{section.8.4}
+\contentsline {chapter}{\numberline {A}User Manual}{85}{appendix.A}
+\contentsline {chapter}{\numberline {B}Dataset}{87}{appendix.B}

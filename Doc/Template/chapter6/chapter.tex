@@ -2,8 +2,30 @@
 \chapter{Web application - BotBuster}
 \label{capitolo6}
 \thispagestyle{empty}
+This chapter represents the practical application of our work. We wanted to provide a tangible proof the thesis, an instrument available to every users in search of classification, among the accounts met on Twitter.
+We thought it was useful to allow people to be aware about the nature of the users that populate the social network.
+Bots often don't claim themselves as automated accounts, that makes hard their detection, even for an experienced utilizer.
+
+
+\textbf{BotBuster} is the name of the project, whose goal is to provide the probability-based classification of the desired Twitter user.
+The probabilities are shown in a histogram-shaped graph, with different colours, one for each target, as displayed in Figure\ref{fig:histogram}.
+
+\begin{figure}
+	\begin{center}
+		\includegraphics[width=\columnwidth]{chapter6/figure/histogram.jpg}\par 
+	\end{center}
+	\caption{Probability classification diagram on BotBuster}
+	\label{fig:histogram}
+\end{figure}
+
+The web application had to be visible on a public URL. It is currently available on \href{http://www.botbuster.it}{\textit{www.botbuster.it}}.
+
+Basically, the functioning of BotBuster can be resumed in getting a Twitter username through an input filed on the home page, and then executing the prediction pipeline described in chapter \ref{predicion_pipeline}.
+The input filed filling triggers the engine operating in the background, which runs a Python script performing the prediction.
+
 
 \section{Engine}
+The real engine of the web application is a Python 3 script. It performs all the steps described in the pipeline execution chapter.
 \section{Backend}
 \section{Frontend}
 \section{Deployment platform}
