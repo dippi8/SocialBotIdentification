@@ -1,7 +1,7 @@
 \begin{thebibliography}{1}
 
 \bibitem{SAGA}
-LIENS MSR INRIA) Simon Lacoste-Julien (INRIA Paris Rocquencourt LIENS
+LIENS MSR INRIA)-Simon Lacoste-Julien (INRIA Paris Rocquencourt LIENS
   MSR~INRIA) Aaron~Defazio, Francis Bach (INRIA Paris~Rocquencourt.
 \newblock Saga: A fast incremental gradient method with support for
   non-strongly convex composite objectives.
@@ -36,13 +36,18 @@ Clayton A. Davis Filippo Menczer Alessandro~Flammini Onur~Varol,
   characterization.
 \newblock 2017.
 
+\bibitem{Liblinear}
+Cho-Jui Hsieh Xiang-Rui~Wang Rong-En~Fa, Kai-Wei~Chang and Chih-Jen Lin.
+\newblock Liblinear: A library for large linear classification.
+\newblock 2017.
+
 \bibitem{Disinformation}
 John S. and James L.~Knight Foundation.
 \newblock Disinformation, 'fake news' and influence campaigns on twitter.
 \newblock 2018.
 
 \bibitem{Cresci}
-Marinella Petrocchi Angelo Spognardi Maurizio~Tesconi Stefano~Cresci, Roberto
+Marinella Petrocchi-Angelo Spognardi Maurizio~Tesconi Stefano~Cresci, Roberto
   Di~Pietro.
 \newblock The paradigm-shift of social spambots: Evidence, theories, and tools
   for the arms race.

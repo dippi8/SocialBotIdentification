@@ -1,6 +1,42 @@
 % !TEX root = ../thesis.tex
-\chapter{[Solution aspect two]}
+\chapter{Web application - BotBuster}
 \label{capitolo6}
 \thispagestyle{empty}
+This chapter represents the practical application of our work. We wanted to provide a tangible proof the thesis, an instrument available to every users in search of classification, among the accounts met on Twitter.
+We thought it was useful to allow people to be aware about the nature of the users that populate the social network.
+Bots often don't claim themselves as automated accounts, that makes hard their detection, even for an experienced utilizer.
 
-Elaborate here better on the second aspect.
+
+\textbf{BotBuster} is the name of the project, whose goal is to provide the probability-based classification of the desired Twitter user.
+The probabilities are shown in a histogram-shaped graph, with different colours, one for each target, as displayed in Figure\ref{fig:histogram}.
+
+\begin{figure}
+	\begin{center}
+		\includegraphics[width=\columnwidth]{chapter6/figure/histogram.jpg}\par 
+	\end{center}
+	\caption{Probability classification diagram on BotBuster}
+	\label{fig:histogram}
+\end{figure}
+
+The web application had to be visible on a public URL. It is currently available on \href{http://www.botbuster.it}{\textit{www.botbuster.it}}.
+
+Basically, the functioning of BotBuster can be resumed in getting a Twitter username through an input filed on the home page, and then executing the prediction pipeline described in chapter \ref{predicion_pipeline}.
+The input filed filling triggers the engine operating in the background, which runs a Python script performing the prediction.
+\section{Architecture}
+The web application works under a client - server paradigm. The Angular program is executed on the client's web browser, while on the server runs the Flask application.
+Every time a user search for a Twitter user name, the HTTP protocols is involved to perform POST and GET requests between client and server. The frontend and the backend applications handle the request and exchange, as shown in Figure\ref{fig:architecture}.
+\begin{figure}
+	\begin{center}
+		\includegraphics[width=0.6\columnwidth]{chapter6/figure/architecture.png}\par 
+	\end{center}
+	\caption{Client - Server architecture}
+	\label{fig:architecture}
+\end{figure}
+
+\section{Backend}
+\subsection{Engine}
+The real engine of the web application is a Python 3 script. It performs all the steps described in the pipeline execution chapter.
+\subsection{Flask}
+\section{Frontend}
+\section{Deployment platform}
+\section{Validation}
