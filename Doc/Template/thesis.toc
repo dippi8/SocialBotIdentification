@@ -55,35 +55,45 @@
 \contentsline {subsection}{\numberline {5.3.1}Dataset}{53}{subsection.5.3.1}
 \contentsline {subsection}{\numberline {5.3.2}Model}{54}{subsection.5.3.2}
 \contentsline {section}{\numberline {5.4}Text classifier}{57}{section.5.4}
-\contentsline {section}{\numberline {5.5}Stacking meta-classifier}{57}{section.5.5}
-\contentsline {subsection}{\numberline {5.5.1}Genetic algorithm}{60}{subsection.5.5.1}
-\contentsline {subsubsection}{Genetic operators}{60}{section*.26}
-\contentsline {subsubsection}{Results}{64}{section*.27}
-\contentsline {subsection}{\numberline {5.5.2}Logistic Regression}{65}{subsection.5.5.2}
-\contentsline {subsubsection}{Dataset}{65}{section*.28}
-\contentsline {subsubsection}{Comparison with Random Forest}{65}{section*.29}
-\contentsline {subsubsection}{Hyperparameters tuning}{66}{section*.31}
-\contentsline {section}{\numberline {5.6}Prediction pipeline}{70}{section.5.6}
-\contentsline {chapter}{\numberline {6}Web application - BotBuster}{73}{chapter.6}
-\contentsline {section}{\numberline {6.1}Architecture}{74}{section.6.1}
-\contentsline {section}{\numberline {6.2}Backend}{74}{section.6.2}
-\contentsline {subsection}{\numberline {6.2.1}Engine}{74}{subsection.6.2.1}
-\contentsline {subsection}{\numberline {6.2.2}Flask}{75}{subsection.6.2.2}
-\contentsline {section}{\numberline {6.3}Frontend}{75}{section.6.3}
-\contentsline {section}{\numberline {6.4}Deployment platform}{75}{section.6.4}
-\contentsline {section}{\numberline {6.5}Validation}{75}{section.6.5}
-\contentsline {chapter}{\numberline {7}Implementation and Evaluation}{77}{chapter.7}
-\contentsline {section}{\numberline {7.1}Implementation}{78}{section.7.1}
-\contentsline {section}{\numberline {7.2}Evaluation}{78}{section.7.2}
-\contentsline {subsection}{\numberline {7.2.1}Design of Evaluation}{78}{subsection.7.2.1}
-\contentsline {subsection}{\numberline {7.2.2}Metrics}{79}{subsection.7.2.2}
-\contentsline {subsection}{\numberline {7.2.3}Results}{80}{subsection.7.2.3}
-\contentsline {subsection}{\numberline {7.2.4}Discussion}{80}{subsection.7.2.4}
-\contentsline {chapter}{\numberline {8}Conclusion and Future Work}{81}{chapter.8}
-\contentsline {section}{\numberline {8.1}Summary and Lessons Learned}{81}{section.8.1}
-\contentsline {section}{\numberline {8.2}Outputs and Contributions}{81}{section.8.2}
-\contentsline {section}{\numberline {8.3}Limitations}{82}{section.8.3}
-\contentsline {section}{\numberline {8.4}Future Work}{83}{section.8.4}
-\contentsline {chapter}{References}{85}{section.8.4}
-\contentsline {chapter}{\numberline {A}User Manual}{87}{appendix.A}
-\contentsline {chapter}{\numberline {B}Dataset}{89}{appendix.B}
+\contentsline {subsection}{\numberline {5.4.1}Dataset}{57}{subsection.5.4.1}
+\contentsline {subsection}{\numberline {5.4.2}Model}{57}{subsection.5.4.2}
+\contentsline {subsubsection}{Remove retweet information}{58}{section*.25}
+\contentsline {subsubsection}{Remove punctuation}{59}{section*.26}
+\contentsline {subsubsection}{Transform uppercase characters into lowercase}{59}{section*.27}
+\contentsline {subsubsection}{Remove stopwords}{59}{section*.28}
+\contentsline {subsubsection}{Apply stemming}{59}{section*.29}
+\contentsline {subsubsection}{Apply TF-IDF encoding}{59}{section*.30}
+\contentsline {subsubsection}{MultinomialNB}{59}{section*.31}
+\contentsline {subsection}{\numberline {5.4.3}Final Prediction}{59}{subsection.5.4.3}
+\contentsline {section}{\numberline {5.5}Stacking meta-classifier}{60}{section.5.5}
+\contentsline {subsection}{\numberline {5.5.1}Genetic algorithm}{62}{subsection.5.5.1}
+\contentsline {subsubsection}{Genetic operators}{64}{section*.33}
+\contentsline {subsubsection}{Results}{67}{section*.34}
+\contentsline {subsection}{\numberline {5.5.2}Logistic Regression}{68}{subsection.5.5.2}
+\contentsline {subsubsection}{Dataset}{69}{section*.35}
+\contentsline {subsubsection}{Comparison with Random Forest}{69}{section*.36}
+\contentsline {subsubsection}{Hyperparameters tuning}{70}{section*.38}
+\contentsline {section}{\numberline {5.6}Prediction pipeline}{74}{section.5.6}
+\contentsline {chapter}{\numberline {6}Web application - BotBuster}{77}{chapter.6}
+\contentsline {section}{\numberline {6.1}Architecture}{78}{section.6.1}
+\contentsline {section}{\numberline {6.2}Backend}{78}{section.6.2}
+\contentsline {subsection}{\numberline {6.2.1}Engine}{78}{subsection.6.2.1}
+\contentsline {subsection}{\numberline {6.2.2}Flask}{79}{subsection.6.2.2}
+\contentsline {section}{\numberline {6.3}Frontend}{79}{section.6.3}
+\contentsline {section}{\numberline {6.4}Deployment platform}{79}{section.6.4}
+\contentsline {section}{\numberline {6.5}Validation}{79}{section.6.5}
+\contentsline {chapter}{\numberline {7}Implementation and Evaluation}{81}{chapter.7}
+\contentsline {section}{\numberline {7.1}Implementation}{82}{section.7.1}
+\contentsline {section}{\numberline {7.2}Evaluation}{82}{section.7.2}
+\contentsline {subsection}{\numberline {7.2.1}Design of Evaluation}{82}{subsection.7.2.1}
+\contentsline {subsection}{\numberline {7.2.2}Metrics}{83}{subsection.7.2.2}
+\contentsline {subsection}{\numberline {7.2.3}Results}{84}{subsection.7.2.3}
+\contentsline {subsection}{\numberline {7.2.4}Discussion}{84}{subsection.7.2.4}
+\contentsline {chapter}{\numberline {8}Conclusion and Future Work}{85}{chapter.8}
+\contentsline {section}{\numberline {8.1}Summary and Lessons Learned}{85}{section.8.1}
+\contentsline {section}{\numberline {8.2}Outputs and Contributions}{85}{section.8.2}
+\contentsline {section}{\numberline {8.3}Limitations}{86}{section.8.3}
+\contentsline {section}{\numberline {8.4}Future Work}{87}{section.8.4}
+\contentsline {chapter}{References}{89}{section.8.4}
+\contentsline {chapter}{\numberline {A}User Manual}{91}{appendix.A}
+\contentsline {chapter}{\numberline {B}Dataset}{93}{appendix.B}

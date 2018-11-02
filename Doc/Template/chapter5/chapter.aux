@@ -33,40 +33,52 @@
 \newlabel{fig:grid_search}{{5.5}{55}{Grid search results\relax }{figure.caption.23}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {5.6}{\ignorespaces ROC curve\relax }}{56}{figure.caption.24}}
 \newlabel{fig:auc}{{5.6}{56}{ROC curve\relax }{figure.caption.24}{}}
+\citation{svm}
+\citation{nb}
 \@writefile{toc}{\contentsline {section}{\numberline {5.4}Text classifier}{57}{section.5.4}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.5}Stacking meta-classifier}{57}{section.5.5}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.7}{\ignorespaces Training pipeline of theNodv stacking ensemble\relax }}{59}{figure.caption.25}}
-\newlabel{fig:stacking_pipeline}{{5.7}{59}{Training pipeline of theNodv stacking ensemble\relax }{figure.caption.25}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.1}Genetic algorithm}{60}{subsection.5.5.1}}
-\@writefile{toc}{\contentsline {subsubsection}{Genetic operators}{60}{section*.26}}
-\@writefile{toc}{\contentsline {subsubsection}{Results}{64}{section*.27}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.2}Logistic Regression}{65}{subsection.5.5.2}}
-\@writefile{toc}{\contentsline {subsubsection}{Dataset}{65}{section*.28}}
-\@writefile{toc}{\contentsline {subsubsection}{Comparison with Random Forest}{65}{section*.29}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.8}{\ignorespaces LogReg with raw settings\relax }}{66}{figure.caption.30}}
-\newlabel{fig:lr_def}{{5.8}{66}{LogReg with raw settings\relax }{figure.caption.30}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.9}{\ignorespaces Random Forest with raw settings\relax }}{66}{figure.caption.30}}
-\newlabel{fig:rf_def}{{5.9}{66}{Random Forest with raw settings\relax }{figure.caption.30}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.10}{\ignorespaces Stacking models comparison\relax }}{66}{figure.caption.30}}
-\@writefile{toc}{\contentsline {subsubsection}{Hyperparameters tuning}{66}{section*.31}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.11}{\ignorespaces Lasso, $ \lambda $ = [0.1, 1, 10, 100]\relax }}{67}{figure.caption.32}}
-\newlabel{fig:lr_lasso_lambda}{{5.11}{67}{Lasso, $ \lambda $ = [0.1, 1, 10, 100]\relax }{figure.caption.32}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.12}{\ignorespaces Ridge, $ \lambda $ = [0.1, 1, 10, 100\relax }}{68}{figure.caption.33}}
-\newlabel{fig:lr_ridge_lambda}{{5.12}{68}{Ridge, $ \lambda $ = [0.1, 1, 10, 100\relax }{figure.caption.33}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.13}{\ignorespaces Up to 150 iterations\relax }}{69}{figure.caption.34}}
-\newlabel{fig:lr_lasso_close}{{5.13}{69}{Up to 150 iterations\relax }{figure.caption.34}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.14}{\ignorespaces Up to 5000 iterations\relax }}{69}{figure.caption.34}}
-\newlabel{fig:lr_lasso_far}{{5.14}{69}{Up to 5000 iterations\relax }{figure.caption.34}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.15}{\ignorespaces Lasso Logistic Regression scores over solvers\relax }}{69}{figure.caption.34}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.1}Dataset}{57}{subsection.5.4.1}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.2}Model}{57}{subsection.5.4.2}}
+\@writefile{toc}{\contentsline {subsubsection}{Remove retweet information}{58}{section*.25}}
+\@writefile{toc}{\contentsline {subsubsection}{Remove punctuation}{59}{section*.26}}
+\@writefile{toc}{\contentsline {subsubsection}{Transform uppercase characters into lowercase}{59}{section*.27}}
+\@writefile{toc}{\contentsline {subsubsection}{Remove stopwords}{59}{section*.28}}
+\@writefile{toc}{\contentsline {subsubsection}{Apply stemming}{59}{section*.29}}
+\@writefile{toc}{\contentsline {subsubsection}{Apply TF-IDF encoding}{59}{section*.30}}
+\@writefile{toc}{\contentsline {subsubsection}{MultinomialNB}{59}{section*.31}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4.3}Final Prediction}{59}{subsection.5.4.3}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.5}Stacking meta-classifier}{60}{section.5.5}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.1}Genetic algorithm}{62}{subsection.5.5.1}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.7}{\ignorespaces Training pipeline of theNodv stacking ensemble\relax }}{63}{figure.caption.32}}
+\newlabel{fig:stacking_pipeline}{{5.7}{63}{Training pipeline of theNodv stacking ensemble\relax }{figure.caption.32}{}}
+\@writefile{toc}{\contentsline {subsubsection}{Genetic operators}{64}{section*.33}}
+\@writefile{toc}{\contentsline {subsubsection}{Results}{67}{section*.34}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.2}Logistic Regression}{68}{subsection.5.5.2}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.8}{\ignorespaces LogReg with raw settings\relax }}{69}{figure.caption.37}}
+\newlabel{fig:lr_def}{{5.8}{69}{LogReg with raw settings\relax }{figure.caption.37}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.9}{\ignorespaces Random Forest with raw settings\relax }}{69}{figure.caption.37}}
+\newlabel{fig:rf_def}{{5.9}{69}{Random Forest with raw settings\relax }{figure.caption.37}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.10}{\ignorespaces Stacking models comparison\relax }}{69}{figure.caption.37}}
+\@writefile{toc}{\contentsline {subsubsection}{Dataset}{69}{section*.35}}
+\@writefile{toc}{\contentsline {subsubsection}{Comparison with Random Forest}{69}{section*.36}}
+\@writefile{toc}{\contentsline {subsubsection}{Hyperparameters tuning}{70}{section*.38}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.11}{\ignorespaces Lasso, $ \lambda $ = [0.1, 1, 10, 100]\relax }}{71}{figure.caption.39}}
+\newlabel{fig:lr_lasso_lambda}{{5.11}{71}{Lasso, $ \lambda $ = [0.1, 1, 10, 100]\relax }{figure.caption.39}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.12}{\ignorespaces Ridge, $ \lambda $ = [0.1, 1, 10, 100\relax }}{71}{figure.caption.40}}
+\newlabel{fig:lr_ridge_lambda}{{5.12}{71}{Ridge, $ \lambda $ = [0.1, 1, 10, 100\relax }{figure.caption.40}{}}
 \citation{SAGA}
 \citation{SAG}
 \citation{Liblinear}
-\@writefile{toc}{\contentsline {section}{\numberline {5.6}Prediction pipeline}{70}{section.5.6}}
-\newlabel{predicion_pipeline}{{5.6}{70}{Prediction pipeline}{section.5.6}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5.16}{\ignorespaces Final prediction pipeline\relax }}{72}{figure.caption.35}}
-\newlabel{fig:prediction_pipeline}{{5.16}{72}{Final prediction pipeline\relax }{figure.caption.35}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.13}{\ignorespaces Up to 150 iterations\relax }}{73}{figure.caption.41}}
+\newlabel{fig:lr_lasso_close}{{5.13}{73}{Up to 150 iterations\relax }{figure.caption.41}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.14}{\ignorespaces Up to 5000 iterations\relax }}{73}{figure.caption.41}}
+\newlabel{fig:lr_lasso_far}{{5.14}{73}{Up to 5000 iterations\relax }{figure.caption.41}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.15}{\ignorespaces Lasso Logistic Regression scores over solvers\relax }}{73}{figure.caption.41}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.6}Prediction pipeline}{74}{section.5.6}}
+\newlabel{predicion_pipeline}{{5.6}{74}{Prediction pipeline}{section.5.6}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.16}{\ignorespaces Final prediction pipeline\relax }}{75}{figure.caption.42}}
+\newlabel{fig:prediction_pipeline}{{5.16}{75}{Final prediction pipeline\relax }{figure.caption.42}{}}
 \@setckpt{chapter5/chapter}{
-\setcounter{page}{73}
+\setcounter{page}{76}
 \setcounter{equation}{0}
 \setcounter{enumi}{0}
 \setcounter{enumii}{0}
@@ -94,6 +106,6 @@
 \setcounter{ContinuedFloat}{0}
 \setcounter{Item}{0}
 \setcounter{Hfootnote}{0}
-\setcounter{bookmark@seq@number}{59}
+\setcounter{bookmark@seq@number}{62}
 \setcounter{section@level}{1}
 }

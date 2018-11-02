@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{SAGA}
 LIENS MSR INRIA)-Simon Lacoste-Julien (INRIA Paris Rocquencourt LIENS
@@ -17,6 +17,11 @@ R.~Harkreader C.~Yang and G.~Gu.
 Emilio Ferrara Alessandro Flammini Filippo~Menczer Clayton A.~Davis,
   Onur~Varol.
 \newblock Botornot: A system to evaluate social bots, 2016.
+
+\bibitem{svm}
+T.~Joachims.
+\newblock Text categorization with support vector machines: Learning with many
+  relevant features, 1998.
 
 \bibitem{Lee11sevenmonths}
 Kyumin Lee, Brian~David Eoff, and James Caverlee.
@@ -45,6 +50,10 @@ Cho-Jui Hsieh Xiang-Rui~Wang Rong-En~Fa, Kai-Wei~Chang and Chih-Jen Lin.
 John S. and James L.~Knight Foundation.
 \newblock Disinformation, 'fake news' and influence campaigns on twitter.
 \newblock 2018.
+
+\bibitem{nb}
+W.~Ip S.~Ting and A.~H. Tsang.
+\newblock Is naive bayes a good classifier for document classification?, 2011.
 
 \bibitem{Cresci}
 Marinella Petrocchi-Angelo Spognardi Maurizio~Tesconi Stefano~Cresci, Roberto
