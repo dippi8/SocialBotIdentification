@@ -65,23 +65,25 @@
 \contentsline {subsubsection}{Hyperparameters tuning}{66}{section*.31}
 \contentsline {section}{\numberline {5.6}Prediction pipeline}{70}{section.5.6}
 \contentsline {chapter}{\numberline {6}Web application - BotBuster}{73}{chapter.6}
-\contentsline {section}{\numberline {6.1}Engine}{74}{section.6.1}
+\contentsline {section}{\numberline {6.1}Architecture}{74}{section.6.1}
 \contentsline {section}{\numberline {6.2}Backend}{74}{section.6.2}
-\contentsline {section}{\numberline {6.3}Frontend}{74}{section.6.3}
-\contentsline {section}{\numberline {6.4}Deployment platform}{74}{section.6.4}
-\contentsline {section}{\numberline {6.5}Validation}{74}{section.6.5}
-\contentsline {chapter}{\numberline {7}Implementation and Evaluation}{75}{chapter.7}
-\contentsline {section}{\numberline {7.1}Implementation}{76}{section.7.1}
-\contentsline {section}{\numberline {7.2}Evaluation}{76}{section.7.2}
-\contentsline {subsection}{\numberline {7.2.1}Design of Evaluation}{76}{subsection.7.2.1}
-\contentsline {subsection}{\numberline {7.2.2}Metrics}{77}{subsection.7.2.2}
-\contentsline {subsection}{\numberline {7.2.3}Results}{78}{subsection.7.2.3}
-\contentsline {subsection}{\numberline {7.2.4}Discussion}{78}{subsection.7.2.4}
-\contentsline {chapter}{\numberline {8}Conclusion and Future Work}{79}{chapter.8}
-\contentsline {section}{\numberline {8.1}Summary and Lessons Learned}{79}{section.8.1}
-\contentsline {section}{\numberline {8.2}Outputs and Contributions}{79}{section.8.2}
-\contentsline {section}{\numberline {8.3}Limitations}{80}{section.8.3}
-\contentsline {section}{\numberline {8.4}Future Work}{81}{section.8.4}
-\contentsline {chapter}{References}{83}{section.8.4}
-\contentsline {chapter}{\numberline {A}User Manual}{85}{appendix.A}
-\contentsline {chapter}{\numberline {B}Dataset}{87}{appendix.B}
+\contentsline {subsection}{\numberline {6.2.1}Engine}{74}{subsection.6.2.1}
+\contentsline {subsection}{\numberline {6.2.2}Flask}{75}{subsection.6.2.2}
+\contentsline {section}{\numberline {6.3}Frontend}{75}{section.6.3}
+\contentsline {section}{\numberline {6.4}Deployment platform}{75}{section.6.4}
+\contentsline {section}{\numberline {6.5}Validation}{75}{section.6.5}
+\contentsline {chapter}{\numberline {7}Implementation and Evaluation}{77}{chapter.7}
+\contentsline {section}{\numberline {7.1}Implementation}{78}{section.7.1}
+\contentsline {section}{\numberline {7.2}Evaluation}{78}{section.7.2}
+\contentsline {subsection}{\numberline {7.2.1}Design of Evaluation}{78}{subsection.7.2.1}
+\contentsline {subsection}{\numberline {7.2.2}Metrics}{79}{subsection.7.2.2}
+\contentsline {subsection}{\numberline {7.2.3}Results}{80}{subsection.7.2.3}
+\contentsline {subsection}{\numberline {7.2.4}Discussion}{80}{subsection.7.2.4}
+\contentsline {chapter}{\numberline {8}Conclusion and Future Work}{81}{chapter.8}
+\contentsline {section}{\numberline {8.1}Summary and Lessons Learned}{81}{section.8.1}
+\contentsline {section}{\numberline {8.2}Outputs and Contributions}{81}{section.8.2}
+\contentsline {section}{\numberline {8.3}Limitations}{82}{section.8.3}
+\contentsline {section}{\numberline {8.4}Future Work}{83}{section.8.4}
+\contentsline {chapter}{References}{85}{section.8.4}
+\contentsline {chapter}{\numberline {A}User Manual}{87}{appendix.A}
+\contentsline {chapter}{\numberline {B}Dataset}{89}{appendix.B}

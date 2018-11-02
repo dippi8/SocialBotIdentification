@@ -58,23 +58,25 @@
 \BOOKMARK [2][-]{subsection.5.5.2}{Logistic Regression}{section.5.5}% 58
 \BOOKMARK [1][-]{section.5.6}{Prediction pipeline}{chapter.5}% 59
 \BOOKMARK [0][-]{chapter.6}{Web application - BotBuster}{}% 60
-\BOOKMARK [1][-]{section.6.1}{Engine}{chapter.6}% 61
+\BOOKMARK [1][-]{section.6.1}{Architecture}{chapter.6}% 61
 \BOOKMARK [1][-]{section.6.2}{Backend}{chapter.6}% 62
-\BOOKMARK [1][-]{section.6.3}{Frontend}{chapter.6}% 63
-\BOOKMARK [1][-]{section.6.4}{Deployment platform}{chapter.6}% 64
-\BOOKMARK [1][-]{section.6.5}{Validation}{chapter.6}% 65
-\BOOKMARK [0][-]{chapter.7}{Implementation and Evaluation}{}% 66
-\BOOKMARK [1][-]{section.7.1}{Implementation}{chapter.7}% 67
-\BOOKMARK [1][-]{section.7.2}{Evaluation}{chapter.7}% 68
-\BOOKMARK [2][-]{subsection.7.2.1}{Design of Evaluation}{section.7.2}% 69
-\BOOKMARK [2][-]{subsection.7.2.2}{Metrics}{section.7.2}% 70
-\BOOKMARK [2][-]{subsection.7.2.3}{Results}{section.7.2}% 71
-\BOOKMARK [2][-]{subsection.7.2.4}{Discussion}{section.7.2}% 72
-\BOOKMARK [0][-]{chapter.8}{Conclusion and Future Work}{}% 73
-\BOOKMARK [1][-]{section.8.1}{Summary and Lessons Learned}{chapter.8}% 74
-\BOOKMARK [1][-]{section.8.2}{Outputs and Contributions}{chapter.8}% 75
-\BOOKMARK [1][-]{section.8.3}{Limitations}{chapter.8}% 76
-\BOOKMARK [1][-]{section.8.4}{Future Work}{chapter.8}% 77
-\BOOKMARK [0][-]{section.8.4}{References}{}% 78
-\BOOKMARK [0][-]{appendix.A}{User Manual}{}% 79
-\BOOKMARK [0][-]{appendix.B}{Dataset}{}% 80
+\BOOKMARK [2][-]{subsection.6.2.1}{Engine}{section.6.2}% 63
+\BOOKMARK [2][-]{subsection.6.2.2}{Flask}{section.6.2}% 64
+\BOOKMARK [1][-]{section.6.3}{Frontend}{chapter.6}% 65
+\BOOKMARK [1][-]{section.6.4}{Deployment platform}{chapter.6}% 66
+\BOOKMARK [1][-]{section.6.5}{Validation}{chapter.6}% 67
+\BOOKMARK [0][-]{chapter.7}{Implementation and Evaluation}{}% 68
+\BOOKMARK [1][-]{section.7.1}{Implementation}{chapter.7}% 69
+\BOOKMARK [1][-]{section.7.2}{Evaluation}{chapter.7}% 70
+\BOOKMARK [2][-]{subsection.7.2.1}{Design of Evaluation}{section.7.2}% 71
+\BOOKMARK [2][-]{subsection.7.2.2}{Metrics}{section.7.2}% 72
+\BOOKMARK [2][-]{subsection.7.2.3}{Results}{section.7.2}% 73
+\BOOKMARK [2][-]{subsection.7.2.4}{Discussion}{section.7.2}% 74
+\BOOKMARK [0][-]{chapter.8}{Conclusion and Future Work}{}% 75
+\BOOKMARK [1][-]{section.8.1}{Summary and Lessons Learned}{chapter.8}% 76
+\BOOKMARK [1][-]{section.8.2}{Outputs and Contributions}{chapter.8}% 77
+\BOOKMARK [1][-]{section.8.3}{Limitations}{chapter.8}% 78
+\BOOKMARK [1][-]{section.8.4}{Future Work}{chapter.8}% 79
+\BOOKMARK [0][-]{section.8.4}{References}{}% 80
+\BOOKMARK [0][-]{appendix.A}{User Manual}{}% 81
+\BOOKMARK [0][-]{appendix.B}{Dataset}{}% 82
