@@ -422,7 +422,7 @@ We were looking for this approach, because we wanted this filter classifier to b
 
 Once we fitted the model, it was ready to be the second element entering in our solution pool.
 
-\section{Text classifier}
+\section{Text-based classifier}
 In chapter \ref{capitolo4} we created some usefull feature that helped the two classifiers above. Anyway we didn't consider enought the tweets text. A first idea consisted in add a feature that describe the context of the tweets. This task was easily viable using \textit{Google Cloud Natural Language}. Unfortunately, this service only provides a few free calls, and we would not be able to tag all the tweets in our dataset. Moreover, the Context Classification is very specific, and we would have risked to have a too large domain of values. We tried to classify some tweets and we noticed that it was not possible with many of them, since they was just exclamation or contextless sentences. We therefore decided to train a proprietary text classifier. This allowed us to classify texts according to our targets, and our final classifier would have been self-sufficient, without external services.
 \subsection{Dataset}
 Since we wanted to classify texts instead of users, we needed to create a specific dataset.
