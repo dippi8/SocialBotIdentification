@@ -33,67 +33,75 @@
 \contentsline {section}{\numberline {4.1}Baseline}{30}{section.4.1}
 \contentsline {section}{\numberline {4.2}Missing values filling}{32}{section.4.2}
 \contentsline {section}{\numberline {4.3}Descriptive features}{33}{section.4.3}
-\contentsline {section}{\numberline {4.4}Intrinsic features}{34}{section.4.4}
-\contentsline {section}{\numberline {4.5}Extrinsic features}{36}{section.4.5}
-\contentsline {section}{\numberline {4.6}Image features}{38}{section.4.6}
-\contentsline {section}{\numberline {4.7}final feature vector}{39}{section.4.7}
-\contentsline {subsection}{\numberline {4.7.1}User features}{39}{subsection.4.7.1}
-\contentsline {subsection}{\numberline {4.7.2}Tweets features}{39}{subsection.4.7.2}
-\contentsline {chapter}{\numberline {5}Model selection}{41}{chapter.5}
-\contentsline {section}{\numberline {5.1}Baselines}{41}{section.5.1}
-\contentsline {subsection}{\numberline {5.1.1}Random Forest}{42}{subsection.5.1.1}
-\contentsline {subsection}{\numberline {5.1.2}Logistic Regression}{42}{subsection.5.1.2}
-\contentsline {subsection}{\numberline {5.1.3}K-Nearest Neighbors}{43}{subsection.5.1.3}
-\contentsline {subsection}{\numberline {5.1.4}Support Vector Machine}{44}{subsection.5.1.4}
-\contentsline {subsection}{\numberline {5.1.5}Comparison and baseline selection}{45}{subsection.5.1.5}
-\contentsline {subsubsection}{Holdout evaluation}{45}{section*.17}
-\contentsline {subsubsection}{Crossvalidation}{47}{section*.18}
-\contentsline {section}{\numberline {5.2}Multiclass classifier}{48}{section.5.2}
-\contentsline {subsection}{\numberline {5.2.1}Dataset}{49}{subsection.5.2.1}
-\contentsline {subsection}{\numberline {5.2.2}Model}{49}{subsection.5.2.2}
-\contentsline {section}{\numberline {5.3}Binary Classifier}{53}{section.5.3}
-\contentsline {subsection}{\numberline {5.3.1}Dataset}{53}{subsection.5.3.1}
-\contentsline {subsection}{\numberline {5.3.2}Model}{54}{subsection.5.3.2}
-\contentsline {section}{\numberline {5.4}Text-based classifier}{57}{section.5.4}
-\contentsline {subsection}{\numberline {5.4.1}Dataset}{57}{subsection.5.4.1}
-\contentsline {subsection}{\numberline {5.4.2}Model}{57}{subsection.5.4.2}
-\contentsline {subsubsection}{Remove retweet information}{58}{section*.25}
-\contentsline {subsubsection}{Remove punctuation}{59}{section*.26}
-\contentsline {subsubsection}{Transform uppercase characters into lowercase}{59}{section*.27}
-\contentsline {subsubsection}{Remove stopwords}{59}{section*.28}
-\contentsline {subsubsection}{Apply stemming}{59}{section*.29}
-\contentsline {subsubsection}{Apply TF-IDF encoding}{59}{section*.30}
-\contentsline {subsubsection}{MultinomialNB}{59}{section*.31}
-\contentsline {subsection}{\numberline {5.4.3}Final Prediction}{59}{subsection.5.4.3}
-\contentsline {section}{\numberline {5.5}Stacking meta-classifier}{60}{section.5.5}
-\contentsline {subsection}{\numberline {5.5.1}Genetic algorithm}{62}{subsection.5.5.1}
-\contentsline {subsubsection}{Genetic operators}{64}{section*.33}
-\contentsline {subsubsection}{Results}{67}{section*.34}
-\contentsline {subsection}{\numberline {5.5.2}Logistic Regression}{68}{subsection.5.5.2}
-\contentsline {subsubsection}{Dataset}{69}{section*.35}
-\contentsline {subsubsection}{Comparison with Random Forest}{69}{section*.36}
-\contentsline {subsubsection}{Hyperparameters tuning}{70}{section*.38}
-\contentsline {section}{\numberline {5.6}Prediction pipeline}{74}{section.5.6}
-\contentsline {chapter}{\numberline {6}Web application - BotBuster}{77}{chapter.6}
-\contentsline {section}{\numberline {6.1}Architecture}{78}{section.6.1}
-\contentsline {section}{\numberline {6.2}Backend}{78}{section.6.2}
-\contentsline {subsection}{\numberline {6.2.1}Engine}{78}{subsection.6.2.1}
-\contentsline {subsection}{\numberline {6.2.2}Flask}{79}{subsection.6.2.2}
-\contentsline {section}{\numberline {6.3}Frontend}{79}{section.6.3}
-\contentsline {section}{\numberline {6.4}Deployment platform}{79}{section.6.4}
-\contentsline {section}{\numberline {6.5}Validation}{79}{section.6.5}
-\contentsline {chapter}{\numberline {7}Implementation and Evaluation}{81}{chapter.7}
-\contentsline {section}{\numberline {7.1}Implementation}{82}{section.7.1}
-\contentsline {section}{\numberline {7.2}Evaluation}{82}{section.7.2}
-\contentsline {subsection}{\numberline {7.2.1}Design of Evaluation}{82}{subsection.7.2.1}
-\contentsline {subsection}{\numberline {7.2.2}Metrics}{83}{subsection.7.2.2}
-\contentsline {subsection}{\numberline {7.2.3}Results}{84}{subsection.7.2.3}
-\contentsline {subsection}{\numberline {7.2.4}Discussion}{84}{subsection.7.2.4}
-\contentsline {chapter}{\numberline {8}Conclusion and Future Work}{85}{chapter.8}
-\contentsline {section}{\numberline {8.1}Summary and Lessons Learned}{85}{section.8.1}
-\contentsline {section}{\numberline {8.2}Outputs and Contributions}{85}{section.8.2}
-\contentsline {section}{\numberline {8.3}Limitations}{86}{section.8.3}
-\contentsline {section}{\numberline {8.4}Future Work}{87}{section.8.4}
-\contentsline {chapter}{References}{89}{section.8.4}
-\contentsline {chapter}{\numberline {A}User Manual}{91}{appendix.A}
-\contentsline {chapter}{\numberline {B}Dataset}{93}{appendix.B}
+\contentsline {subsection}{\numberline {4.3.1}Ranking}{34}{subsection.4.3.1}
+\contentsline {section}{\numberline {4.4}Intrinsic features}{35}{section.4.4}
+\contentsline {subsection}{\numberline {4.4.1}Tweet intradistance}{35}{subsection.4.4.1}
+\contentsline {subsection}{\numberline {4.4.2}URL entropy}{36}{subsection.4.4.2}
+\contentsline {subsection}{\numberline {4.4.3}Ranking}{37}{subsection.4.4.3}
+\contentsline {section}{\numberline {4.5}Extrinsic features}{37}{section.4.5}
+\contentsline {subsection}{\numberline {4.5.1}Scores computation}{38}{subsection.4.5.1}
+\contentsline {subsection}{\numberline {4.5.2}Safe Area}{39}{subsection.4.5.2}
+\contentsline {section}{\numberline {4.6}Image features}{41}{section.4.6}
+\contentsline {section}{\numberline {4.7}Final feature vector}{46}{section.4.7}
+\contentsline {subsection}{\numberline {4.7.1}User features}{46}{subsection.4.7.1}
+\contentsline {subsection}{\numberline {4.7.2}Tweets features}{47}{subsection.4.7.2}
+\contentsline {chapter}{\numberline {5}Model selection}{49}{chapter.5}
+\contentsline {section}{\numberline {5.1}Baselines}{49}{section.5.1}
+\contentsline {subsection}{\numberline {5.1.1}Random Forest}{50}{subsection.5.1.1}
+\contentsline {subsection}{\numberline {5.1.2}Logistic Regression}{50}{subsection.5.1.2}
+\contentsline {subsection}{\numberline {5.1.3}K-Nearest Neighbors}{51}{subsection.5.1.3}
+\contentsline {subsection}{\numberline {5.1.4}Support Vector Machine}{52}{subsection.5.1.4}
+\contentsline {subsection}{\numberline {5.1.5}Comparison and baseline selection}{53}{subsection.5.1.5}
+\contentsline {subsubsection}{Holdout evaluation}{53}{section*.24}
+\contentsline {subsubsection}{Crossvalidation}{55}{section*.25}
+\contentsline {section}{\numberline {5.2}Multiclass classifier}{56}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}Dataset}{57}{subsection.5.2.1}
+\contentsline {subsection}{\numberline {5.2.2}Model}{57}{subsection.5.2.2}
+\contentsline {subsection}{\numberline {5.2.3}Features selection}{57}{subsection.5.2.3}
+\contentsline {subsection}{\numberline {5.2.4}Hyperparameters Tuning}{59}{subsection.5.2.4}
+\contentsline {section}{\numberline {5.3}Binary Classifier}{61}{section.5.3}
+\contentsline {subsection}{\numberline {5.3.1}Dataset}{61}{subsection.5.3.1}
+\contentsline {subsection}{\numberline {5.3.2}Model}{62}{subsection.5.3.2}
+\contentsline {section}{\numberline {5.4}Text-based classifier}{65}{section.5.4}
+\contentsline {subsection}{\numberline {5.4.1}Dataset}{65}{subsection.5.4.1}
+\contentsline {subsection}{\numberline {5.4.2}Model}{66}{subsection.5.4.2}
+\contentsline {subsubsection}{Remove retweet information}{67}{section*.32}
+\contentsline {subsubsection}{Remove punctuation}{67}{section*.33}
+\contentsline {subsubsection}{Transform uppercase characters into lowercase}{67}{section*.34}
+\contentsline {subsubsection}{Remove stopwords}{67}{section*.35}
+\contentsline {subsubsection}{Apply stemming}{67}{section*.36}
+\contentsline {subsubsection}{Apply TF-IDF encoding}{67}{section*.37}
+\contentsline {subsubsection}{MultinomialNB}{67}{section*.38}
+\contentsline {subsection}{\numberline {5.4.3}Final Prediction}{68}{subsection.5.4.3}
+\contentsline {section}{\numberline {5.5}Stacking meta-classifier}{68}{section.5.5}
+\contentsline {subsection}{\numberline {5.5.1}Genetic algorithm}{70}{subsection.5.5.1}
+\contentsline {subsubsection}{Genetic operators}{72}{section*.40}
+\contentsline {subsubsection}{Results}{75}{section*.41}
+\contentsline {subsection}{\numberline {5.5.2}Logistic Regression}{76}{subsection.5.5.2}
+\contentsline {subsubsection}{Dataset}{77}{section*.42}
+\contentsline {subsubsection}{Comparison with Random Forest}{77}{section*.43}
+\contentsline {subsubsection}{Hyperparameters tuning}{78}{section*.45}
+\contentsline {section}{\numberline {5.6}Prediction pipeline}{82}{section.5.6}
+\contentsline {chapter}{\numberline {6}Web application - BotBuster}{85}{chapter.6}
+\contentsline {section}{\numberline {6.1}Architecture}{86}{section.6.1}
+\contentsline {section}{\numberline {6.2}Backend}{86}{section.6.2}
+\contentsline {subsection}{\numberline {6.2.1}Engine}{86}{subsection.6.2.1}
+\contentsline {subsection}{\numberline {6.2.2}Flask}{87}{subsection.6.2.2}
+\contentsline {section}{\numberline {6.3}Frontend}{87}{section.6.3}
+\contentsline {section}{\numberline {6.4}Deployment platform}{87}{section.6.4}
+\contentsline {section}{\numberline {6.5}Validation}{87}{section.6.5}
+\contentsline {chapter}{\numberline {7}Implementation and Evaluation}{89}{chapter.7}
+\contentsline {section}{\numberline {7.1}Implementation}{90}{section.7.1}
+\contentsline {section}{\numberline {7.2}Evaluation}{90}{section.7.2}
+\contentsline {subsection}{\numberline {7.2.1}Design of Evaluation}{90}{subsection.7.2.1}
+\contentsline {subsection}{\numberline {7.2.2}Metrics}{91}{subsection.7.2.2}
+\contentsline {subsection}{\numberline {7.2.3}Results}{92}{subsection.7.2.3}
+\contentsline {subsection}{\numberline {7.2.4}Discussion}{92}{subsection.7.2.4}
+\contentsline {chapter}{\numberline {8}Conclusion and Future Work}{93}{chapter.8}
+\contentsline {section}{\numberline {8.1}Summary and Lessons Learned}{93}{section.8.1}
+\contentsline {section}{\numberline {8.2}Outputs and Contributions}{93}{section.8.2}
+\contentsline {section}{\numberline {8.3}Limitations}{94}{section.8.3}
+\contentsline {section}{\numberline {8.4}Future Work}{95}{section.8.4}
+\contentsline {chapter}{References}{97}{section.8.4}
+\contentsline {chapter}{\numberline {A}User Manual}{99}{appendix.A}
+\contentsline {chapter}{\numberline {B}Dataset}{101}{appendix.B}

@@ -13,9 +13,13 @@ We created many features. Some of them are descriptive, like the lenght of strin
 Other kind of features are more behaviour-oriented, like the monotony of different tweets of the same user,while others are oriented to the most used words in tweets.
 Finally we also added features related to image analysis.
 
-The choice over the amount of tweets that would have been considered was a trade-off between performance and prediction speed.\\
-We finally chose to retrive up to the latest 100 tweets for each user, because further material led us to a slower, but equivalent, prediction over test samples.\\
+The choice over the amount of tweets that would have been considered was a trade-off between performance and prediction speed.
+We finally chose to retrieve up to the latest 100 tweets for each user, because further material led us to a slower, but equivalent, prediction over test samples.
+
 At the end of this stage, the resulting - and final - feature vector will include 38 features.
+
+Each resulting feature group has been used to fit a Random Forest with Entropy criterion and 250 tree estimators. This phase allowed us to rank, within each feature group, the crafted attributes, thanks to the inner ranking method of the model.
+The ranking of an attribute is performed by computing the entropy brought with that feature, when it comes to split the data for the creations of sub-trees. The higher is the feature's entropy, the lower is its rank.
 
 \section{Baseline}
 In this section we analyse the complete set of default profile features and which kind of pre-processing operation we applied. With this default set we trained several classifiers to define some baselines for the upcoming work and this allowed us to evaluate the improvements made by the features engineering step.
@@ -176,12 +180,24 @@ Here is the list of this first 18 brand new features, introduced by our work:
 		min\_hash&highest amount of hashtags involved on a tweet\\
 		freq&amount of tweets per day (up to 100)\\
 		ret\_perc&percentage of retweets, made by the user, over its retrieved tweets\\
-		media\_perc&percentage of media content incorpored in tweets\\
+		media\_perc&percentage of media content encorpored in tweets\\
 		url\_perc&percentage of URL links placed inside tweets\\
 		quote\_perc&percentage of quotes, made by the user, over its retrieved tweets\\\hline\\
 	\end{tabular}
 \end{center}
 \normalsize
+
+\subsection{Ranking}
+\begin{figure}[htp!]
+	\centering
+	\includegraphics[width=\columnwidth]{chapter4/figure/desc_features_importances.png}
+	\caption{Descriptive features ranking with Random Forest}
+	\label{fig:desc_rank}
+\end{figure}
+As shown in Figure\ref{fig:desc_rank}, this first group has been performed a ranking function on, with the following result:\\
+\textit{1. freq (0.148675), 2. avg\_len (0.140074), 3. media\_perc (0.102189), 4. min\_len (0.098582), 5. ret\_perc (0.095440), 6. max\_len (0.087577), 7. avg\_ret (0.082658), 8. max\_ret (0.063234), 9. quote\_perc (0.060392), 10. url\_perc (0.030648), 11. avg\_hash (0.030057), 12. avg\_fav (0.016788), 13. max\_fav (0.013613), 14. min\_hash (0.012777), 15. max\_hash (0.011260), 16. min\_ret (0.004959), 17. min\_fav (0.001077)}
+
+
 
 \section{Intrinsic features}
 Due the multiclass nature of our dataset, it was impossible to rely on the descriptive meta features only.
@@ -194,7 +210,23 @@ One thing that was easy to notice was the monotony, in terms of words or URLs in
 We tried to encapsule this distinctive behaviour by adding two intrinsic features to the training vector, along with the descriptive ones.\\
 
 How to portray such monotony?\\
-We though about different approaches, like complex sentiment analysis or entity recognition, but then, we chose to rely on a weighting technique and the euclidean distance.\\
+We though about different approaches, like complex sentiment analysis or entity recognition, but then, we chose to rely on two methods: the TF-IDF weighting technique and the information entropy.
+
+These two different approaches application produced two brand new features:
+\small
+\begin{center}
+	\begin{tabular}{ll}
+		\\feature&type\\
+		\hline\hline
+		tweet\_intradistance&float\\
+		url\_entropy&float\\\hline\\
+	\end{tabular}
+\end{center}
+\normalsize
+
+The features were tested to fit a 
+
+\subsection{Tweet intradistance}
 We looked inside every retrieved tweets for each user, then we encoded each of them with TF-IDF weighting.\\
 
 Every term (word) of every tweet was represented by a numeric weight, according to TF-IDF.\\
@@ -212,52 +244,63 @@ The inverse document frequency factor aims to highlight the overall magnitude of
 After the encoding process, we wanted to map the resulting vectors into an euclidean space, in order to compute the distance of each weighted text, from the total centroid of the collection.
 
 We decided to add each user a measure of the average intra-distance of its tweets.\\
-In order to achieve this goal, we relied on the WSS metric used in K-means clustering, but trying to soften its magnitude. We didn't want huge ranges in our features, in order to minimize the normalizations along the process.
+In order to accomplish that, we relied on the WSS metric used in K-means clustering, but trying to soften its magnitude. We didn't want huge ranges in our features, minimizing the normalizations along the process.
 
 The resulting formula for this brand new attribute is the following:
-\[IntraDistance(U) = \frac{1}{N}\sum _{\mathbf {x} \in U}\left\|\mathbf {x} -{\boldsymbol {\mu }}\right\|^{2}\]
+\[\textbf{tweet\_intradistance}(U) = \frac{1}{N}\sum _{\mathbf {x} \in U}\left\|\mathbf {x} -{\boldsymbol {\mu }}\right\|^{2}\]
 Where \textit{N} is the number of tweet for user \textit{U}, \textit{x} is the encoded tweet and $\mu$ is the centroid of the tweet collection for that user.
 
-This formula, as well as the whole process, has been used both for tweet words and URLs inside of them.
-The resulting 2 features are
-\small
-\begin{center}
-	\begin{tabular}{ll}
-		\\feature&type\\
-		\hline\hline
-		tweet\_intradistance&float\\
-		url\_intradistance&float\\\hline\\
-	\end{tabular}
-\end{center}
-\normalsize
-We expected low values for Spam-bot accounts in both features, as well as we expected the opposite for Genuine and Fake-Follower accounts.
+This feature turned out to be pretty relevant in supporting the detections of NSFW and Spam-Bots, due their repetitive natures.
 
+\subsection{URL entropy}
 
+For this attribute, we decided to exploit the entropy of the information of a messages source. 
+For each user U, has been computed the following:
+\[\textbf{url\_entropy}(U) = \sum _{w \in W_{u}}-\frac{c(w)}{|W_{u}|}\log( \frac{c(w)}{|W_{u}|})\]
+where \textit{W\textsubscript{u}} is the collection of URLs retrieved from the user's tweets. The term \textit{w} represent a single URL, belonging to the collection, and  
+\textit{c(w)} is the function counting the occurrence of that URL. Finally. \textit{|W|} stands for the cardinality of the collection.
+
+The higher the number of the different URLs inside the tweets, the higher the url\_entropy for that user.
+A monotony URL spammer, with just on link in its argumentations, would lead to a zero-valued url\_entropy:
+\[url\_entropy(U) = -1\log(1) = 0\]
+
+In order to treat those URLs, we had to detect them inside the tweet texts, with some regular expressions. After the tweet was cleansed and represented only by its embedded link (if present), we wanted to handle just the domain, so we stripped all the sub-paths of the root.
+We didn't care about which page or sections the bots were interested to spam, as long as the domain were the same.
+
+\subsection{Ranking}
+\begin{figure}[htp!]
+	\centering
+	\includegraphics[width=\columnwidth]{chapter4/figure/intrinsic_features_importances.png}
+	\caption{Intrinsic features ranking with Random Forest}
+	\label{fig:intr_rank}
+\end{figure}
+Figure\ref{fig:intr_rank} shows the inner ranking of these two new features, that have these scores:
+\textit{1. tweet\_intradistance (0.736293), 2. url\_entropy (0.263707)}
 \section{Extrinsic features}
 Once we have modelled the personal twitting actions, in terms of words and links dissimilarity, we needed to look for those parameters that could be compared with all the users in our dataset.
 We wanted the users to get out of their shells, and to match their timelines with each others.
 
-Once again, sentiment analysis came to our mind. We found lots of paid or limited services that could have only partially supported us during this stage.\\
-We couldn't think about implementing our own semantic analysis, as it is meant to be, due to the effort and time it would had taken.\\
-For simplicity sake, we had the idea to look for the most meaningful words in tweets, that are common to all the users belonging to the same class.\\
+Once again, sentiment analysis came to our mind. We found lots of paid or limited services that could have only partially supported us during this stage.
+We couldn't think about implementing our own semantic analysis, as it is meant to be, due to the effort and time it would had taken.
+For simplicity sake, we had the idea to look for the most meaningful words in tweets, that are common to all the users belonging to the same class.
 We tried this approach, hoping to find a robust help in separating topics among targets.
 
-The idea was to build five partially-non-overlapping dictionaries, one for each class of users, containing the most popular words used by them in their retrieved tweets, stripped of stopwords. Each dictionary is ordered according to the occurrence of each word, in order to have a proper ranking for the terms and to give each of them a score.
+The idea was to build four partially-non-overlapping dictionaries, one for each class of users, containing the most popular words used by them in their retrieved tweets, stripped of stopwords. Each dictionary is ordered according to the occurrence of each word, in order to have a proper ranking for the terms and to give each of them a score.
+The magnitude of the non-overlapping portions of these lists will be shown soon, in this section.
 
-We gathered the 300 most common words for each category of accounts, in order to average about 250 terms, once the overlapping elements would have been discarded.
-Considering more than 300 words led us to irrelevant performance boost, instead it required lot of time to process a single user, so we decided to stop early.
+We gathered the 1000 most common words for each category of accounts.
 
-We have listed 5 dictionaries: 
+\subsection{Scores computation}
+After the dictionaries were filtered to prevent (partial) overlapping, we had four collections, composed by the tuples \textit{(word, score)}:
 \small
 \begin{center}
 	\begin{tabular}{ll}
 		\\dictionary&size\\
 		\hline\hline
-		NSFW\_main\_words.csv&209\\
-		spam\_bots\_main\_words.csv&230\\
-		news\_spreders\_main\_words.csv&237\\
-		fake\_followers\_main\_words.csv&233\\
-		genuine\_main\_words.csv&223\\\hline\\
+		NSFW\_main\_words.csv&1000\\
+		spam\_bots\_main\_words.csv&1000\\
+		news\_spreders\_main\_words.csv&1000\\
+		fake\_followers\_main\_words.csv&1000\\\hline\\
 	\end{tabular}
 \end{center}
 \normalsize
@@ -279,8 +322,7 @@ So we have
 		NSFW\_words\_score&float\\
 		spam\_bots\_words\_score&float\\
 		news\_spreders\_words\_score&float\\
-		fake\_followers\_words\_score&float\\
-		genuine\_words\_score&float\\\hline\\
+		fake\_followers\_words\_score&float\\\hline\\
 	\end{tabular}
 \end{center}
 \normalsize
@@ -290,6 +332,79 @@ For instance, If the word we are comparing matches with the most frequent for NS
 
 We expected to capture patterns about the choice of the words involved in tweets, for each of our categories.
 This extrinsic attributes revealed themselves as very useful, lately.
+
+\subsection{Safe Area}
+Making a step back, before the overall computation of the features, we had to decide the portions of the dictionaries that weren't supposed to overlap with each others.
+Once we gathered the main words for each bot class, we had to chose ths size of what we called the \textit{Safe Area}.
+The Safe Area is the collection of the first N words, in each dictionary, that are not overlapping with the others listed in the other dictionaries.
+This method has been applied to ensure that some words resulted as strictly category-characterizing.
+We had to pick the number of the top N words that had to be representing, for each category.
+
+We tried with four different portions of the collections: the 25\% of the words, the 50\%, the 75\% and the total non-overlapping solution, the 100\% of the terms.
+
+We computed four different dataset, on for each parameter, and tested the outcomes of this process on them. The testing phase was composed by the features ranking, like done before, but considering the whole feature vector, and by a \textit{10-fold-crossvalidation} scoring. This last technique has been widely used during all our work, and will be explained in details in the following chapter.
+Figures \ref{fig:250_overall} and \ref{fig:250_closeup} list the results for the  first tested Safe Area, with 250 words involved in that zone, and the dictionaries that are overlapping for the 75\%. The following Figures \ref{fig:500_overall}, \ref{fig:500_closeup} represent the situation with half of the words included in the Safe Areas. So do Figures \ref{fig:750_overall} and \ref{fig:750_closeup}, with the 75\% of the safe terms, and, finally, Figures \ref{fig:1000_overall} and \ref{fig:1000_closeup}, with totally disjointed dictionaries.
+
+Looking at these graphics, we could infer that the most meaningful feature, for the Random Forest, had been computed with the score of the NSFW\_words list.
+The overall placements in the rankings are similar among the different datasets.
+\begin{itemize}
+	\item[\PencilRight]250 words in the Safe Area - overall ranking placement:\\
+	\textbf{7.} news\_spreaders\_words\_score, \textbf{13.} NSFW\_words\_score, \textbf{15.} spam\_bots\_words\_score, \textbf{23.} fake\_followers\_words\_score.
+	
+	\item[\PencilRight]500 words in the Safe Area - overall ranking placement:\\
+	\textbf{8.} news\_spreaders\_words\_score, \textbf{10.} NSFW\_words\_score, \textbf{16.} spam\_bots\_words\_score, \textbf{24.} fake\_followers\_words\_score.
+	
+	\item[\PencilRight]750 words in the Safe Area - overall ranking placement\\
+	\textbf{6.} news\_spreaders\_words\_score, \textbf{9.} NSFW\_words\_score, \textbf{14.} spam\_bots\_words\_score, \textbf{25.} fake\_followers\_words\_score.
+	
+	\item[\PencilRight]100 words in the Safe Area (disjointed lists) - overall ranking placement:\\
+	\textbf{8.} news\_spreaders\_words\_score, \textbf{11.} NSFW\_words\_score, \textbf{14.} spam\_bots\_words\_score, \textbf{25.} fake\_followers\_words\_score.
+\end{itemize}
+
+We needed another confrontation term, which could tell us something about the goodness of the classifier, in relation with the number of safe words used for the computation of the features.
+We validated a Random Forest multiclass classifier, with increasing number of trees in the forest. Figure \ref{fig:safe_areas} shows the results.
+
+\begin{figure}[htp!]
+	\centering
+	\includegraphics[width=\columnwidth]{chapter4/figure/dict_comparison.png}
+	\caption{Safe Areas comparison}
+	\label{fig:safe_areas}
+\end{figure}
+
+The best looking number of words to save was 1000. The totally non-overlapping solution would have provided us the best F1 score, once we would have started developing the final models. We decided to go with that configuration to build the extrinsic features. 
+
+\begin{figure}[htp!]
+	\includegraphics[width=\columnwidth]{chapter4/figure/features_importances_250.png}
+	\caption{Features ranking - overall view}
+	\label{fig:250_overall}
+	\includegraphics[width=\columnwidth]{chapter4/figure/features_importances_250_closeup.png}
+	\caption{Features ranking - close-up view}
+	\label{fig:250_closeup}
+\end{figure}
+\begin{figure}{}
+	\includegraphics[width=\columnwidth]{chapter4/figure/features_importances_500.png}\par 
+	\caption{Features ranking - overall view}
+	\label{fig:500_overall}
+	\includegraphics[width=\columnwidth]{chapter4/figure/features_importances_500_closeup.png}\par 
+	\caption{Features ranking - close-up view}
+	\label{fig:500_closeup}
+\end{figure}
+\begin{figure}{}
+	\includegraphics[width=\columnwidth]{chapter4/figure/features_importances_750.png}\par 
+	\caption{Features ranking - overall view}
+	\label{fig:750_overall}
+	\includegraphics[width=\columnwidth]{chapter4/figure/features_importances_750_closeup.png}\par 
+	\caption{Features ranking - close-up view}
+	\label{fig:750_closeup}
+\end{figure}
+\begin{figure}{}
+	\includegraphics[width=\columnwidth]{chapter4/figure/features_importances_1000.png}\par 
+	\caption{Features ranking - overall view}
+	\label{fig:1000_overall}
+	\includegraphics[width=\columnwidth]{chapter4/figure/features_importances_1000_closeup.png}\par 
+	\caption{Features ranking - close-up view}
+	\label{fig:1000_closeup}
+\end{figure}
 
 
 \section{Image features}
@@ -322,7 +437,7 @@ The brand new attributes that helped us in better sperating NSFW class are:
 \end{center}
 \normalsize
 
-\section{final feature vector}
+\section{Final feature vector}
 \label{sec:feature_vector}
 At the end of this process we obtained a feature vector composed of 38 elements, 12 based on the user and 26 based on his tweets.
 
@@ -396,7 +511,6 @@ At the end of this process we obtained a feature vector composed of 38 elements,
 		news\_spreaders\_words\_score\\
 		spam\_bots\_words\_score\\
 		fake\_followers\_words\_score\\
-		genuine\_words\_score\\
 		\hline\\\\
 	\end{tabular}
 \end{center}

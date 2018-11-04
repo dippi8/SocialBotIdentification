@@ -269,11 +269,12 @@ We started from the baselines identified earlier and we tried to refined them, a
 The workflow was the same as before, starting from the data with basis and handcrafted features, we took the best looking algorithm from the baselines pool and performed hyperparameters tuning on it, supported by a validation technique.
 \subsection{Dataset}
 During this phase, we used the previously described dataset \ref{sec:dataset} with its five different labels.
-The algorithm was fed with 26,357 samples and 38 features. the amount of records were light enough to consider K-fold crossvalidation, without slow the validation down too much.
+The algorithm was fed with 21,445 samples and 37 features. the amount of records were light enough to consider K-fold crossvalidation, without slow the validation down too much.
 \subsection{Model}
 We found ourselves in the situation in which we had some brand new features and we didn't know how useful they were. Obviously, we could appeal to heathmaps or other tools, to highlight the correlations among variables and targets.
 However, the model we wanted to develop was the Random Forest, which proved to perform well with F1 score. Since this kind of model exploits its criteria to employ the features, we needed to prove them with a direct approach.
 
+\subsection{Features selection}
 A useful advantage of the Random Forest algorithm is the ability to provide a feature ranking, according to its splitting criterion.
 We retrieved the 12 most important attributes, in order to see if we would have found some of the ones coming out from feature engineering.
 The algorithm ranking ranked the features this way: 1. \textit{favourites\_count} (0.199402), 2. \textit{followers\_count} (0.110830), 3. \textit{statuses\_count} (0.100810), 4. \textit{avg\_len} (0.058260), 5. \textit{freq} (0.055419), 6. \textit{friends\_count} (0.043405), 7. \textit{ret\_perc} (0.039126), 8. \textit{tweet\_intradistance} (0.033718), 9. \textit{max\_ret} (0.030654), 10. \textit{min\_len} (0.029731), 11. \textit{NSFW\_words\_score} (0.029323), 12. \textit{default\_profile} (0.022897).
@@ -311,6 +312,8 @@ The model has been tested with the default value for the maximum depth in the tr
 Tuning the hyperparameters wasn't the goal of this experiment, since its aim was only to find the best configuration of features to fit the model with.
 
 We then continued with a proper Grid Search over the whole number of features.
+\subsection{Hyperparameters Tuning}
+
 \begin{figure}[htp!]
 	\centering
 	\includegraphics[width=\columnwidth]{chapter5/figure/gini.png}
