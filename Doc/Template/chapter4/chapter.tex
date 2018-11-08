@@ -22,6 +22,7 @@ Each resulting feature group has been used to fit a Random Forest with Entropy c
 The ranking of an attribute is performed by computing the entropy brought with that feature, when it comes to split the data for the creations of sub-trees. The higher is the feature's entropy, the lower is its rank.
 
 \section{Baseline}
+\label{baseline}
 In this section we analyse the complete set of default profile features and which kind of pre-processing operation we applied. With this default set we trained several classifiers to define some baselines for the upcoming work and this allowed us to evaluate the improvements made by the features engineering step.
 
 Some features are ready to be used in a classifier, while other ones need to be pre-processed, in order to allow them to be more expressive.
@@ -297,19 +298,17 @@ After the dictionaries were filtered to prevent (partial) overlapping, we had fo
 	\begin{tabular}{ll}
 		\\dictionary&size\\
 		\hline\hline
-		NSFW\_main\_words.csv&1000\\
-		spam\_bots\_main\_words.csv&1000\\
-		news\_spreders\_main\_words.csv&1000\\
-		fake\_followers\_main\_words.csv&1000\\\hline\\
+		NSFW\_main\_words.csv&253\\
+		news\_spreders\_main\_words.csv&424\\
+		spam\_bots\_main\_words.csv&325\\
+		fake\_followers\_main\_words.csv&469\\\hline\\
 	\end{tabular}
 \end{center}
 \normalsize
 
 The overall scores are normalized, so that the most common word, for each class, is associated with a unitary weight, the least common one with a value similar to zero (it depends on the final amount of words included in the dictionary).
 
-In terms of representation, this \textit{keywords score} is built with 5 different values, one for each class.\\
-The dictionaries aren't totally disjointed with each others.
-We decided to strip, from each list, only the top 50 words belonging to the other collections, since the most relevant scores reside in that zone of the ranking. We didn't want to give the user high scores, for the same word, but in different categories.
+In terms of representation, this \textit{keywords score} is built with 4 different values, one for each class.\\
 
 If some user hit a word that is placed inside more than a dictionary, we wanted to let the relative weights speak and assign scores to each of the targets that contain that word, knowing they are less relevant, as they don't fall in the highest positions.\\
 So we have
@@ -330,6 +329,84 @@ When we process a new user and infer on him, we scan every words of every tweets
 
 For instance, If the word we are comparing matches with the most frequent for NSFW accounts (the top position in its dictionary), we update the \textit{NSFW\_words\_score} of our user, summing 1 to its current value for that feature.
 
+The followings are examples of the top three words used by our bot categories:
+\small
+\begin{center}
+	\begin{tabular}{lllll}
+		\multicolumn{5}{c}{\textbf{NSFW dictionary}} \\
+		\hline\hline
+		\multicolumn{4}{l}{\textit{word}} & 
+		\multicolumn{1}{r}{\textit{score}}\\
+		\hline\hline
+		\multicolumn{4}{l}{bio} & 
+		\multicolumn{1}{r}{1.000}\\
+		\multicolumn{4}{l}{photos} & 
+		\multicolumn{1}{r}{0.167}\\
+		\multicolumn{4}{l}{p$ \dot{a} $} & 
+		\multicolumn{1}{r}{0.160}\\
+		\multicolumn{5}{c}{...} \\
+		\hline\\
+	\end{tabular}
+\end{center}
+\normalsize
+\small
+\begin{center}
+	\begin{tabular}{lllll}
+		\multicolumn{5}{c}{\textbf{News-Spreader dictionary}} \\
+		\hline\hline
+		\multicolumn{4}{l}{\textit{word}} & 
+		\multicolumn{1}{r}{\textit{score}}\\
+		\hline\hline
+		\multicolumn{4}{l}{obama} & 
+		\multicolumn{1}{r}{1.000}\\
+		\multicolumn{4}{l}{g7} & 
+		\multicolumn{1}{r}{0.723}\\
+		\multicolumn{4}{l}{potus} & 
+		\multicolumn{1}{r}{0.690}\\
+		\multicolumn{5}{c}{...} \\
+		\hline\\
+	\end{tabular}
+\end{center}
+\normalsize
+\small
+\begin{center}
+	\begin{tabular}{lllll}
+		\multicolumn{5}{c}{\textbf{Spam-Bots dictionary}} \\
+		\hline\hline
+		\multicolumn{4}{l}{\textit{word}} & 
+		\multicolumn{1}{r}{\textit{score}}\\
+		\hline\hline
+		\multicolumn{4}{l}{talnts} & 
+		\multicolumn{1}{r}{1.000}\\
+		\multicolumn{4}{l}{developer} & 
+		\multicolumn{1}{r}{0.511}\\
+		\multicolumn{4}{l}{engineer} & 
+		\multicolumn{1}{r}{0.467}\\
+		\multicolumn{5}{c}{...} \\
+		\hline\\
+	\end{tabular}
+\end{center}
+\normalsize
+\small
+\begin{center}
+	\begin{tabular}{lllll}
+		\multicolumn{5}{c}{\textbf{Fake-Followers dictionary}} \\
+		\hline\hline
+		\multicolumn{4}{l}{\textit{word}} & 
+		\multicolumn{1}{r}{\textit{score}}\\
+		\hline\hline
+		\multicolumn{4}{l}{iPhone} & 
+		\multicolumn{1}{r}{1.000}\\
+		\multicolumn{4}{l}{cheap} & 
+		\multicolumn{1}{r}{0.993}\\
+		\multicolumn{4}{l}{bounty} & 
+		\multicolumn{1}{r}{0.856}\\
+		\multicolumn{5}{c}{...} \\
+		\hline\\
+	\end{tabular}
+\end{center}
+\normalsize
+
 We expected to capture patterns about the choice of the words involved in tweets, for each of our categories.
 This extrinsic attributes revealed themselves as very useful, lately.
 
@@ -349,13 +426,13 @@ Looking at these graphics, we could infer that the most meaningful feature, for 
 The overall placements in the rankings are similar among the different datasets.
 \begin{itemize}
 	\item[\PencilRight]250 words in the Safe Area - overall ranking placement:\\
-	\textbf{7.} news\_spreaders\_words\_score, \textbf{13.} NSFW\_words\_score, \textbf{15.} spam\_bots\_words\_score, \textbf{23.} fake\_followers\_words\_score.
+	\textbf{8.} news\_spreaders\_words\_score, \textbf{10.} NSFW\_words\_score, \textbf{16.} spam\_bots\_words\_score, \textbf{20.} fake\_followers\_words\_score.
 	
 	\item[\PencilRight]500 words in the Safe Area - overall ranking placement:\\
-	\textbf{8.} news\_spreaders\_words\_score, \textbf{10.} NSFW\_words\_score, \textbf{16.} spam\_bots\_words\_score, \textbf{24.} fake\_followers\_words\_score.
+	\textbf{7.} news\_spreaders\_words\_score, \textbf{9.} NSFW\_words\_score, \textbf{13.} spam\_bots\_words\_score, \textbf{22.} fake\_followers\_words\_score.
 	
 	\item[\PencilRight]750 words in the Safe Area - overall ranking placement\\
-	\textbf{6.} news\_spreaders\_words\_score, \textbf{9.} NSFW\_words\_score, \textbf{14.} spam\_bots\_words\_score, \textbf{25.} fake\_followers\_words\_score.
+	\textbf{8.} news\_spreaders\_words\_score, \textbf{12.} NSFW\_words\_score, \textbf{13.} spam\_bots\_words\_score, \textbf{24.} fake\_followers\_words\_score.
 	
 	\item[\PencilRight]100 words in the Safe Area (disjointed lists) - overall ranking placement:\\
 	\textbf{8.} news\_spreaders\_words\_score, \textbf{11.} NSFW\_words\_score, \textbf{14.} spam\_bots\_words\_score, \textbf{25.} fake\_followers\_words\_score.

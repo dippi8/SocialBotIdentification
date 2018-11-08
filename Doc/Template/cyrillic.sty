@@ -1,0 +1,131 @@
+\def\fileversion{1.0}
+\def\filedate{2000/12/5}
+\def\docdate{2000/12/5}
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{cyrillic}[\filedate\space\fileversion\space LaTeX2e package for cyrillic fonts]
+
+% see Helmut Kopka LaTeX Band 2 pp. 105-112
+
+\chardef\tempcat=\the\catcode`\@
+\catcode`\@=11
+
+\def\@gobble#1{}
+\def\@testgrave{\`}
+\def\@stressit{\futurelet\chartest\@stresschar }
+
+\def\@stresschar#1{%
+  \ifx #1y\def\result{\futurelet\chartest\@yligature}%
+  \else \ifx #1Y\def\result{\futurelet\chartest\@Yligature}%
+  \else \ifx\chartest\@testgrave \def\result{\accent"26 }%
+  \else \def\result{\accent"26 #1}%
+  \fi \fi \fi
+  \result }
+
+\def\@yligature{%
+  \ifx a\chartest \def\result{\accent"26 \char"1F \@gobble}%
+  \else \ifx u\chartest \def\result{\accent"26 \char"18 \@gobble}%
+  \else \def\result{\accent"26 y}%
+  \fi \fi
+  \result }
+
+\def\@Yligature{%
+  \ifx a\chartest \def\result{\accent"26 \char"17 \@gobble}%
+  \else \ifx A\chartest \def\result{\accent"26 \char"17 \@gobble}%
+  \else \ifx u\chartest \def\result{\accent"26 \char"10 \@gobble}%
+  \else \ifx U\chartest \def\result{\accent"26 \char"10 \@gobble}%
+  \else \def\result{\accent"26 Y}%
+  \fi \fi \fi \fi
+  \result }
+
+\def\!{\ifmmode \mskip-\thinmuskip \fi}
+
+\def\cyracc{%
+  \chardef\i="10%
+  \def\cydot{{\kern0pt}}%
+  \def\cprime{\char"7E }\def\Cprime{\char"5E }%
+  \def\cdprime{\char"7F }\def\Cdprime{\char"5F }%
+  \def\dbar{dj}\def\Dbar{Dj}%
+  \def\dz{\char"1E }\def\Dz{\char"16 }%
+  \def\dzh{\char"0A }\def\Dzh{\char"02 }%
+  \def\'##1{\if c##1\char"0F %
+    \else \if C##1\char"07 %
+    \else \accent"26 ##1\fi \fi }%
+  \def\`##1{\if e##1\char"0B %
+    \else \if E##1\char"03 %
+    \else \errmessage{accent \string\` not defined in cyrillic}%
+        ##1\fi \fi }%
+  \def\=##1{\if e##1\char"0D %
+    \else \if E##1\char"05 %
+    \else \if \i##1\char"0C %
+    \else \if I##1\char"04 %
+    \else \errmessage{accent \string\= not defined in cyrillic}%
+        ##1\fi \fi \fi \fi }%
+  \def\u##1{\if \i##1\accent"24 i%
+    \else \accent"24 ##1\fi }%
+  \def\"##1{\if \i##1\accent"20 \char"3D %
+    \else \if I##1\accent"20 \char"04 %
+    \else \accent"20 ##1\fi \fi }%
+  \def\!{\ifmmode \def\result{\mskip-\thinmuskip}%
+    \else \def\result{\@stressit}\fi \result}}
+
+\def\keep@cyracc{\let\cyr=\relax \let\i=\relax
+        \let\ubar=\relax \let\cydot=\relax
+        \let\cprime=\relax \let\Cprime=\relax
+        \let\cdprime=\relax \let\Cdprime=\relax
+        \let\dbar=\relax \let\Dbar=\relax
+        \let\dz=\relax \let\Dz=\relax
+        \let\dzh=\relax \let\Dzh=\relax
+        \let\'=\relax \let\`=\relax \let\==\relax
+        \let\u=\relax \let\"=\relax \let\!=\relax }
+
+\DeclareFontEncoding{OT2}{\cyracc}{}
+
+\DeclareOption{cyronly}{%
+  \renewcommand{\encodingdefault}{OT1}
+  \newcommand{\lrmfamily}{\fontencoding{OT1}\fontfamily{\rmdefault}\selectfont}
+  \newcommand{\lsffamily}{\fontencoding{OT1}\fontfamily{\sfdefault}\selectfont}
+  \newcommand{\lbfseries}{\fontencoding{OT1}\fontseries{\bfdefault}\selectfont}
+  \newcommand{\lmdseries}{\fontencoding{OT1}\fontseries{\mddefault}\selectfont}
+  \newcommand{\litshape}{\fontencoding{OT1}\fontshape{\itdefault}\selectfont}
+  \newcommand{\lslshape}{\fontencoding{OT1}\fontshape{\sldefault}\selectfont}
+  \newcommand{\lscshape}{\fontencoding{OT1}\fontshape{\scdefault}\selectfont}
+  \newcommand{\lupshape}{\fontencoding{OT1}\fontshape{\updefault}\selectfont}
+  \newcommand{\lem}{\fontencoding{OT1}\em}
+  \DeclareTextFontCommand{\textlrm}{\lrmfamily}
+  \DeclareTextFontCommand{\textlsf}{\lsffamily}
+  \DeclareTextFontCommand{\textlbf}{\lbfseries}
+  \DeclareTextFontCommand{\textlmd}{\lmdseries}
+  \DeclareTextFontCommand{\textlit}{\litshape}
+  \DeclareTextFontCommand{\textlsl}{\lslshape}
+  \DeclareTextFontCommand{\textlsc}{\lscshape}
+  \DeclareTextFontCommand{\textlup}{\lupshape}
+  \DeclareTextFontCommand{\lemph}{\lem}
+}
+
+\DeclareOption{cyrpart}{%
+  \newcommand{\cyrrmfamily}{\fontencoding{OT2}\fontfamily{cmr}\selectfont}
+  \newcommand{\cyrsffamily}{\fontencoding{OT2}\fontfamily{cmss}\selectfont}
+  \newcommand{\cyrbfseries}{\fontencoding{OT2}\fontseries{b}\selectfont}
+  \newcommand{\cyrmdseries}{\fontencoding{OT2}\fontseries{m}\selectfont}
+  \newcommand{\cyritshape}{\fontencoding{OT2}\fontshape{it}\selectfont}
+  \newcommand{\cyrslshape}{\fontencoding{OT2}\fontshape{sl}\selectfont}
+  \newcommand{\cyrscshape}{\fontencoding{OT2}\fontshape{sc}\selectfont}
+  \newcommand{\cyrupshape}{\fontencoding{OT2}\fontshape{up}\selectfont}
+  \newcommand{\cyrem}{\fontencoding{OT2}\em}
+  \DeclareTextFontCommand{\textcyrrm}{\cyrrmfamily}
+  \DeclareTextFontCommand{\textcyrsf}{\cyrsffamily}
+  \DeclareTextFontCommand{\textcyrbf}{\cyrbfseries}
+  \DeclareTextFontCommand{\textcyrmd}{\cyrmdseries}
+  \DeclareTextFontCommand{\textcyrit}{\cyritshape}
+  \DeclareTextFontCommand{\textcyrsl}{\cyrslshape}
+  \DeclareTextFontCommand{\textcyrsc}{\cyrscshape}
+  \DeclareTextFontCommand{\textcyrup}{\cyrupshape}
+  \DeclareTextFontCommand{\emcyr}{\cyem}
+}
+
+\ExecuteOptions{cyrpart}
+\ProcessOptions
+
+\catcode`\@=\tempcat
+\endinput
+

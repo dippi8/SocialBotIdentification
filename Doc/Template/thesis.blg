@@ -1,4 +1,4 @@
-This is BibTeX, Version 0.99d (TeX Live 2017/Debian)
+This is BibTeX, Version 0.99d (TeX Live 2018)
 Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: thesis.aux
 A level-1 auxiliary file: cover_page.aux
@@ -17,16 +17,12 @@ The style file: plain.bst
 A level-1 auxiliary file: appendixA/appendix.aux
 A level-1 auxiliary file: appendixB/appendix.aux
 Database file #1: references.bib
-Repeated entry---line 40 of file references.bib
- : @article{Lee11sevenmonths
- :                          ,
-I'm skipping whatever remains of this entry
 Warning--entry type for "Botometer" isn't style-file defined
---line 73 of file references.bib
+--line 67 of file references.bib
 Warning--entry type for "svm" isn't style-file defined
---line 79 of file references.bib
+--line 73 of file references.bib
 Warning--entry type for "nb" isn't style-file defined
---line 86 of file references.bib
+--line 80 of file references.bib
 Warning--I didn't find a database entry for "von2004design"
 Too many commas in name 1 of "Clayton A. Davis, Onur Varol, Emilio Ferrara, Alessandro Flammini, Filippo Menczer" for entry Botometer
 while executing---line 1049 of file plain.bst
@@ -129,4 +125,4 @@ warning$ -- 8
 while$ -- 22
 width$ -- 13
 write$ -- 98
-(There were 27 error messages)
+(There were 26 error messages)

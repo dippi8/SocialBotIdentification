@@ -9,18 +9,23 @@ We saw and studied the performance improvements with validation approaches, and 
 
 The result involves three models:
 \begin{itemize}
-	\item[\PencilRight] a first Random Forest classifier that has been used to provide an early filter on the separation between Genuine accounts and Bots
-	\item[\PencilRight] a second Random Forest that gives a classification among the five studied categories
-	\item[\PencilRight] a Naive Bayes classifier, used over the same classes of the second Random Forest, but it reads and labels the users, according on their tweets only
+	\item[\PencilRight] a first Random Forest classifier that has been used to provide an early filter on the separation between genuine accounts and bots
+	\item[\PencilRight] a second Random Forest that gives a classification among the four studied categories of bots only
+	\item[\PencilRight] a Naive Bayes classifier, used over the same classes of the second Random Forest, but which reads and labels the users, according on their tweets only
+	\item[\PencilRight] a K-neares-neighbors classifier, used over the four bot classes, based on the user's features only
 \end{itemize}
-All the above mentioned algorithms were combined with a stacking ensemble methods, after considering different possibilities.
+The algorithm were used together into a pipeline workflow, whose first step is the detection of bots from humans, thanks to the first binary Random Forest.
+Then, the percentage of membership in the bot category is further split into four sub-percentages, which represent the prediction over the inner bot categories.
+This last partition is performed by a stacking ensemble, whose goal is to combine the predictions of the three multiclass models.
 
+\
 \section{Baselines}
 The choices explained in this section were made at the same time of the ones listed in the Baseline section of the last chapter.
 
 This is, basically, the same stage of the above-mentioned, but in a model-driven perspective.
-The features involved are the ones described in that chapter, but we started from that base, to try different classifiers over it.
-Each classifier has been fitted with the entire dataset, but considering only baselines features.
+The features involved are the ones described in section \ref{baseline}, but we started from that base, to try different classifiers over it.
+We chose to evaluate the performances of raw classifiers, for both the binary and the mutliclass problem.
+Each type of classifiers has been tested with the respective dataset, but considering only the baseline features of those data.
 
 Furthermore, no parameters tuning has been applied, in order to minimize the results of our baselines classifier, with their standard settings.
 \subsection{Random Forest}
@@ -78,7 +83,7 @@ It can be summarised with a support vector $ \mathbf{\vec{x}} $ (a subset of the
 
 In order to make it work properly, three choices must be made:
 \begin{itemize}
-	\item[\PencilRight] a proper kernel, which is often selected according to experience and domain knowledge of the problem. We wanted to make things simple in this stage, so we used the default kernel function, which is the Radial Basis Function:
+	\item[\PencilRight] a proper kernel, which is often selected according to experience and domain knowledge of the problem. We wanted to make things simple in this stage, so we used the default kernel function, which is the Radial Basis Function:\label{rbf}
 	\[ K(x, x') = exp(- \frac{||x-x'||^{2}}{2\sigma^{2}}) \]
 	with $ \sigma $ as a free parameter
 	\item[\PencilRight] the weights $ \vec{w} $, which are obtained by maximizing the margin that splits the records belonging to different classes. Each samples are mapped into a space, thanks to what is known as the \textit{kernel trick}. The "trick" helps a linear classifier to work on a non-linear problem, applying the kernel function in the prediction phase.\\This process highlights the boundary that separates the points belonging to different classes.
@@ -94,6 +99,8 @@ In comparison with "One-vs-Rest" approach, "One-vs-One" is less sensitive to an 
 Despite our choices over methods and parameters weren't accurate in this stage as they were in the other ones, we decided to stick with this setting for SVM, because otherwise it would have led us to an irrelevant algorithm, in comparison with the above-mentioned.
 
 \subsection{Comparison and baseline selection}
+Different tasks imply different evaluation metrics. Every classifier was validated and selected according to certain indices of goodness. In particular, we followed a triple of metrics that involves Precision, Recall and F1, for the multiclass problem and we aimed to maximize AUC score for the binary case.
+\subsubsection{Multiclass metric}
 The selected baseline models were tested with a holdout approach at first, then with a crossvalidation method.
 We built a Confusion Matrix for each model, in order to bring out goodness indices for each class, such as \textit{True Positive} (TP), \textit{False Positive} (FP) and \textit{False Negative} (FN).
 The evaluation metrics considered are \textit{Precision}, \textit{Recall} and \textit{F1 score} and they work on the mentioned indices.
@@ -107,9 +114,23 @@ The evaluation metrics considered are \textit{Precision}, \textit{Recall} and \t
 \end{itemize}
 Every metric is adapted to fit a multiclass problem. For each class, it has been computed this set of measures, and then they were averaged without weights (macro average), in order to not take label imbalance into account.
 
-The results are pretty similar between the two methods, however we used the one coming from crossvalidation to select the model to build.
-\subsubsection{Holdout evaluation}
-The holdout stage is performed separating the samples in the dataset into training and test subsets. The splitting process is randomized, and we decided to use the 75\% of the data for the training set and the 25\% for the test set. This choice is a little bit different from the most common one, which builds the training set with 2/3 of the whole data, because we didn't dispose of a huge amount of records, so we preferred this ratio and then trying an other validation method for comparison.
+\subsubsection{Binary metric}
+Since this classifier was built for a different purpose, with respect of the multiclass models, the \textit{Area Under the Curve} score (AUC) is the metric we followed, both for baselines and the final model evaluation.
+Area Under the Curve represents the goodness of a classifier, in terms of the integral of the \textit{Receiver Operating Characteristic} (ROC curve), defined over the variation of a decision treshold.
+
+The ROC curve lies in a bi-dimensional space, which has the \textit{True Positive Ratio} ($ TPR =  \frac{TP}{TP+FN}$) on the Y-axis, and the False Positive Ratio ($ FPR =  \frac{FP}{FP+TN}$ ) on the X-axis.
+In general, a classifier should accomplish more than 0.5 in AUC score, because that threshold represents a random guesser, which has the 50\% of probabilities to detect the actual class.
+The more the AUC score tends to 1, the better is the ability of the classifier to distinguish among classes.
+
+The motivation behind the adding of this new metric is that we had a balanced binary dataset, and this metric is a good fit for this kind of problem. Moreover, Botmoter claims to have accomplished an AUC of 0.95, on a 10-fold crossvalidation test.
+WE wanted to get close to that score, using our crafted features.
+
+
+\subsection{Holdout evaluation}
+The holdout stage is performed separating the samples in the dataset into training and test subsets. The splitting process is randomized and it requires a bigger portion of the original dataset to be inserted in the training data, comparing to the amount of samples that will form the test set. A common choice is to use a third of the data to evaluate the model.
+
+\subsection{Multiclass}
+In this case, we decided to use the 75\% of the data for the training set and the 25\% for the test set. This choice is a little bit different from the most common one, which builds the training set with 2/3 of the whole data, because we didn't dispose of a huge amount of records, so we preferred this ratio and then trying an other validation method for comparison.
 Here we list the algorithm and their parameters, as they were written according to the Scikit-learn library for Python, their confusion matrix and their scores:
 \begin{itemize}
 	\item[\PencilRight] \textit{RandomForestClassifier(n\_estimators = 10, criterion = 'entropy')}\\
@@ -117,176 +138,347 @@ Here we list the algorithm and their parameters, as they were written according 
 	
 	{
 		\centering
-		\begin{tabular}{@{}cc|ccccc@{}}
-			\multicolumn{1}{c}{} &\multicolumn{1}{c}{} &\multicolumn{5}{c}{Predicted class} \\ 
+		\begin{tabular}{@{}cc|cccc@{}}
+			\multicolumn{1}{c}{} &\multicolumn{1}{c}{} &\multicolumn{4}{c}{Predicted class} \\ 
 			\multicolumn{1}{c}{} & 
 			\multicolumn{1}{c|}{} & 
 			\multicolumn{1}{c}{NSFW} & 
 			\multicolumn{1}{c}{NS} &
 			\multicolumn{1}{c}{SB} & 
-			\multicolumn{1}{c}{FF} & 
-			\multicolumn{1}{c}{GEN}\\
-			\cline{2-7}
-			\multirow[c]{5}{*}{\rotatebox[origin=tr]{90}{Actual class}}
-			& NSFW  & 1654 & 23 & 14 & 4 & 68\\
-			& NS  & 30 & 716 &  31 &  3 & 81\\
-			& SB  & 6 &  27 & 1223  &   3  & 53\\
-			& FF  & 15  &  4  &   6  & 1212  &  3\\
-			& GEN  & 67 &  74   & 45  &   3 & 718 \\
-			\cline{2-7}\\
+			\multicolumn{1}{c}{FF} \\
+			\cline{2-6}
+			\multirow[c]{4}{*}{\rotatebox[origin=tr]{90}{Actual class}}
+			& NSFW  & 1690 & 27 & 12 & 6\\
+			& NS  & 27  & 785 & 30 &  0\\
+			& SB  & 14  & 39 & 1280 & 5\\
+			& FF  & 12 &  7 &  18 & 1215\\
+			\cline{2-6}\\
 		\end{tabular}\\
 	}
 	
-	Precision: 0.895\\
-	Recall: 0.894\\
-	F1 score: 0.894
+	Precision: 0.957\\
+	Recall: 0.958\\
+	F1 score: 0.957
 
 	\item[\PencilRight] \textit{LogisticRegression(fit\_intercept=True, max\_iter=100, penalty='l2')}\\
 	Confusion matrix:
 	
 	{
 		\centering
-		\begin{tabular}{@{}cc|ccccc@{}}
-			\multicolumn{1}{c}{} &\multicolumn{1}{c}{} &\multicolumn{5}{c}{Predicted class} \\ 
+		\begin{tabular}{@{}cc|cccc@{}}
+			\multicolumn{1}{c}{} &\multicolumn{1}{c}{} &\multicolumn{4}{c}{Predicted class} \\ 
 			\multicolumn{1}{c}{} & 
 			\multicolumn{1}{c|}{} & 
 			\multicolumn{1}{c}{NSFW} & 
 			\multicolumn{1}{c}{NS} &
 			\multicolumn{1}{c}{SB} & 
-			\multicolumn{1}{c}{FF} & 
-			\multicolumn{1}{c}{GEN}\\
-			\cline{2-7}
-			\multirow[c]{5}{*}{\rotatebox[origin=tr]{90}{Actual class}}
-			& NSFW  & 1310 & 176 &  78 &   40 & 159\\
-			& NS  & 26 & 676 &  54 &  1 & 104\\
-			& SB  & 25 &  60 & 947 &  221  & 59\\
-			& FF  & 167 &  27  & 11 & 1032 &   3\\
-			& GEN  & 118 & 295 & 172  &   8 & 314 \\
-			\cline{2-7}\\
+			\multicolumn{1}{c}{FF} \\
+			\cline{2-6}
+			\multirow[c]{4}{*}{\rotatebox[origin=tr]{90}{Actual class}}
+			& NSFW  & 1274 & 213 & 197 & 51\\
+			& NS  & 24 & 740 & 75 & 3\\
+			& SB  & 29 & 87 & 1144 & 78\\
+			& FF  & 204 &  49 &  46 & 953\\
+			\cline{2-6}\\
 		\end{tabular}\\
 	}
 	
-	Precision: 0.675\\
-	Recall: 0.685\\
-	F1 score: 0.673
+	Precision: 0.793\\
+	Recall: 0.807\\
+	F1 score: 0.794
 	
 	\item[\PencilRight] \textit{KNeighborsClassifier(n\_neighbors=10)}\\
 	Confusion matrix:
 	
 	{
 		\centering
-		\begin{tabular}{@{}cc|ccccc@{}}
-			\multicolumn{1}{c}{} &\multicolumn{1}{c}{} &\multicolumn{5}{c}{Predicted class} \\ 
+		\begin{tabular}{@{}cc|cccc@{}}
+			\multicolumn{1}{c}{} &\multicolumn{1}{c}{} &\multicolumn{4}{c}{Predicted class} \\ 
 			\multicolumn{1}{c}{} & 
 			\multicolumn{1}{c|}{} & 
 			\multicolumn{1}{c}{NSFW} & 
 			\multicolumn{1}{c}{NS} &
 			\multicolumn{1}{c}{SB} & 
-			\multicolumn{1}{c}{FF} & 
-			\multicolumn{1}{c}{GEN}\\
-			\cline{2-7}
-			\multirow[c]{5}{*}{\rotatebox[origin=tr]{90}{Actual class}}
-			& NSFW  & 1512 &  39  &  50  &  82 &  80\\
-			& NS  & 46 & 674  &  28  &  14  & 99\\
-			& SB  & 45 &  24 & 1077  &  38 & 128\\
-			& FF  & 88  &  4  &  94 & 1018  & 36\\
-			& GEN  & 138 &  69  & 132  &  86 & 482\\
-			\cline{2-7}\\
+			\multicolumn{1}{c}{FF} \\
+			\cline{2-6}
+			\multirow[c]{4}{*}{\rotatebox[origin=tr]{90}{Actual class}}
+			& NSFW  & 1578 & 36 & 60 & 61\\
+			& NS  & 81 & 685 & 63 & 13\\
+			& SB  & 81 & 32 & 1187 & 38\\
+			& FF  & 104 & 6 & 55 & 1087\\
+			\cline{2-6}\\
 		\end{tabular}\\
 	}
 	
-	Precision: 0.769\\
-	Recall: 0.762\\
-	F1 score: 0.765
+	Precision: 0.883\\
+	Recall: 0.869\\
+	F1 score: 0.875
 	
 	\item[\PencilRight] \textit{SVC(kernel='rbf', decision\_function\_shape='ovo')}\\
 	Confusion matrix:
 	
 	{
 		\centering
-		\begin{tabular}{@{}cc|ccccc@{}}
-			\multicolumn{1}{c}{} &\multicolumn{1}{c}{} &\multicolumn{5}{c}{Predicted class} \\ 
+		\begin{tabular}{@{}cc|ccc@{}}
+			\multicolumn{1}{c}{} &\multicolumn{1}{c}{} &\multicolumn{3}{c}{Predicted class} \\ 
 			\multicolumn{1}{c}{} & 
 			\multicolumn{1}{c|}{} & 
 			\multicolumn{1}{c}{NSFW} & 
-			\multicolumn{1}{c}{NS} &
 			\multicolumn{1}{c}{SB} & 
-			\multicolumn{1}{c}{FF} & 
-			\multicolumn{1}{c}{GEN}\\
-			\cline{2-7}
-			\multirow[c]{5}{*}{\rotatebox[origin=tr]{90}{Actual class}}
-			& NSFW  & 1761 & 0 &   1  &  0 & 1\\
-			& NS  & 861 &  0 & 0 &   0 &  0\\
-			& SB  & 1068 & 0 & 244  &  0 & 0\\
-			& FF  & 449  & 0 &  0 & 791 & 0\\
-			& GEN  & 907 &  0  & 0  &  0 & 0\\
-			\cline{2-7}\\
+			\multicolumn{1}{c}{FF} \\
+			\cline{2-5}
+			\multirow[c]{3}{*}{\rotatebox[origin=tr]{90}{Actual class}}
+			& NSFW  & 1735 & 0 & 0\\
+			& NS  & 842 & 0 & 0\\
+			& SB  & 1114 & 223 & 1\\
+			& FF  & 483 & 0 & 769\\
+			\cline{2-5}\\
 		\end{tabular}\\
 	}
 	
-	Precision: 0.468\\
-	Recall: 0.364\\
-	F1 score: 0.321
+	Precision: 0.603\\
+	Recall: 0.445\\
+	F1 score: 0.408
 	
 \end{itemize}
-\subsubsection{Crossvalidation}
+
+\subsubsection{Binary}
+This evaluation was made with the common splitting ration between train and test set. Since we had 31,212 samples available, well balanced, we used two thirds (20,808) for the training set and the remaining (10,404) for the test set.
+We wanted a first term of comparison, so, in the beginning, we evaluated the AUC metric with the holdout technique.
+\begin{itemize}
+	\item[\PencilRight] \textit{RandomForestClassifier(n\_estimators = 10, criterion = 'entropy')}\\
+	Confusion matrix:
+	
+	{
+		\centering
+		\begin{tabular}{@{}cc|cc@{}}
+			\multicolumn{1}{c}{} &\multicolumn{1}{c}{} &\multicolumn{2}{c}{Predicted class} \\ 
+			\multicolumn{1}{c}{} & 
+			\multicolumn{1}{c|}{} & 
+			\multicolumn{1}{c}{BOT} & 
+			\multicolumn{1}{c}{GEN}  \\
+			\cline{2-4}
+			\multirow[c]{2}{*}{Actual class}
+			& BOT  & 4314 & 336\\
+			& GEN  & 554 & 4160\\
+			\cline{2-4}\\
+		\end{tabular}\\
+	}
+	
+	AUC: 0.905
+	
+	\item[\PencilRight] \textit{LogisticRegression(fit\_intercept=True, max\_iter=100, penalty='l2')}\\
+	Confusion matrix:
+	
+	{
+		\centering
+		\begin{tabular}{@{}cc|cc@{}}
+			\multicolumn{1}{c}{} &\multicolumn{1}{c}{} &\multicolumn{2}{c}{Predicted class} \\ 
+			\multicolumn{1}{c}{} & 
+			\multicolumn{1}{c|}{} & 
+			\multicolumn{1}{c}{BOT} & 
+			\multicolumn{1}{c}{GEN}  \\
+			\cline{2-4}
+			\multirow[c]{2}{*}{Actual class}
+			& BOT  & 3124 & 1526\\
+			& GEN  & 558 & 4156\\
+			\cline{2-4}\\
+		\end{tabular}\\
+	}
+	
+	AUC: 0.776
+	
+	\item[\PencilRight] \textit{KNeighborsClassifier(n\_neighbors=10)}\\
+	Confusion matrix:
+	
+	{
+		\centering
+		\begin{tabular}{@{}cc|cc@{}}
+			\multicolumn{1}{c}{} &\multicolumn{1}{c}{} &\multicolumn{2}{c}{Predicted class} \\ 
+			\multicolumn{1}{c}{} & 
+			\multicolumn{1}{c|}{} & 
+			\multicolumn{1}{c}{BOT} & 
+			\multicolumn{1}{c}{GEN}  \\
+			\cline{2-4}
+			\multirow[c]{2}{*}{Actual class}
+			& BOT  & 3698 &  952\\
+			& GEN  & 1129 & 3585\\
+			\cline{2-4}\\
+		\end{tabular}\\
+	}
+	
+	AUC: 0.777
+	
+	\item[\PencilRight] \textit{SVC(kernel='rbf')}\\
+	Confusion matrix:
+	
+	{
+		\centering
+		\begin{tabular}{@{}cc|cc@{}}
+			\multicolumn{1}{c}{} &\multicolumn{1}{c}{} &\multicolumn{2}{c}{Predicted class} \\ 
+			\multicolumn{1}{c}{} & 
+			\multicolumn{1}{c|}{} & 
+			\multicolumn{1}{c}{BOT} & 
+			\multicolumn{1}{c}{GEN}  \\
+			\cline{2-4}
+			\multirow[c]{2}{*}{Actual class}
+			& BOT  & 4625 & 25\\
+			& GEN  & 4676 & 38\\
+			\cline{2-4}\\
+		\end{tabular}\\
+	}
+	
+	AUC: 0.501
+\end{itemize}
+
+\subsection{Crossvalidation}
 This approach is based on repeated holdouts. It is performed by splitting the whole data in \textit{K} non-overlapping folds, leading to \textit{K} different holdout evaluations. The results for each step are stored and the final evaluation is given by the mean of the \textit{K} evaluations. For each evaluation, one fold is used for testing, the other ones for training the models. A common practice is to set \textit{K = 10} and thus averaging 10 different evaluations.
 This method is also known as \textit{K-fold crossvalidation}. We used a stratified approach, which takes care about keeping the labels balanced on each fold.
 
-Due the need of performing ten steps, it is computationally more expensive then a simple holdout validation. In our case, it was feasible, in term of speed, because of the models complexity and the data amount.
+Due the need of performing ten steps, it is computationally more expensive then a simple holdout validation. In our case, it was feasible, in term of speed, because of the models complexity and the data amount. This situation held for both the binary and the mutliclass tasks.
 
 The obtained scores are also more meaningful, with regards to holdout, because they are less sensitive to "lucky" or "unlucky" splits.
 
 Here is the results for every baseline model:
-
+\subsubsection{Multiclass}
 \begin{itemize}
 	\item[\PencilRight] \textit{RandomForestClassifier(n\_estimators = 10, criterion = 'entropy')}\\
-	Mean precision: 0.895\\
-	Mean recall: 0.891\\
-	Mean f1 score: 0.890
+	Mean precision: 0.947\\
+	Mean recall: 0.945\\
+	Mean f1 score: 0.943
 	\item[\PencilRight]\textit{LogisticRegression(fit\_intercept=True, max\_iter=100, penalty='l2')}\\
-	Mean precision: 0.729\\
-	Mean recall: 0.704\\
-	Mean f1 score: 0.707
+	Mean precision: 0.827\\
+	Mean recall: 0.815\\
+	Mean f1 score: 0.815
 	\item[\PencilRight]\textit{KNeighborsClassifier(n\_neighbors=10)}\\
-	Mean precision: 0.785\\
-	Mean recall: 0.763\\
-	Mean f1 score: 0.764
+	Mean precision: 0.878\\
+	Mean recall: 0.858\\
+	Mean f1 score: 0.862
 	\item[\PencilRight]\textit{SVC(kernel='rbf', decision\_function\_shape='ovo')}\\
-	Mean precision: 0.443\\
-	Mean recall: 0.364\\
-	Mean f1 score: 0.314
+	Mean precision: 0.573\\
+	Mean recall: 0.456\\
+	Mean f1 score: 0.413
 \end{itemize}
 
-As the results show, the random forest algorithm is the one that achieves the best performances, even with default settings, on both holdout and 10-fold crossvalidation. We thus decided to consider it as the main tool to build our solution. 
+As the results show, the random forest algorithm is the one that achieves the best performances, even with default settings, on both holdout and 10-fold crossvalidation. We thus decided to consider it as the main tool to build our bot categories classifier. 
+\subsubsection{Binary}
+\begin{itemize}
+	\item[\PencilRight] \textit{RandomForestClassifier(n\_estimators = 10, criterion = 'entropy')}\\
+	Mean AUC: 0.916\\
+	\item[\PencilRight]\textit{LogisticRegression(fit\_intercept=True, max\_iter=100, penalty='l2')}\\
+	Mean AUC: 0.792\\
+	\item[\PencilRight]\textit{KNeighborsClassifier(n\_neighbors=10)}\\
+	Mean AUC: 0.835\\
+	Mean precision: 0.779\\
+	\item[\PencilRight]\textit{SVC(kernel='rbf')}\\
+	Mean AUC: 0.583\\
+\end{itemize}
+Even in the binary cases, the Random Forest had the best performance, and it could be imputed to the similar features involved in both problems. Moreover, we could see that the Support Vector Machine emerged as a lightly improved random guesser.
 
-\section{Multiclass classifier}
-This is the first algorithm involved in our final model.\\
+
+\section{Binary Classifier}
+Since our dataset was pretty balanced and we couldn't retrieve much more genuine accounts, we didn't want our instrument to treat this category of users just as one the other bot kinds. It was important to perform a previous filter that was able to give importance to the separation between bots and genuine accounts.
+
+We was inspired by the work made with Botometer\cite{Botometer}, which involved a binary labelled dataset, with bot and genuine accounts.
+They built their features, grouped them in six main categories, then they ran a Random Forest algorithm per group.
+
+We already had our feature engineering done, so we decided to test it on this new task.
+
+In order to not to build a poorer version of our multiclass model, we didn't want to use a reduced copy of our dataset, stratifying it by stripping random bots from it. We needed a balanced dataset, with about the same amount of genuines and bots. So, we started from the same dataset used by the Botometer project, in order to have a baseline comparison.
+\subsection{Dataset}
+The dataset we used for this classification was composed by part of our collected records and by some entries from the Carvelee-2011 dataset, which contains 22,223 content polluters and 19,276 legitimate users, both collected through a social honeypot, as described in their paper\cite{Lee11sevenmonths}.
+
+We setted the APIs to retrieve the ids for both genuines and bots, from the Carvelee list. The process provided us 15,687 legitimate user ids, and 15,525 general bot ids (without inner classifications), for a total number of 31,212 samples.
+The difference from the original number of entries is due to the age of the dataset. Since 2011, the year of the creation of the list, a lot of accounts have been deleted or suspended.
+
+The feature vector we used is the same that came out from the feature engineering process\ref{sec:feature_vector}, except for the specific characterizing features, that weren't considered, because crafted for the inner separation among bots. We excluded the image features (\textit{NSWF\_profile} and \textit{NSFW\_avg}).
+The extrinsic features must had been adjusted with new dictionaries, so we had two features: (\textit{bots\_words\_score} and  \textit{genuine\_words\_score}.
+Both the features have been computed as for the multiclass case, with up to 1000 non overlapping words in each dictionary.
+
+\subsection{Model}
+The model chosen for the purpose was the best performer of the tested baselines: the Random Forest binary classifier.
+The algorithm has had its parameters tuned during the validation phase.
+We decided to stick with 10-fold crossvalidation, as it was done for the baselines.
+
+After several Grid Search runs, the last round computed had this hyperparameters to combine together:
+\begin{itemize}
+	\item[\PencilRight] \textit{n\_estimators} = [150, 200, 250, 300, 350, 400, 450, 500]
+	\item[\PencilRight]\textit{max\_depth} = [None, 26, 28]
+	\item[\PencilRight]\textit{criterion} = 'entropy'
+\end{itemize}
+\begin{figure}[htp!]
+	\centering
+	\includegraphics[width=\columnwidth]{chapter5/figure/bon_tuning.png}
+	\caption{Grid search results}
+	\label{fig:grid_search}
+\end{figure}
+\begin{figure}[htp!]
+	\centering
+	\includegraphics[width=\columnwidth]{chapter5/figure/auc.png}
+	\caption{ROC curve}
+	\label{fig:auc}
+\end{figure}
+As we can see in Figure \ref{fig:grid_search}, the AUC is increasing with the number of the estimators in the forest. We decided t stop at 450, which corresponds to the highest AUC score, since this phase was aimed to find a comparison term with Botometer, but it didn't represent the final model.
+In their paper \cite{Varol}, the Botometer group claims to reach 0.95 in AUC score.
+
+The AUC obtained with our arrangement is equal to 0.96, as shown in Figure \ref{fig:auc}, which is a positive accomplishment, considering that it will be used only as support for the identification of humans among bots, but we didn't crafted specific features as the ones involved in the Botmoter project and we didn't have the same amount of data neither.
+
+The model has then been fitted with the hole data, with this settings: \textit{ n\_estimators} = 450, \textit{max\_depth} = 26 and \textit{criterion} = 'entropy'.
+
+\subsection{Validation}
+
+We had an interesting amount of data that were not involved in this task, because of the comparison with the same Botometer's dataset. Since this unseen data had a further discrimination among bots, it was easy to sample some records randomly, replacing their multiclass targets with binary values.
+We performed this job to validate the newborn model on unseen and fresher data.
+We were interested in testing a model that were trained over "old" accounts, with consequent different attributes values and different behaviours on the platform, with younger accounts.
+
+This validations would had given us a preview of the real performance of the model, once it would had been deployed on the internet. The account that a user would test with our application could be younger than the ones included in the Carvelee's list.
+
+We sampled 6,000 accounts, divided in 3,000 genuine and 3,000 bot ids, randomly picked by our multiclass dataset.
+
+The binary model were fitted with its data and it was ready to perform new predictions.
+
+\section{Multiclass ensemble classifier}
+This is the first piece of the thesis we worked on.\\
 It somehow represents the core of our thesis, it models the starting idea: go deep inside bot identification and search and classify similar behaviours among them.
 
-We started from the baselines identified earlier and we tried to refined them, adjusting to fit our need.
+In this section we will expose the model involved in the multiclass ensemble. In this process, we used a Random Forest algorithm, working on all the crafted features; a KNN model, operating on the user attributes only; a final text-based Naive Bayes classifier, which reads the tweets' texts and classifies them.
 
-The workflow was the same as before, starting from the data with basis and handcrafted features, we took the best looking algorithm from the baselines pool and performed hyperparameters tuning on it, supported by a validation technique.
-\subsection{Dataset}
-During this phase, we used the previously described dataset \ref{sec:dataset} with its five different labels.
-The algorithm was fed with 21,445 samples and 37 features. the amount of records were light enough to consider K-fold crossvalidation, without slow the validation down too much.
-\subsection{Model}
-We found ourselves in the situation in which we had some brand new features and we didn't know how useful they were. Obviously, we could appeal to heathmaps or other tools, to highlight the correlations among variables and targets.
-However, the model we wanted to develop was the Random Forest, which proved to perform well with F1 score. Since this kind of model exploits its criteria to employ the features, we needed to prove them with a direct approach.
+At first, this ensemble of those three models should had been blended with the prediction of the binary classifier. That means that the genuine class was part of the labels we were trying to classify, even in the multiclass models. Then, we found an issue in this approach: the binary classifier itself wasn't enough, even including it into the ensemble, to give the right importance to the genuine accounts. This problem emerged because of the others classifiers, as they were trying to classify the genuine class too. They lacked in data with that target, so, basically, they used to treat that category as one other of the bot types.
 
-\subsection{Features selection}
-A useful advantage of the Random Forest algorithm is the ability to provide a feature ranking, according to its splitting criterion.
-We retrieved the 12 most important attributes, in order to see if we would have found some of the ones coming out from feature engineering.
-The algorithm ranking ranked the features this way: 1. \textit{favourites\_count} (0.199402), 2. \textit{followers\_count} (0.110830), 3. \textit{statuses\_count} (0.100810), 4. \textit{avg\_len} (0.058260), 5. \textit{freq} (0.055419), 6. \textit{friends\_count} (0.043405), 7. \textit{ret\_perc} (0.039126), 8. \textit{tweet\_intradistance} (0.033718), 9. \textit{max\_ret} (0.030654), 10. \textit{min\_len} (0.029731), 11. \textit{NSFW\_words\_score} (0.029323), 12. \textit{default\_profile} (0.022897).
+Even if the results on our validation sets were still good (we accomplished a F1 measure of 0.973), for the final ensemble method, we knew that this method would had yielded to a poor bot vs genuine detection tool. We couldn't accept that situation, because, in order to go deeper than other works, in bots' behaviours classifications, we had to provide a solid previous discrimination between humans and automated accounts.
+
+The ensemble method with all the classifiers blended together were replaced with a pipeline, and the multiclass models were trained on bot categories only.
+These last classifiers had been put together inside a stacking ensemble, which returns the final mutliclass probability prediction, based on the opinions of those models, as shown in Figure \ref{fig:stacking_schema}
 
 \begin{figure}[htp!]
 	\centering
-	\includegraphics[width=\columnwidth]{chapter5/figure/feature_importances.png}
-	\caption{Random Forest feature ranking}
+	\includegraphics[width=\columnwidth]{chapter5/figure/stacking.png}
+	\caption{Multiclass ensemble schema}
+	\label{fig:stacking_schema}
+\end{figure}
+In the following subsections there are the detailed explanations of the three classifier announced before.
+
+\subsection{All-features-based Random Forest classifier}
+\subsubsection{Dataset}
+During this phase, we used the previously described dataset \ref{sec:dataset} with its five different labels.
+The algorithm was fed with 21,445 samples and 37 features. the amount of records were light enough to consider K-fold crossvalidation, without slow the validation down too much.
+\subsubsection{Model}
+We found ourselves in the situation in which we had some brand new features and we didn't know how useful they were. Obviously, we could appeal to heath-maps or other tools, to highlight the correlations among variables and targets.
+However, the model we wanted to develop was the Random Forest, which proved to perform well with F1 score. Since this kind of model exploits its criteria to employ the features, we needed to prove them with a direct approach.
+
+\subsubsection{Features selection}
+A useful advantage of the Random Forest algorithm is the ability to provide a feature ranking, according to its splitting criterion.
+We retrieved this standing, in order to see if we would have found some of the ones coming out from feature engineering at the top positions.
+The algorithm ranking ranked the features this way: 1. \textit{favourites\_count} (0.179115), 2. \textit{nsfw\_profile} (0.068165), 3. \textit{freq} (0.061246), 4. \textit{tweet\_intradistance} (0.060451), 5. \textit{news\_spreaders\_words\_score} (0.058583), 6. \textit{statuses\_count} (0.053364), 7. \textit{avg\_len} (0.051733), 8. \textit{followers\_count} (0.051187), 9. \textit{NSFW\_words\_score} (0.043496), 10. \textit{ret\_perc} (0.041200), 11. \textit{min\_len} (0.038870), 12. \textit{spam\_bots\_words\_score} (0.035445), ...  37. \textit{min\_fav} (0.000146).
+
+\begin{figure}[htp!]
+	\centering
+	\includegraphics[width=\columnwidth]{chapter5/figure/top_12_features_importances.png}
+	\caption{Random Forest top-12 feature ranking}
 	\label{fig:feature_rank}
 \end{figure}
 
-As Figure \ref{fig:feature_rank} shows, we could find some of our crafted features inside this list: lots of tweets descriptive features (\textit{avg\_len, freq, ret\_perc}, etc...), as well as the \textit{tweet\_intradistance} attribute and the \textit{NSFW\_words\_score}.
+As Figure \ref{fig:feature_rank} shows, we could find some of our crafted features inside this list: lots of tweets descriptive features (\textit{avg\_len, freq, ret\_perc}, etc...), as well as the \textit{tweet\_intradistance} attribute and three of the four extrinsic features, like \textit{news\_spreaders\_words\_score}, \textit{NSFW\_words\_score} and the \textit{spam\_bots\_words\_score}.
 This picture confirmed us that the idea behind those features was useful.
 
 Since those attributes were thought to belong to different clusters, we decided to try several combinations of those feature clusters, validating the model on them with a crossvalidation. The purpose of this stage was to see if some groups of features were enough to describe the real problem, or if some group would shown up as irrelevant.
@@ -300,7 +492,8 @@ Due to the multiclass nature and some imbalances with the labels, we decided to 
 
 The features were organized in clusters, as described in Chapter \ref{capitolo4}.
 We had the user features, the descriptive features, the intrinsic features, the extrinsic and the image features. Then we tried the model with the entire set of 38 attributes.
-As shown in Figure \ref{fig:feature_clusters}, the best configuration seems to involve the whole set of features, as it reaches these scores, with 70 estimators: \textit{Precision} = 0.946, \textit{Recall} = 0.945, \textbf{\textit{F1}}= 0.943.
+As shown in Figure \ref{fig:feature_clusters}, the best configuration seems to involve the whole set of features, as it reaches these scores, with 100 estimators: \textit{Precision} = 0.978, \textit{Recall} = 0.976, \textbf{\textit{F1}}= 0.977.
+
 \begin{figure}[htp!]
 	\centering
 	\includegraphics[width=\columnwidth]{chapter5/figure/feature_cluster_f1.png}
@@ -309,127 +502,158 @@ As shown in Figure \ref{fig:feature_clusters}, the best configuration seems to i
 \end{figure}
 
 The model has been tested with the default value for the maximum depth in the trees, which is set to 'None'. It means that the trees are expanded until every leaf is pure, or all leaves contain one sample.
-Tuning the hyperparameters wasn't the goal of this experiment, since its aim was only to find the best configuration of features to fit the model with.
+
+In order to try all the alternatives, we setted a test involving the performance of the model, when it was working on an increasing number of features.
+We had the ranking provided by the forest itself, so we started by testing only the most important attribute, adding one feature at time, until the least important was included.
+We were looking for some changing in the scores, that would had pointed to a lighter model, with the exclusion of some features.
+Figures \ref{fig:feat_prec}, \ref{fig:feat_rec}, \ref{fig:feat_f1} show the trends of the Precision, the Recall and the F1, respectively, along with the number of features tested.
+ \begin{figure}[htp!]
+ 	\centering
+ 	\includegraphics[width=\columnwidth]{chapter5/figure/precision_along_features.png}
+ 	\caption{Precision trend along with number of features tested}
+ 	\label{fig:feat_prec}
+ \end{figure}
+\begin{figure}[htp!]
+	\centering
+	\includegraphics[width=\columnwidth]{chapter5/figure/recall_along_features.png}
+	\caption{Recall trend along with number of features tested}
+	\label{fig:feat_rec}
+\end{figure}
+\begin{figure}[htp!]
+	\centering
+	\includegraphics[width=\columnwidth]{chapter5/figure/f1_along_features.png}
+	\caption{F1 trend along with number of features tested}
+	\label{fig:feat_f1}
+\end{figure}
+
+As all the Figures show, the best solution possible, looking at both the three metrics, is the one involving all the 37 components of the feature vector.
+There was the possibility to choose the second result, which wanted only the first 28 features, in terms of importance for the Random Forest. However, we weren't struggling with heavy models or long prediction times and the Random Forest algorithm handles the overfitting problem properly, even with complex models.
+Thus, we moved on with the entire feature vector as support for the classification goal.
 
 We then continued with a proper Grid Search over the whole number of features.
-\subsection{Hyperparameters Tuning}
+\subsubsection{Hyperparameters Tuning}
+The algorithms rely on parameters in order to fit a problem.
+Once the number of featured was picked, as well as the model, we needed to consider the possible hyperparameter ranges. 
+The Grid Search method from Scikit-learn helped us, one again, during this exploration.
+Since we were testing a Random Forest, we wanted to play with the number of estimators (tree) to include in the pool, as well as the maximum depth of each tree and the splitting criterion.
 
 \begin{figure}[htp!]
 	\centering
-	\includegraphics[width=\columnwidth]{chapter5/figure/gini.png}
+	\includegraphics[width=\columnwidth]{chapter5/figure/multiclass_rf_tuning_gini.png}
 	\caption{F1 scores with 'Gini' criterion}
-	\label{fig:gini}
+	\label{fig:rf_tuning_gini}
 \end{figure}
 \begin{figure}[htp!]
 	\centering
-	\includegraphics[width=\columnwidth]{chapter5/figure/entropy.png}
+	\includegraphics[width=\columnwidth]{chapter5/figure/multiclass_rf_tuning.png}
 	\caption{F1 scores with ''Entropy'' criterion}
-	\label{fig:entropy}
+	\label{fig:rf_tuning_entropy}
 \end{figure}
 
-The Figures \ref{fig:gini}, \ref{fig:entropy} show how the average F1 score, measured on 10-fold crossvalidation, changes with the increasing of the number of estimators in the forest.
-The different coloured lines represent \textit{max\_depth} hyperparameter.
-The first Figure (\ref{fig:gini}) shows the Grid Search results, with the \textit{gini} splitting criterion.
-The second one (\ref{fig:entropy}) represent the situation having \textit{entropy} as a splitting choice.
-We combined five numbers of estimators (100, 150, 200, 250, 300), together with four different depths of the trees (None, 24, 26, 28) and the two above-mentioned splitting criteria.
+The Figures \ref{fig:rf_tuning_gini}, \ref{fig:rf_tuning_entropy} show how the average F1 score, measured on 10-fold crossvalidation, changes with the increasing of the number of estimators in the forest.
+The different coloured lines represent the \textit{max\_depth} hyperparameter.
+The first Figure (\ref{fig:rf_tuning_gini}) shows the Grid Search results, with the \textit{gini} splitting criterion.
+The second one (\ref{fig:rf_tuning_entropy}) represent the situation having \textit{entropy} as a splitting choice.
+We combined nine numbers of estimators (200,250,300,350,400,450,500,550,600), together with three different maximum depths for the trees (26, 28, None) and the two above-mentioned splitting criteria.
 
-We could find a local maximum in \ref{fig:gini}, marked by the green line (\textit{max\_depth = 26}), matching \textit{n\_estimators = 100}. Observing the overall trend for that line, we couldn't rely on that peak, because it seemed to be a lucky hit, due the following lower values accomplished by this configuration. The entropy criterion seemed to be a more stable adjustments of scores, especially with the \textit{None} setting for \textit{max\_depth} hyperparameter.
+We could observe a peak, for both criteria, in correspondence with 400 estimators.
+Although the Gini-based forest's score didn't seem a bad point, we went with the Information Gain splitting criterion, which si also the same we used to rank the features of our data.
 
-The highlighted point represent what we pick as our current configuration, and it sees 250 trees, the longest possible depth and the entropy mode for choosing the features on witch separate the trees. 
+The final configuration involves 400 trees, the Information Gain criterion and the maximum reachable depth (for each of the 400 estimators) equal to 28 levels.
 
-We decided to stick with the following configuration without continuing with further explorations, because we could observe a flat improvements from 250 to 300 estimators, with that depth.
-Furthermore, we were aware that, in the generalization stage, the computation of the image features and the calls to the Twitter APIs would have been taking much more time than the models' predictions, so we decided to have a light model, in order to keep the prediction time fast enough, which is currently measured in 33ms. 
+Figure (\ref{fig:tree}) shows an example of one of the estimators of the final model, plotted with Matplotlib library for Python. It has been represented with the first two levels of depth, for visualizations reasons.
 
-The first algorithm of our solution was completed and ready to be combined with the following two models.
-
-\section{Binary Classifier}
-Since our dataset was pretty balanced and we couldn't retrieve much more genuine accounts, we didn't want our instrument to treat this category of users just as one the other bot kinds. It was important to perform a previous filter that was able to give importance to the separation between bots and genuine accounts.
-
-We was inspired by the work made with Botometer\cite{Botometer}, which involved a binary labelled dataset, with bot and genuine accounts.
-They built their features, grouped them in six main categories, then they ran a Random Forest algorithm per group.
-
-We already had our feature engineering done, so we decided to test it on this new task.
-
-In order to not to build a poorer version of our multiclass model, we didn't want to use a reduced copy of our dataset, stratifying it by stripping random bots from it. We needed a balanced dataset, with about the same amount of genuines and bots. So, we had to gather more human ids, because if we would have relied on the accounts we already had (3661), we would had disposed on a training set with about 7000 entries, that would have been too small to perform a relevant filter.
-\subsection{Dataset}
-The dataset we used for this classification was composed by part of our collected records and by some entries from the Carvelee-2011 dataset, which contains 22,223 content polluters and 19,276 legitimate users, both collected through a social honeypot, as described in their paper\cite{Lee11sevenmonths}.
-This dataset has been involved to build Botometer as well, but we decided to use it only partially, mixing it with our retrieved accounts.
-
-We setted the APIs to retrieve up tu 6,000 ids for both genuines and bots, from the Carvelee list. The process provided us 5,161 legitimate user ids, and 5,297 general bot ids (without inner classifications), because some accounts have been deleted in time.
-Then we added some new records, randomly sampling our data. This led us to reach 7,660 human accounts and 7,795 bots, forming a new dataset of 15,455 entries, with binary target.
-
-The feature vector we used is the same that came out from the feature engineering process\ref{sec:feature_vector}, except for the specific characterizing features, that weren't considered, because crafted for the inner separation among bots. We excluded the image features (\textit{NSWF\_profile} and \textit{NSFW\_avg}) and the extrinsic keywords scores (\textit{NSFW\_words\_score}, \textit{news\_spreaders\_words\_score}, \textit{spam\_bots\_words\_score}, \textit{fake\_followers\_words\_score}, \textit{genuine\_words\_score}).It has been fitted with 32 features.
-
-\subsection{Model}
-Since the different purpose of this model, we couldn't rely on the same baselines tested with the multiclass dataset. We wanted to evaluate new raw algorithms for this binary classification.
-Another round of crossvalidation, with default settings, was performed on this new dataset, exploiting the binary nature to show the \textit{Area Under the Curve} score (AUC).
-Area Under the Curve represents the goodness of a classifier, in terms of the integral of the \textit{Receiver Operating Characteristic} (ROC curve), defined over the variation of a decision treshold.
-The motivation behind the adding of this new metric is that we had a balanced binary dataset, and this metric is a good fit for this kind of problem. Moreover, Botmoter claims to have accomplished an AUC of 0.95, on a 10-fold crossvalidation test.
-
-The ROC curve lies in a bi-dimensional space, which has the \textit{True Positive Ratio} ($ TPR =  \frac{TP}{TP+FN}$) on the Y-axis, and the False Positive Ratio ($ FPR =  \frac{FP}{FP+TN}$ ) on the X-axis.
-
-We wanted a term of comparison, so we evaluated this metric even in the baseline stage. Here there are the results of this process:
-\begin{itemize}
-	\item[\PencilRight] \textit{RandomForestClassifier(n\_estimators = 10, criterion = 'entropy')}\\
-	Mean AUC: 0.916\\
-	Mean precision: 0.879\\
-	Mean recall: 0.793\\
-	Mean f1 score: 0.824
-	\item[\PencilRight]\textit{LogisticRegression(fit\_intercept=True, max\_iter=100, penalty='l2')}\\
-	Mean AUC: 0.792\\
-	Mean precision: 0.694\\
-	Mean recall: 0.759\\
-	Mean f1 score: 0.723
-	\item[\PencilRight]\textit{KNeighborsClassifier(n\_neighbors=10)}\\
-	Mean AUC: 0.835\\
-	Mean precision: 0.779\\
-	Mean recall: 0.750\\
-	Mean f1 score: 0.760
-	\item[\PencilRight]\textit{SVC(kernel='rbf', decision\_function\_shape='ovo')}\\
-	Mean AUC: 0.583\\
-	Mean precision: 0.620\\
-	Mean recall: 0.364\\
-	Mean f1 score: 0.095
-\end{itemize}
-Once again, Random Forest won the comparison with the other baselines.
-We decided to let it perform this job and try to improve its AUC score, keeping one eye on the overall score too.
-
-The algorithm has had its parameters tuned during the validation phase.
-We decided to stick with 10-fold crossvalidation, as it was done for the baselines.
-
-After several Grid Search runs, the last round computed had this hyperparameters to combine together:
-\begin{itemize}
-	\item[\PencilRight] \textit{n\_estimators} = [100, 115, 130, 150, 175, 200]
-	\item[\PencilRight]\textit{max\_depth} = [None, 26, 28]
-	\item[\PencilRight]\textit{criterion} = 'entropy'
-\end{itemize}
 \begin{figure}[htp!]
 	\centering
-	\includegraphics[width=\columnwidth]{chapter5/figure/gridSearch.png}
-	\caption{Grid search results}
-	\label{fig:grid_search}
+	\includegraphics[width=\columnwidth]{chapter5/figure/tree.png}
+	\caption{Tree estimator of the Random Forest model}
+	\label{fig:tree}
 \end{figure}
-\begin{figure}[htp!]
-	\centering
-	\includegraphics[width=\columnwidth]{chapter5/figure/auc.png}
-	\caption{ROC curve}
-	\label{fig:auc}
+
+As the picture shows, this tree used the \textit{tweet\_intradistance} feature as root, in order to perform its first split on that attribute.
+
+The first algorithm of the multiclass ensemble was completed and ready to be combined with the following models.
+
+\subsection{User-based KNN classifier}
+The Random Forest model represents somehow the core of the ensemble, as it was trained on the entire feature vector, with all the data we had for the purpose. A massive attention for parameters and features were given for that classifier. 
+However, we wanted to put it into an ensemble, not to improve its already strong stability over outliers, but to support it with different perspectives.
+
+We noticed, as shown in the previous Figure \ref{fig:feature_clusters}, that the user features were a good group to build a classifier on. Thus, we started thinking how to implement such support, and we basically looked at our baselines.
+
+The model that had the best performance, not considering the Random Forest, was the K-Nearest Neighbors algorithm.
+
+We didn't want this model to work the entire feature vector, because we knew that it would had been overlooked by the Random Forest. Instead, we wanted it to concentrate on the features that describe the users, without the information driven by their tweets.
+We hoped that treating the data before, or during, the training phase, would had brought to 
+a good sustain for the first multiclass model, where needed.
+
+\subsubsection{Dataset}
+The dataset is composed by the same number (21,445) of samples of the first multitarget Random Forest, but preserving only the twelve features belonging to the user group:
+
+\small
+\begin{center}
+	\begin{tabular}{ll}
+		\\Feature vector\\
+		\hline\hline
+		default\_profile, favourites\_count, followers\_count\\
+		friends\_count, listed\_count, screen\_name\_len\\
+		statuses\_count, url, description\_len\\
+		name\_len, profile\_use\_background\_image, age\\\hline\\
+	\end{tabular}
+\end{center}
+\normalsize
+
+\subsubsection{Model}
+
+This model is quite simple and doesn't require much effort in interpolating several hyperparameters. But this doesn't mean that it is a closed box algorithm. It can be improved by paying attentions to some details. In particular there had been done three considerations, and they were regarding
+
+\begin{itemize}
+	\item[\PencilRight]\textbf{Hyperparameters}\\
+	The main hyperparameters that can be combined together are the number \textit{k} of neighbours ti consider, when performing a prediction, and the distance metric used by the calculations of the distances.
+	The Scikit-learn implementation of the algorithm uses the \textit{Minkowski} metric, which describes the \textbf{L}\textsubscript{p} norm: 
+	\[ \mathit{L_{p}} = (\sum\limits_{i = 1}^{n}|x_{i} - y_{i}|^{p})^{1/p} \]
+	This metric is a generalization of the \textbf{L}\textsubscript{2} norm, also known as the Euclidean distance.
+	The library we used allowed us to tune the \textit{p} hyperparameter, which indicates the metric used: \textit{p} = 1 means L\textsubscript{1} norm, the Manhattan Distance, when \textit{p} = 2 stands for the Euclidean.
+	Higher values of \textit{p} are available, with other metric involved.
+	
+	We tried several values for both \textit{p} and \textit{k}, obtaining different results.
+	However, the overall decision had to take in consideration also other two factors, the features weighting and the kernel function.
+	
+	\item[\PencilRight]\textbf{Features Weighting}\\
+	The KNN algorithm aims to map the samples into a space and then it looks for the distances among them. In order to have best mapped space, it is reasonable to perform a weighting over the data. With this approach, the mapping would change and some points could result both as closer or more distant from each others.
+	
+	We performed some tests on four configurations. The first one didn't involve a weighting vector, while the second was a standard normalization of the features.
+	This last option provided low results, with the same configurations of parameters, and thus were discarded from further analysis.
+
+	The third option, which was the most interesting, was built by computing the Information gGin for each feature, using the inner ability of the Random Forest classifier, and then by applying the weights on the attributes, basing the coefficients on the scores provided by the ranking.
+	This method emerged as the most effective, in the overall score.
+	
+	The last one was implemented as a Gaussian Kernel, which exploits the above-explained Radial Basis Function \ref{rbf}.
+	This attempt fell shorter then the standard normalization, and it could be imputable to an overestimation of the ability to approximate the probability density of our data.
+	It seemed that the Gaussian-based weighting wasn't a good fit for the problem.
+\end{itemize}
+
+We ran a Grid Search session over an increasing number of neighbours and the first four coefficients of the Minkowski distance.
+All the combinations were tested with both the non-weighted data and the Entropy-based weighted data.
+The results obtained are highlighted in Figure \ref{fig:knn_tuning}
+
+\begin{figure}
+	\includegraphics[width=\columnwidth]{chapter5/figure/knn_tuning.png}
+	\caption{Hyperparameters p, k tuning, with different weightings}
+	\label{fig:knn_tuning}
 \end{figure}
-As we can see in Figure \ref{fig:grid_search}, the AUC is increasing with the number of the estimators in the forest. We decided t stop at 250, which corresponds to the highest AUC score, with a low risk to perform overfitting.
+The different colours represent the Minkowski distances tested, as well as the different line styles, dotted and continue, represent the weighted and the non-weighted solutions, respectively.
 
-The AUC obtained with this arrangement is equal to 0.936, as shown in Figure \ref{fig:auc}, which is a positive accomplishment, considering that it will be used only as support for the identification of humans among bots, but we didn't crafted specific features as the ones involved in the Botmoter project and we didn't have the same amount of data neither.
+As visible in the picture, the best score, in the usual 10-fold crossvalidation, has been obtained with  3 neighbours, the Manhattan distance, and the weighted solution, which is averagely better than the other one.
 
-The final model has been fitted with the hole data, with this settings: \textit{ n\_estimators} = 250, \textit{max\_depth} = None and \textit{criterion} = 'entropy'.
-The max\_depth parameters states how deep the tree should be expanded. When set to \textit{None}, the algorithms tries to expand them until every leaf if pure.
-We were looking for this approach, because we wanted this filter classifier to be ensure the hardest classifications possible, among a soft classification system. We wanted some loose detections, when there were no certainties. But we wanted the prediction to be as sure as possible, when no uncertainties were met. 
+However, we decided to increase the \textit{k} hyperparameter, in order to increase the possibility to have all the neighbours considered for a prediction, representing all the four targets at once. 
 
-Once we fitted the model, it was ready to be the second element entering in our solution pool.
+The final model has been created with the following call: \textit{KNeighborsClassifier(p=2, n\_neighbors=5)} and it has been fitted with the weighted data.
 
-\section{Text-based classifier}
-In chapter \ref{capitolo4} we created some usefull feature that helped the two classifiers above. Anyway we didn't consider enought the tweets text. A first idea consisted in add a feature that describe the context of the tweets. This task was easily viable using \textit{Google Cloud Natural Language}. Unfortunately, this service only provides a few free calls, and we would not be able to tag all the tweets in our dataset. Moreover, the Context Classification is very specific, and we would have risked to have a too large domain of values. We tried to classify some tweets and we noticed that it was not possible with many of them, since they was just exclamation or contextless sentences. We therefore decided to train a proprietary text classifier. This allowed us to classify texts according to our targets, and our final classifier would have been self-sufficient, without external services.
-\subsection{Dataset}
+\subsection{Text-based Naive Bayes classifier}
+In chapter \ref{capitolo4} we created some useful features that helped the above-mentioned classifiers . Anyway we didn't consider enough the tweet texts. A first idea consisted in add a feature that describe the context of the tweets. This task was easily viable using \textit{Google Cloud Natural Language}. Unfortunately, this service only provides a few free calls, and we would not be able to tag all the tweets in our dataset. Moreover, the Context Classification is very specific, and we would have risked to have a too large domain of values. We tried to classify some tweets and we noticed that it was not possible with many of them, since they was just exclamation or contextless sentences. We therefore decided to train a proprietary text classifier. This allowed us to classify texts according to our targets, and our final classifier would have been self-sufficient, without external services.
+\subsubsection{Dataset}
 Since we wanted to classify texts instead of users, we needed to create a specific dataset.
-It had to contain a list of tweets and all the related target. We composed it by labeling each tweet with the target of its author. This produced some noise; often bots tweet something different from their goal, to seem more humans. We could accept this problem, since most of the bot's tweets are aimed to a goal.
+It had to contain a list of tweets and all the related target. We composed it by labelling each tweet with the target of its author. This produced some noise; often bots tweet something different from their goal, to seem more humans. We could accept this problem, since most of the bot's tweets are aimed to a goal.
 The shape of the dataset is the following:
 
 \begin{center}
@@ -447,7 +671,7 @@ The shape of the dataset is the following:
 
 It seems unbalanced, anyway it is appropriate to keep all the data. Some spambot's tweets just contain links and they will be removed in the next steps. Differently, Fake-followers usually don't tweet, or they never tweeted.
 
-\subsection{Model}
+\subsubsection{Model}
 In order to classify texts, we decided to use a Naive Bayes approach. This algorithm consists in a probabilistic classifier based on the bayes' theorem. "Numerous researchers proved that it is effective enough to classify the text in many domains \cite{svm}. Naive Bayes models allow each attribute to contribute towards the final decision equally and independently from other attributes" \cite{nb}.
 
 Tweets can't be processed as they are. Since this model aims to classify texts basing on its words, we had to clean the dataset from all those parts of the text that are not real or usefull words. For example articles, smiles, punctuaction should not be taken into consideration. Moreover it is fundamental to reduce inflected words to their word stem. Finally, we need to clean all those noisy parts of the tweets, which is important to allow the final text classifier to consider only real words, in order to identify the context.
@@ -461,34 +685,26 @@ In order to perform this tasks, we used a \textit{sklearn Pipeline}. It is an ob
 We added to the pipeline the following operations:
 
 \begin{itemize}
-	\item[\PencilRight] Remove retweet information
-	\item[\PencilRight] Remove punctuation
-	\item[\PencilRight] Remove stopwords
-	\item[\PencilRight] Transform uppercase characters into lowercase
-	\item[\PencilRight] Apply stemming
-	\item[\PencilRight] Apply TF-IDF encoding
-	\item[\PencilRight] MultinomialNB
+	\item[\PencilRight] \textbf{Remove retweet information:}\\
+	Delete the texual pattern which indicates that the current status is a retweet. It consists in a "RT @original\_author:". 
+	\item[\PencilRight] \textbf{Remove punctuation:}\\
+	With regular expressions we removed everythink different from characters and numbers. In this step also smiles and other symbols are removed.
+	\item[\PencilRight] \textbf{Remove stopwords:}\\
+	stopwords are the most common words that are always used in a language and that can not help to classify a context. Some example of words belonging to this category are articles or prepositions.
+	We removed them, by using a stopwords dictionary of \textit{NLTK} libraries.
+	\item[\PencilRight] \textbf{Transform uppercase characters into lowercase:}\\
+	Before tokenize words, we transformed every character into lowercase, in order to be sure that every word is considered only in one form.
+	\item[\PencilRight] \textbf{Apply stemming:}\\
+	This is the step where words are reduce to their word stem. Since the text classifier is based on the occurrences of words in the texts, we don't need a correct grammar in our tweets. Instead, words at their basic form are more useful for the target.
+	In order to perform this transformation we used \textit{SnowballStemmer} from \textit{NLTK} libraries.
+	\item[\PencilRight] \textbf{Apply TF-IDF encoding:}\\
+	Finally we applied to each word a TF-IDF encoding. Since we had a huge amount of tweets, without this step we would have risked to give too much importance to the overused wordsand almost nothing importance to the others. Moreover, without using TF-IDF we had a worse performance.
+	\item[\PencilRight] \textbf{MultinomialNB:}\\
+	This is the final classification algorithm. Thanks to the pipeline it always receives cleaned data, performing a better training and predictions.
+	We selected a Naive Bayes classifier for multinomial models since we are dealing with a multiclass problem.
 \end{itemize}
 
-\subsubsection{Remove retweet information}
-Delete the texual pattern which indicates that the current status is a retweet. It consists in a "RT @original\_author:". 
-\subsubsection{Remove punctuation}
-With regular expressions we removed everythink different from characters and numbers. In this step also smiles and other symbols are removed.
-\subsubsection{Transform uppercase characters into lowercase}
-Before tokenize words, we transformed every character into lowercase, in order to be sure that every word is considered only in one form.
-\subsubsection{Remove stopwords}
-stopwords are the most common words that are always used in a language and that can not help to classify a context. Some example of words belonging to this category are articles or prepositions.
-We removed them, by using a stopwords dictionary of \textit{NLTK} libraries.
-\subsubsection{Apply stemming}
-This is the step where words are reduce to their word stem. Since the text classifier is based on the occurrences of words in the texts, we don't need a correct grammar in our tweets. Instead, words at their basic form are more useful for the target.
-In order to perform this transformation we used \textit{SnowballStemmer} from \textit{NLTK} libraries.
-\subsubsection{Apply TF-IDF encoding}
-Finally we applied to each word a TF-IDF encoding. Since we had a huge amount of tweets, without this step we would have risked to give too much importance to the overused wordsand almost nothing importance to the others. Moreover, without using TF-IDF we had a worse performance.
-\subsubsection{MultinomialNB}
-This is the final classification algorithm. Thanks to the pipeline it always receives cleaned data, performing a better training and predictions.
-We selected a Naive Bayes classifier for multinomial models since we are dealing with a multiclass problem.
-
-\subsection{Final Prediction}
+\subsubsection{Holdout evaluation}
 The final text classifier has the following performance:
 \begin{itemize}
 	\item[\PencilRight] \textbf{F1 = 0.71} with TF-IDF
@@ -498,89 +714,60 @@ The final text classifier has the following performance:
 Anyway, since the other models classify users and not single tweets, we could not use a classifier for texts only.
 In order to get a prediction on users, based only on their tweets, The final classification script compute the resulted probabilities for each tweet. Then, for each user, the final prediction consists in the mean of the predictions over his tweets.
 
+
 \section{Stacking meta-classifier}
 We had three models, each with different purposes, but they had to cooperate for the bots' behaviour identification.
 The initial idea was to use only the multiclass Random Forest to classify the bot categories, using the other two models as meta-models to build extra features with their outcome.
 Those features would have had the dataset enhanced, but their meaning would have been bounded to the multiclass classifier limits.
 We wanted to give the right importance to each model, hoping they would help each other to better distinguish the patterns end to better model the real problem.
 
-We thought about several methods to exploit their strengths and combine them.
-The first idea was to build a pipeline with weights for each classifier. The binary Random Forest would had been the first filter between humans and bots. Following this lead, the multiclass and the text classifiers would have been weighted in order to assign the final label.
-
-This approach would have been less empirical then other tools we could dispose. We decided to rely on different methods to blend the outcomes of our three algorithms. In particular, we thought about a genetic approach and a stacking ensemble with a meta-classifier. 
+We thought about several methods to exploit their strengths and combine them. In particular, we thought about a genetic approach and a stacking ensemble with a meta-classifier. 
 We wanted to evaluate the performance obtained by these methods and chose the one that fitted our need.
 
-Both the genetic and the meta-model were trained with holdout technique, splitting the whole dataset into training and test sets. The 80\% of the samples ended up into the training set, the 20\% in the validation set.
-We had a training set for the ensemble models that contains 5022 entries.
+Both the genetic and the meta-model were trained with holdout technique, splitting the whole dataset into training and test sets. The 70\% of the samples ended up into the training set, the 30\% in the validation set.
+We had a training set for the ensemble models that contains 6,434 entries.
 The data that fed the stacking methods were the predictions of the tree classifiers, over the validation set.
-In order to make those prediction without cheating, we couldn't use the models that were already fitted with the hole data. We had to retrain them with the 80\% of the records. 
+In order to make those prediction without cheating, we couldn't use the models that were already fitted with the hole data. We had to retrain them with the 70\% of the records. 
 We didn't perform further Grid Search to find the best hyperparameters in this stage, because the final script that we were going to assemble was taking into account the entire dataset to train the models. Furthermore, this small variation, in terms of amount of training data, wouldn't had led us into a misinterpretation of the problem, if we had kept the same hyperparameters found earlier.
 We decided to stick with the configurations already found and to train the model with fewer data.
 
 Once the model were fitted, we used the \textit{predict\_proba()} method of the Scikit-learn implementations of the classifiers, in order to retrieve "soft classifications".
 We didn't want our model to assign a strict label to an unseen sample, indeed, we were interested in the percentage of categories membership.
-The predict\_proba() method computes the probability, for a sample, to belong to the highlighted target, by considering the impurity of the leaves inside the forest.
+The predict\_proba() method computes the probability, for a sample, to belong to the highlighted class, without assigning the most probable target.
 We used this method to construct the output vectors needed to train the stacking models.
 
-In order to combine the outputs of three classifiers properly, we had to homologate them.
-With the multiclass and the text models there weren't issues, since their outcomes are stored into vectors with five elements, containing probability values, one for each category.
-The case to handle was the binary one, because the output of that Random Forest was represented by a 2-sized vector (the bot probability and the genuine one).
-We extended the array adding three more cells. Then we took the bot probability and spread it on the four cells that didn't mark the genuine probability.
-The reason behind that is that our binary classifier didn't take care about the inner separation in bot behaviours. It was uncertain about the belonging category, it just used to recognize bots, so each non-human category should had been assigned the same coefficient, and their sum must had match the original probability to be detected as a bot.
-For instance, if the binary classifies detects an account with 80\% chance to be a bot and 20\% to be genuine, it will result in this final outcome vector:
-\begin{center}
-	\begin{tabular}{ccccc}
-		\\Bot&Genuine\\
-		\hline
-		0.8&0.2\\
-		\hline\\
-	\end{tabular}\\
-Original binary output
-\end{center}
-	
-\begin{center}
-	\begin{tabular}{ccccc}
-		\\NSFW&News-Spreader&Spam-Bot&Fake-Follower&Genuine\\
-		\hline
-		0.2&0.2&0.2&0.2&0.2\\
-		\hline\\
-	\end{tabular}\\
-Adapted multiclass output
-\end{center}
+Each sample of this new dataset contains 12 elements, 4 soft predictions (one for each category) for each classifier (complete Random Forest, text-based Naive Bayes and user-based KNN).
 
-Each sample of this new dataset contains 15 elements, 5 soft predictions (one for each category) for each classifier (binary, multiclass, text-based).
 \begin{center}
-	\begin{tabular}{@{}c|c|c|c|c|c|c|c|c|c|c|c|c|c|c@{}}
-		\multicolumn{15}{c}{New sample} \\
+	\begin{tabular}{@{}c|c|c|c|c|c|c|c|c|c|c|c@{}}
+		\multicolumn{12}{c}{New sample} \\
 		\hline
-		\multicolumn{5}{c|}{Binary probability} & 
-		\multicolumn{5}{c|}{Text-based probability} & 
-		\multicolumn{5}{c}{Multiclass probability}\\
+		\multicolumn{4}{c|}{\textbf{KNN prob.}} & 
+		\multicolumn{4}{c|}{\textbf{NB prob.}} & 
+		\multicolumn{4}{c}{\textbf{RF prob.}}\\
 		\hline
-		p\textsubscript{0} &
-		p\textsubscript{1} &
-		p\textsubscript{2} &
-		p\textsubscript{3} &
-		p\textsubscript{4} &
-		p\textsubscript{5} &
-		p\textsubscript{6} &
-		p\textsubscript{7} &
-		p\textsubscript{8} &
-		p\textsubscript{9} &
-		p\textsubscript{10} &
-		p\textsubscript{11} &
-		p\textsubscript{12} &
-		p\textsubscript{13} &
-		p\textsubscript{14}\\
+		\multicolumn{1}{c|}{p\textsubscript{0}} &
+		\multicolumn{1}{c|}{p\textsubscript{1}} &
+		\multicolumn{1}{c|}{p\textsubscript{2}} &
+		\multicolumn{1}{c|}{p\textsubscript{3}} &
+		\multicolumn{1}{c|}{p\textsubscript{4}} &
+		\multicolumn{1}{c|}{p\textsubscript{5}} &
+		\multicolumn{1}{c|}{p\textsubscript{6}} &
+		\multicolumn{1}{c|}{p\textsubscript{7}} &	
+		\multicolumn{1}{c|}{p\textsubscript{8}} &
+		\multicolumn{1}{c|}{p\textsubscript{9}} &
+		\multicolumn{1}{c|}{p\textsubscript{10}} &
+		\multicolumn{1}{c}{p\textsubscript{11}}\\
 		\hline
 	\end{tabular}
 \end{center}
+
 A new training set was born and it was built with the soft classifications of the models in the pool, over the validation set. It was ready to proceed and to serve the ensemble models.\\
 
 \begin{figure}[htp!]
 	\centering
-	\includegraphics[width=\columnwidth]{chapter5/figure/stacking.png}
-	\caption{Training pipeline of theNodv stacking ensemble}
+	\includegraphics[width=\columnwidth]{chapter5/figure/stacking_train.png}
+	\caption{Training pipeline of the stacking ensemble}
 	\label{fig:stacking_pipeline}
 \end{figure}
 The pipeline for perform the training of the ensemble models is resumed in Figure \ref{fig:stacking_pipeline}.
@@ -609,32 +796,29 @@ We setted the genetic algorithm with the support of the Deap library for Python,
 	This range was given after observing the weights that the Logistic Regression model were assigning to the inputs received, that was wider and involved even negative values.
 	We randomly generated 200 chromosomes for the initial population, with this form.
 \end{itemize}
-	\begin{center}
-		\begin{tabular}{@{}c|c|c|c|c|c|c|c|c|c|c|c|c|c|c@{}}
-			\multicolumn{15}{c}{Chromosome} \\
-			\hline
-			\multicolumn{5}{c|}{Binary Weights} & 
-			\multicolumn{5}{c|}{Text-based Weights} & 
-			\multicolumn{5}{c}{Multiclass Weights}\\
-			\hline
-			w\textsubscript{0} &
-			w\textsubscript{1} &
-			w\textsubscript{2} &
-			w\textsubscript{3} &
-			w\textsubscript{4} &
-			w\textsubscript{5} &
-			w\textsubscript{6} &
-			w\textsubscript{7} &
-			w\textsubscript{8} &
-			w\textsubscript{9} &
-			w\textsubscript{10} &
-			w\textsubscript{11} &
-			w\textsubscript{12} &
-			w\textsubscript{13} &
-			w\textsubscript{14}\\
-			\hline
-		\end{tabular}\\
-	\end{center}
+\begin{center}
+	\begin{tabular}{@{}c|c|c|c|c|c|c|c|c|c|c|c@{}}
+		\multicolumn{12}{c}{Chromosome} \\
+		\hline
+		\multicolumn{4}{c|}{\textbf{KNN weights}} & 
+		\multicolumn{4}{c|}{\textbf{NB weights}} & 
+		\multicolumn{4}{c}{\textbf{RF weights}}\\
+		\hline
+		\multicolumn{1}{c|}{w\textsubscript{0}} &
+		\multicolumn{1}{c|}{w\textsubscript{1}} &
+		\multicolumn{1}{c|}{w\textsubscript{2}} &
+		\multicolumn{1}{c|}{w\textsubscript{3}} &
+		\multicolumn{1}{c|}{w\textsubscript{4}} &
+		\multicolumn{1}{c|}{w\textsubscript{5}} &
+		\multicolumn{1}{c|}{w\textsubscript{6}} &
+		\multicolumn{1}{c|}{w\textsubscript{7}} &	
+		\multicolumn{1}{c|}{w\textsubscript{8}} &
+		\multicolumn{1}{c|}{w\textsubscript{9}} &
+		\multicolumn{1}{c|}{w\textsubscript{10}} &
+		\multicolumn{1}{c}{w\textsubscript{11}}\\
+		\hline
+	\end{tabular}
+\end{center}
 \begin{itemize}
 	\item[\PencilRight]\textit{Fitness evaluation}: the fitness function that assessed the value of the solutions was somehow similar to the one used in the other stacking method.
 	We applied the weights of our chromosomes to the samples in our dataset.
@@ -643,27 +827,27 @@ We setted the genetic algorithm with the support of the Deap library for Python,
 	\begin{center}
 		\begin{tabular}{@{}c@{}}
 			
-			\multicolumn{1}{c}{Binary Components}\\
+			\multicolumn{1}{c}{User-based components}\\
 			\hline
-			\multicolumn{1}{c}{p\textsubscript{0} * w\textsubscript{0} ... p\textsubscript{4} * w\textsubscript{4}}\\
+			\multicolumn{1}{c}{p\textsubscript{0} * w\textsubscript{0} ... p\textsubscript{3} * w\textsubscript{3}}\\
 			\hline\\
 			\multicolumn{1}{c}{+}\\
 			
-			\\\multicolumn{1}{c}{Text-based Components}\\
+			\\\multicolumn{1}{c}{Text-based components}\\
 			\hline
-			\multicolumn{1}{c}{p\textsubscript{0} * w\textsubscript{0} ... p\textsubscript{4} * w\textsubscript{4}}\\
+			\multicolumn{1}{c}{p\textsubscript{0} * w\textsubscript{0} ... p\textsubscript{3} * w\textsubscript{3}}\\
 			\hline\\
 			\multicolumn{1}{c}{+}\\
 			
-			\\\multicolumn{1}{c}{Multiclass Components}\\
+			\\\multicolumn{1}{c}{All-features-based components}\\
 			\hline
-			\multicolumn{1}{c}{p\textsubscript{0} * w\textsubscript{0} ... p\textsubscript{4} * w\textsubscript{4}}\\
+			\multicolumn{1}{c}{p\textsubscript{0} * w\textsubscript{0} ... p\textsubscript{3} * w\textsubscript{3}}\\
 			\hline\\
 			\multicolumn{1}{c}{=}\\
 			
-			\\\multicolumn{1}{c}{Resulting Prediction}\\
+			\\\multicolumn{1}{c}{Resulting prediction}\\
 			\hline
-			\multicolumn{1}{c}{\textbf{p\textsubscript{0}} \textbf{p\textsubscript{1}} \textbf{p\textsubscript{2}} \textbf{p\textsubscript{3}} \textbf{p\textsubscript{4}}}\\
+			\multicolumn{1}{c}{\textbf{p\textsubscript{0}} \textbf{p\textsubscript{1}} \textbf{p\textsubscript{2}} \textbf{p\textsubscript{3}}}\\
 			\hline\\
 		\end{tabular}
 	\end{center}
@@ -674,7 +858,7 @@ We setted the genetic algorithm with the support of the Deap library for Python,
 	Since the targets of our dataset aren't soft valued, we took the maximum probability of the computed prediction to make the comparison with the actual class.
 	Our fitness function aims to favourite those solutions which maximizes the F1 macro score, as it has been for the validation of the classifiers, until this stage.
 	
-	During this process, the problem we had to face was that we wanted to produce soft classifications, because we knew that our collected data presents similar patterns within the same categories. This means that the algorithms easily classify our test set, because of the distinctive traits found for each target. In order to mitigate the real test error, over unseen samples, we wanted the prediction to be as smooth as possible, without confusing the F1 score interpretation. In addition, the multiclass Random Forest was setted with the maximum depth possible for its estimators, that implies a drastic reduction of impure leaves, leading to hard classifications.
+	During this process, the problem we had to face was that we wanted to produce soft classifications, because we knew that our collected data presents similar patterns within the same categories. This means that the algorithms easily classify our test set, because of the distinctive traits found for each target. In order to mitigate the real test error, over unseen samples, we wanted the prediction to be as smooth as possible, without confusing the F1 score interpretation.
 	
 	We faced the problem involving a smoothing factor to our fitness function.\\
 	When computing a sample, we populated a Confusion Matrix of the prediction, using the above-mentioned method to match predicted and actual classes. The matrix helped us computing the F1 macro score easily. At the same time, we counted every hard classification, marking as 'hard' every computed prediction that contained a probability greater or equal to \textbf{0.8}, among its five stored values.
@@ -688,12 +872,12 @@ We setted the genetic algorithm with the support of the Deap library for Python,
 	\item[\PencilRight]\textit{Crossover}: The crossover probability has been setted to 95\%.
 	The crossover operator wasn't something already implemented by the library, as for the fitness function. Our operator used to produce two brand new chromosomes for the next generations.
 	The first child is the unweighted mean of its parents:
-	\[ [x_{0}, x_{1}, ... x_{14}] \oplus [y_{0}, y_{1}, ... y_{14}] = [\frac{x_{0}+y_{0}}{2}, \frac{x_{1}+y_{1}}{2}, ... \frac{x_{14}+y_{14}}{2}]\]
+	\[ [x_{0}, x_{1}, ... x_{11}] \oplus [y_{0}, y_{1}, ... y_{11}] = [\frac{x_{0}+y_{0}}{2}, \frac{x_{1}+y_{1}}{2}, ... \frac{x_{11}+y_{11}}{2}]\]
 	The second child is the weighted mean of its parents, computing the weights with respect to the fitness of the two mating chromosomes:
 	\[ f_{x} = \frac{fitness_{x}}{fitness_{x}+fitness_{y}} \]
 	\[ f_{y} = \frac{fitness_{y}}{fitness_{x}+fitness_{y}} \]
-		\[ [x_{0}, x_{1}, ..., x_{14}] \oplus [y_{0}, y_{1}, ..., y_{14}] = [x_{0}*f_{x}+y_{0}*f_{y}, ... x_{14}*f_{x}+y_{14}*f_{y} ]\]
-		
+	\[ [x_{0}, x_{1}, ..., x_{11}] \oplus [y_{0}, y_{1}, ..., y_{11}] = [x_{0}*f_{x}+y_{0}*f_{y}, ... x_{11}*f_{x}+y_{11}*f_{y} ]\]
+	
 	The retrieved children used to be part of the upcoming generation.
 	\item[\PencilRight]\textit{Elitism}: This part was necessary, in order to not lose the best solutions found so far. It is a sort of insurance, which guarantees to keep, at least, the best situation until this stage, and to let it take part of the next generations of solution. We preserved our three best chromosomes for each generations and move them to the next stages.
 	\item[\PencilRight]\textit{Mutation}: The mutation probability is generally setted to low values, like what happens in nature. It represent the error in DNA replications from the parents and it shouldn't reach the 1\% of probability to occur.
@@ -703,51 +887,46 @@ We setted the genetic algorithm with the support of the Deap library for Python,
 \end{itemize}
 
 \subsubsection{Results}
-After several runs of the genetic program, with boosted starts (the best solutions found at the previous run were placed inside the first generations of the following runs), we stuck in a maximum of the F1 score.
+After several runs of the genetic program, with boosted starts (the best solutions found at the previous run were placed inside the first generations of the following runs), we stuck in a maximum of the score.
 In the last run, from the 5\textsubscript{th} generation there was no improvements in the fitness of the best solution. We selected the fittest chromosome, whose scores were:
 \begin{itemize}
 	\item[\PencilRight] \textit{Weights}:
-
+	
 	\begin{center}
-		\begin{tabular}{@{}c|c|c|c|c@{}}
+		\begin{tabular}{@{}c|c|c|c@{}}
 			\hline\hline
-			\multicolumn{5}{c}{\textbf{Binary Weights}}\\
+			\multicolumn{4}{c}{\textbf{KNN Weights}}\\
 			\hline
+			\multicolumn{1}{c|}{2.452}&
+			\multicolumn{1}{c|}{4.104}&
 			\multicolumn{1}{c|}{0.0}&
-			\multicolumn{1}{c|}{0.234}&
+			\multicolumn{1}{c}{0.0}\\
+			\hline
+			\multicolumn{4}{c}{\textbf{NB Weights}}\\
+			\hline
+			\multicolumn{1}{c|}{4.766}&
+			\multicolumn{1}{c|}{1.0}&
 			\multicolumn{1}{c|}{0.0}&
-			\multicolumn{1}{c|}{4.145}&
-			\multicolumn{1}{c}{2.668}\\
+			\multicolumn{1}{c}{0.0}\\
 			\hline
-			\multicolumn{5}{c}{\textbf{Text-based Weights}}\\
+			\multicolumn{4}{c}{\textbf{RF Weights}}\\
 			\hline
-			\multicolumn{1}{c|}{4.867}&
-			\multicolumn{1}{c|}{2.808}&
-			\multicolumn{1}{c|}{4.680}&
-			\multicolumn{1}{c|}{2.800}&
-			\multicolumn{1}{c}{2.325}\\
-			\hline
-			\multicolumn{5}{c}{\textbf{Multiclass Weights}}\\
-			\hline
-			\multicolumn{1}{c|}{4.462}&
-			\multicolumn{1}{c|}{2.129}&
-			\multicolumn{1}{c|}{2.162}&
-			\multicolumn{1}{c|}{2.317}&
-			\multicolumn{1}{c}{0.163}\\
+			\multicolumn{1}{c|}{3.790}&
+			\multicolumn{1}{c|}{1.0}&
+			\multicolumn{1}{c|}{1.08}&
+			\multicolumn{1}{c}{2.506}\\
 			\hline\hline
 		\end{tabular}
 	\end{center}
-	\item[\PencilRight] \textit{Fitness}: 2.184
-	\item[\PencilRight] \textit{F1 score}: 0.964
-	\item[\PencilRight] \textit{Percentage of hard classifications}: 70.8\%
+	\item[\PencilRight] \textit{Fitness}: 0.768
+	\item[\PencilRight] \textit{F1 score}: 0.44
+	\item[\PencilRight] \textit{Percentage of hard classifications}: 55.3\%
 \end{itemize}
-The solution found didn't take into account the first and the third element of the input, which correspond with the outcome of the binary classifier, for both the NSFW and the Spam-Bot categories. It seemed legit, because the main difference between that model and the multiclass classifier, except the binary task, is the lacking of the NSFW specific features. It makes sense that this model wasn't able to contribute to the separation between those kinds of bot.
-That feature vector should had been involved in the final model, simply as a weight for the weighted mean of the probability of each classifier, for each sample to predict over.
 
-Although the result seemed promising, we knew that a "simple" weighted mean of the outcomes of the classifiers weren't enough to describe the problem. The risk to have performed overfitting over our data was high.
+The results were discouraging, compared to the singular scores of the models involved.
+It was worth to try this approach, but we were aware that a "simple" weighted mean of the outcomes of the classifiers weren't enough to describe the problem.
 
-We decided to test this final weighting vector with new unseen samples, selected manually for the purpose.
-The comparison with picked samples didn't match the expectations given by the metric evaluation, so we tried a different and more sophisticated stacking method.
+Thus, we built a different and more sophisticated stacking method.
 
 \subsection{Logistic Regression}
 The reason behind the choice of a meta-classifier is that we wanted a more complex way to perform inner weighting of the outcomes that we had from other models.
@@ -765,7 +944,7 @@ We didn't wanted to blindly select this model over some others tool, especially 
 Thus, we tested these two algorithms with the new dataset.
 We ran some default configurations of the models, in order to have a raw comparison to trace a line between them.
 
-\begin{figure}{htp!}
+\begin{figure}[htp!]
 	\begin{multicols}{2}
 		\includegraphics[width=\linewidth]{chapter5/figure/logreg_default.png}\par 
 		\caption{LogReg with raw settings}
@@ -778,9 +957,7 @@ We ran some default configurations of the models, in order to have a raw compari
 \end{figure}
 
 Figure \ref{fig:lr_def} shows the early convergence of the Logistic model's F1 score, with low maximum iterations. The model has been tested with Lasso penalty and two different solvers, but the results, over the increasing of the training epochs, are way similar.
-The Random Forest, as shown in Figure \ref{fig:rf_def}, needs lot of estimators to top the performance of the Logistic Regression. It was tested over the number of features to consider for the splits ($ \log(|features|) $ and $ \sqrt{|features|} $), along with an increasing number of trees.
-
-We preferred the lighter Logistic model over the Forest ensemble, for performance matters and prediction time: Logistic predictions take 0.6ms in average, in comparison with Random Forest with those settings, which averages 100ms to provide an outcome over a single sample.
+Although the Random Forest, as shown in Figure \ref{fig:rf_def}, tops the performance of the Logistic Regression, the scores were close enough (F1\textsubscript{LR} = 0.9868,  F1\textsubscript{RF} = 0.9874) to give a chance to the Logistic model, in order to try its regularization terms.
 
 \subsubsection{Hyperparameters tuning}
 We tried two regularization terms for the Logistic model and several numbers of maximum iterations for the training algorithms.
@@ -795,7 +972,7 @@ The penalties that we explored were:
 	\item[\PencilRight] \textit{Lasso (L\textsubscript{1})}:
 	\[ \mathbf{L_{1}(w) }= \frac{\lambda}{2} ||\mathbf{w}||_{1} \]
 	where $ ||\mathbf{w}||_{1} = \sum_{i=1}^{N}|w_{i}| $
-		
+	
 	This regularization function is non-linear and doesn't provide a closed-form solution. It tends to cut out some features from the model, yielding to sparse and lighter model. It can be seen as an implicit way to apply features selection.
 	
 	\item[\PencilRight] \textit{Ridge (L\textsubscript{2})}:
@@ -816,36 +993,53 @@ The penalties that we explored were:
 \end{figure}
 
 Figure \ref{fig:lr_lasso_lambda} highlights the slightly better results obtained with the Lasso penalty, with unitary $ \lambda $ coefficient (Lasso F1 score: 0.973).
-The ridge penalty needs to be weakened ($ \lambda $ = 0.1) in order to top the Lasso performance, which is a compromise hard to deal with. The smaller the regularization coefficient, the higher the model complexity, as said before.
+As Figure \ref{fig:lr_ridge_lambda} shows, the ridge penalty needs to be weakened ($ \lambda $ = 0.1) in order to get close to the Lasso performance, which is a compromise hard to deal with. The smaller  is the regularization coefficient, the higher is the model complexity, as said before.
 Moreover, we decided to gather further consideration, by looking inside the weighting applied by those two terms.
+Since we didn't have lot of data for the training, we wanted to keep the regularization high enough to not fit the noise in the model.
+
+We took a look inside the weighting performed by the model, with both L\textsubscript{1} and L\textsubscript{2} regularizations, in order to catch some insight from them.
+The weights are composed by four vectors of twelve elements each: each vector represent the weights applied for a One-vs-Rest target classification, and each element of the vectors are mark the features the model has been fitted on. As said before, each of the three groups of four features represents the probabilities, for a sample, of membership to the classes.
+In order to give a good representation, we considered just one vector of twelve elements, computed by averaging all the weights applied in all the OvR predictions.
 
 \begin{center}
-	\begin{tabular}{@{}ccccc@{}}
-		\multicolumn{5}{c}{\textbf{Ridge regularization}}\\
+	\begin{tabular}{@{}cccc@{}}
+		\multicolumn{4}{c}{Ridge regularization}\\
 		\hline\hline
-		\multicolumn{5}{c}{Binary Weights}\\
+		\multicolumn{4}{c}{\textbf{KNN mean weights}}\\
 		\hline
-		\multicolumn{1}{c|}{$ 5.1e^{-16} $}&
-		\multicolumn{1}{c|}{$ 5.1e^{-16} $}&
-		\multicolumn{1}{c|}{$ 5.1e^{-16} $}&
-		\multicolumn{1}{c|}{$ 5.1e^{-16} $}&
-		\multicolumn{1}{c}{$ -8.8e^{-17} $}\\
+		\multicolumn{1}{c|}{\textit{NSFW}}&
+		\multicolumn{1}{c|}{\textit{NS}}&
+		\multicolumn{1}{c|}{\textit{SB}}&
+		\multicolumn{1}{c}{\textit{FF}}\\
 		\hline
-		\multicolumn{5}{c}{Text-based Weights}\\
+		\multicolumn{1}{c|}{$ 3.4e^{-16} $}&
+		\multicolumn{1}{c|}{$ 1.7e^{-15} $}&
+		\multicolumn{1}{c|}{$ 3.2e^{-15} $}&
+		\multicolumn{1}{c}{$ -1.1e^{-14} $}\\
 		\hline
-		\multicolumn{1}{c|}{$ -2.2e^{-15} $}&
-		\multicolumn{1}{c|}{$ -1.4e^{-14} $}&
-		\multicolumn{1}{c|}{$ -5.1e^{-15} $}&
-		\multicolumn{1}{c|}{$ -4.2e^{-15} $}&
-		\multicolumn{1}{c}{$ 1.1e^{-16} $}\\
+		\multicolumn{4}{c}{\textbf{Naive Bayes mean weights}}\\
 		\hline
-		\multicolumn{5}{c}{Multiclass Weights}\\
+		\multicolumn{1}{c|}{\textit{NSFW}}&
+		\multicolumn{1}{c|}{\textit{NS}}&
+		\multicolumn{1}{c|}{\textit{SB}}&
+		\multicolumn{1}{c}{\textit{FF}}\\
 		\hline
-		\multicolumn{1}{c|}{$ -3.0e^{-15} $}&
-		\multicolumn{1}{c|}{$ 2.0e^{-15} $}&
-		\multicolumn{1}{c|}{$ -1.5e^{-16} $}&
-		\multicolumn{1}{c|}{$ 5.7e^{-15} $}&
-		\multicolumn{1}{c|}{$ -4.2e^{-15} $}\\
+		\multicolumn{1}{c|}{$ 2.8e^{-15} $}&
+		\multicolumn{1}{c|}{$ -1.1e^{-14} $}&
+		\multicolumn{1}{c|}{$ 9.8e^{-15} $}&
+		\multicolumn{1}{c}{$ 4.8e^{-15} $}\\
+		\hline
+		\multicolumn{4}{c}{\textbf{Random Forest mean weights}}\\
+		\hline
+		\multicolumn{1}{c|}{\textit{NSFW}}&
+		\multicolumn{1}{c|}{\textit{NS}}&
+		\multicolumn{1}{c|}{\textit{SB}}&
+		\multicolumn{1}{c}{\textit{FF}}\\
+		\hline
+		\multicolumn{1}{c|}{$ 8.7e^{-15} $}&
+		\multicolumn{1}{c|}{$ -8.3e^{-15} $}&
+		\multicolumn{1}{c|}{$ 1.0e^{-14} $}&
+		\multicolumn{1}{c}{$ -1.7e^{-14} $}\\
 		\hline\hline\\
 	\end{tabular}
 \end{center}
@@ -853,39 +1047,51 @@ The Ridge regularization leads to very small weights, and negative ones too. Eve
 We wanted to get some further insights from the other weighting.
 
 \begin{center}
-	\begin{tabular}{@{}ccccc@{}}
-		\multicolumn{5}{c}{\textbf{Lasso regularization}}\\
+	\begin{tabular}{@{}cccc@{}}
+		\multicolumn{4}{c}{Lasso regularization}\\
 		\hline\hline
-		\multicolumn{5}{c}{Binary Weights}\\
+		\multicolumn{4}{c}{\textbf{KNN mean weights}}\\
 		\hline
-		\multicolumn{1}{c|}{0.0}&
-		\multicolumn{1}{c|}{0.0}&
-		\multicolumn{1}{c|}{0.0}&
-		\multicolumn{1}{c|}{0.0}&
-		\multicolumn{1}{c}{1.391}\\
+		\multicolumn{1}{c|}{\textit{NSFW}}&
+		\multicolumn{1}{c|}{\textit{NS}}&
+		\multicolumn{1}{c|}{\textit{SB}}&
+		\multicolumn{1}{c}{\textit{FF}}\\
 		\hline
-		\multicolumn{5}{c}{Text-based Weights}\\
+		\multicolumn{1}{c|}{$ -0.660 $}&
+		\multicolumn{1}{c|}{$ -0.185 $}&
+		\multicolumn{1}{c|}{$ -0.465 $}&
+		\multicolumn{1}{c}{$ -0.830 $}\\
 		\hline
-		\multicolumn{1}{c|}{0.020}&
-		\multicolumn{1}{c|}{1.297}&
-		\multicolumn{1}{c|}{0.0}&
-		\multicolumn{1}{c|}{0.182}&
-		\multicolumn{1}{c}{0.952}\\
+		\multicolumn{4}{c}{\textbf{Naive Bayes mean weights}}\\
 		\hline
-		\multicolumn{5}{c}{Multiclass Weights}\\
+		\multicolumn{1}{c|}{\textit{NSFW}}&
+		\multicolumn{1}{c|}{\textit{NS}}&
+		\multicolumn{1}{c|}{\textit{SB}}&
+		\multicolumn{1}{c}{\textit{FF}}\\
 		\hline
-		\multicolumn{1}{c|}{1.316}&
-		\multicolumn{1}{c|}{0.480}&
-		\multicolumn{1}{c|}{1.457}&
-		\multicolumn{1}{c|}{2.087}&
-		\multicolumn{1}{c}{0.435}\\
+		\multicolumn{1}{c|}{$ 0.578 $}&
+		\multicolumn{1}{c|}{$ -0.054 $}&
+		\multicolumn{1}{c|}{$ 0.072 $}&
+		\multicolumn{1}{c}{$ 0.0 $}\\
+		\hline
+		\multicolumn{4}{c}{\textbf{Random Forest mean weights}}\\
+		\hline
+		\multicolumn{1}{c|}{\textit{NSFW}}&
+		\multicolumn{1}{c|}{\textit{NS}}&
+		\multicolumn{1}{c|}{\textit{SB}}&
+		\multicolumn{1}{c}{\textit{FF}}\\
+		\hline
+		\multicolumn{1}{c|}{$ 1.993 $}&
+		\multicolumn{1}{c|}{$ 2.147 $}&
+		\multicolumn{1}{c|}{$ 2.049 $}&
+		\multicolumn{1}{c}{$ 2.571 $}\\
 		\hline\hline\\
 	\end{tabular}
 \end{center}
 The L\textsubscript{1} term, as expected cut out some features from the model.
-Looking at the excluded attributes, we noticed that the regularization caught the nature of the binary classifier. It wasn't supposed to give some contributes to the bots inner separation, its main purpose was to detect humans from content polluters.
-Lasso seemed to understand this behaviour and decided to not consider the opinion of that classifier, when it comes to bot categories.
-Another insight got from L\textsubscript{1} is about the treatment of the text-based classifier. the Naive Bayes model couldn't distinguish with certainty between NSFW and Spam-Bots, since they act in a similar way. They just tweets click-baiting links, with catchy captions. A "blind" classifier struggles in understand the nature of those links. This is the reason that almost two contributes of Naive Bayes had been discarded from the stacking model.
+Looking at the excluded attributes, we noticed that the regularization caught the strenghts and the weaknesses of the classifiers. The text-based Naive Bayes classifier seemed to be useless when it came to detect Fake-Followers. It seemed legit, as the dictionary used by that category is the smallest and the most heterogeneus (lots of non english words are involved) in our dataset.
+Lasso seemed to understand this behaviour and decided to not consider the opinion of that classifier, when it has to give its opinion about that bot cateogry.
+Another insight got from L\textsubscript{1} is coming again from the Naive Bayes algorithm. The model couldn't distinguish with certainty Spam-Bots, since they act in a similar way, with respect to NSFW accounts. They just tweets click-baiting links, with catchy captions. A "blind" classifier struggles in understand the nature of those links. This is the reason that the contributes of the tex-based model had been almost discarded from the stacking meta-classifier.
 
 \begin{figure}
 	\begin{multicols}{2}
@@ -899,8 +1105,8 @@ Another insight got from L\textsubscript{1} is about the treatment of the text-b
 	\caption{Lasso Logistic Regression scores over solvers}
 \end{figure}
 
-Since we knew our dataset and we were aware of the bias it might contain, we preferred a lighter and sparser model, over a more complete one, even when the F1 scores used to match. We wanted our model to infer on new unseen data and to be ready to give a representative statistical description of the actual situation on Twitter.
-We had to be far-sighted and not to recline on the accomplishments of the 10-fold crossvalidation. We thought that the Lasso model wuld had been performing better in out-of-box predictions.
+Since we knew our dataset and we were aware of the bias it might contain, we preferred a lighter and sparser model, over a more complex one, even when the F1 scores used to match. We wanted our model to infer on new unseen data and to be ready to give a representative statistical description of the actual situation on Twitter.
+We had to be far-sighted and not to recline on the accomplishments of the 10-fold crossvalidation. We thought that the Lasso model would had been performing better in out-of-box predictions.
 
 We kept the L\textsubscript{1} penalty, with $ \lambda  = 1 $   and proceeded with the hyperparameters tuning.
 
@@ -908,17 +1114,16 @@ Figure \ref{fig:lr_lasso_close} shows the trend in the F1 score, along with the 
 
 As it can be seen in Figures \ref{fig:lr_lasso_far}, by increasing the number of maximum iterations, up to 5000, the performances remain stable with every solver.
 The algorithms seem to not improve after 75 maximum iterations setted.
-Moreover, the SAGA solver gains slightly better results, in terms of F1 score, as it reaches 0.9734 in this metric, compared with the score obtained with LIBLINEAR solver, which is 0.9727.
+Moreover, the LIBLINEAR solver gains slightly better results, in terms of F1 score, as it reaches 0.9867 in this metric, compared with the score obtained with LIBLINEAR solver, which is 0.9867.
 
 The final Logistic Regression meta-classifier has been fitted with the Scikit-learn library, with this setting:\\
-\textit{LogisticRegression(max\_iter = 100, penalty = "l1", solver = "saga", C = 1, multi\_class = "multinomial", fit\_intercept = True, class\_weight = "balanced")}.\\
+\textit{LogisticRegression(max\_iter = 100, penalty = "l1", solver = "liblinear", C = 1, multi\_class = "multinomial", fit\_intercept = True)}.\\
 The \textit{C} parameter stands for $ \frac{1}{\lambda} $, the regularization coefficient.
-The balanced class weights means that the model automatically adjusts class weights inversely proportional to class frequencies in training set.\\
 This setting obtained the following scores in a 10-fold crossvalidation:
 \begin{itemize}
-	\item[\PencilRight] \textit{Precision}: 0.972
-	\item[\PencilRight] \textit{Recall}: 0.974
-	\item[\PencilRight] \textit{F1 score}: 0.973
+	\item[\PencilRight] \textit{Precision}: 0.987
+	\item[\PencilRight] \textit{Recall}: 0.986
+	\item[\PencilRight] \textit{F1 score}: 0.986
 \end{itemize}
 \section{Prediction pipeline}
 \label{predicion_pipeline}
@@ -927,11 +1132,13 @@ The final model is represented by a stacking ensemble with a defined execution p
 As described by figure \ref{fig:prediction_pipeline}, In order to perform a prediction over a new sample the process is the following:
 \begin{itemize}
 	\item[\PencilRight]User and tweets data retrieving with Twitter APIs
-	\item[\PencilRight]Prepare data and perform features engineering to output multiclass probability prediction (\textbf{Multiclass Random Forest})
 	\item[\PencilRight]Prepare data and strip multiclass features to output binary probability prediction (\textbf{Binary Random Forest})
-	\item[\PencilRight]Prepare and treat text to perform text-based probability prediction (\textbf{Text-based Naive Bayes})
-	\item[\PencilRight]Build new features vector with the stacked outcomes of the previous classifiers
+	\item[\PencilRight]Prepare data and perform features engineering to output multiclass probability prediction (\textbf{All-features multiclass Random Forest})
+	\item[\PencilRight]Strip all attributes, except for the user features, weight them with Information Gain-driven proportions to output multiclass probability prediction (\textbf{User-based multiclass KNN})
+	\item[\PencilRight]Prepare and treat text to perform text-based probability prediction (\textbf{Text-based multiclass Naive Bayes})
+	\item[\PencilRight]Build new features vector with the stacked outcomes of the mutliclass classifiers
 	\item[\PencilRight]Compute the final mutliclass probabilistic prediction with the meta-classifier (\textbf{Multinomial Logistic Regression})
+	\item[\PencilRight]Use the multiclass division to repartition the bot probability provided by the binary model
 \end{itemize}
 The produced probability vector assesses the nature of the examined user.
 It will be handled by a web application, in order to provide a useful classification tool for every internet user.
