@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.10.16)  10 NOV 2018 11:02
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.10.16)  10 NOV 2018 11:41
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1349,10 +1349,10 @@ l/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local
 /texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/t
 exlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/te
 xlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb>
-Output written on thesis.pdf (127 pages, 8706291 bytes).
+Output written on thesis.pdf (127 pages, 8706318 bytes).
 PDF statistics:
- 1421 PDF objects out of 1440 (max. 8388607)
- 1171 compressed objects within 12 object streams
+ 1422 PDF objects out of 1440 (max. 8388607)
+ 1172 compressed objects within 12 object streams
  293 named destinations out of 1000 (max. 500000)
  990 words of extra memory for PDF output out of 10000 (max. 10000000)
 
