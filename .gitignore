@@ -4,3 +4,5 @@
 *.tw
 
 Code/classification/data/datasets_full\.csv\.zip
+
+Code/script2/models/
