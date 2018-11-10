@@ -286,13 +286,15 @@ We couldn't think about implementing our own semantic analysis, as it is meant t
 For simplicity sake, we had the idea to look for the most meaningful words in tweets, that are common to all the users belonging to the same class.
 We tried this approach, hoping to find a robust help in separating topics among targets.
 
-The idea was to build four partially-non-overlapping dictionaries, one for each class of users, containing the most popular words used by them in their retrieved tweets, stripped of stopwords. Each dictionary is ordered according to the occurrence of each word, in order to have a proper ranking for the terms and to give each of them a score.
+The idea was to build various partially-non-overlapping dictionaries, one for each class of users, containing the most popular words used by them in their retrieved tweets, stripped of stopwords. Each dictionary is ordered according to the occurrence of each word, in order to have a proper ranking for the terms and to give each of them a score.
 The magnitude of the non-overlapping portions of these lists will be shown soon, in this section.
 
 We gathered the 1000 most common words for each category of accounts.
 
 \subsection{Scores computation}
-After the dictionaries were filtered to prevent (partial) overlapping, we had four collections, composed by the tuples \textit{(word, score)}:
+
+\subsubsection{Multiclass Dataset}
+After the dictionaries related to the multiclass dataset were filtered, to prevent (partial) overlapping, we had four collections, composed by the tuples \textit{(word, score)}:
 \small
 \begin{center}
 	\begin{tabular}{ll}
@@ -410,8 +412,64 @@ The followings are examples of the top three words used by our bot categories:
 We expected to capture patterns about the choice of the words involved in tweets, for each of our categories.
 This extrinsic attributes revealed themselves as very useful, lately.
 
+\subsubsection{Binary Dataset}
+As for the Multiclass dataset, we computed two dictioraries based on the Binary dataset classes.
+
+\small
+\begin{center}
+	\begin{tabular}{ll}
+		\\dictionary&size\\
+		\hline\hline
+		bots\_main\_words.csv&315\\
+		genuine\_followers\_main\_words.csv&315\\\hline\\
+	\end{tabular}
+\end{center}
+\normalsize
+
+The result seemed to be acceptable for the bot dictionary, while the genuine one contains many non-english words. The top three words (with their scores) for both dictionaries are:
+
+\small
+\begin{center}
+	\begin{tabular}{lllll}
+		\multicolumn{5}{c}{\textbf{bot dictionary}} \\
+		\hline\hline
+		\multicolumn{4}{l}{\textit{word}} & 
+		\multicolumn{1}{r}{\textit{score}}\\
+		\hline\hline
+		\multicolumn{4}{l}{weight} & 
+		\multicolumn{1}{r}{1.000}\\
+		\multicolumn{4}{l}{loss} & 
+		\multicolumn{1}{r}{0.744}\\
+		\multicolumn{4}{l}{traffic} & 
+		\multicolumn{1}{r}{0.661}\\
+		\multicolumn{5}{c}{...} \\
+		\hline\\
+	\end{tabular}
+\end{center}
+\normalsize
+
+\small
+\begin{center}
+	\begin{tabular}{lllll}
+		\multicolumn{5}{c}{\textbf{genuine dictionary}} \\
+		\hline\hline
+		\multicolumn{4}{l}{\textit{word}} & 
+		\multicolumn{1}{r}{\textit{score}}\\
+		\hline\hline
+		\multicolumn{4}{l}{nao} & 
+		\multicolumn{1}{r}{1.000}\\
+		\multicolumn{4}{l}{pra} & 
+		\multicolumn{1}{r}{0.563}\\
+		\multicolumn{4}{l}{uma} & 
+		\multicolumn{1}{r}{0.493}\\
+		\multicolumn{5}{c}{...} \\
+		\hline\\
+	\end{tabular}
+\end{center}
+\normalsize
+
 \subsection{Safe Area}
-Making a step back, before the overall computation of the features, we had to decide the portions of the dictionaries that weren't supposed to overlap with each others.
+Making a step back, before the overall computation of this group of features, we had to decide the portions of the dictionaries that weren't supposed to overlap with each others.
 Once we gathered the main words for each bot class, we had to chose ths size of what we called the \textit{Safe Area}.
 The Safe Area is the collection of the first N words, in each dictionary, that are not overlapping with the others listed in the other dictionaries.
 This method has been applied to ensure that some words resulted as strictly category-characterizing.
@@ -419,7 +477,7 @@ We had to pick the number of the top N words that had to be representing, for ea
 
 We tried with four different portions of the collections: the 25\% of the words, the 50\%, the 75\% and the total non-overlapping solution, the 100\% of the terms.
 
-We computed four different dataset, on for each parameter, and tested the outcomes of this process on them. The testing phase was composed by the features ranking, like done before, but considering the whole feature vector, and by a \textit{10-fold-crossvalidation} scoring. This last technique has been widely used during all our work, and will be explained in details in the following chapter.
+We computed four different dataset (starting from the multiclass collection), one for each parameter, and tested the outcomes of this process on them. The testing phase was composed by the features ranking, like done before, but considering the whole feature vector, and by a \textit{10-fold-crossvalidation} scoring. This last technique has been widely used during all our work, and will be explained in details in the following chapter.
 Figures \ref{fig:250_overall} and \ref{fig:250_closeup} list the results for the  first tested Safe Area, with 250 words involved in that zone, and the dictionaries that are overlapping for the 75\%. The following Figures \ref{fig:500_overall}, \ref{fig:500_closeup} represent the situation with half of the words included in the Safe Areas. So do Figures \ref{fig:750_overall} and \ref{fig:750_closeup}, with the 75\% of the safe terms, and, finally, Figures \ref{fig:1000_overall} and \ref{fig:1000_closeup}, with totally disjointed dictionaries.
 
 Looking at these graphics, we could infer that the most meaningful feature, for the Random Forest, had been computed with the score of the NSFW\_words list.
@@ -514,11 +572,13 @@ The brand new attributes that helped us in better sperating NSFW class are:
 \end{center}
 \normalsize
 
-\section{Final feature vector}
+\section{Final feature vectors}
 \label{sec:feature_vector}
-At the end of this process we obtained a feature vector composed of 38 elements, 12 based on the user and 26 based on his tweets.
 
-\subsection{User features}
+\subsection{Multiclass Dataset}
+At the end of this process we obtained a feature vector composed of 37 elements, 12 based on the user and 26 based on his tweets.
+
+\subsubsection{User features}
 
 
 \small
@@ -538,13 +598,13 @@ At the end of this process we obtained a feature vector composed of 38 elements,
 		screen\_name\_len\\
 		statuses\_count\\
 		url\\
-		\hline
+		\hline\\
 		
 	\end{tabular}
 \end{center}
 \normalsize
 
-\subsection{Tweets features}
+\subsubsection{Tweets features}
 \small
 \begin{center}
 	\begin{tabular}{lll}
@@ -566,16 +626,16 @@ At the end of this process we obtained a feature vector composed of 38 elements,
 		media\_perc\\
 		quote\_perc\\
 		ret\_perc\\
-		url\_perc\\\hline
+		url\_perc\\\hline\\
 	\end{tabular}
 \end{center}
-\newpage
+
 \begin{center}
 	\begin{tabular}{lll}
 		\textbf{Intrinsic features}\\
 		\hline\hline
 		tweets\_intradistance\\
-		url\_intradistance\\\hline\\\\
+		url\_intradistance\\\hline\\
 	\end{tabular}
 \end{center}
 
@@ -588,7 +648,7 @@ At the end of this process we obtained a feature vector composed of 38 elements,
 		news\_spreaders\_words\_score\\
 		spam\_bots\_words\_score\\
 		fake\_followers\_words\_score\\
-		\hline\\\\
+		\hline\\
 	\end{tabular}
 \end{center}
 
@@ -597,10 +657,85 @@ At the end of this process we obtained a feature vector composed of 38 elements,
 		\textbf{Images features}\\
 		\hline\hline
 		NSFW\_profile\\
-		NSFW\_avg\\\hline
+		NSFW\_avg\\\hline\\
 	\end{tabular}
 \end{center}
 
 \normalsize
 
+\subsection{Binary Dataset}
+At the end of this process we obtained a feature vector composed of 33 elements, 12 based on the user and 21 based on his tweets.
 
+\subsubsection{User features}
+
+
+\small
+\begin{center}
+	\begin{tabular}{lll}
+		\textbf{Features}\\
+		\hline\hline
+		default\_profile\\
+		description\_len\\
+		favourites\_count\\
+		friends\_count\\
+		followers\_count\\
+		listed\_count\\
+		profile\_use\_background\_image\\
+		name\_len\\
+		screen\_name\_len\\
+		statuses\_count\\
+		url\\
+		verified\\
+		\hline\\
+		
+	\end{tabular}
+\end{center}
+\normalsize
+
+\subsubsection{Tweets features}
+\small
+\begin{center}
+	\begin{tabular}{lll}
+		\textbf{Descriptive features}\\
+		\hline\hline
+		freq\\
+		min\_fav\\
+		avg\_fav\\
+		max\_fav\\
+		min\_hash\\
+		avg\_hash\\
+		max\_hash\\
+		min\_len\\
+		avg\_len\\
+		max\_len\\
+		min\_ret\\
+		avg\_ret\\
+		max\_ret\\
+		media\_perc\\
+		quote\_perc\\
+		ret\_perc\\
+		url\_perc\\\hline\\
+	\end{tabular}
+\end{center}
+
+\begin{center}
+	\begin{tabular}{lll}
+		\textbf{Intrinsic features}\\
+		\hline\hline
+		tweets\_intradistance\\
+		url\_intradistance\\\hline\\
+	\end{tabular}
+\end{center}
+
+
+\begin{center}
+	\begin{tabular}{lll}
+		\textbf{Extrinsic features}\\
+		\hline\hline
+		bots\_words\_score\\
+		genuine\_words\_score\\
+		\hline\\
+	\end{tabular}
+\end{center}
+
+\normalsize

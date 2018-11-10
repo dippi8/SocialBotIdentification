@@ -344,12 +344,41 @@ We collected 6307 users and 41683 tweets.
 
 \subsection{Genuine}
 Finally we needed genuine accounts. We used again the Cresci dataset \cite{Cresci} and we filled it with all the Varol users labeled as humans. We again performed scraping on the existing accounts and we collected 3661 users and 263240 tweets in total.
+Morover, we gathered all the Genuine users from the Caverlee dataset\cite{Lee11sevenmonths}. these are many more than other classes, but they will be necessary for an future classification between bots and humans. We perfomed scraping and we were able to obtain 15701 users and 1278852 tweets.
+
+\subsection{Bots}
+We needed a set of unlabeled bots in order to train a binary classifier, that is able to classify among bots and humans. We again scraped the Caverlee dataset \cite{Lee11sevenmonths} and we gathered 15539 and 1276457 tweets.
+
+\subsection{Final Datasets}
+At the end of the collection, we set up two datasets. The first one is the \textit{Multiclass} dataset, that contains only bots labeled by their behaviors, its composition is the following:
+
+\begin{center}
+\begin{tabular}{lll}
+	\\category&\# users&\# tweets\\
+	\hline\hline
+	NSFW&6903&198378\\
+	news-spreader&3590&333699\\
+	spambots&4943&458809\\
+	fake-followers&6307&41683\\\hline\\	
+\end{tabular}
+\end{center}
+
+The second dataset is the \textit{Binary} one, containing bots and genuine users.
+
+\begin{center}
+	\begin{tabular}{lll}
+		\\category&\# users&\# tweets\\
+		\hline\hline
+		Bots&15539&1276457\\
+		Genuine&15701&1278852\\\hline\\	
+	\end{tabular}
+\end{center}
 
 \newpage
-
 \section{Data visualization}
-As the collection of the data was completed, we explored our final dataset.
-A first look (\ref{fig:bubble}) shows us how many user accounts we collected (y axis) for each class and how many tweets we could scrape (diameter). It is easy to observe that fake-followers and nsfw bots have less tweets than the others,while news-spreaders have a lot of tweets, but we collected less profiles.
+As the collection of the data was completed, we explored our final dataset. In this section we will only focus on different cateogories of bots, which is the most iteresting part.
+
+A first look (\ref{fig:bubble}) shows us how many user accounts we collected (y axis) for each class and how many tweets we could scrape (diameter). It is easy to observe that fake-followers and nsfw bots have less tweets than the others, while news-spreaders have a lot of tweets, but we collected less profiles.
 \begin{center}
 	\begin{tabular}{ll}
 		\\category&target id\\
@@ -357,8 +386,7 @@ A first look (\ref{fig:bubble}) shows us how many user accounts we collected (y 
 		NSFW&0\\
 		news-spreader&1\\
 		spambots&2\\
-		fake-followers&3\\
-		general purpose&4\\\hline\\		
+		fake-followers&3\\\hline\\		
 	\end{tabular}
 \end{center}
 
@@ -369,9 +397,9 @@ A first look (\ref{fig:bubble}) shows us how many user accounts we collected (y 
 	\caption{users amount and tweets}
 	\label{fig:bubble}
 \end{figure}
-
+\newpage
 Then we plotted the heatmap of the correlation matrix (\ref{fig:heatmap}). We wanted to undestand if some feature was more usefull to predict the correct target. This plot suggested us that there were no feature highly correlated to the target.
-\begin{figure}
+\begin{figure}[htp!]
 	\centering
 	\includegraphics[width=\columnwidth]{chapter3/figure/heatmap.jpg}
 	\caption{heatmap}
@@ -388,11 +416,11 @@ Moreover in figure (\ref{fig:msno}) it is possible to see the distribution of th
 \end{figure}
 
 \newpage
-Finally we performed three further analisys. With the heatmap we could not detect which features were more important. Anyway,during the hand-labeling step, we understood that some of these features were instead very usefull to identify a few classes of our dataset. These attributes are \emph{"followers\_count"}, \emph{"friends\_count"} and \emph{"statuses\_count"}. For each of them we plotted a boxplot. It is a method used to represent groups of numerical data through their quartiles. In Figure \ref{fig:box_statuses} we can analyze the statuses count for each target. We collected up to 100 tweets for each user, so this chart is limited to 100. Here we can notice an interesting behavior: \emph{"news-spreaders"} and \emph{"spambots"} are the classes with more tweets, while \emph{"fake-followers"} have less statuses. By reflecting on the gols of the bots, this result is exactly what we expected to see. In fact \emph{"fake-followers"} don't need to tweet, they just need to exist, while other types of bots have to publish many statuses, to draw attention on their contents.
+Finally we performed three further analisys. With the heatmap we could not detect which features were more important. Anyway, during the hand-labeling step, we understood that some of these features were instead very usefull to identify a few classes of our dataset. These attributes are \emph{"followers\_count"}, \emph{"friends\_count"} and \emph{"statuses\_count"}. For each of them we plotted a boxplot. It is a method used to represent groups of numerical data through their quartiles. In Figure \ref{fig:box_statuses} we can analyze the statuses count for each target. We collected up to 100 tweets for each user, so this chart is limited to 100. Here we can notice an interesting behavior: news-spreaders and spambots are the classes with more tweets, while fake-followers have less statuses. By reflecting on the gols of the bots, this result is exactly what we expected to see. In fact fake-followers don't need to tweet, they just need to exist, while other types of bots have to publish many statuses, to draw attention on their contents.
 
 \begin{figure}
 	\centering
-	\includegraphics[width=\columnwidth]{chapter3/figure/boxplot_statuses.jpg}
+	\includegraphics[width=\columnwidth]{chapter3/figure/boxplot.jpg}
 	\caption{boxplot statuses\_count}
 	\label{fig:box_statuses}
 \end{figure}
@@ -409,6 +437,7 @@ Finally we performed three further analisys. With the heatmap we could not detec
 	\centering
 	\includegraphics[width=\columnwidth]{chapter3/figure/boxplot_followers.jpg}
 	\caption{boxplot followers\_count}
+	
 	\label{fig:box_followers}
 \end{figure}
-In Figure \ref{fig:box_friends} and \ref{fig:box_followers} we performed the same analisys considering the \emph{"friends\_count"} and \emph{"followers\_count"} features. We limited the charts to 4000 and 2000 to keep them understandable. This two figures show us that \emph{"news-spreaders"} usually have a bigger network, while \emph{"fake-followers"} just follow few users. \emph{"News-spreaders"} network may depends on the popularity of the news media. Other categories are more balanced and their differences can be attributed to the data and not to a different behavior between them. For the genuine accounts we need to make an extra observation. Of course there are a lot of human users on Twitter and they have very different behaviours. In our dataset we included profiles with an average popularity (\ref{fig:box_followers}), so they are neither VIPs nor fresh users without followers. Furthermore they have a smaller network of friends (\ref{fig:box_friends}), which is in the average of the other categories. Finally they actively use twitter (\ref{fig:box_statuses}) since we were able to collect about 100 tweets for each of them. 
+In Figure \ref{fig:box_friends} and \ref{fig:box_followers} we performed the same analisys considering the \emph{"friends\_count"} and \emph{"followers\_count"} features. We limited the charts between 4000 and 2000 to keep them understandable. This two figures show us that news-spreaders usually have a bigger network, while fake-followers just follow few users. News-spreaders network may depends on the popularity of the news media. Other categories are more balanced and their differences can be attributed to the data and not to a different behavior between them. For the genuine accounts we need to make an extra observation. Of course there are a lot of human users on Twitter and they have very different behaviours.
