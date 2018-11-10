@@ -261,12 +261,12 @@ We wanted a first term of comparison, so, in the beginning, we evaluated the AUC
 			\multirow[c]{2}{*}{Actual class}
 			& BOT  & 4314 & 336\\
 			& GEN  & 554 & 4160\\
-			\cline{2-4}\\
+			\cline{2-4}
+			\multicolumn{2}{r|}{AUC} & 
+			\multicolumn{2}{l}{0.905}\\
 		\end{tabular}\\
 	}
-	
-	AUC: 0.905
-	
+
 	\item[\PencilRight] \textit{LogisticRegression(fit\_intercept=True, max\_iter=100, penalty='l2')}\\
 	Confusion matrix:
 	
@@ -282,11 +282,12 @@ We wanted a first term of comparison, so, in the beginning, we evaluated the AUC
 			\multirow[c]{2}{*}{Actual class}
 			& BOT  & 3124 & 1526\\
 			& GEN  & 558 & 4156\\
-			\cline{2-4}\\
+			\cline{2-4}
+			\multicolumn{2}{r|}{AUC} & 
+			\multicolumn{2}{l}{0.776}\\
 		\end{tabular}\\
 	}
-	
-	AUC: 0.776
+
 	
 	\item[\PencilRight] \textit{KNeighborsClassifier(n\_neighbors=10)}\\
 	Confusion matrix:
@@ -303,11 +304,12 @@ We wanted a first term of comparison, so, in the beginning, we evaluated the AUC
 			\multirow[c]{2}{*}{Actual class}
 			& BOT  & 3698 &  952\\
 			& GEN  & 1129 & 3585\\
-			\cline{2-4}\\
+			\cline{2-4}
+			\multicolumn{2}{r|}{AUC} & 
+			\multicolumn{2}{l}{0.777}\\
 		\end{tabular}\\
 	}
-	
-	AUC: 0.777
+
 	
 	\item[\PencilRight] \textit{SVC(kernel='rbf')}\\
 	Confusion matrix:
@@ -324,11 +326,12 @@ We wanted a first term of comparison, so, in the beginning, we evaluated the AUC
 			\multirow[c]{2}{*}{Actual class}
 			& BOT  & 4625 & 25\\
 			& GEN  & 4676 & 38\\
-			\cline{2-4}\\
+			\cline{2-4}
+			\multicolumn{2}{r|}{AUC} & 
+			\multicolumn{2}{l}{0.501}\\
 		\end{tabular}\\
 	}
-	
-	AUC: 0.501
+
 \end{itemize}
 
 \subsection{Crossvalidation}
@@ -436,6 +439,204 @@ This validations would had given us a preview of the real performance of the mod
 We sampled 6,000 accounts, divided in 3,000 genuine and 3,000 bot ids, randomly picked by our multiclass dataset.
 
 The binary model were fitted with its data and it was ready to perform new predictions.
+
+Looking at the most relevant features for the classifier, as shown in Figure \ref{fig:bon_importances}, we could find the \textbf{age} field at the top position.
+
+\begin{figure}[htp!]
+	\centering
+	\includegraphics[width=\columnwidth]{chapter5/figure/bon_importances.png}
+	\caption{Binary Random Forest features ranking}
+	\label{fig:bon_importances}
+\end{figure}
+
+This was the first warning of a validation performance worsening.
+A said before, the age of the accounts in the Carvelee's dataset were higher than the ones in our dataset. In particular, we examined the \textit{age} field of the training set, and the one coming from our validation samples, picked from the mutliclass dataset.
+\begin{table}[!htb]
+	\caption{Age field comparison among bot accounts}
+	\begin{center}
+		\begin{tabular}{@{}lr@{}}
+			\multicolumn{2}{c}{\textbf{Training Bots}}\\
+			\hline\hline
+			\multicolumn{2}{c}{\textit{age}}\\
+			\hline
+			\multicolumn{1}{l}{mean}& \multicolumn{1}{r}{8}\\
+			\multicolumn{1}{l}{std}& \multicolumn{1}{r}{0.66}\\
+			\multicolumn{1}{l}{min}& \multicolumn{1}{r}{4}\\
+			\multicolumn{1}{l}{max}& \multicolumn{1}{r}{12}\\
+			\multicolumn{1}{l}{25\%}& \multicolumn{1}{r}{8}\\
+			\multicolumn{1}{l}{50\%}& \multicolumn{1}{r}{9}\\
+			\multicolumn{1}{l}{75\%}& \multicolumn{1}{r}{9}\\
+			\hline\hline
+		\end{tabular}
+		\begin{tabular}{@{}lr@{}}
+			\multicolumn{2}{c}{\textbf{Validation Bots}}\\
+			\hline\hline
+			\multicolumn{2}{c}{\textit{age}}\\
+			\hline
+			\multicolumn{1}{l}{mean}& \multicolumn{1}{r}{4.50}\\
+			\multicolumn{1}{l}{std}& \multicolumn{1}{r}{2.69}\\
+			\multicolumn{1}{l}{min}& \multicolumn{1}{r}{0}\\
+			\multicolumn{1}{l}{max}& \multicolumn{1}{r}{11}\\
+			\multicolumn{1}{l}{25\%}& \multicolumn{1}{r}{3}\\
+			\multicolumn{1}{l}{50\%}& \multicolumn{1}{r}{4}\\
+			\multicolumn{1}{l}{75\%}& \multicolumn{1}{r}{6}\\
+			\hline\hline
+		\end{tabular}
+	\end{center}
+	\label{table:bots}
+\end{table}
+
+
+\begin{table}[!htb]
+	\caption{Age field comparison among genuine accounts}
+	\begin{center}
+		\begin{tabular}{@{}lr@{}}
+			\multicolumn{2}{c}{\textbf{Training Genuine}}\\
+			\hline\hline
+			\multicolumn{2}{c}{\textit{age}}\\
+			\hline
+			\multicolumn{1}{l}{mean}& \multicolumn{1}{r}{9.22}\\
+			\multicolumn{1}{l}{std}& \multicolumn{1}{r}{0.54}\\
+			\multicolumn{1}{l}{min}& \multicolumn{1}{r}{4}\\
+			\multicolumn{1}{l}{max}& \multicolumn{1}{r}{12}\\
+			\multicolumn{1}{l}{25\%}& \multicolumn{1}{r}{9}\\
+			\multicolumn{1}{l}{50\%}& \multicolumn{1}{r}{9}\\
+			\multicolumn{1}{l}{75\%}& \multicolumn{1}{r}{9}\\
+			\hline\hline
+		\end{tabular}
+		\begin{tabular}{@{}lr@{}}
+			\multicolumn{2}{c}{\textbf{Validation Genuine}}\\
+			\hline\hline
+			\multicolumn{2}{c}{\textit{age}}\\
+			\hline
+			\multicolumn{1}{l}{mean}& \multicolumn{1}{r}{6.40}\\
+			\multicolumn{1}{l}{std}& \multicolumn{1}{r}{1.94}\\
+			\multicolumn{1}{l}{min}& \multicolumn{1}{r}{3}\\
+			\multicolumn{1}{l}{max}& \multicolumn{1}{r}{11}\\
+			\multicolumn{1}{l}{25\%}& \multicolumn{1}{r}{5}\\
+			\multicolumn{1}{l}{50\%}& \multicolumn{1}{r}{6}\\
+			\multicolumn{1}{l}{75\%}& \multicolumn{1}{r}{8}\\
+			\hline\hline
+		\end{tabular}
+	\end{center}
+	\label{table:genuine}
+\end{table}
+
+Like Tables \ref{table:bots} and \ref{table:genuine} show, there is a clear differences in the age attribute, between training and validation set.
+
+We went forward to check if this diversity would had led us to a bad validation performance, or if the model would had handled the predictions in other ways.
+
+The 10-fold crossvalidation on the validation set produced the following confusion matrix, with the correlated AUC score:\\
+
+{
+	\centering
+	\begin{tabular}{@{}cc|cc@{}}
+		\multicolumn{1}{c}{} &\multicolumn{1}{c}{} &\multicolumn{2}{c}{Predicted class} \\ 
+		\multicolumn{1}{c}{} & 
+		\multicolumn{1}{c|}{} & 
+		\multicolumn{1}{c}{BOT} & 
+		\multicolumn{1}{c}{GEN}  \\
+		\cline{2-4}
+		\multirow[c]{2}{*}{Actual class}
+		& BOT  & 558 & 2442\\
+		& GEN  & 158 & 2842\\
+		\cline{2-4}
+		\multicolumn{2}{r|}{AUC} & 
+		\multicolumn{2}{l}{0.566}\\
+		\multicolumn{4}{c}{}\\
+	\end{tabular}\\
+}
+The worsening were real, and it highlighted the short-sighted training phase we performed, trying to top the Botometer performance.
+
+We tied to mitigate this performance loss, by excluding the main suspect from the features set.
+Here is the validation performance, without considering the accounts' ages.
+
+{
+\centering
+\begin{tabular}{@{}cc|cc@{}}
+	\multicolumn{1}{c}{} &\multicolumn{1}{c}{} &\multicolumn{2}{c}{Predicted class} \\ 
+	\multicolumn{1}{c}{} & 
+	\multicolumn{1}{c|}{} & 
+	\multicolumn{1}{c}{BOT} & 
+	\multicolumn{1}{c}{GEN}  \\
+	\cline{2-4}
+	\multirow[c]{2}{*}{Actual class}
+	& BOT  & 2920 & 20\\
+	& GEN  & 1589 & 1411\\
+	\cline{2-4}
+	\multicolumn{2}{r|}{AUC} & 
+	\multicolumn{2}{l}{0.721}\\
+	\multicolumn{4}{c}{}\\
+\end{tabular}\\
+}
+
+The improvement was encouraging, but still not enough to rely on this basic solution.
+Considering the bot target as the positive class, we still had too many False Positive in our confusion Matrix. The binary classifier used to tend to identify an user as a bot, with too much confidence. We had to reduce that number, in order to provide a reliable filter in the final prediction pipeline system.
+
+\subsection{Data extension}
+The idea we had was to use the validation set to enrich the binary training set, in order to make the algorithm handle younger and different types of samples from the Twitter population.
+
+We performed a 10-fold-crossvalidation to see the effect of this data refill, sticking to the same hyperparameters found by the last Grid Serch. The AUC score came back to an already met value: 0.951.
+
+It could be imputed by the biased extrinsic features of that data: those samples came from the multiclass dataset and they originally had the extrinsic features based on the four bot categories' dictionaries.
+In order to refill the binary dataset with these new samples, we had to recompute the extrinsic features, applying the analogous method used for the binary purpose.
+We didn't recompute the entire dictionaries, we just assigned the scores to the new samples we were introducing, basing the calculations on the already listed words. Those had been exposed in chapter \ref{capitolo4}. This approach aimed to force the algorithm to identify bots and humans, basing its comparisons on the online computations of those features, like in a real-case generalization.
+
+Now, we wanted to take a look inside the inner ranking performed by the algorithm, to check if the age field represented an important splitting point.
+Figure \ref{fig:bon_importances_ext} shows that the age attribute was dethroned from the top position. Indeed, it was replaced by the \textit{friends\_count} attribute.
+
+The age feature was still determinant, as it was placed in the second spot of the features standing.
+We couldn't blindly follow the AUC score through Grid Searches, without make considerations about what will happen when we will allow people to classify data coming from outside our collected samples.
+The age feature would had drove the Random Forest to misclassification over accounts with low \textit{age} values.
+Even if the exclusion of that attribute would had made the overall AUC score worse, we had to strip it from the features vector, in order to better generalize on real test cases.
+
+\begin{figure}[htp!]
+	\centering
+	\includegraphics[width=\columnwidth]{chapter5/figure/bon_importances_extensions.png}
+	\caption{Features ranking with augmented data - Top 12 }
+	\label{fig:bon_importances_ext}
+\end{figure}
+
+While cross-validating the model, we tested the complete features vector (with and without the extension from our dataset) and the one stripped by the age values. The crossvalidation was performed with the same hyperparameters settings of the model fitted with the Carvelee's dataset only.
+
+{
+	\centering
+	\begin{tabular}{@{}cccc@{}}
+		\multicolumn{1}{c}{} & 
+		\multicolumn{3}{c}{Fitted data} \\ 
+		\cline{2-4}
+		\multicolumn{1}{c|}{} & 
+		\multicolumn{1}{c|}{original - with \textit{age} } & 
+		\multicolumn{1}{c|}{extended - with \textit{age} } & 
+		\multicolumn{1}{c|}{extended - without \textit{age}} \\
+		\cline{1-4}
+		\multicolumn{1}{|c|}{AUC} & 
+		\multicolumn{1}{c|}{\textbf{0.961}} & 
+		\multicolumn{1}{c|}{\textbf{0.951}} & 
+		\multicolumn{1}{c|}{\textbf{0.932}} \\
+		\cline{1-4}\\
+	\end{tabular}\\
+}
+
+We could see a decreasing performance, as we were stepping away from the original fitted data and features. Even the plain extension from our collected data seemed to aggravate the evaluations. However, the validation earlier described reached a 0.721 value in the AUC score, with the test set coming from the multiclass dataset. Thus, we decided anyway to extend the training data with these samples, in order to refresh the decision rules of the forest and to make it see more heterogeneous data.
+
+The age filed removing made thing worse, but we decided to perform it anyway, because of the good score reached without it, and the flexibility we were giving to the Random Forest. Without making it considering that field, we were removing a bias introduced by the older accounts of the Carvelee's dataset.
+
+This last configuration was used to performed a further tuning of the parameters.
+A new Grid Search brought us the configuration for the hyperparameters shown in Figure  \ref{fig:bon_tuning_refil}, leading to the new AUC score, exposed in Figure \ref{fig:bon_refil_auc}.
+\begin{figure}[htp!]
+	\centering
+	\includegraphics[width=\columnwidth]{chapter5/figure/bon_tuning_refill.png}
+	\caption{Grid Search with extended data}
+	\label{fig:bon_tuning_refil}
+\end{figure}
+\begin{figure}[htp!]
+	\centering
+	\includegraphics[width=\columnwidth]{chapter5/figure/refill_auc.png}
+	\caption{AUC score with extended data}
+	\label{fig:bon_refil_auc}
+\end{figure}
+The binary classifier has then been fitted with 37,212 samples with 33 features, 700 estimators, entropy splitting criterion and 26 levels of maximum depth.
 
 \section{Multiclass ensemble classifier}
 This is the first piece of the thesis we worked on.\\
@@ -1127,12 +1328,12 @@ This setting obtained the following scores in a 10-fold crossvalidation:
 \end{itemize}
 \section{Prediction pipeline}
 \label{predicion_pipeline}
-The final model is represented by a stacking ensemble with a defined execution pipeline for predictions.
+The final model is represented by an execution pipeline, involving a first binary classifier and then a mutliclass ensemble.
 
 As described by figure \ref{fig:prediction_pipeline}, In order to perform a prediction over a new sample the process is the following:
 \begin{itemize}
 	\item[\PencilRight]User and tweets data retrieving with Twitter APIs
-	\item[\PencilRight]Prepare data and strip multiclass features to output binary probability prediction (\textbf{Binary Random Forest})
+	\item[\PencilRight]Prepare data with binary extrinsic features and strip image attributes, in order to output binary probability prediction (\textbf{Binary Random Forest})
 	\item[\PencilRight]Prepare data and perform features engineering to output multiclass probability prediction (\textbf{All-features multiclass Random Forest})
 	\item[\PencilRight]Strip all attributes, except for the user features, weight them with Information Gain-driven proportions to output multiclass probability prediction (\textbf{User-based multiclass KNN})
 	\item[\PencilRight]Prepare and treat text to perform text-based probability prediction (\textbf{Text-based multiclass Naive Bayes})
@@ -1140,14 +1341,15 @@ As described by figure \ref{fig:prediction_pipeline}, In order to perform a pred
 	\item[\PencilRight]Compute the final mutliclass probabilistic prediction with the meta-classifier (\textbf{Multinomial Logistic Regression})
 	\item[\PencilRight]Use the multiclass division to repartition the bot probability provided by the binary model
 \end{itemize}
-The produced probability vector assesses the nature of the examined user.
-It will be handled by a web application, in order to provide a useful classification tool for every internet user.
+The binary classifier returns two values: the membership probability for the bot category and the one for the genuine class.
+The percentage that marks the bot nature of the examined account gets partitioned by the outcome of the mutliclass stacking ensemble.
+The pipeline will be performed by a web application, in order to provide a useful classification tool for every internet user.
 The engine of this web application is mainly composed by a python script, which, given a Twitter user name, resumes this prediction pipeline and executes it, providing the classification.
 
 This last lines anticipate the content of the following chapter of our thesis.
 \begin{figure}
 	\begin{center}
-		\includegraphics[width=0.8\columnwidth]{chapter5/figure/prediction.png}\par 
+		\includegraphics[width=0.8\columnwidth]{chapter5/figure/pred_pipeline.png}\par 
 	\end{center}
 	\caption{Final prediction pipeline}
 	\label{fig:prediction_pipeline}

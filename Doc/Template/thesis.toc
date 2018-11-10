@@ -66,48 +66,49 @@
 \contentsline {subsection}{\numberline {5.2.1}Dataset}{61}{subsection.5.2.1}
 \contentsline {subsection}{\numberline {5.2.2}Model}{62}{subsection.5.2.2}
 \contentsline {subsection}{\numberline {5.2.3}Validation}{62}{subsection.5.2.3}
-\contentsline {section}{\numberline {5.3}Multiclass ensemble classifier}{64}{section.5.3}
-\contentsline {subsection}{\numberline {5.3.1}All-features-based Random Forest classifier}{65}{subsection.5.3.1}
-\contentsline {subsubsection}{Dataset}{65}{section*.32}
-\contentsline {subsubsection}{Model}{65}{section*.33}
-\contentsline {subsubsection}{Features selection}{66}{section*.34}
-\contentsline {subsubsection}{Hyperparameters Tuning}{70}{section*.40}
-\contentsline {subsection}{\numberline {5.3.2}User-based KNN classifier}{72}{subsection.5.3.2}
-\contentsline {subsubsection}{Dataset}{72}{section*.44}
-\contentsline {subsubsection}{Model}{73}{section*.45}
-\contentsline {subsection}{\numberline {5.3.3}Text-based Naive Bayes classifier}{74}{subsection.5.3.3}
-\contentsline {subsubsection}{Dataset}{75}{section*.47}
-\contentsline {subsubsection}{Model}{76}{section*.48}
-\contentsline {subsubsection}{Holdout evaluation}{77}{section*.49}
-\contentsline {section}{\numberline {5.4}Stacking meta-classifier}{78}{section.5.4}
-\contentsline {subsection}{\numberline {5.4.1}Genetic algorithm}{80}{subsection.5.4.1}
-\contentsline {subsubsection}{Genetic operators}{80}{section*.51}
-\contentsline {subsubsection}{Results}{83}{section*.52}
-\contentsline {subsection}{\numberline {5.4.2}Logistic Regression}{84}{subsection.5.4.2}
-\contentsline {subsubsection}{Dataset}{84}{section*.53}
-\contentsline {subsubsection}{Comparison with Random Forest}{85}{section*.54}
-\contentsline {subsubsection}{Hyperparameters tuning}{85}{section*.56}
-\contentsline {section}{\numberline {5.5}Prediction pipeline}{90}{section.5.5}
-\contentsline {chapter}{\numberline {6}Web application - BotBuster}{93}{chapter.6}
-\contentsline {section}{\numberline {6.1}Architecture}{94}{section.6.1}
-\contentsline {section}{\numberline {6.2}Backend}{94}{section.6.2}
-\contentsline {subsection}{\numberline {6.2.1}Engine}{94}{subsection.6.2.1}
-\contentsline {subsection}{\numberline {6.2.2}Flask}{95}{subsection.6.2.2}
-\contentsline {section}{\numberline {6.3}Frontend}{95}{section.6.3}
-\contentsline {section}{\numberline {6.4}Deployment platform}{95}{section.6.4}
-\contentsline {section}{\numberline {6.5}Validation}{95}{section.6.5}
-\contentsline {chapter}{\numberline {7}Implementation and Evaluation}{97}{chapter.7}
-\contentsline {section}{\numberline {7.1}Implementation}{98}{section.7.1}
-\contentsline {section}{\numberline {7.2}Evaluation}{98}{section.7.2}
-\contentsline {subsection}{\numberline {7.2.1}Design of Evaluation}{98}{subsection.7.2.1}
-\contentsline {subsection}{\numberline {7.2.2}Metrics}{99}{subsection.7.2.2}
-\contentsline {subsection}{\numberline {7.2.3}Results}{100}{subsection.7.2.3}
-\contentsline {subsection}{\numberline {7.2.4}Discussion}{100}{subsection.7.2.4}
-\contentsline {chapter}{\numberline {8}Conclusion and Future Work}{101}{chapter.8}
-\contentsline {section}{\numberline {8.1}Summary and Lessons Learned}{101}{section.8.1}
-\contentsline {section}{\numberline {8.2}Outputs and Contributions}{101}{section.8.2}
-\contentsline {section}{\numberline {8.3}Limitations}{102}{section.8.3}
-\contentsline {section}{\numberline {8.4}Future Work}{103}{section.8.4}
-\contentsline {chapter}{References}{105}{section.8.4}
-\contentsline {chapter}{\numberline {A}User Manual}{107}{appendix.Alph1}
-\contentsline {chapter}{\numberline {B}Dataset}{109}{appendix.Alph2}
+\contentsline {subsection}{\numberline {5.2.4}Data extension}{66}{subsection.5.2.4}
+\contentsline {section}{\numberline {5.3}Multiclass ensemble classifier}{68}{section.5.3}
+\contentsline {subsection}{\numberline {5.3.1}All-features-based Random Forest classifier}{70}{subsection.5.3.1}
+\contentsline {subsubsection}{Dataset}{70}{section*.38}
+\contentsline {subsubsection}{Model}{70}{section*.39}
+\contentsline {subsubsection}{Features selection}{71}{section*.40}
+\contentsline {subsubsection}{Hyperparameters Tuning}{75}{section*.46}
+\contentsline {subsection}{\numberline {5.3.2}User-based KNN classifier}{76}{subsection.5.3.2}
+\contentsline {subsubsection}{Dataset}{77}{section*.50}
+\contentsline {subsubsection}{Model}{78}{section*.51}
+\contentsline {subsection}{\numberline {5.3.3}Text-based Naive Bayes classifier}{80}{subsection.5.3.3}
+\contentsline {subsubsection}{Dataset}{80}{section*.53}
+\contentsline {subsubsection}{Model}{81}{section*.54}
+\contentsline {subsubsection}{Holdout evaluation}{82}{section*.55}
+\contentsline {section}{\numberline {5.4}Stacking meta-classifier}{83}{section.5.4}
+\contentsline {subsection}{\numberline {5.4.1}Genetic algorithm}{84}{subsection.5.4.1}
+\contentsline {subsubsection}{Genetic operators}{85}{section*.57}
+\contentsline {subsubsection}{Results}{88}{section*.58}
+\contentsline {subsection}{\numberline {5.4.2}Logistic Regression}{89}{subsection.5.4.2}
+\contentsline {subsubsection}{Dataset}{89}{section*.59}
+\contentsline {subsubsection}{Comparison with Random Forest}{89}{section*.60}
+\contentsline {subsubsection}{Hyperparameters tuning}{90}{section*.62}
+\contentsline {section}{\numberline {5.5}Prediction pipeline}{95}{section.5.5}
+\contentsline {chapter}{\numberline {6}Web application - BotBuster}{97}{chapter.6}
+\contentsline {section}{\numberline {6.1}Architecture}{98}{section.6.1}
+\contentsline {section}{\numberline {6.2}Backend}{98}{section.6.2}
+\contentsline {subsection}{\numberline {6.2.1}Engine}{98}{subsection.6.2.1}
+\contentsline {subsection}{\numberline {6.2.2}Flask}{99}{subsection.6.2.2}
+\contentsline {section}{\numberline {6.3}Frontend}{99}{section.6.3}
+\contentsline {section}{\numberline {6.4}Deployment platform}{99}{section.6.4}
+\contentsline {section}{\numberline {6.5}Validation}{99}{section.6.5}
+\contentsline {chapter}{\numberline {7}Implementation and Evaluation}{101}{chapter.7}
+\contentsline {section}{\numberline {7.1}Implementation}{102}{section.7.1}
+\contentsline {section}{\numberline {7.2}Evaluation}{102}{section.7.2}
+\contentsline {subsection}{\numberline {7.2.1}Design of Evaluation}{102}{subsection.7.2.1}
+\contentsline {subsection}{\numberline {7.2.2}Metrics}{103}{subsection.7.2.2}
+\contentsline {subsection}{\numberline {7.2.3}Results}{104}{subsection.7.2.3}
+\contentsline {subsection}{\numberline {7.2.4}Discussion}{104}{subsection.7.2.4}
+\contentsline {chapter}{\numberline {8}Conclusion and Future Work}{105}{chapter.8}
+\contentsline {section}{\numberline {8.1}Summary and Lessons Learned}{105}{section.8.1}
+\contentsline {section}{\numberline {8.2}Outputs and Contributions}{105}{section.8.2}
+\contentsline {section}{\numberline {8.3}Limitations}{106}{section.8.3}
+\contentsline {section}{\numberline {8.4}Future Work}{107}{section.8.4}
+\contentsline {chapter}{References}{109}{section.8.4}
+\contentsline {chapter}{\numberline {A}User Manual}{111}{appendix.Alph1}
+\contentsline {chapter}{\numberline {B}Dataset}{113}{appendix.Alph2}
