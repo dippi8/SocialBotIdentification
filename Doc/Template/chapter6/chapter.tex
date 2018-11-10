@@ -20,7 +20,7 @@ The probabilities are shown in a histogram-shaped graph, with different colours,
 
 The web application had to be visible on a public URL. It is currently available on \href{http://www.botbuster.it}{\textit{www.botbuster.it}}.
 
-Basically, the functioning of BotBuster can be resumed in getting a Twitter username through an input filed on the home page, and then executing the prediction pipeline described in chapter \ref{predicion_pipeline}.
+Basically, the functioning of BotBuster can be resumed in getting a Twitter user name through an input filed on the home page, and then executing the prediction pipeline described in chapter \ref{predicion_pipeline}.
 The input filed filling triggers the engine operating in the background, which runs a Python script performing the prediction.
 \section{Architecture}
 The web application works under a client - server paradigm. The Angular program is executed on the client's web browser, while on the server runs the Flask application.
@@ -36,7 +36,13 @@ Every time a user search for a Twitter user name, the HTTP protocols is involved
 \section{Backend}
 \subsection{Engine}
 The real engine of the web application is a Python 3 script. It performs all the steps described in the pipeline execution section \ref{predicion_pipeline}.
-
+The models, that have been previously fitted with data, serialized and stored, are now loaded by the Python script. They have to perform a single prediction at a time.
+In addition to the models we built for the classification, the pre-trained convolutional neural network for NSFW recognition has been introduced to the pipeline, in order to infer on the media contents posted by the examined user.
+The first step consists in calling the Twitter APIs to retrieve user's data and its most recent tweets, up to 100. 
+The script, then, handles the preprocessing stages and the data preparations needed by the different classifiers.
+Two final predictions are computed: the binary and the mutliclass classification.
+The probability given to the bot target, by the binary classifier, is used to weight the mutliclass prediction provided by the stacking ensemble.
+The final classification is composed by five probabilities: \textbf{P\textsubscript{NSWF},} \textbf{P\textsubscript{News-Spreader}}, \textbf{P\textsubscript{Spam-Bot}}, \textbf{P\textsubscript{Fake-Followers}}, \textbf{P\textsubscript{Genuine}}.
 \subsection{Flask}
 \section{Frontend}
 \section{Deployment platform}
