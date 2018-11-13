@@ -13,6 +13,11 @@ R.~Harkreader C.~Yang and G.~Gu.
   spammers.
 \newblock 2013.
 
+\bibitem{inception}
+Sergey Ioffe Jonathon Shlens Zbigniew~Wojna Christian~Szegedy,
+  Vincent~Vanhoucke.
+\newblock Rethinking the inception architecture for computer vision, 2015.
+
 \bibitem{Botometer}
 Emilio Ferrara Alessandro Flammini Filippo~Menczer Clayton A.~Davis,
   Onur~Varol.

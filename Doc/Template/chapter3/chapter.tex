@@ -46,14 +46,31 @@ Hoaxy only checks the news sources and compares them with a list of unreliable U
 \section{Datasets}
 
 \subsection{Caverlee-2011}
-This dataset is composed by content polluters, detected by a social honeypot, and legitimate users sampled from Twitter.
+This dataset is composed by content polluters, detected by a system composed by 60 social honeypots, which are Twitter accounts created for serve the purpose of tempting bots; and genuine accounts, randomly sampled from Twitter.
+They observed the content polluters that used to interact with their honeypots, during a 7-months time-span. The accounts that weren't deleted, by the policy terms of the social platform, were clustered with the Expectation-Maximization algorithm for soft clustering. At the end of this process, they found nine different clusters, which were grouped in four main categories:
+
+\begin{center}
+	\begin{tabular}{>{\raggedright\arraybackslash}m{5.5cm}|>{\raggedright\arraybackslash}m{5.5cm}}
+		\\Cluster&Description\\
+		\hline\hline
+		Duplicate Spammers & Accounts that post nearly the same tweets with or without links\\\hline
+		Duplicate @ Spammers & Similar to the Duplicate Spammers, but they also use Twitter’s @ mechanism by randomly including a genuine account’s username\\\hline
+		Malicious Promoters & These bots post statuses about marketing, business, and so on\\\hline
+		Friend Infiltrators & Their profiles and tweets seem legitimate, but they mimic the mutual interest in following relationships\\\hline
+	\end{tabular}
+\end{center}
+
+They manually checked each cluster to asses their validity.
 For each content polluter, they save their 200 most recent tweets, their following and follower graph, and the temporal and historical profile informations.
 
-In order to collect genuine users, they randomly sampled about 20.000 Twitter ids and monitored them for three months, to see if they were still active and not suspended by the social platform moderation service \cite{Lee11sevenmonths}.
+In order to collect genuine users too, they randomly sampled 19,297 Twitter ids and monitored them for three months, to see if they were still active and not suspended by the social platform moderation service \cite{Lee11sevenmonths}.
 
+They subsequently built a classifier framework trained on their dataset, which uses crafted features grouped in four clusters:
+User Demographics (\textbf{UD}), User Friendship Networks (\textbf{UFN}), User Content (\textbf{UC}) and User History (\textbf{UH}).
+After testing several classification algorithms, they chose Random Forest with boosting sampling, which accomplished 98.62\% of accuracy, 0.986 of F1-measure and 0.995 in the AUC score.
 
 \subsection{Cresci-2017}
-Cresci Dataset is composed by genuine accounts and bots. In this dataset there is a deeper differentiation for the bots, which are precisely labeled according to different categories.
+Cresci Dataset is composed by genuine accounts and bots. In this dataset there is a deeper differentiation for the bots, which are precisely marked according to different categories.
 
 \tiny
 \begin{center}
@@ -124,6 +141,8 @@ All these accounts were manually checked to verify their automated nature.
 	\item \textbf{Fake followers} are account involved in increasing popularity of other users. In order to collect them, they bought followers from fastfollowerz.com, intertwitter.com and twittertechnology.com. \cite{Cresci}
 \end{itemize}
 
+The intent of this project was to find a methodology useful to detect sophisticated spambots on Twitter. This novel category differentiates from the traditional spambot type, due to the ability of those content polluters to mimic the human interactions on the social platform. They relied on both crowdsourcing and machine learning experiments to compare the accuracy of the detection of such spambots. The experiments highlighted the lack of ability to detect this new wave of spambots, even with the help of human annotators.
+
 
 \subsection{Varol-2017}
 This dataset contains a list of Twitter accounts, labeled as bots (1) or humans (0).
@@ -132,7 +151,7 @@ The construction of the Varol dataset starts with the indentification of a repre
 During the observation window about 14 million user accounts has been gathered. 
 All the collected users must have at least 200 tweets in total and 90 tweets during the three month observation (about one tweet per day).
 
-Using the classifier trained on the honeypot dataset in \cite{Lee11sevenmonths}, they computed the classification scores for each of the active accounts.
+Using the classifier trained on the honeypot dataset in \cite{Lee11sevenmonths}, they computed the classification scores for each of the active accounts, obtaining 0.85 in the AUC metric score, a lower score then the one obtained, by the same model, on the honeypot's data (0.95 AUC). This difference was justified with the newer ages of the manually annotated bots, with respect to the ones collected by the social honeypots.
 Then the samples were grouped by their score and 300 accounts from each bot-score decile were randomly selected. 
 The 3000 extracted accounts were manually labeled by some volunteers. They analyzed users profile, friends, tweets, retweets and interactions with other users. Then they assingned a label to each user.
 Of course the final decision is conditioned to personal opinion\cite{Varol}.
