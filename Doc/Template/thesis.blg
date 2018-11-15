@@ -25,6 +25,8 @@ Warning--entry type for "nb" isn't style-file defined
 --line 80 of file references.bib
 Warning--entry type for "inception" isn't style-file defined
 --line 87 of file references.bib
+Warning--entry type for "selfie" isn't style-file defined
+--line 94 of file references.bib
 Warning--I didn't find a database entry for "von2004design"
 Too many commas in name 1 of "Clayton A. Davis, Onur Varol, Emilio Ferrara, Alessandro Flammini, Filippo Menczer" for entry Botometer
 while executing---line 1049 of file plain.bst
@@ -43,6 +45,8 @@ while executing---line 1049 of file plain.bst
 Too many commas in name 1 of "Christian Szegedy, Vincent Vanhoucke, Sergey Ioffe, Jonathon Shlens, Zbigniew Wojna" for entry inception
 while executing---line 1049 of file plain.bst
 Too many commas in name 1 of "Christian Szegedy, Vincent Vanhoucke, Sergey Ioffe, Jonathon Shlens, Zbigniew Wojna" for entry inception
+while executing---line 1049 of file plain.bst
+Too many commas in name 1 of "Mahdi M. Kalayeh, Misrak Seifu, Wesna LaLanne, Mubarak Shah" for entry selfie
 while executing---line 1049 of file plain.bst
 Name 1 in "S. Ting, W. Ip, and A. H. Tsang" has a comma at the end for entry nb
 while executing---line 1049 of file plain.bst
@@ -77,6 +81,8 @@ while executing---line 1090 of file plain.bst
 Too many commas in name 1 of "Clayton A. Davis, Onur Varol, Emilio Ferrara, Alessandro Flammini, Filippo Menczer" for entry Botometer
 while executing---line 1090 of file plain.bst
 Warning--empty journal in Lee11sevenmonths
+Too many commas in name 1 of "Mahdi M. Kalayeh, Misrak Seifu, Wesna LaLanne, Mubarak Shah" for entry selfie
+while executing---line 1090 of file plain.bst
 Warning--empty journal in SAG
 Too many commas in name 1 of "Onur Varol, Emilio Ferrara, Clayton A. Davis, Filippo Menczer, Alessandro Flammini" for entry Varol
 while executing---line 1090 of file plain.bst
@@ -94,45 +100,45 @@ while executing---line 1090 of file plain.bst
 Too many commas in name 1 of "Stefano Cresci, Roberto Di Pietro, Marinella Petrocchi, Angelo Spognardi, Maurizio Tesconi" for entry Cresci
 while executing---line 1090 of file plain.bst
 Warning--empty journal in Cresci
-You've used 12 entries,
+You've used 13 entries,
             2118 wiz_defined-function locations,
-            571 strings with 6380 characters,
-and the built_in function-call counts, 2647 in all, are:
-= -- 237
-> -- 119
+            574 strings with 6471 characters,
+and the built_in function-call counts, 2844 in all, are:
+= -- 254
+> -- 126
 < -- 0
-+ -- 49
-- -- 36
-* -- 115
-:= -- 479
-add.period$ -- 32
-call.type$ -- 12
-change.case$ -- 54
++ -- 52
+- -- 38
+* -- 121
+:= -- 511
+add.period$ -- 34
+call.type$ -- 13
+change.case$ -- 58
 chr.to.int$ -- 0
-cite$ -- 20
-duplicate$ -- 108
-empty$ -- 225
-format.name$ -- 36
-if$ -- 533
+cite$ -- 21
+duplicate$ -- 115
+empty$ -- 247
+format.name$ -- 38
+if$ -- 576
 int.to.chr$ -- 0
-int.to.str$ -- 12
+int.to.str$ -- 13
 missing$ -- 8
-newline$ -- 59
-num.names$ -- 24
-pop$ -- 90
+newline$ -- 63
+num.names$ -- 26
+pop$ -- 99
 preamble$ -- 1
-purify$ -- 42
+purify$ -- 45
 quote$ -- 0
-skip$ -- 91
+skip$ -- 99
 stack$ -- 0
-substring$ -- 61
-swap$ -- 4
+substring$ -- 66
+swap$ -- 5
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 48
+type$ -- 52
 warning$ -- 8
-while$ -- 24
-width$ -- 14
-write$ -- 106
-(There were 30 error messages)
+while$ -- 26
+width$ -- 15
+write$ -- 114
+(There were 32 error messages)

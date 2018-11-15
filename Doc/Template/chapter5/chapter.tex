@@ -394,7 +394,7 @@ The dataset we used for this classification was composed by part of our collecte
 We setted the APIs to retrieve the ids for both genuines and bots, from the Carvelee list. The process provided us 15,687 legitimate user ids, and 15,525 general bot ids (without inner classifications), for a total number of 31,212 samples.
 The difference from the original number of entries is due to the age of the dataset. Since 2011, the year of the creation of the list, a lot of accounts have been deleted or suspended.
 
-The feature vector we used is the same that came out from the feature engineering process\ref{sec:feature_vector}, except for the specific characterizing features, that weren't considered, because crafted for the inner separation among bots. We excluded the image features (\textit{NSWF\_profile} and \textit{NSFW\_avg}).
+The feature vector we used is the same that came out from the feature engineering process\ref{sec:feature_vector}, except for the specific characterizing features, that weren't considered, because crafted for the inner separation among bots. We excluded the \textit{NSFW\_avg}) image feature, as we noticed it didn't bring much performance boosting with the multiclass models.
 The extrinsic features must had been adjusted with new dictionaries, so we had two features: (\textit{bots\_words\_score} and  \textit{genuine\_words\_score}.
 Both the features have been computed as for the multiclass case, with up to 1000 non overlapping words in each dictionary.
 
@@ -574,18 +574,14 @@ The improvement was encouraging, but still not enough to rely on this basic solu
 Considering the bot target as the positive class, we still had too many False Positive in our confusion Matrix. The binary classifier used to tend to identify an user as a bot, with too much confidence. We had to reduce that number, in order to provide a reliable filter in the final prediction pipeline system.
 
 \subsection{Data extension}
-The idea we had was to use the validation set to enrich the binary training set, in order to make the algorithm handle younger and different types of samples from the Twitter population.
+The idea we had was to use some data from our multiclass dataset to enrich the binary training set, in order to make the algorithm handle younger and different types of samples from the Twitter population.
 
-We performed a 10-fold-crossvalidation to see the effect of this data refill, sticking to the same hyperparameters found by the last Grid Serch. The AUC score came back to an already met value: 0.951.
+In order to perform the extension, we sampled 3,000 genuine accounts and 8,000 bots (2,000 content polluters for each class), all coming from our dataset, and added them to the Carvelee's dataset.
+The new training set was composed by 42,212 samples.
 
-It could be imputed by the biased extrinsic features of that data: those samples came from the multiclass dataset and they originally had the extrinsic features based on the four bot categories' dictionaries.
-In order to refill the binary dataset with these new samples, we had to recompute the extrinsic features, applying the analogous method used for the binary purpose.
-We didn't recompute the entire dictionaries, we just assigned the scores to the new samples we were introducing, basing the calculations on the already listed words. Those had been exposed in chapter \ref{capitolo4}. This approach aimed to force the algorithm to identify bots and humans, basing its comparisons on the online computations of those features, like in a real-case generalization.
+We performed a 10-fold-crossvalidation to see the effect of this data refill, sticking to the same hyperparameters found by the last Grid Serch. The AUC score measured with these data was 0.963. We could see a slight improvement of the performances, with this data extension. However, we wanted to take a look inside the inner ranking performed by the algorithm, to check if the age field represented an important splitting point.
+Figure \ref{fig:bon_importances_ext} shows that the age attribute was still the most considered when the trees had to perform the first splits.
 
-Now, we wanted to take a look inside the inner ranking performed by the algorithm, to check if the age field represented an important splitting point.
-Figure \ref{fig:bon_importances_ext} shows that the age attribute was dethroned from the top position. Indeed, it was replaced by the \textit{friends\_count} attribute.
-
-The age feature was still determinant, as it was placed in the second spot of the features standing.
 We couldn't blindly follow the AUC score through Grid Searches, without make considerations about what will happen when we will allow people to classify data coming from outside our collected samples.
 The age feature would had drove the Random Forest to misclassification over accounts with low \textit{age} values.
 Even if the exclusion of that attribute would had made the overall AUC score worse, we had to strip it from the features vector, in order to better generalize on real test cases.
@@ -612,15 +608,15 @@ While cross-validating the model, we tested the complete features vector (with a
 		\cline{1-4}
 		\multicolumn{1}{|c|}{AUC} & 
 		\multicolumn{1}{c|}{\textbf{0.961}} & 
-		\multicolumn{1}{c|}{\textbf{0.951}} & 
-		\multicolumn{1}{c|}{\textbf{0.932}} \\
+		\multicolumn{1}{c|}{\textbf{0.963}} & 
+		\multicolumn{1}{c|}{\textbf{0.948}} \\
 		\cline{1-4}\\
 	\end{tabular}\\
 }
 
-We could see a decreasing performance, as we were stepping away from the original fitted data and features. Even the plain extension from our collected data seemed to aggravate the evaluations. However, the validation earlier described reached a 0.721 value in the AUC score, with the test set coming from the multiclass dataset. Thus, we decided anyway to extend the training data with these samples, in order to refresh the decision rules of the forest and to make it see more heterogeneous data.
-
-The age filed removing made thing worse, but we decided to perform it anyway, because of the good score reached without it, and the flexibility we were giving to the Random Forest. Without making it considering that field, we were removing a bias introduced by the older accounts of the Carvelee's dataset.
+The age filed removing made thing worse, but we decided to perform it anyway, because of the good score reached without it, and the flexibility we were giving to the Random Forest. The slight worsening could be also imputed to the biased extrinsic features of that data: those samples came from the multiclass dataset and they originally had the extrinsic features based on the four bot categories' dictionaries.
+In order to refill the binary dataset with these new samples, we had to recompute the extrinsic features, applying the analogous method used for the binary purpose.
+We didn't recompute the entire dictionaries, we just assigned the scores to the new samples we were introducing, basing the calculations on the already listed words. Those had been exposed in chapter \ref{capitolo4}. This approach aimed to force the algorithm to identify bots and humans, basing its comparisons on the online computations of those features, like in a real-case generalization.
 
 This last configuration was used to performed a further tuning of the parameters.
 A new Grid Search brought us the configuration for the hyperparameters shown in Figure  \ref{fig:bon_tuning_refil}, leading to the new AUC score, exposed in Figure \ref{fig:bon_refil_auc}.
@@ -636,7 +632,7 @@ A new Grid Search brought us the configuration for the hyperparameters shown in 
 	\caption{AUC score with extended data}
 	\label{fig:bon_refil_auc}
 \end{figure}
-The binary classifier has then been fitted with 37,212 samples with 33 features, 700 estimators, entropy splitting criterion and 26 levels of maximum depth.
+The binary classifier has then been fitted with 42,212 samples with 34 features, 600 estimators, entropy splitting criterion and 26 levels of maximum depth.
 
 \section{Multiclass ensemble classifier}
 This is the first piece of the thesis we worked on.\\
@@ -650,6 +646,10 @@ Even if the results on our validation sets were still good (we accomplished a F1
 
 The ensemble method with all the classifiers blended together were replaced with a pipeline, and the multiclass models were trained on bot categories only.
 These last classifiers had been put together inside a stacking ensemble, which returns the final mutliclass probability prediction, based on the opinions of those models, as shown in Figure \ref{fig:stacking_schema}
+
+The different nature of the classifiers, and the feature subsets as well, is one of the strengths of the stacking approach: it combines different opinions about the samples, driven by different classifiers, considering different parameters and attributes; basing on those unlike classifications, it builds its own.
+
+It differs from other ensemble methods as bagging and boosting, because of this miscellaneous schema, and it can be a robust method to exploit the different characteristics of the classifiers stacked together.
 
 \begin{figure}[htp!]
 	\centering
@@ -783,12 +783,12 @@ We noticed, as shown in the previous Figure \ref{fig:feature_clusters}, that the
 
 The model that had the best performance, not considering the Random Forest, was the K-Nearest Neighbors algorithm.
 
-We didn't want this model to work the entire feature vector, because we knew that it would had been overlooked by the Random Forest. Instead, we wanted it to concentrate on the features that describe the users, without the information driven by their tweets.
-We hoped that treating the data before, or during, the training phase, would had brought to 
-a good sustain for the first multiclass model, where needed.
+We didn't want this model to work the entire feature vector, because we knew that it would had been overlooked by the Random Forest. Instead, we wanted it to concentrate on the features that describe the users, without the information driven by their tweets. Therefore, we relied on the user features, with the extension of the image feature that assesses the NSFW score to the profile picture. This extension wa due to the fact that such feature doesn't need the user's tweets to be computed; it can be seen as one of the user features as the others of that group.
+
+We hoped that treating the data before, or during, the training phase, would had brought to a good sustain for the first multiclass model, where needed.
 
 \subsubsection{Dataset}
-The dataset is composed by the same number (21,445) of samples of the first multitarget Random Forest, but preserving only the twelve features belonging to the user group:
+The dataset is composed by the same number (21,445) of samples of the first multitarget Random Forest, but preserving only the twelve features belonging to the user group, plus the NSFW\_profile attribute coming from the image features group.
 
 \small
 \begin{center}
@@ -797,7 +797,7 @@ The dataset is composed by the same number (21,445) of samples of the first mult
 		\hline\hline
 		default\_profile, favourites\_count, followers\_count\\
 		friends\_count, listed\_count, screen\_name\_len\\
-		statuses\_count, url, description\_len\\
+		statuses\_count, url, description\_len, NSFW\_profile\\
 		name\_len, profile\_use\_background\_image, age\\\hline\\
 	\end{tabular}
 \end{center}
@@ -844,11 +844,9 @@ The results obtained are highlighted in Figure \ref{fig:knn_tuning}
 \end{figure}
 The different colours represent the Minkowski distances tested, as well as the different line styles, dotted and continue, represent the weighted and the non-weighted solutions, respectively.
 
-As visible in the picture, the best score, in the usual 10-fold crossvalidation, has been obtained with  3 neighbours, the Manhattan distance, and the weighted solution, which is averagely better than the other one.
+As visible in the picture, the best score, in the usual 10-fold crossvalidation, has been obtained with 5 neighbours, the Manhattan distance, and the weighted solution, which is averagely better than the other one.
 
-However, we decided to increase the \textit{k} hyperparameter, in order to increase the possibility to have all the neighbours considered for a prediction, representing all the four targets at once. 
-
-The final model has been created with the following call: \textit{KNeighborsClassifier(p=2, n\_neighbors=5)} and it has been fitted with the weighted data.
+The final model has been created with the following call: \textit{KNeighborsClassifier(p=1, n\_neighbors=5)} and it has been fitted with the weighted data.
 
 \subsection{Text-based Naive Bayes classifier}
 In chapter \ref{capitolo4} we created some useful features that helped the above-mentioned classifiers . Anyway we didn't consider enough the tweet texts. A first idea consisted in add a feature that describe the context of the tweets. This task was easily viable using \textit{Google Cloud Natural Language}. Unfortunately, this service only provides a few free calls, and we would not be able to tag all the tweets in our dataset. Moreover, the Context Classification is very specific, and we would have risked to have a too large domain of values. We tried to classify some tweets and we noticed that it was not possible with many of them, since they was just exclamation or contextless sentences. We therefore decided to train a proprietary text classifier. This allowed us to classify texts according to our targets, and our final classifier would have been self-sufficient, without external services.

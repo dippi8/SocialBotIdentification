@@ -548,7 +548,7 @@ One of the main issues of our work was to make the NSFW class different, in term
 According to our user-based, descriptive and intrinsic features, both classes act in a similar way: they spam similar links, have high tweet frequency and their contents are often repeated.\\
 What could be the difference?
 
-We started with "blind" classifier, that was the main problem. Our feature vector lacked in visual components. A Spam-bot could have been detected as a NSFW, as its tweets involved media and URLs. We needed to go deep and actually see what kind of media were broadcast.\\
+We started with "blind" classifier, that was the main problem. Our feature vector lacked in visual components. A Spam-bot could have been detected as a NSFW, as its tweets involved media and URLs. We needed to go deep and actually see what kind of media were broadcast.
 This is the reason for presence of the upcoming features.
 
 We've found a small versatile project on GitHub for NSFW detection.\\
@@ -558,8 +558,22 @@ The model exploits the Inception v3 \cite{inception} architecture.
 It takes a 299x299x3 input, representing a 299 pixels squared visual field and 3 color channels (R,G,B). It has five convolutional layers, with two max-pooling operations between them. Successively, it stacks multiple "Inception modules" and it ends with a softmax output layer.
 The repeated stacking of such models makes the architecture much deep, allowing each module to detect features on multiple scales, using convolution operations with different kernel sizes.
 
-The network has been trained with Not Safe For Work content images, leading to a  98.2\% of accuracy in the crossvalidation stage.
+
+The Inception model has been fed with pictures representing Not Safe For Work contents, as well as Safe For Work contents.
+The NSFW images has been retrieve by crawling the browser tabs, with the help of Fatkun batch download Images, a Google Chrome extension for batch downloads.
+We gathered 1,548 elements for that class.
+The SFW class content is composed by a collection of clean pictures of random users, already collected in the Selfie Dataset \cite{selfie} . This dataset contains 46,836 images, wiht metadata about genders, ages and so on; it's built for research purposes.
+We just randomly picked the same number as for the other class, in order to have a balanced training set.
+
+The network has then been trained with 500 iteration steps, leading to a  95.7\% of accuracy in validation and 99\% in training stage, when distinguish nsfw contents from sfw ones. The accuracy graph is shown in Figure \ref{fig:inception}.
 We thought that the bias introduced with this new features would have been under control and that it wouldn't compromise the final results of our models.
+
+\begin{figure}[htp!]
+	\centering
+	\includegraphics[width=\columnwidth]{chapter4/figure/inception.jpg}
+	\caption{Train and validation accuracy through learning steps}
+	\label{fig:inception}
+\end{figure}
 
 We decided to scan our dataset with this new component and to give a NSFW score to both profile pictures and tweets.
 For time complexity reasons, we couldn't imagine to scan all the retrieved tweets for each user and to look for embedded media. We limited the process to the latest ten tweets.
