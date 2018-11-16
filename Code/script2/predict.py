@@ -16,6 +16,11 @@ import pickle
 import tweepy
 import sys
 from datetime import datetime
+import os
+import tensorflow as tf
+import urllib.request
+import urllib.parse as urlparse
+from ast import literal_eval
 
 user = sys.argv[1]
 
@@ -192,11 +197,13 @@ def get_url(df):
     expanded_urls = []
     for x in df.itertuples():
         try:
-            if len(x.url)>0 and x.is_quote_status == False:
-                expanded_urls.append(urlparse(x.url).netloc)
+            if len(x.url)>0:
+                expanded_urls.append(urlparse.urlparse(x.url).netloc)
+
         except:
             pass
-        
+            
+        expanded_urls = list(map(lambda x: x.replace('www.','').replace('/',''), expanded_urls))
     return expanded_urls
 
 import collections
@@ -210,7 +217,7 @@ def compute_entropy():
 	    
 	    if len(param) > 0:
 	        urls = get_url(param)
-	           
+	        
 	        # remove empty strings
 	        urls = [x for x in urls if x]
 	    
@@ -235,16 +242,18 @@ def compute_entropy():
         
     return float(entropy)
 
+
 url_entropy = compute_entropy()
 
 intradistances = pd.DataFrame({'url_entropy': url_entropy, 'tweet_intradistance': intradistance},index=[0])
 
-# NSFW features
+# compute unreliability rate
 
-import os, sys
-import tensorflow as tf
-import urllib.request
-from ast import literal_eval
+domains = pickle.load(open('data/fake_url.sources','rb'))
+urls = get_url(tweets)
+unreliability_rate = np.in1d(urls,domains).astype(int).sum() / len(urls)
+
+# NSFW features
 
 def create_labels():
 	# Loads label file, strips off carriage return
@@ -586,3 +595,4 @@ final.append(bon_pred[0][1] * mc[0][3])
 final.append(bon_pred[0][0])
 
 print(final)
+print('unreliability rate = ' + str(unreliability_rate))
