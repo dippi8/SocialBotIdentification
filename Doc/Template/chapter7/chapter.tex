@@ -1,60 +1,49 @@
 % !TEX root = ../thesis.tex
-\chapter{Implementation and Evaluation}
-\label{capitolo7}
+\chapter{Web application - BotBuster}
+\label{capitolo6}
 \thispagestyle{empty}
-
-Yes, you got it: finally, let's talk technology! If you are an attentive reader, you will have noticed that so far I restrained from talking about technology and implementation stuff. And that was intentional: doing a thesis is first and foremost a \emph{conceptual} effort, meaning an effort that should require a lot of brainwork, thinking, reasoning, discussing, drawing sketches of ideas, constructing tables for making informed choices, and so on. 
-
-And you know what? If that is well done and well described, your reader, even if he/she is not tech-savvy or an expert in your topic, will understand you and be able to follow your reasoning and agree/disagree with the choices you propose. If instead you start too early talking about technologies, programming languages, protocols, fancy frameworks that your reader does not know and, even worse, explain your solution in function of these technologies, you will loose the attention of your reader. And there is nothing as bad as that. 
-
-Once you loose the attention of your reader due to too much geek talk, you will not be able to get the attention back. The consequence is that, even if you did the best project ever and come up with Nobel Prize worthy findings, your reader (perhaps your reviewer) will not notice, and you will not get the credit you actually deserve. 
-
-The lesson learned is: \emph{defer} the tech talk as long as possible (too early = too dangerous), \emph{single it out} from the rest of the work (so that who is not interested in the low-level details can skip it), and make it \emph{self-contained} (so that who instead wants to read it gets all the details necessary).
+This chapter represents the practical application of our work. We wanted to provide a tangible proof the thesis, an instrument available to every users in search of classification, among the accounts met on Twitter.
+We thought it was useful to allow people to be aware about the nature of the users that populate the social network.
+Bots often don't claim themselves as automated accounts, that makes hard their detection, even for an experienced utilizer.
 
 
-\section{Implementation}
-Here you can describe the technologies you use, put code example, describe all the details you feel are needed to enable the reader (with the necessary tech background) to understand. The goal of this section should be to enable your reader to re-implement what you did, perhaps with different technologies. 
+\textbf{BotBuster} is the name of the project, whose goal is to provide the probability-based classification of the desired Twitter user.
+The probabilities are shown in a histogram-shaped graph, with different colours, one for each target, as displayed in Figure\ref{fig:histogram}.
 
-\begin{itemize}
-\item[\Square] Describe the \emph{technologies} you use in your solution.
-\item[\Square] \emph{Motivate} possible technology choices.
-\item[\Square] Copy and paste here the \emph{architecture figure} you should already have included in Section \ref{sec:architecture} and extend it with the technologies you use for each of the modules.
-\item[\Square] Provide insight into the most important \emph{implementation problems} and how you solve them.
-\item[\Square] If available, provide a link to an \emph{online repository} holding the code of your prototype (ideally released as open-souce software on GitHub or the like).
-\item[\Square] Maybe you also want to share here some \emph{UML diagrams} you drew before starting with the coding of the software.
-\item[\Square] Provide evidence that your prototype \emph{works}, e.g., screen shots, produced outputs, or similar.
-\end{itemize}
+\begin{figure}
+	\begin{center}
+		\includegraphics[width=\columnwidth]{chapter6/figure/histogram.jpg}\par 
+	\end{center}
+	\caption{Probability classification diagram on BotBuster}
+	\label{fig:histogram}
+\end{figure}
 
+The web application had to be visible on a public URL. It is currently available on \href{http://www.botbuster.it}{\textit{www.botbuster.it}}.
 
+Basically, the functioning of BotBuster can be resumed in getting a Twitter user name through an input filed on the home page, and then executing the prediction pipeline described in chapter \ref{predicion_pipeline}.
+The input filed filling triggers the engine operating in the background, which runs a Python script performing the prediction.
+\section{Architecture}
+The web application works under a client - server paradigm. The Angular program is executed on the client's web browser, while on the server runs the Flask application.
+Every time a user search for a Twitter user name, the HTTP protocols is involved to perform POST and GET requests between client and server. The frontend and the backend applications handle the request and exchange, as shown in Figure\ref{fig:architecture}.
+\begin{figure}
+	\begin{center}
+		\includegraphics[width=0.6\columnwidth]{chapter6/figure/architecture.png}\par 
+	\end{center}
+	\caption{Client - Server architecture}
+	\label{fig:architecture}
+\end{figure}
 
-\section{Evaluation}
-This is a section that may be missing in a tesina, while for a thesis it is of fundamental importance. Even more: in some projects, the evaluation may even be a major contribution of the work and deserve an own chapter. If this is your case, then do so. For example, if you do an elaborated user study that requires careful literature study, design, planning, execution, data collection, data analysis, then you may want to make this effort also evident in the structure of the thesis by giving it an own chapter (remember that the structure of the thesis should already tell the reader a story).
-
-\subsection{Design of Evaluation}
-Explain here how you evaluate your solution, e.g., you do a controlled performance study in the lab using a cluster of 50 computers in a network, or you do a simulation of an algorithm for which you first do some probing of some environment to fine-tune some parameters of the algorithm to have the simulation represent as real as possible situations, or you may do a user study, or... Here some options:
-
-\begin{itemize}
-\item[\Square] \emph{Theorem proofing}: if your work is of pure theoretical nature, you may want to accompany your theorems and corollaries with suitable proofs. Doing so requires good mathematical and/or algebraic skills.
-\item[\Square] \emph{Data analysis}: if you work on a topic that is related to Data Science, likely you will have a lot of data to analyze. Explain which data you are considering, how it is collected and prepared for the analysis, which kind of statistical analyzes you intend to use, why, etc.
-\item[\Square] \emph{Performance test}: if instead you develop a software prototype and claim that it works better than some exiting algorithm/software, explain which is your baseline to back your claim, tell how you want to compare your solution to the existing ones, which results you consider a success and which instead represent a failure, etc.
-\item[\Square] \emph{User study}: if your work involves real users in the evaluation of your work, explain how you select the participants, if they have to sign a consent form or not, if they need to obtain some form of prior training, which data you collect, how you guarantee their privacy and the security of the collected data, how you analyze the data, etc.
-\item[\Square] \emph{Simulation}: if you are not able to run your solution in a real environment and instead have to fall back to a simulation, explain how you set up the simulation environment, which assumptions you make, how you configure the simulation environment so that it resembles real situations, which exact data you collect, how you analyze it, etc. 
-\item[\Square] \emph{Case study}: if the nature of your work does not allow a systematic data collection to back your claims, perhaps you want to elaborate on a case study that showcases the use of your solution in a real or fictitious application scenario. Explain the requirements of the case study, tell how realistic the case study is, show how your solution helps.
-\item[\Square] \dots
-\end{itemize}
-
-
-\subsection{Metrics}
-Remember when I talked about the requirements and that ideally it would be good if the reader in the end of the thesis was able to use the list of requirements as a checklist and to tick boxes? Well, this is where the reader should get the necessary tools to tick the boxes. Most likely, some of the requirements, claims and evaluation designs will need some specific metric to be able to tell if a requirement is satisfied or not. For example, you may want to measure response time for a time-critical service, or precision/recall for works on information retrieval, or individual quality attributes in crowdsourcing, or... 
-
-\begin{itemize}
-\item[\Square] Define all the \emph{metrics} needed by your evaluation designs.
-\item[\Square] Tell how to \emph{assess} the requirements and claims of your thesis.
-\end{itemize}
-
-
-\subsection{Results}
-In this subsection you report on the results of the experiments/evaluation you perform. Report on all the important numbers for each of the metrics, on possible issues with running the code, etc. This is however not yet the place where to go into lengthy considerations on the meaning of values, this is for the next subsection. It's good to explain comparative results (A better than B in condition X, while in condition Y B is better), outliers (in one very specific situation A has an extraordinarily low/high performance), general statistics.
-
-\subsection{Discussion}
-Finally, here you discuss your results. That is, you discuss the \emph{meaning} and \emph{impact} of your result for the goals of your thesis. In other words, you \emph{interpret} the results in light of your goals, expectations, intuitions, hypotheses. Did the prototype meet the expected performance? Is the achieved statistical significance reached to draw conclusions you would not be afraid of defending in front of a commission? Was the problem solved? Too slow? Too fast? Give the reader a feeling (as well as convincing arguments and numbers) for why you think some requirements are met while others may be missed. 
+\section{Backend}
+\subsection{Engine}
+The real engine of the web application is a Python 3 script. It performs all the steps described in the pipeline execution section \ref{predicion_pipeline}.
+The models, that have been previously fitted with data, serialized and stored, are now loaded by the Python script. They have to perform a single prediction at a time.
+In addition to the models we built for the classification, the pre-trained convolutional neural network for NSFW recognition has been introduced to the pipeline, in order to infer on the media contents posted by the examined user.
+The first step consists in calling the Twitter APIs to retrieve user's data and its most recent tweets, up to 100. 
+The script, then, handles the preprocessing stages and the data preparations needed by the different classifiers.
+Two final predictions are computed: the binary and the mutliclass classification.
+The probability given to the bot target, by the binary classifier, is used to weight the mutliclass prediction provided by the stacking ensemble.
+The final classification is composed by five probabilities: \textbf{P\textsubscript{NSWF},} \textbf{P\textsubscript{News-Spreader}}, \textbf{P\textsubscript{Spam-Bot}}, \textbf{P\textsubscript{Fake-Followers}}, \textbf{P\textsubscript{Genuine}}.
+\subsection{Flask}
+\section{Frontend}
+\section{Deployment platform}
+\section{Validation}

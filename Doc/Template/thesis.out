@@ -47,7 +47,7 @@
 \BOOKMARK [1][-]{section.4.7}{Final feature vectors}{chapter.4}% 47
 \BOOKMARK [2][-]{subsection.4.7.1}{Multiclass Dataset}{section.4.7}% 48
 \BOOKMARK [2][-]{subsection.4.7.2}{Binary Dataset}{section.4.7}% 49
-\BOOKMARK [0][-]{chapter.5}{Model selection}{}% 50
+\BOOKMARK [0][-]{chapter.5}{Models}{}% 50
 \BOOKMARK [1][-]{section.5.1}{Baselines}{chapter.5}% 51
 \BOOKMARK [2][-]{subsection.5.1.1}{Random Forest}{section.5.1}% 52
 \BOOKMARK [2][-]{subsection.5.1.2}{Logistic Regression}{section.5.1}% 53
@@ -66,30 +66,24 @@
 \BOOKMARK [2][-]{subsection.5.3.1}{All-features-based Random Forest classifier}{section.5.3}% 66
 \BOOKMARK [2][-]{subsection.5.3.2}{User-based KNN classifier}{section.5.3}% 67
 \BOOKMARK [2][-]{subsection.5.3.3}{Text-based Naive Bayes classifier}{section.5.3}% 68
-\BOOKMARK [1][-]{section.5.4}{Stacking meta-classifier}{chapter.5}% 69
-\BOOKMARK [2][-]{subsection.5.4.1}{Genetic algorithm}{section.5.4}% 70
-\BOOKMARK [2][-]{subsection.5.4.2}{Logistic Regression}{section.5.4}% 71
-\BOOKMARK [1][-]{section.5.5}{Prediction pipeline}{chapter.5}% 72
-\BOOKMARK [0][-]{chapter.6}{Web application - BotBuster}{}% 73
-\BOOKMARK [1][-]{section.6.1}{Architecture}{chapter.6}% 74
-\BOOKMARK [1][-]{section.6.2}{Backend}{chapter.6}% 75
-\BOOKMARK [2][-]{subsection.6.2.1}{Engine}{section.6.2}% 76
-\BOOKMARK [2][-]{subsection.6.2.2}{Flask}{section.6.2}% 77
-\BOOKMARK [1][-]{section.6.3}{Frontend}{chapter.6}% 78
-\BOOKMARK [1][-]{section.6.4}{Deployment platform}{chapter.6}% 79
-\BOOKMARK [1][-]{section.6.5}{Validation}{chapter.6}% 80
-\BOOKMARK [0][-]{chapter.7}{Implementation and Evaluation}{}% 81
-\BOOKMARK [1][-]{section.7.1}{Implementation}{chapter.7}% 82
-\BOOKMARK [1][-]{section.7.2}{Evaluation}{chapter.7}% 83
-\BOOKMARK [2][-]{subsection.7.2.1}{Design of Evaluation}{section.7.2}% 84
-\BOOKMARK [2][-]{subsection.7.2.2}{Metrics}{section.7.2}% 85
-\BOOKMARK [2][-]{subsection.7.2.3}{Results}{section.7.2}% 86
-\BOOKMARK [2][-]{subsection.7.2.4}{Discussion}{section.7.2}% 87
-\BOOKMARK [0][-]{chapter.8}{Conclusion and Future Work}{}% 88
-\BOOKMARK [1][-]{section.8.1}{Summary and Lessons Learned}{chapter.8}% 89
-\BOOKMARK [1][-]{section.8.2}{Outputs and Contributions}{chapter.8}% 90
-\BOOKMARK [1][-]{section.8.3}{Limitations}{chapter.8}% 91
-\BOOKMARK [1][-]{section.8.4}{Future Work}{chapter.8}% 92
-\BOOKMARK [0][-]{section.8.4}{References}{}% 93
-\BOOKMARK [0][-]{appendix.A}{User Manual}{}% 94
-\BOOKMARK [0][-]{appendix.B}{Dataset}{}% 95
+\BOOKMARK [0][-]{chapter.6}{Final Classifier}{}% 69
+\BOOKMARK [1][-]{section.6.1}{Stacking meta-classifier}{chapter.6}% 70
+\BOOKMARK [2][-]{subsection.6.1.1}{Genetic algorithm}{section.6.1}% 71
+\BOOKMARK [2][-]{subsection.6.1.2}{Logistic Regression}{section.6.1}% 72
+\BOOKMARK [1][-]{section.6.2}{Prediction pipeline}{chapter.6}% 73
+\BOOKMARK [0][-]{chapter.7}{Web application - BotBuster}{}% 74
+\BOOKMARK [1][-]{section.7.1}{Architecture}{chapter.7}% 75
+\BOOKMARK [1][-]{section.7.2}{Backend}{chapter.7}% 76
+\BOOKMARK [2][-]{subsection.7.2.1}{Engine}{section.7.2}% 77
+\BOOKMARK [2][-]{subsection.7.2.2}{Flask}{section.7.2}% 78
+\BOOKMARK [1][-]{section.7.3}{Frontend}{chapter.7}% 79
+\BOOKMARK [1][-]{section.7.4}{Deployment platform}{chapter.7}% 80
+\BOOKMARK [1][-]{section.7.5}{Validation}{chapter.7}% 81
+\BOOKMARK [0][-]{chapter.8}{Conclusion and Future Work}{}% 82
+\BOOKMARK [1][-]{section.8.1}{Summary and Lessons Learned}{chapter.8}% 83
+\BOOKMARK [1][-]{section.8.2}{Outputs and Contributions}{chapter.8}% 84
+\BOOKMARK [1][-]{section.8.3}{Limitations}{chapter.8}% 85
+\BOOKMARK [1][-]{section.8.4}{Future Work}{chapter.8}% 86
+\BOOKMARK [0][-]{section.8.4}{References}{}% 87
+\BOOKMARK [0][-]{appendix.A}{User Manual}{}% 88
+\BOOKMARK [0][-]{appendix.B}{Dataset}{}% 89

@@ -54,7 +54,7 @@
 \contentsline {subsection}{\numberline {4.7.2}Binary Dataset}{50}{subsection.4.7.2}
 \contentsline {subsubsection}{User features}{50}{section*.29}
 \contentsline {subsubsection}{Tweets features}{51}{section*.30}
-\contentsline {chapter}{\numberline {5}Model selection}{53}{chapter.5}
+\contentsline {chapter}{\numberline {5}Models}{53}{chapter.5}
 \contentsline {section}{\numberline {5.1}Baselines}{54}{section.5.1}
 \contentsline {subsection}{\numberline {5.1.1}Random Forest}{54}{subsection.5.1.1}
 \contentsline {subsection}{\numberline {5.1.2}Logistic Regression}{55}{subsection.5.1.2}
@@ -87,35 +87,29 @@
 \contentsline {subsubsection}{Dataset}{82}{section*.60}
 \contentsline {subsubsection}{Model}{82}{section*.61}
 \contentsline {subsubsection}{Holdout evaluation}{84}{section*.62}
-\contentsline {section}{\numberline {5.4}Stacking meta-classifier}{84}{section.5.4}
-\contentsline {subsection}{\numberline {5.4.1}Genetic algorithm}{86}{subsection.5.4.1}
+\contentsline {chapter}{\numberline {6}Final Classifier}{85}{chapter.6}
+\contentsline {section}{\numberline {6.1}Stacking meta-classifier}{85}{section.6.1}
+\contentsline {subsection}{\numberline {6.1.1}Genetic algorithm}{87}{subsection.6.1.1}
 \contentsline {subsubsection}{Genetic operators}{87}{section*.64}
-\contentsline {subsubsection}{Results}{90}{section*.65}
-\contentsline {subsection}{\numberline {5.4.2}Logistic Regression}{91}{subsection.5.4.2}
-\contentsline {subsubsection}{Dataset}{91}{section*.66}
-\contentsline {subsubsection}{Comparison with Random Forest}{91}{section*.67}
-\contentsline {subsubsection}{Hyperparameters tuning}{92}{section*.69}
-\contentsline {section}{\numberline {5.5}Prediction pipeline}{97}{section.5.5}
-\contentsline {chapter}{\numberline {6}Web application - BotBuster}{99}{chapter.6}
-\contentsline {section}{\numberline {6.1}Architecture}{100}{section.6.1}
-\contentsline {section}{\numberline {6.2}Backend}{100}{section.6.2}
-\contentsline {subsection}{\numberline {6.2.1}Engine}{100}{subsection.6.2.1}
-\contentsline {subsection}{\numberline {6.2.2}Flask}{101}{subsection.6.2.2}
-\contentsline {section}{\numberline {6.3}Frontend}{101}{section.6.3}
-\contentsline {section}{\numberline {6.4}Deployment platform}{101}{section.6.4}
-\contentsline {section}{\numberline {6.5}Validation}{101}{section.6.5}
-\contentsline {chapter}{\numberline {7}Implementation and Evaluation}{103}{chapter.7}
-\contentsline {section}{\numberline {7.1}Implementation}{104}{section.7.1}
-\contentsline {section}{\numberline {7.2}Evaluation}{104}{section.7.2}
-\contentsline {subsection}{\numberline {7.2.1}Design of Evaluation}{104}{subsection.7.2.1}
-\contentsline {subsection}{\numberline {7.2.2}Metrics}{105}{subsection.7.2.2}
-\contentsline {subsection}{\numberline {7.2.3}Results}{106}{subsection.7.2.3}
-\contentsline {subsection}{\numberline {7.2.4}Discussion}{106}{subsection.7.2.4}
-\contentsline {chapter}{\numberline {8}Conclusion and Future Work}{107}{chapter.8}
-\contentsline {section}{\numberline {8.1}Summary and Lessons Learned}{107}{section.8.1}
-\contentsline {section}{\numberline {8.2}Outputs and Contributions}{107}{section.8.2}
-\contentsline {section}{\numberline {8.3}Limitations}{108}{section.8.3}
-\contentsline {section}{\numberline {8.4}Future Work}{109}{section.8.4}
-\contentsline {chapter}{References}{111}{section.8.4}
-\contentsline {chapter}{\numberline {A}User Manual}{113}{appendix.A}
-\contentsline {chapter}{\numberline {B}Dataset}{115}{appendix.B}
+\contentsline {subsubsection}{Results}{91}{section*.65}
+\contentsline {subsection}{\numberline {6.1.2}Logistic Regression}{91}{subsection.6.1.2}
+\contentsline {subsubsection}{Dataset}{92}{section*.66}
+\contentsline {subsubsection}{Comparison with Random Forest}{92}{section*.67}
+\contentsline {subsubsection}{Hyperparameters tuning}{93}{section*.69}
+\contentsline {section}{\numberline {6.2}Prediction pipeline}{97}{section.6.2}
+\contentsline {chapter}{\numberline {7}Web application - BotBuster}{101}{chapter.7}
+\contentsline {section}{\numberline {7.1}Architecture}{102}{section.7.1}
+\contentsline {section}{\numberline {7.2}Backend}{102}{section.7.2}
+\contentsline {subsection}{\numberline {7.2.1}Engine}{102}{subsection.7.2.1}
+\contentsline {subsection}{\numberline {7.2.2}Flask}{103}{subsection.7.2.2}
+\contentsline {section}{\numberline {7.3}Frontend}{103}{section.7.3}
+\contentsline {section}{\numberline {7.4}Deployment platform}{103}{section.7.4}
+\contentsline {section}{\numberline {7.5}Validation}{103}{section.7.5}
+\contentsline {chapter}{\numberline {8}Conclusion and Future Work}{105}{chapter.8}
+\contentsline {section}{\numberline {8.1}Summary and Lessons Learned}{105}{section.8.1}
+\contentsline {section}{\numberline {8.2}Outputs and Contributions}{105}{section.8.2}
+\contentsline {section}{\numberline {8.3}Limitations}{106}{section.8.3}
+\contentsline {section}{\numberline {8.4}Future Work}{107}{section.8.4}
+\contentsline {chapter}{References}{109}{section.8.4}
+\contentsline {chapter}{\numberline {A}User Manual}{111}{appendix.A}
+\contentsline {chapter}{\numberline {B}Dataset}{113}{appendix.B}
