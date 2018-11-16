@@ -34,7 +34,7 @@ A Status object contains the datails of a single tweet, such as the full text, n
 \subsection{Botometer}
 Botometer \cite{Botometer} checks the activity of a Twitter account and gives it a score based on how likely the account is to be a bot.
 
-Using their dataset they tested most classification algorithm and highlighted Random Forest as their final classifier, since it gained the highest accuracy. Its accuracy was 98.42\% and 0.984 F1 measure\cite{Lee11sevenmonths}.
+Using their dataset they tested most classification algorithm and highlighted Random Forest as their final classifier, since it gained the highest accuracy. Its accuracy was 98.42\% and 0.984 F1 measure \cite{Lee11sevenmonths}.
 
 Botometer provides API to check Twitter accounts genuinity.
 
@@ -97,7 +97,7 @@ Cresci Dataset is composed by genuine accounts and bots. In this dataset there i
 	1,418,626&
 	2011 \\
 	traditional spambots \#1&
-	training set of spammers used by Yang\cite{Yang}&
+	training set of spammers used by Yang \cite{Yang}&
 	1,000&
 	145,094&
 	2009 \\
@@ -154,7 +154,7 @@ All the collected users must have at least 200 tweets in total and 90 tweets dur
 Using the classifier trained on the honeypot dataset in \cite{Lee11sevenmonths}, they computed the classification scores for each of the active accounts, obtaining 0.85 in the AUC metric score, a lower score then the one obtained, by the same model, on the honeypot's data (0.95 AUC). This difference was justified with the newer ages of the manually annotated bots, with respect to the ones collected by the social honeypots.
 Then the samples were grouped by their score and 300 accounts from each bot-score decile were randomly selected. 
 The 3000 extracted accounts were manually labeled by some volunteers. They analyzed users profile, friends, tweets, retweets and interactions with other users. Then they assingned a label to each user.
-Of course the final decision is conditioned to personal opinion\cite{Varol}.
+Of course the final decision is conditioned to personal opinion \cite{Varol}.
 
 \subsection{BotBlock}
 Botblock (https://github.com/dansarie/Botblock) is a Twitter block list containing the user ids of a large number of known porn bot accounts.
@@ -163,7 +163,7 @@ They are mainly used to aggressively market porn sites.
 \section{Varol clustering}
 At first try, we wanted to undestand if different kinds of bots were easy to distinguish, using their profile features only. er, we didn't know what kinds of bots populate Twitter for the most. So, an unsuperised approach could have helped us to highlight different categories. We relied expectations on clustering techniques, hoping to get a solid help in automatizing the labeling process of the data.
 
-We used the Varol dataset\cite{Varol}, that contains a plain list of bots and humans.
+We used the Varol dataset \cite{Varol}, that contains a plain list of bots and humans.
 It was not possible to use all the data, because we needed to scrape from the web browser all the possible features. Some of the listed accounts were already been deleted, so, for this work, we had to consider only those accounts that were still active.
 
 The first step was the knee-elbow analisys based on a hierarchical clustering with single linkage and euclidean distance. The data must had been preprocessed and cleaned.
@@ -363,7 +363,7 @@ We collected 6307 users and 41683 tweets.
 
 \subsection{Genuine}
 Finally we needed genuine accounts. We used again the Cresci dataset \cite{Cresci} and we filled it with all the Varol users labeled as humans. We again performed scraping on the existing accounts and we collected 3661 users and 263240 tweets in total.
-Morover, we gathered all the Genuine users from the Caverlee dataset\cite{Lee11sevenmonths}. these are many more than other classes, but they will be necessary for an future classification between bots and humans. We perfomed scraping and we were able to obtain 15701 users and 1278852 tweets.
+Morover, we gathered all the Genuine users from the Caverlee dataset \cite{Lee11sevenmonths}. these are many more than other classes, but they will be necessary for an future classification between bots and humans. We perfomed scraping and we were able to obtain 15701 users and 1278852 tweets.
 
 \subsection{Bots}
 We needed a set of unlabeled bots in order to train a binary classifier, that is able to classify among bots and humans. We again scraped the Caverlee dataset \cite{Lee11sevenmonths} and we gathered 15539 and 1276457 tweets.

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.14)  16 NOV 2018 10:29
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.10.14)  16 NOV 2018 10:48
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1533,7 +1533,7 @@ Package pdftex.def Info: chapter5/figure/logreg_l1_far.png  used on input line
 
 [96] [97 <./chapter5/figure/logreg_l1_close.png> <./chapter5/figure/logreg_l1_f
 ar.png>]
-<chapter5/figure/pred_pipeline.png, id=1187, 3513.125pt x 4139.465pt>
+<chapter5/figure/pred_pipeline.png, id=1188, 3513.125pt x 4139.465pt>
 File: chapter5/figure/pred_pipeline.png Graphic file (type png)
 <use chapter5/figure/pred_pipeline.png>
 Package pdftex.def Info: chapter5/figure/pred_pipeline.png  used on input line 
@@ -1549,13 +1549,13 @@ Package pdftex.def Info: chapter5/figure/pred_pipeline.png  used on input line
 
 ]
 Chapter 7.
-<chapter6/figure/histogram.jpg, id=1202, 1055.945pt x 363.3575pt>
+<chapter6/figure/histogram.jpg, id=1210, 1055.945pt x 363.3575pt>
 File: chapter6/figure/histogram.jpg Graphic file (type jpg)
 <use chapter6/figure/histogram.jpg>
 Package pdftex.def Info: chapter6/figure/histogram.jpg  used on input line 15.
 (pdftex.def)             Requested size: 360.0pt x 123.87811pt.
 [101 <./chapter6/figure/histogram.jpg>]
-<chapter6/figure/architecture.png, id=1212, 654.5253pt x 847.0044pt>
+<chapter6/figure/architecture.png, id=1220, 654.5253pt x 847.0044pt>
 File: chapter6/figure/architecture.png Graphic file (type png)
 <use chapter6/figure/architecture.png>
 Package pdftex.def Info: chapter6/figure/architecture.png  used on input line 3
@@ -1609,7 +1609,7 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 121.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 121.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 121.
 Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: FC9112CBDA4E0E3A684EAD78AD68C874;5600.
+(rerunfilecheck)             Checksum: C840B5C9E74A16C7E30F007B88F11E1C;5609.
 
 
 LaTeX Warning: There were undefined references.
@@ -1617,9 +1617,9 @@ LaTeX Warning: There were undefined references.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 121.
  ) 
 Here is how much of TeX's memory you used:
- 10857 strings out of 494923
- 166111 string characters out of 6180741
- 278396 words of memory out of 5000000
+ 10865 strings out of 494923
+ 166159 string characters out of 6180741
+ 278405 words of memory out of 5000000
  13531 multiletter control sequences out of 15000+600000
  20624 words of font info for 74 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
@@ -1643,10 +1643,10 @@ share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmssi10.pfb></usr/share
 ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist
 /fonts/type1/public/amsfonts/cm/cmti8.pfb>
-Output written on thesis.pdf (127 pages, 9083539 bytes).
+Output written on thesis.pdf (127 pages, 9083764 bytes).
 PDF statistics:
- 1403 PDF objects out of 1440 (max. 8388607)
- 1160 compressed objects within 12 object streams
- 298 named destinations out of 1000 (max. 500000)
+ 1412 PDF objects out of 1440 (max. 8388607)
+ 1169 compressed objects within 12 object streams
+ 306 named destinations out of 1000 (max. 500000)
  943 words of extra memory for PDF output out of 10000 (max. 10000000)
 

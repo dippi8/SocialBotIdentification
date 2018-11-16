@@ -1,5 +1,5 @@
 % !TEX root = ../thesis.tex
-\chapter{Models}
+\chapter{Bot classifiers}
 \label{capitolo5}
 \thispagestyle{empty}
 
@@ -382,19 +382,19 @@ Even in the binary cases, the Random Forest had the best performance, and it cou
 \section{Binary Classifier}
 Since our dataset was pretty balanced and we couldn't retrieve much more genuine accounts, we didn't want our instrument to treat this category of users just as one the other bot kinds. It was important to perform a previous filter that was able to give importance to the separation between bots and genuine accounts.
 
-We was inspired by the work made with Botometer\cite{Botometer}, which involved a binary labelled dataset, with bot and genuine accounts.
+We was inspired by the work made with Botometer \cite{Botometer}, which involved a binary labelled dataset, with bot and genuine accounts.
 They built their features, grouped them in six main categories, then they ran a Random Forest algorithm per group.
 
 We already had our feature engineering done, so we decided to test it on this new task.
 
 In order to not to build a poorer version of our multiclass model, we didn't want to use a reduced copy of our dataset, stratifying it by stripping random bots from it. We needed a balanced dataset, with about the same amount of genuines and bots. So, we started from the same dataset used by the Botometer project, in order to have a baseline comparison.
 \subsection{Dataset}
-The dataset we used for this classification was composed by part of our collected records and by some entries from the Carvelee-2011 dataset, which contains 22,223 content polluters and 19,276 legitimate users, both collected through a social honeypot, as described in their paper\cite{Lee11sevenmonths}.
+The dataset we used for this classification was composed by part of our collected records and by some entries from the Carvelee-2011 dataset, which contains 22,223 content polluters and 19,276 legitimate users, both collected through a social honeypot, as described in their paper \cite{Lee11sevenmonths}.
 
 We setted the APIs to retrieve the ids for both genuines and bots, from the Carvelee list. The process provided us 15,687 legitimate user ids, and 15,525 general bot ids (without inner classifications), for a total number of 31,212 samples.
 The difference from the original number of entries is due to the age of the dataset. Since 2011, the year of the creation of the list, a lot of accounts have been deleted or suspended.
 
-The feature vector we used is the same that came out from the feature engineering process\ref{sec:feature_vector}, except for the specific characterizing features, that weren't considered, because crafted for the inner separation among bots. We excluded the \textit{NSFW\_avg}) image feature, as we noticed it didn't bring much performance boosting with the multiclass models.
+The feature vector we used is the same that came out from the feature engineering process \ref{sec:feature_vector}, except for the specific characterizing features, that weren't considered, because crafted for the inner separation among bots. We excluded the \textit{NSFW\_avg}) image feature, as we noticed it didn't bring much performance boosting with the multiclass models.
 The extrinsic features must had been adjusted with new dictionaries, so we had two features: (\textit{bots\_words\_score} and  \textit{genuine\_words\_score}.
 Both the features have been computed as for the multiclass case, with up to 1000 non overlapping words in each dictionary.
 
@@ -619,7 +619,7 @@ In order to refill the binary dataset with these new samples, we had to recomput
 We didn't recompute the entire dictionaries, we just assigned the scores to the new samples we were introducing, basing the calculations on the already listed words. Those had been exposed in chapter \ref{capitolo4}. This approach aimed to force the algorithm to identify bots and humans, basing its comparisons on the online computations of those features, like in a real-case generalization.
 
 This last configuration was used to performed a further tuning of the parameters.
-A new Grid Search brought us the configuration for the hyperparameters shown in Figure  \ref{fig:bon_tuning_refil}, leading to the new AUC score, exposed in Figure \ref{fig:bon_refil_auc}.
+A new Grid Search brought us the configuration for the hyperparameters shown in Figure \ref{fig:bon_tuning_refil}, leading to the new AUC score, exposed in Figure \ref{fig:bon_refil_auc}.
 \begin{figure}[htp!]
 	\centering
 	\includegraphics[width=\columnwidth]{chapter5/figure/bon_tuning_refill.png}
