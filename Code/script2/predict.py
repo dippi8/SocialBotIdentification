@@ -483,6 +483,7 @@ data = full[['statuses_count', 'followers_count', 'friends_count',
        'description_len', 'name_len', 'screen_name_len','nsfw_profile']]
 
 model = pickle.load(open('models/bon_refill.model', 'rb'))
+data = data.reindex(sorted(data.columns), axis=1)
 bon_pred = model.predict_proba(data)
 
 # RF classification
