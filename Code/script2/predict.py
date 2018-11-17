@@ -469,6 +469,8 @@ full = full.drop(columns=['id'])
 full['profile_use_background_image'] = full['profile_use_background_image'].apply(lambda x: int(x))
 full['url'] = (full['url'].notnull()).astype(int)
 
+print(full)
+
 # BoN classification
 
 data = full[['statuses_count', 'followers_count', 'friends_count',

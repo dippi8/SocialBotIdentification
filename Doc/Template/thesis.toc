@@ -101,15 +101,15 @@
 \contentsline {section}{\numberline {7.1}Architecture}{102}{section.7.1}
 \contentsline {section}{\numberline {7.2}Backend}{102}{section.7.2}
 \contentsline {subsection}{\numberline {7.2.1}Engine}{102}{subsection.7.2.1}
-\contentsline {subsection}{\numberline {7.2.2}Flask}{103}{subsection.7.2.2}
-\contentsline {section}{\numberline {7.3}Frontend}{103}{section.7.3}
-\contentsline {section}{\numberline {7.4}Deployment platform}{103}{section.7.4}
-\contentsline {section}{\numberline {7.5}Validation}{103}{section.7.5}
-\contentsline {chapter}{\numberline {8}Conclusion and Future Work}{105}{chapter.8}
-\contentsline {section}{\numberline {8.1}Summary and Lessons Learned}{105}{section.8.1}
-\contentsline {section}{\numberline {8.2}Outputs and Contributions}{105}{section.8.2}
-\contentsline {section}{\numberline {8.3}Limitations}{106}{section.8.3}
-\contentsline {section}{\numberline {8.4}Future Work}{107}{section.8.4}
-\contentsline {chapter}{References}{109}{section.8.4}
-\contentsline {chapter}{\numberline {A}User Manual}{111}{appendix.A}
-\contentsline {chapter}{\numberline {B}Dataset}{113}{appendix.B}
+\contentsline {subsection}{\numberline {7.2.2}Flask}{104}{subsection.7.2.2}
+\contentsline {section}{\numberline {7.3}Frontend}{105}{section.7.3}
+\contentsline {section}{\numberline {7.4}Deployment platform}{106}{section.7.4}
+\contentsline {section}{\numberline {7.5}Comparison with Botometer}{107}{section.7.5}
+\contentsline {chapter}{\numberline {8}Conclusion and Future Work}{111}{chapter.8}
+\contentsline {section}{\numberline {8.1}Summary and Lessons Learned}{111}{section.8.1}
+\contentsline {section}{\numberline {8.2}Outputs and Contributions}{111}{section.8.2}
+\contentsline {section}{\numberline {8.3}Limitations}{112}{section.8.3}
+\contentsline {section}{\numberline {8.4}Future Work}{113}{section.8.4}
+\contentsline {chapter}{References}{115}{section.8.4}
+\contentsline {chapter}{\numberline {A}User Manual}{117}{appendix.A}
+\contentsline {chapter}{\numberline {B}Dataset}{119}{appendix.B}

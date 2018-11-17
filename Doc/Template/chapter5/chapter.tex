@@ -389,9 +389,9 @@ We already had our feature engineering done, so we decided to test it on this ne
 
 In order to not to build a poorer version of our multiclass model, we didn't want to use a reduced copy of our dataset, stratifying it by stripping random bots from it. We needed a balanced dataset, with about the same amount of genuines and bots. So, we started from the same dataset used by the Botometer project, in order to have a baseline comparison.
 \subsection{Dataset}
-The dataset we used for this classification was composed by part of our collected records and by some entries from the Carvelee-2011 dataset, which contains 22,223 content polluters and 19,276 legitimate users, both collected through a social honeypot, as described in their paper \cite{Lee11sevenmonths}.
+The dataset we used for this classification was composed by part of our collected records and by some entries from the Caverlee-2011 dataset, which contains 22,223 content polluters and 19,276 legitimate users, both collected through a social honeypot, as described in their paper \cite{Lee11sevenmonths}.
 
-We setted the APIs to retrieve the ids for both genuines and bots, from the Carvelee list. The process provided us 15,687 legitimate user ids, and 15,525 general bot ids (without inner classifications), for a total number of 31,212 samples.
+We setted the APIs to retrieve the ids for both genuines and bots, from the Caverlee list. The process provided us 15,687 legitimate user ids, and 15,525 general bot ids (without inner classifications), for a total number of 31,212 samples.
 The difference from the original number of entries is due to the age of the dataset. Since 2011, the year of the creation of the list, a lot of accounts have been deleted or suspended.
 
 The feature vector we used is the same that came out from the feature engineering process \ref{sec:feature_vector}, except for the specific characterizing features, that weren't considered, because crafted for the inner separation among bots. We excluded the \textit{NSFW\_avg}) image feature, as we noticed it didn't bring much performance boosting with the multiclass models.
@@ -434,7 +434,7 @@ We had an interesting amount of data that were not involved in this task, becaus
 We performed this job to validate the newborn model on unseen and fresher data.
 We were interested in testing a model that were trained over "old" accounts, with consequent different attributes values and different behaviours on the platform, with younger accounts.
 
-This validations would had given us a preview of the real performance of the model, once it would had been deployed on the internet. The account that a user would test with our application could be younger than the ones included in the Carvelee's list.
+This validations would had given us a preview of the real performance of the model, once it would had been deployed on the internet. The account that a user would test with our application could be younger than the ones included in the Caverlee's list.
 
 We sampled 6,000 accounts, divided in 3,000 genuine and 3,000 bot ids, randomly picked by our multiclass dataset.
 
@@ -450,7 +450,7 @@ Looking at the most relevant features for the classifier, as shown in Figure \re
 \end{figure}
 
 This was the first warning of a validation performance worsening.
-A said before, the age of the accounts in the Carvelee's dataset were higher than the ones in our dataset. In particular, we examined the \textit{age} field of the training set, and the one coming from our validation samples, picked from the mutliclass dataset.
+A said before, the age of the accounts in the Caverlee's dataset were higher than the ones in our dataset. In particular, we examined the \textit{age} field of the training set, and the one coming from our validation samples, picked from the mutliclass dataset.
 \begin{table}[!htb]
 	\caption{Age field comparison among bot accounts}
 	\begin{center}
@@ -576,7 +576,7 @@ Considering the bot target as the positive class, we still had too many False Po
 \subsection{Data extension}
 The idea we had was to use some data from our multiclass dataset to enrich the binary training set, in order to make the algorithm handle younger and different types of samples from the Twitter population.
 
-In order to perform the extension, we sampled 3,000 genuine accounts and 8,000 bots (2,000 content polluters for each class), all coming from our dataset, and added them to the Carvelee's dataset.
+In order to perform the extension, we sampled 3,000 genuine accounts and 8,000 bots (2,000 content polluters for each class), all coming from our dataset, and added them to the Caverlee's dataset.
 The new training set was composed by 42,212 samples.
 
 We performed a 10-fold-crossvalidation to see the effect of this data refill, sticking to the same hyperparameters found by the last Grid Serch. The AUC score measured with these data was 0.963. We could see a slight improvement of the performances, with this data extension. However, we wanted to take a look inside the inner ranking performed by the algorithm, to check if the age field represented an important splitting point.
@@ -593,7 +593,7 @@ Even if the exclusion of that attribute would had made the overall AUC score wor
 	\label{fig:bon_importances_ext}
 \end{figure}
 
-While cross-validating the model, we tested the complete features vector (with and without the extension from our dataset) and the one stripped by the age values. The crossvalidation was performed with the same hyperparameters settings of the model fitted with the Carvelee's dataset only.
+While cross-validating the model, we tested the complete features vector (with and without the extension from our dataset) and the one stripped by the age values. The crossvalidation was performed with the same hyperparameters settings of the model fitted with the Caverlee's dataset only.
 
 {
 	\centering
