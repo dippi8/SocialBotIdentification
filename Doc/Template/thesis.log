@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.10.16)  17 NOV 2018 23:39
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.10.16)  17 NOV 2018 23:42
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1358,9 +1358,15 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 121.
 (./appendixA/appendix.aux) (./appendixB/appendix.aux))
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 121.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 121.
-Package rerunfilecheck Info: File `thesis.out' has not changed.
-(rerunfilecheck)             Checksum: 22F378B00642C41543E5C2AFBFBABB2A;5624.
 
+
+Package rerunfilecheck Warning: File `thesis.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+Package rerunfilecheck Info: Checksums for `thesis.out':
+(rerunfilecheck)             Before: 22F378B00642C41543E5C2AFBFBABB2A;5624
+(rerunfilecheck)             After:  2932C71005AA0BDC54A3B73365D70CCC;5630.
 
 LaTeX Warning: There were undefined references.
 
@@ -1394,7 +1400,7 @@ l/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local
 /texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/t
 exlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/te
 xlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb>
-Output written on thesis.pdf (133 pages, 10657203 bytes).
+Output written on thesis.pdf (133 pages, 10657212 bytes).
 PDF statistics:
  1477 PDF objects out of 1728 (max. 8388607)
  1209 compressed objects within 13 object streams

@@ -22,7 +22,7 @@
 \contentsline {subsection}{\numberline {3.2.2}Cresci-2017}{13}{subsection.3.2.2}
 \contentsline {subsection}{\numberline {3.2.3}Varol-2017}{15}{subsection.3.2.3}
 \contentsline {subsection}{\numberline {3.2.4}BotBlock}{15}{subsection.3.2.4}
-\contentsline {section}{\numberline {3.3}Varol clustering}{15}{section.3.3}
+\contentsline {section}{\numberline {3.3}Unsupervised labelling}{15}{section.3.3}
 \contentsline {section}{\numberline {3.4}Collection}{20}{section.3.4}
 \contentsline {subsection}{\numberline {3.4.1}NSFW}{21}{subsection.3.4.1}
 \contentsline {subsection}{\numberline {3.4.2}News-spreader}{21}{subsection.3.4.2}
