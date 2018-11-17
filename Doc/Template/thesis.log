@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.10.16)  17 NOV 2018 23:23
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.10.16)  17 NOV 2018 23:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1299,17 +1299,19 @@ Package pdftex.def Info: chapter7/figure/fake_follower.png  used on input line
 (pdftex.def)             Requested size: 360.0pt x 145.56151pt.
 
 [108 <./chapter7/figure/verified.png>]
-
-LaTeX Warning: Reference `fig:polimi' on page 109 undefined on input line 172.
-
-<chapter7/figure/polimi_details.png, id=1281, 382.42876pt x 187.70125pt>
+<chapter7/figure/polimi.png, id=1280, 722.7pt x 292.2117pt>
+File: chapter7/figure/polimi.png Graphic file (type png)
+<use chapter7/figure/polimi.png>
+Package pdftex.def Info: chapter7/figure/polimi.png  used on input line 174.
+(pdftex.def)             Requested size: 360.0pt x 145.56151pt.
+<chapter7/figure/polimi_details.png, id=1283, 382.42876pt x 187.70125pt>
 File: chapter7/figure/polimi_details.png Graphic file (type png)
 <use chapter7/figure/polimi_details.png>
 Package pdftex.def Info: chapter7/figure/polimi_details.png  used on input line
- 176.
+ 184.
 (pdftex.def)             Requested size: 360.0pt x 176.70268pt.
-) [109 <./chapter7/figure/fake_follower.png>] [110 <./chapter7/figure/polimi_de
-tails.png>]
+ [109 <./chapter7/figure/fake_follower.png> <./chapter7/figure/polimi.png>]) [1
+10 <./chapter7/figure/polimi_details.png>]
 \openout2 = `chapter8/chapter.aux'.
 
  (./chapter8/chapter.tex
@@ -1365,10 +1367,10 @@ LaTeX Warning: There were undefined references.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 121.
  ) 
 Here is how much of TeX's memory you used:
- 10407 strings out of 492649
- 161355 string characters out of 6129621
- 287021 words of memory out of 5000000
- 13631 multiletter control sequences out of 15000+600000
+ 10413 strings out of 492649
+ 161505 string characters out of 6129621
+ 287102 words of memory out of 5000000
+ 13635 multiletter control sequences out of 15000+600000
  20624 words of font info for 74 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  40i,11n,47p,1125b,466s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1392,10 +1394,10 @@ l/texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local
 /texlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/t
 exlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/te
 xlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb>
-Output written on thesis.pdf (133 pages, 10191391 bytes).
+Output written on thesis.pdf (133 pages, 10637775 bytes).
 PDF statistics:
- 1473 PDF objects out of 1728 (max. 8388607)
- 1207 compressed objects within 13 object streams
- 320 named destinations out of 1000 (max. 500000)
- 983 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1477 PDF objects out of 1728 (max. 8388607)
+ 1209 compressed objects within 13 object streams
+ 321 named destinations out of 1000 (max. 500000)
+ 988 words of extra memory for PDF output out of 10000 (max. 10000000)
 
