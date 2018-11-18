@@ -229,15 +229,13 @@ We didn't wanted to blindly select this model over some others tool, especially 
 Thus, we tested these two algorithms with the new dataset.
 We ran some default configurations of the models, in order to have a raw comparison to trace a line between them.
 
+
 \begin{figure}[htp!]
-	\begin{multicols}{2}
-		\includegraphics[width=\linewidth]{chapter5/figure/logreg_default.png}\par 
-		\caption{LogReg with raw settings}
-		\label{fig:lr_def}
-		\includegraphics[width=\linewidth]{chapter5/figure/random_forest_default.png}\par 
-		\caption{Random Forest with raw settings}
-		\label{fig:rf_def}
-	\end{multicols}
+	\centering 
+	\subfigure[LogReg with raw settings]{
+		\label{fig:lr_def}\includegraphics[width=60mm]{chapter5/figure/logreg_default.png}}
+	\subfigure[Random Forest with raw settings]{
+		\label{fig:rf_def}\includegraphics[width=60mm]{chapter5/figure/random_forest_default.png}}
 	\caption{Stacking models comparison}
 \end{figure}
 
@@ -378,17 +376,15 @@ Looking at the excluded attributes, we noticed that the regularization caught th
 Lasso seemed to understand this behaviour and decided to not consider the opinion of that classifier, when it has to give its opinion about that bot cateogry.
 Another insight got from L\textsubscript{1} is coming again from the Naive Bayes algorithm. The model couldn't distinguish with certainty Spam-Bots, since they act in a similar way, with respect to NSFW accounts. They just tweets click-baiting links, with catchy captions. A "blind" classifier struggles in understand the nature of those links. This is the reason that the contributes of the tex-based model had been almost discarded from the stacking meta-classifier.
 
-\begin{figure}
-	\begin{multicols}{2}
-		\includegraphics[width=\linewidth]{chapter5/figure/logreg_l1_close.png}\par 
-		\caption{Up to 150 iterations}
-		\label{fig:lr_lasso_close}
-		\includegraphics[width=\linewidth]{chapter5/figure/logreg_l1_far.png}\par 
-		\caption{Up to 5000 iterations}
-		\label{fig:lr_lasso_far}
-	\end{multicols}
+\begin{figure}[htp!]
+	\centering 
+	\subfigure[Up to 150 iterations]{
+		\label{fig:lr_lasso_close}\includegraphics[width=60mm]{chapter5/figure/logreg_l1_close.png}}
+	\subfigure[Up to 5000 iterations]{
+		\label{fig:lr_lasso_far}\includegraphics[width=60mm]{chapter5/figure/logreg_l1_far.png}}
 	\caption{Lasso Logistic Regression scores over solvers}
 \end{figure}
+
 
 Since we knew our dataset and we were aware of the bias it might contain, we preferred a lighter and sparser model, over a more complex one, even when the F1 scores used to match. We wanted our model to infer on new unseen data and to be ready to give a representative statistical description of the actual situation on Twitter.
 We had to be far-sighted and not to recline on the accomplishments of the 10-fold crossvalidation. We thought that the Lasso model would had been performing better in out-of-box predictions.
