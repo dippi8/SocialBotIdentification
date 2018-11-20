@@ -60,14 +60,14 @@ user profile parameters (e.g., name, bio, location) and $T = [t_i,...,t_n]$ is t
 
 Out of the different types of \textbf{abuses} listed above, in this thesis we concentrate on: \emph{fake-followers} that follow a user to pretend interest in the user; bots that spread \emph{adult content} like pornographic material or lures (NSFW); bots propagating \emph{misinformation}, i.e., high-frequency publishers of news of ambiguous quality; and \emph{spambots} distributing commercial advertisements. The selection of these four abuse types is motivated by the common method we propose for their analysis, i.e., content-based classification.
 
-If we call the four classes of bots \emph{Fake-followers, NSFW, News-spreaders, Spambots}, respectively, 
-and use the class \emph{Genuine} for genuine accounts, the \textbf{problem} we address in this thesis is how to classify a given account $u$ by analyzing the account's profile $P$ and tweet timeline $T$:  
-$u = \langle P, T \rangle \mapsto \{Followers, Adult, Info, Spam,Genuine\}$.
+If we call the four classes of bots \emph{NSFW, News-Spreaders, Spam-Bots, Fake-Followers}, respectively, 
+and use the class \emph{Genuine} for genuine accounts, the \textbf{problem} we address in this thesis is how to classify a given account $u$ by analysing the account's profile $P$ and tweet timeline $T$:  
+$u = \langle P, T \rangle \mapsto \{NSFW, NS, SB, FF, GEN\}$.
 
 The specific \textbf{contributions} of this thesis are:
 
 \begin{itemize}
-	\item[\PencilRight] We construct and share \emph{five labeled datasets} containing fake-followers, spambots, news-spreaders, adult content spreaders, and genuine accounts in Twitter (Section \ref{capitolo3}). These latter are either human users or bots that could not be associated to any of the studied harm types.
+	\item[\PencilRight] We construct and share \emph{five labeled datasets} containing NSFW, News-Spreaders, Spam-Bots, Fake-Followers and Genuine accounts in Twitter (Chapter \ref{capitolo3}).
 	
 	\item[\PencilRight] We train and study different \emph{classification algorithms}	for the categorization of accounts into the five classes of harm identified by our dataset (Chapter \ref{capitolo5}).
 	
@@ -88,13 +88,13 @@ The thesis has the following structure:
 \begin{itemize}
 \item[\PencilRight] Chapter 2 introduces the state of the art and...
 
-\item[\PencilRight] Chapter 3 explores existing datasets and tools for data collection. Then it shows how the data were gathered and it ends with the \emph{creation of our dataset}.
+\item[\PencilRight] Chapter 3 explores existing datasets and tools for data collection. Then it shows how the data were gathered and it ends with the \emph{creation of our datasets}.
 
-\item[\PencilRight] Chapter 4 explaines the features engineering step. Here we create new features based on users and tweets, that allow the classifier to better undestand the user's behaviors. At the end of this chapter we will have two \emph{feature vectors}: one for the binary problem (bot or not) and one for the multiclass one.
+\item[\PencilRight] Chapter 4 explains the features engineering step. Here we create new features based on users and tweets, that allow the classifiers to better understand the users' behaviours. At the end of this chapter we will have two \emph{feature vectors}: one for the binary problem (bot or not) and one for the multiclass one.
 
 \item[\PencilRight] Chapter 5 compares different classifiers for both the \emph{binary} and the \emph{multiclass} problems and performs the tuning of the parameters. In the end we will have three multiclass classifiers and a bot-or-not one.
 
-\item[\PencilRight] Chapter 6 identifies the best way to combine the three multiclass classifiers and performs the tuning of its parameters. Then it explains the final \emph{prediction pipeline} that, starting from a user ID, returns the probabilities of membership for each class (bot, genuine) and sub-class (NSFW, News-spreaders, Spambots, Fake-followers).
+\item[\PencilRight] Chapter 6 identifies the best way to combine the three multiclass classifiers and performs the tuning of the ensemble's parameters. Then it explains the final \emph{prediction pipeline} that, starting from a user ID, returns the probabilities of membership for each class (bot, genuine) and sub-class (NSFW, News-Spreaders, Spam-Bots, Fake-Followers).
 
 \item[\PencilRight] Chapter 7 shows the technologies used for the development of the \emph{web app}. This application provides the account classification service, according to the \emph{prediction pipeline}.
 
