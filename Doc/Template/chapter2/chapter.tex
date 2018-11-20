@@ -3,28 +3,24 @@
 \label{capitolo2}
 \thispagestyle{empty}
 
-This chapter discusses the state of the art that is relevant for your own work. What does that mean? It means that it provides the reader with all the relevant references he/she may need to know in order to understand better three things: (i) the context of your work, (ii) the problem and the need for a solution, and (iii) the value of your contribution. You achieve this by citing works or scientific papers that solved the same or similar problems in the past. Citing does not just mean adding a references to the bibliography and printing a number here; it means you tell the reader about the merits and possible demerits of each of the references you feel relevant. Of course, doing so requires you to first read each reference and, most importantly, to understand it. There should be lots of references in this chapter. 
+\section{Botometer}
+The work that is most closely related to this thesis is Botometer, formerly known as BotOrNot \cite{davis2016botornot,ferrara2016rise}, an online tool that computes a bot-likelihood score for 
+Twitter accounts and allows one to \emph{tell bots and genuine user accounts apart}. The tool builds on more 1000 features among network, user, friends, temporal, content and sentiment features, and uses a random forest classifier for each subset of features. The training data used is based on bot accounts collected in prior work by Lee et al. \cite{lee2011seven}, who used Twitter honeypots to lure bots and collected about
+36000 candidate bot accounts following or messaging their honeypot accounts. The goal of BotBuster is to build on the results of Botometer and not only to tell bots and humans apart, but also to distinguish different types of bots based on their potential of harming the people they 
+interact with.
 
-It is advisable that you structure the chapter into sections in function of the topics you treat. If you do so, before starting with the first section of the chapter, explain the reader how you structure your discussion in one paragraph.
+\section{Astroturfing}
+The problem of telling bots and humans apart has been investigated already before Botometer. For instance, Ratkiewicz et al. \cite{ratkiewicz2011detecting} studied the phenomenon of \emph{astroturfing}, i.e., political campaigns that aim to fake social support from people for a cause, and showed that bots play a major role in astroturfing activities in Twitter. Cresci et al. \cite{cresci2015fame} specifically
+focused on the problem of \emph{fake followers}. They constructed a dataset of human accounts (manually and by invitation of friends) and bought fake followers from online services like \url{http://fastfollowerz.com}. The work compares two types of classifiers, classifiers based on expert-defined rules and feature-based classifiers (machine learning), and shows (i) that fake followers 
+can indeed be spotted and (ii) that black-box, feature-based classifiers perform better than white-box, rule-based classifiers. In addition, the work also produced a publicly available, labeled dataset that can be used for research purposes.
 
-\begin{itemize}
-\item[\Square] \emph{Read} relevant literature and or \emph{test} related software or tools.
-\item[\Square] \emph{Summarize} your reading.
-\item[\Square] Provide correct \emph{references} (the bibliography in the end of this document).
-\end{itemize}
+\section{Other approaches}
+In terms of \emph{datasets} to be analyzed in the bot detection process, Beskow and Carley \cite{Beskow2018} specifically propose four \emph{tiers} of data for the classification of Twitter accounts: single tweet text (tier 0), account + one tweet (1), account + full timeline (2), and account + timeline + friends timelines (3). With their tool but-hunter, they however only study different machine learning techniques for tier-1.
 
+Differently from the previous approaches that adopt feature-based techniques, Cao et al. \cite{cao2012aiding} describe SybilRank, a tool for the detection of sybil accounts (bots) in social networks that analyzes the social graph to compute sybil-likelihood scores. Also differently from the other approached, the work studies the social graph of Facebook, not that of Twitter.
 
-\section{[Topic one]}
-...
+Going beyond merely telling bots and humans apart, Chu et al. \cite{chu2012detecting} coined the term \emph{cyborg} to refer to bot-assisted humans in  social networks and used a manually labeled dataset of 6000 randomly sampled Twitter accounts and a random forest classifier plus entropy measures to classify accounts into bots, cyborgs and humans. Another finer-grained classification of bots is proposed by Varol et al. \cite{varol2017online}, who however propose a bottom-up approach to the identification of bots with similar online behavior. The classifier used is the one adopted by Botometer, while the dataset used also included a manually annoated collection of Twitter accounts. After classifying accounts into bot or not, the authors further clustered the bot accounts into three types of bots: \emph{spammers}, \textit{self promoters}, and accounts that \textit{post content from applications}.
 
-\section{[Topic two]}
-...
 
 \section{Summary}
-Close the state of the art chapter with some words that connect the discussion of the references to your thesis. Pay attention that the reader understands why you discussed the works/topics you discussed and how they are related to what you do.
-
-\begin{itemize}
-\item[\Square] Show that in the state of the art the \emph{problem} you want to solve has not yet been solved or not been solved in an as efficient / effective / easy to use / cost-saving fashion as you target with your work.
-\item[\Square] If your work has similarities with some \emph{specific references}, point them out here and explain why these are particularly important to you. Perhaps you started your investigation from the outputs of a specific paper or you want to improve the performance of an algorithm studied earlier; it's good to mention this here.
-\item[\Square] Attention: this is not yet the place where to anticipate \emph{your solution}. You may give hints, but it's too early to make a comparison between your work and the state of the art, as the reader does not yet know anything about your work. This discussion can go into the final chapter.
-\end{itemize}
+In this thesis, we study different feature-based analysis techniques with the specific aim of distinguishing bots based on the potential harm they may cause in Twitter. The datasets we use can be understood as tier-2 datasets (account + full timeline of tweets), using the terminology by Beskow and Carley \cite{Beskow2018}. It is important to note that the work focuses on bots that interact with humans in online conversations; bots used for cyber attacks or for the automation of generic tasks are out of the scope.
