@@ -161,13 +161,10 @@ Botblock (https://github.com/dansarie/Botblock) is a Twitter block list containi
 They are mainly used to aggressively market porn sites.
 
 \section{Unsupervised labelling}
-At first try, we wanted to undestand if different kinds of bots were easy to distinguish, using their profile features only. er, we didn't know what kinds of bots populate Twitter for the most. So, an unsuperised approach could have helped us to highlight different categories. We relied expectations on clustering techniques, hoping to get a solid help in automatizing the labeling process of the data.
-
-We used the Varol dataset \cite{Varol}, that contains a plain list of bots and humans.
-It was not possible to use all the data, because we needed to scrape from the web browser all the possible features. Some of the listed accounts were already been deleted, so, for this work, we had to consider only those accounts that were still active.
-
-The first step was the knee-elbow analisys based on a hierarchical clustering with single linkage and euclidean distance. The data must had been preprocessed and cleaned.
-
+At first try, we wanted to undestand if different kinds of bots were easy to distinguish, using their profile features only. er, we didn't know what kinds of bots populate Twitter for the most. So, an unsuperised approach could have helped us to highlight different categories. We relied expectations on clustering techniques, hoping to get a solid help in automatizing the labeling process of the data.\\
+We used the Varol dataset \cite{Varol}, that contains a plain list of bots and humans.\\
+It was not possible to use all the data, because we needed to scrape from the web browser all the possible features. Some of the listed accounts were already been deleted, so, for this work, we had to consider only those accounts that were still active.\\
+The first step was the knee-elbow analisys based on a hierarchical clustering with single linkage and euclidean distance. The data must had been preprocessed and cleaned.\\
 Here we illustrate what kind of preprocess operations were performed for that purpose:
 
 \small

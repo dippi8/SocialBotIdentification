@@ -1,5 +1,10 @@
 \begin{thebibliography}{10}
 
+\bibitem{bessi}
+E.~Ferrara A.~Bessi.
+\newblock Social bots distort the 2016 us presidential election online
+  discussion. first monday 21, 2016.
+
 \bibitem{SAGA}
 LIENS MSR INRIA)-Simon Lacoste-Julien (INRIA Paris Rocquencourt LIENS
   MSR~INRIA) Aaron~Defazio, Francis Bach (INRIA Paris~Rocquencourt.
@@ -22,6 +27,15 @@ Sergey Ioffe Jonathon Shlens Zbigniew~Wojna Christian~Szegedy,
 Emilio Ferrara Alessandro Flammini Filippo~Menczer Clayton A.~Davis,
   Onur~Varol.
 \newblock Botornot: A system to evaluate social bots, 2016.
+
+\bibitem{DanielIC2019}
+Florian Daniel, Cinzia Cappiello, and Boualem Benatallah.
+\newblock {Bots Acting Like Humans: Understanding and Preventing Harm}.
+\newblock {\em IEEE Internet Computing, accpted for publication}, 2019.
+
+\bibitem{inbenta}
+Inbenta~Technologies Inc.
+\newblock The ultimate guide to chatbots for businesses. tech. rep., 2016.
 
 \bibitem{svm}
 T.~Joachims.
