@@ -5,24 +5,10 @@
 
 \addcontentsline{toc}{chapter}{Abstract}
 
-The abstract is a small summary of the thesis. It tells the reader in few words (up to one/one and a half page of total text) everything he/she needs to understand: 
-
-\begin{itemize}
-\item[\Square] the \emph{context} of the work (e.g., chatbots),
-\item[\Square] the specific \emph{problem} approached by the thesis (e.g., the development of personal bots by non-programmers), 
-\item[\Square] if applicable, clearly state the \emph{research questions} you would like to answer (e.g., ``is it possible to enable non-programmers to do X using A?''),
-\item[\Square] the three/four \emph{core aspects of the proposed solution} (e.g., use pre-defined rules, use machine learning, assisted development, etc.), 
-\item[\Square] the \emph{concrete outputs} produced by the thesis (e.g., a state of the art analysis, a conceptual/mathematical model, an application, middleware or API, an empirical study with/without users, etc.), and 
-\item[\Square] the \emph{findings and conclusions} that one can draw from the evaluation of the approach (e.g., that under some very specific conditions non-programmers are indeed able to implement own chatbots effectively using the proposed technique).
-\end{itemize}
-
-
-\note{Checklists}{Now and there I propose checklists with items, such as the one just above this box. They are meant for you to check if you included all the content that is relevant and that should be included, in order to make your text complete. When reading your thesis, I will look for all these items.}
-
-\note{Writing style}{This is a M.Sc. thesis. It's neither Facebook nor Twitter nor an email. This is going to be an official document with legal value that will decide on the final mark of your yearlong university career and perhaps even on your future work perspectives. So, you surely don't want to be judged badly because of grammar errors, flawed/wrong vocabulary or superficial layout and/or text structure. It is a must that what you write is always \emph{correct} content- and language-wise (no false statements or claims, no language mistakes), \emph{readable} (no sentences that cannot be understood) and targeted at the \emph{average-skilled reader} (professors, but also your own colleagues).}
-
-\note{Plagiarism}{This is a M.Sc. thesis. It's neither Facebook nor Twitter nor an email. This is going to be an official document with legal value that will decide on the final mark of your yearlong university career  and perhaps even on your future work perspectives -- yes, I plagiarized myself here a little bit. So, you surely don't want to copy/paste material from scientific articles, online resources, books, and similar without adequately acknowledging the holders of the respective intellectual property rights. If you do so, it is a must that you properly \emph{cite} each source where you take text or inspiration from. It is fine to do so -- actually, citing someone is a compliment! -- but it becomes a crime if the source is not cited. Not only M.Sc. titles but also Ph.D. titles have been withdrawn for fraudulent ``reuse'' of others' intellectual property. Be aware that Politecnico di Milano, like most higher educational institutions that issue university degrees or scientific publishers, may use specialized software to automatically detect plagiarism.}
-
+This thesis describes a study and a web tool for the identification and classification of bots, according to the potential harm or threat they may cause to humans in online conversations. The focus is on Twitter, as social network platform, and bots are meant as algorithmically driven accounts that act like humans in interactions.
+The problem has so far been addressed with a special attention to the detection of such automated entities among legitimate ones. The method and tool described in this paper propose a finer level of granularity and show that it is further possible to classify bots also into potential types of harm --  bots with adult content (\textit{NSFW}), bots propagating news and potential misinformation (\textit{News-Spreaders}), bots that spam product sails or job offers (\textit{Spam-Bots}) and bots who mimic interests (\textit{Fake-Followers}) -- in function of the content they share and their behaviour.
+The method involves a predictive pipeline algorithm, composed by a first binary machine learning classifier, aimed to perform the detection of bots among genuine accounts (with 0.95 of AUC score) and a multi-class ensemble classifier, which goes deeper inside those aforementioned categories and classifies the potential harm (with an average F1 measure of 98\%).
+The tool implementing the method, BotBuster, is a web application running the prediction script, and it is accessible for free.
 
 
 
