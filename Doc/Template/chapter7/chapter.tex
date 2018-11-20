@@ -59,7 +59,7 @@ The idea behind the Flask backend is to map URL paths to some logic we want to e
 \begin{itemize}
 	\item[\PencilRight] \textit{@app.route}('\textbf{/}', methods=['GET']):\\
 	This first endpoint is used to catch a HTTP GET request from the client browser.
-	It gets triggered as the user navigates to http://www.botbuster.it. The code that is being executed simply handles the rendering of the static files that compose the frontend, in order to make the website visible for the user, at that URL. The homepage appears as shown in Figure \ref{fig:homepage}
+	It gets triggered as the user navigates to \textit{www.botbuster.it}. The code that is being executed simply handles the rendering of the static files that compose the frontend, in order to make the website visible for the user, at that URL. The homepage appears as shown in Figure \ref{fig:homepage}
 	\begin{figure}[htp!]
 		\begin{center}
 			\includegraphics[width=\columnwidth]{chapter7/figure/homepage.png}\par 
@@ -90,7 +90,7 @@ The idea behind the Flask backend is to map URL paths to some logic we want to e
 \end{itemize}
 
 \section{Frontend}
-The frontend application relies on Angular framework, a TypeScript-based open source, frontend web application platform, developed for the most by Google and some individuals and developer corporations.
+The client-side application relies on Angular framework, a TypeScript-based open source, frontend web application platform, developed for the most by Google and some individuals and developer corporations.
 It is a rebuild of the previous AngularJS framework.
 BotBuster fronted project is composed by a single HTML page, with TypeScript files creating complex types for the data and handling the HTTP responses.
 The angular component operating on the homepage contains HTML tags that are being toggled with the responses provided by the web server application.

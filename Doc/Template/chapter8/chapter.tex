@@ -3,57 +3,77 @@
 \label{capitolo8}
 \thispagestyle{empty}
 
+We can see this thesis as a proper journey, in which we learnt a lot about the available data that populate the social networks, and how they can be tricky to deal with.
+The conclusion of our work lefts a tool that can be used by anyone and that can prevent undesired or unlucky interactions with harmful bots on Twitter.
 
-So far so good. We are almost done. What is left is, well, just one of the most important chapters of the whole thesis, i.e., the conclusion. The purpose of this section is not to ``conclude'' the thesis in the sense to ``stop'' here. It's rather to draw conclusions, that is, tell how well your work actually meets the requirements identified, answers the research questions, advances the state of the art. As such, this is perhaps the most important section! It may seem easy to just summarize a bit what you did and tell again what your objectives were when starting the work. But be aware that this can be much more difficult than it sounds, and you can expect your supervisor iterating with you several times over this same chapter. It is important that you show again your personal and professional maturity and your understanding of the topic. As you will see, some healthy self-criticism too is needed to make this chapter good.
+The development of such tool doesn't imply that perfection has been reached, not even at the last step of this journey. We are aware of the limitations we induced in our work, due to the time we dispose and to the lacking of experience in this field, experience that we grown, by handling these data and by trying to give them sense, in terms of empirical considerations. 
+
+This chapter exposes the obtained results, as well as the weakness faced and the possible future implementations that could strengthen our the work done so far.
 
 \section{Summary and Lessons Learned}
-Summarize here your work in about one page.
+The overall considerations can be summarized along with the main steps involved in the thesis development.
 
 \begin{itemize}
-\item[\Square] Start from the initial \emph{problem statement} or \emph{research questions}.
-\item[\Square] Summarize your \emph{approach} and \emph{methodology}.
-\item[\Square] Recap the \emph{lessons learned}.
+\item[\PencilRight] We had to face the challenge to insert a piece of research inside the prolific puzzle of the social bots detection. We studied the work done in this field and decided to go deeper inside the classification methods available so far. It wasn't easy to make us space inside research works, especially considering the time needed to gather the proper amount of data, for this kinds of purpose. The job was challenging and we tried to exploit the time and the tools we had, to give the best contribute to the research as possible. We are pleased with the results obtained, in terms of dataset creations and tools developed. Obviously, some limitations came to visit, starting from the timespan of the data observations, moving forward with the computation power we dispose, and so on.
+\item[\PencilRight] Our methodology involved the data collections, whose required effort was one of the biggest of the entire project. The main - and the first - issue faced, indeed, regarded the data itself. We did not have a custom dataset to draw samples from. We needed five different targets for our classifiers, because five were the targets we wanted to focus on. 
+
+We followed several leads, in order to build a proper dataset for the multiple classes classifiers, and to enrich the training set of the binary model. After all the data were clean and homogeneous, we crafted useful features to support the decision boundaries among targets. Multiple models were created and combined into an execution pipeline. They were selected and enhanced by evaluating their performance scores, with test sets coming from our datasets. 
+At the end of the whole process, an online web application was build to wrap the final prediction Python script. We encapsulated it into a client/server paradigm, in order to be available to everyone.
+
+\item[\PencilRight] During the stages needed to complete our work, we learnt lots of things about models, tools, methodologies and related works. However, the most important thing we have seen is the significance of the data. Data plays the leading role in a data science project, without a wide, consistent, stratified and concept-representative dataset, the models won't be able to approximate the actual targets correctly. This is the main issue met with our approach.
+We gathered a nice amount of stratified data, but the problem is inherent to that stratification. Every class differs from the others with too much distinctive traits, leading to a quite effortless model selection. Our classifiers fits our data very well, with pleasing metric scores, but are they really capable to generalize over unseen samples?\\
+What happens when we feed our models with a brand new, borderline entry, without characterising marks? Here the nature of the datasets used emerges. We don't have much instrument to be compared with ours, since the available works put the effort into bots and humans detection. We can provide a wide scale projection of the Twitter population, and compare the outcome with other public studies on large numbers.
 \end{itemize}
 
 
 \section{Outputs and Contributions}
-Provide an overview of the outputs your project/work produced and then state what you think are the (research) contributions that advance the state of the art. 
+The main output of our thesis is BotBuster, the web application. It is an instrument aimed to classify every Twitter user, with no discriminations about their tweeting activities. The tool provides "soft" classifications, which means that the outcome returned by the engine is a probability vector, and not a specific target. It assigns, to the examined account, the membership likelihood to each target involved in our study.
+The prediction rendered with vertical bars contains probabilities for NSFW, News-Spreaders, Spam-Bots, Fake-Followers and Genuines category.
+
+In addition with the utility provided to the internet users, with the development of such instrument, we hope that the study we made would be a starting point for those who are interested in building more sophisticated tools for automatic recognition of social bots, even in cross-platform environments.
 
 \section{Projection on wide scale}
-Provide an overview of the outputs your project/work produced and then state what you think are the (research) contributions that advance the state of the art. 
-
-\begin{itemize}
-\item[\Square] List all the concrete \emph{outputs} you produced (remember the discussion in Section \ref{sec:contributions}).
-\item[\Square] Copy/paste here the \emph{list of contributions} you already anticipated in Section \ref{sec:contributions} (attention: outputs and contributions are two different lists; don't mix them).
-\item[\Square] For each of the contributions, provide suitable \emph{evidence}, drawing from the body of your thesis. For instance, if you claim that you did a formal proof of something, provide the exact number or name of the proof. If you promised subjective evidence for something, link this claim to the user studies you did. Etc. One or two sentences are enough for each of the contributions.
-\end{itemize}
+TO BE IMPLEMENTED
 
 
 \section{Limitations}
-This is where your self-criticism is needed. By now, I am confident you did a great work with your project and the writing of your thesis. So, compliments for that! You're almost done. But let's be frank: the work is not perfect. It simply cannot be, it never is. If it is, then not only I but also the whole commission of your defense will give you a standing ovation (I really would like to see this once). But in general there are just so many aspects of a research/thesis project that one would have to control or test, and with the limited time and resources available for these kinds of final projects it is just not possible to do everything.
+As said before, we met several limitations in our thesis, and they came both from external factors and internal choices that affected the final results.
 
-In this section, you therefore tell the reader which aspects of your work may limit the impact or generalizability of your findings or contributions. As said, be frank. If you tell that you did a user study with only 10 people instead of 30 (which would make the findings stronger), you don't risk to give the impression you didn't do it well enough. Actually the opposite is true: if you don't tell it, your reader, who by now will anyway have gotten that there were 10 and not 30 people involved in the study, will instead think either (i) that you \emph{didn't know} that a higher user involvement would have been better to back your claims or (ii) that you intentionally want to \emph{hide} information or even \emph{cheat}. None of these are good for you, and for sure worse then telling straightaway. Keep this in mind.
+The external factors are, for the most, the time and the computational power.
+We can impute to the data the most limitations, but the fact is that, with the right amount of time, we could had collected a better dataset, exploiting different and non tested methodologies. For instance, we could have used social honeypots, crafted to trigger specific kinds of bots, maybe capturing more diversity in our data, involving new waves of social bots, as well as more institutional accounts, like editorial or politics users. We lacked verified profiles in our training sets, we think that adding more accounts with that mark could be helpful to extend the legitimate behaviour's spectrum that we have analysed. We can observe the struggling of our classifiers, when it comes to such verified accounts.
+Even the other categories could have been extended with borderlines accounts, in order to make more flexible decisions. Once again, it is a matter of time, mostly.
+The computational power didn't represent an major issue, but it could had provided us more time to do some things we couldn't do, like the ones described above.
+The calculations of some features, like the extrinsic attributes and the image ones, required lot of times, with the tools we had. Some algorithms had to be ran for hours, entire nights or days. The Grid Searches used to find the best hyperparameters configurations took us much time, and they were repeated very frequently. Every little change, every little different choice, brought us to recalculate the best models' settings, which means Grid Searching over the parameters space, repeatedly.
+It could have been faster with cloud computing solutions.
 
-Here some typical limitations of research. Check if any of them apply to your work:
+When it comes to internal choices, we have to start with something we lacked, especially at the beginning of this journey: the experience.\\
+Inexperience made us chose some moves that, in operative terms, wasted precious time.
+For instance, the programming skills with Python and the machine learning frameworks weren't fulfilling the necessities, at the first stages of the work.
+We spent a lot of time struggling with programming paradigms and handling the dataset, with information losses that forced us to repeat basic operations and restore entire processes.
+These limitation has been mitigated with the experience on practical coding, and the entire workflow had a speed-up, as the time passed.
+Some inexperience-driven limitations, that not necessarily represented a bad handling of the time, were the attempts that revealed to be failures, but that made us learn something more about methods and contexts.
+For instance, one of the first hands-on tries on the data was to apply an unsupervised labelling to a binary dataset, in order to catch useful patterns and to simplify the targeting process. By that time, we thought that there weren't other ways but handling labelling the datasets. Fortunately, and thanks to that unlucky approach, we found out new ways to collect the labelled data.
 
-\begin{itemize}
-\item[\Square] Small \emph{sample size} (e.g., the number of users in the study or the amount of data collected in an experiment).
-\item[\Square] For experiments that involve multiple \emph{indipendent variables}, likely you will not have tested them all (e.g., in a crowdsourcing experiment, you fixed a reward for all experiments and did not study if that too affected your results). 
-\item[\Square] You may have \emph{promised} something in the beginning of the thesis; if you didn't achieve everything either you drop the very promise or you mention it here as a limitation.
-\item[\Square] When you collected data, there may have been some \emph{bias} in the data (e.g., if you implement a prototype and do a user study yourself where there participants know that you actually implemented the software, they will give you biased answers, typically better ones).
-\item[\Square] Collected data many have turned out being \emph{incomplete} or of  \emph{lower quality} then initially expected. How does this impact your findings?
-\item[\Square] Your prototype may have \emph{crashed} or \emph{not worked properly} in some experiments; it's important you tell the reader and explain possible implications of this on the validity of your conclusions.
-\item[\Square] Due to time restrictions, you may have \emph{not been able to complete} all experiments planned initially; again, explain the possible implications.
-\item[\Square] People participating in a user study may have \emph{dropped out} of the study, for whatever reason; if the reason is related to what you did or not did, you should mention it.
-\item[\Square] Sometimes it is \emph{not possible to compare} an own algorithm with other, similar algorithms, e.g., because their code is not available; this too may limit the viability of the findings.
-\item[\Square] \dots
-\end{itemize}
+Due to inexperience, some choices we made, when we were building the first models, have been rushed, in comparison with the decision taken once the overall structure was clear. Sometimes, we went back to old decisions and we tried different possibilities, in order to better adjust some features to a pipeline, instead that to the previous stacking method. This revisiting process took much time, and we are aware that there are still things that could be refined better.
 
+For instance, the extrinsic features have been passed under different tests, before choosing the final configuration. This is how we arrived to totally disjointed dictionaries. But we did not play with the number of initial words retrieved, taking 1000 as fixed (older versions had less words). We could had let empirical methods choose the right amount of terms to consider.
 
+Also, we did not consider language-dependent features. This process was a consequence of the first adaptations to the data retrieved. We were gathering only American accounts, and the textual features were initially thought to fit that language.
+With the extension of the dataset, especially with the Fake-Followers category, we introduced different parts of the world in our data, with their languages. This made the data heterogeneous, without adjusting the attributes. Geolocalization is not taken into account as a feature, as well as the nationality. 
+
+Some attributes were deleted after observing a large number of missing values. One example is the colour chose to fill the profile tile. Since it is represented as a string (RGB hexadecimal code), in order to be handled by the algorithms we built, it should had been encoded with techniques as One-Hot encoding, that would had made the number of features explode. We could have found better way to handle the missing values and the encoding of such features.
+
+Another thing that could have been done, and that we actually considered, is the sentiment analysis on tweets. We could have relied on external services, but sticking to a low number of calls for the APIs, because these are paid services that offer limited free solutions. Implementing our own sentiment classifiers would have been expensive, in terms of time and effort. We preferred to spend that time to refine the features we already have and to add a classifier to the ensemble.
 
 \section{Future Work}
-Finally, here you tell the reader which aspects you think would deserve further study or development. A good starting point for this is of course the list of limitations you just discussed. Not all of them may be worth investing more effort, but some will. The idea of this section is to identify where possible new effort should be invested, in order to make the work complete. Again, be frank and don't be afraid of identifying also new research directions. It's not you who will be doing what you propose here. It's meant for the reader, the community. Everybody understands that after your defense you won't be working any longer on this project. It's all about suggesting future work, not telling that \emph{you} will be doing it. 
+Several things could be implemented by future works. The most important ones could be the dataset extension, as well as the detection of new targets.
+Since we studied the Twitter platform, we stuck to a narrow range of harmful behaviours. This range could be extended with new classes to perform classifications on. Offensive bots, like the ones that incite to hate or racism, are outside the domain of our study, because we did not find a proper method to collect a reasonable amount of them. The missing sentiment analysis discouraged us to identify the level of hate or offensive contents in tweets. This insertion could make the target space wider.
 
+Another useful work that could be done, is the evolving training of our models. It could be implemented a way to receive trusted feedbacks over the performed classifications. Such indications, along with the classified sample, could feed the models by adding that entry to our training set, with the indicated target. Obviously, feedbacks should be trusted and not biased. A heuristic method to choose which feedback consider should be implemented too, as well as reinforcement learning algorithms, to improve the evolving training.
+
+A more sophisticated image recognition system can be included. NSFW category is a well defined sphere of the bot's ecosystem, it would be very easy to detect it with the right instruments. By now, we have an Inception convolutional neural network, used to compute two features bounded to the images. It would be interesting getting some insights from video contents too, in feasible computation time. The image features aren't 100\% accurate, due to the validation error found and to the data used to fit the network. It can be improved, with more and diversified samples. The time needed to process ten images discourages us to look for more media content to analyse. It would be a robust support to be able to lookup more tweets with media contents embedded.
+
+Some features that will look outside the user's box could be added, like the ones which get clues from the user's network, from her friends or the accounts that quote and retweet her. We had our focus on the user's routine, with meta-data about her relationships, but we don't get inside those interactions.
 
 
 

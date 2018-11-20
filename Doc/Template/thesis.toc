@@ -107,10 +107,10 @@
 \contentsline {section}{\numberline {7.5}Comparison with Botometer}{107}{section.7.5}
 \contentsline {chapter}{\numberline {8}Conclusion and Future Work}{111}{chapter.8}
 \contentsline {section}{\numberline {8.1}Summary and Lessons Learned}{111}{section.8.1}
-\contentsline {section}{\numberline {8.2}Outputs and Contributions}{111}{section.8.2}
-\contentsline {section}{\numberline {8.3}Projection on wide scale}{112}{section.8.3}
-\contentsline {section}{\numberline {8.4}Limitations}{112}{section.8.4}
-\contentsline {section}{\numberline {8.5}Future Work}{114}{section.8.5}
-\contentsline {chapter}{References}{115}{section.8.5}
-\contentsline {chapter}{\numberline {A}User Manual}{117}{appendix.A}
-\contentsline {chapter}{\numberline {B}Dataset}{119}{appendix.B}
+\contentsline {section}{\numberline {8.2}Outputs and Contributions}{113}{section.8.2}
+\contentsline {section}{\numberline {8.3}Projection on wide scale}{113}{section.8.3}
+\contentsline {section}{\numberline {8.4}Limitations}{113}{section.8.4}
+\contentsline {section}{\numberline {8.5}Future Work}{115}{section.8.5}
+\contentsline {chapter}{References}{117}{section.8.5}
+\contentsline {chapter}{\numberline {A}User Manual}{119}{appendix.A}
+\contentsline {chapter}{\numberline {B}Dataset}{121}{appendix.B}
