@@ -508,22 +508,22 @@ We validated a Random Forest multiclass classifier, with increasing number of tr
 
 The best looking number of words to save was 1000. The totally non-overlapping solution would have provided us the best F1 score, once we would have started developing the final models. We decided to go with that configuration to build the extrinsic features. 
 
-\begin{figure}[htp!]
+\begin{figure}[t!]
 	\includegraphics[width=\columnwidth]{chapter4/figure/features_importances_250.png}
 	\caption{Features ranking - Safe Area = 250}
 	\label{fig:250_overall}
 \end{figure}
-\begin{figure}[htp!]
+\begin{figure}[t!]
 	\includegraphics[width=\columnwidth]{chapter4/figure/features_importances_500.png}
 	\caption{Features ranking - Safe Area = 500}
 	\label{fig:500_overall}
 \end{figure}
-\begin{figure}[htp!]
+\begin{figure}[t!]
 	\includegraphics[width=\columnwidth]{chapter4/figure/features_importances_750.png}
 	\caption{Features ranking - Safe Area = 750}
 	\label{fig:750_overall}
 \end{figure}
-\begin{figure}[htp!]
+\begin{figure}[t!]
 	\includegraphics[width=\columnwidth]{chapter4/figure/features_importances_1000.png}
 	\caption{Features ranking - Safe Area = 1000}
 	\label{fig:1000_overall}
@@ -615,61 +615,50 @@ At the end of this process we obtained a feature vector composed of 37 elements,
 \subsubsection{Tweets features}
 \small
 \begin{center}
-	\begin{tabular}{lll}
-		\textbf{Descriptive features}\\
-		\hline\hline
-		freq\\
-		min\_fav\\
-		avg\_fav\\
-		max\_fav\\
-		min\_hash\\
-		avg\_hash\\
-		max\_hash\\
-		min\_len\\
-		avg\_len\\
-		max\_len\\
-		min\_ret\\
-		avg\_ret\\
-		max\_ret\\
-		media\_perc\\
-		quote\_perc\\
-		ret\_perc\\
-		url\_perc\\\hline\\
+	\begin{tabular}[t]{ll}
+		\begin{tabular}[t]{lll}
+			\textbf{Descriptive features}\\
+			\hline\hline
+			freq\\
+			min\_fav\\
+			avg\_fav\\
+			max\_fav\\
+			min\_hash\\
+			avg\_hash\\
+			max\_hash\\
+			min\_len\\
+			avg\_len\\
+			max\_len\\
+			min\_ret\\
+			avg\_ret\\
+			max\_ret\\
+			media\_perc\\
+			quote\_perc\\
+			ret\_perc\\
+			url\_perc\\\hline\\
+		\end{tabular}
+		&
+		\begin{tabular}[t]{lll}
+			\textbf{Intrinsic features}\\
+			\hline\hline
+			tweets\_intradistance\\
+			url\_intradistance\\\hline\\
+			\textbf{Extrinsic features}\\
+			\hline\hline
+			NSFW\_words\_score\\
+			news\_spreaders\_words\_score\\
+			spam\_bots\_words\_score\\
+			fake\_followers\_words\_score\\
+			\hline\\
+			\textbf{Images features}\\
+			\hline\hline
+			NSFW\_profile\\
+			NSFW\_avg\\\hline\\
+		\end{tabular}
 	\end{tabular}
 \end{center}
-
-\begin{center}
-	\begin{tabular}{lll}
-		\textbf{Intrinsic features}\\
-		\hline\hline
-		tweets\_intradistance\\
-		url\_intradistance\\\hline\\
-	\end{tabular}
-\end{center}
-
-
-\begin{center}
-	\begin{tabular}{lll}
-		\textbf{Extrinsic features}\\
-		\hline\hline
-		NSFW\_words\_score\\
-		news\_spreaders\_words\_score\\
-		spam\_bots\_words\_score\\
-		fake\_followers\_words\_score\\
-		\hline\\
-	\end{tabular}
-\end{center}
-
-\begin{center}
-	\begin{tabular}{lll}
-		\textbf{Images features}\\
-		\hline\hline
-		NSFW\_profile\\
-		NSFW\_avg\\\hline\\
-	\end{tabular}
-\end{center}
-
 \normalsize
+
 
 \subsection{Binary Dataset}
 At the end of this process we obtained a feature vector composed of 33 elements, 12 based on the user and 21 based on his tweets.
