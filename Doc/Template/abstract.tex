@@ -6,11 +6,15 @@
 \addcontentsline{toc}{chapter}{Abstract}
 
 This thesis describes a study and a web tool for the identification and classification of bots, according to the potential harm or threat they may cause to humans in online conversations. The focus is on Twitter, as social network platform, and bots are meant as algorithmically driven accounts that act like humans in interactions.
-The problem has so far been addressed with a special attention to the detection of such automated entities among legitimate ones. The method and tool described in this paper propose a finer level of granularity and show that it is further possible to classify bots also into potential types of harm --  bots with adult content (\textit{NSFW}), bots propagating news and potential misinformation (\textit{News-Spreaders}), bots that spam product sails or job offers (\textit{Spam-Bots}) and bots who mimic interests (\textit{Fake-Followers}) -- in function of the content they share and their behaviour.
-The method involves a predictive pipeline algorithm, composed by a first binary machine learning classifier, aimed to perform the detection of bots among genuine accounts (with 0.95 of AUC score) and a multi-class ensemble classifier, which goes deeper inside those aforementioned categories and classifies the potential harm (with an average F1 measure of 98\%).
+The problem has so far been addressed with a special attention to the detection of such automated entities among legitimate ones. The method and tool described in this thesis propose a finer level of granularity and show that it is further possible to classify bots also into potential types of harm --  bots with adult content (\textit{NSFW}), bots propagating news and potential misinformation (\textit{News-Spreaders}), bots that spam product sails or job offers (\textit{Spam-Bots}) and bots who mimic interests (\textit{Fake-Followers}) -- in function of the content they share and their behaviour.
+
+The method involves the creation of two datasets, the features engineering and the models selection.
+Starting from binary-labelled (bot or not) accounts lists, the thesis shows how the training sets have been collected, following different leads and approaches, yielding to a stratified multi-class dataset.
+The work done focuses on different bots' behaviours, and specific features have been crafted to better distinguish those ways to act.
+The final solution involves a predictive pipeline algorithm, composed by a first binary machine learning classifier, aimed to perform the detection of bots among genuine accounts and a multi-class ensemble classifier, which goes deeper inside those aforementioned categories and classifies the potential threat.
+Each model of the classifiers pool has been evaluated individually and inside the ensemble. The validation stages measured a 95\% of AUC score for the binary classifier, and an average of 98\% in F1 score, for the multi-class ensemble model.
+
 The tool implementing the method, BotBuster, is a web application running the prediction script, and it is accessible for free.
-
-
 
 
 
@@ -19,9 +23,15 @@ The tool implementing the method, BotBuster, is a web application running the pr
 
 \addcontentsline{toc}{chapter}{Sommario}
 
-Here goes the translation into Italian of the abstract. If the thesis is written in Italian, no translation into English is needed. Hence, one of the following must be checked:
+In questa tesi è descritta una metodologia e uno strumento per l'dentificazione e la classificazione di bot, in termini di potenziali comportamenti minacciosi o dannosi, nei confronti di umani, nel contesto delle interazioni sui social network.
+In questo specifico caso, l'attenzione è stata rivolta alla piattaforma online di Twitter, e i bot sono da considerarsi come account presenti sul social, gestiti da algoritmi che ne automatizzano le interazioni con gli umani.
+Il problema dei bot è, fino ad ora, stato affrontato con un'ottica improntata all'identificazione di quest'ultimi tra la totalità delle entità che popolano il web.
+Il metodo esposto, così come lo strumento proposto, puntano ad aggiungere un livello di profondità alle soluzioni fino ad ora proposte, classificando la natura di questi bo e i possibili danni che possono recare ad utenti legittimi -- bot che condividono contenuti per adulti (NSFW), bot che fanno propaganda politica, diffondendo notizie e possibile disinformazione (News-Spreaders), bot che propinano offerte di lavoro o vendite di prodotti di dubbia validità (Spam-Bots) e bot che simulano interesse per i contenuti condivisi da altri account (Fake-Followers) -- in funzione dei contenuti da loro condivisi e dal loro comportamento.
 
-\begin{itemize}
-\item[\Square] Thesis written in \emph{English}, properly proofread translation needed
-\item[\Square] Thesis written in \emph{Italian}, no translation needed, chapter omitted
-\end{itemize}
+Il metodo studiato prevede la costruzione di due dataset, un processo di creazione di attributi aggiuntivi e la selezione dei modelli di classificazione.
+Partendo da liste di utenti con target binario (bot o umani), la tesi mostra come si siano creati i training set per gli algoritmi, seguendo diverse piste, portando a dataset stratificati con più di due target.
+Il lavoro svolto si concentra sui diversi comportamenti imputabili ai bot, son state quindi assemblate delle feature specifiche per distinguere tali modi di interagire.
+La soluzione finale prevede una pipeline predittiva, composta da un primo modello di apprendimento automatico in grado di classificare bot e umani, e da un ensemble di classificatori che si occupano di andare a fondo nella distinzione di quelle sommenzionate categorie di bot e delle potenziali minacce che possono rappresentare.
+Ogni modello è stato valutato in maniera isolata e nell'insieme dell'ensemble. In fase di validazione sono stati misurati un 95\% di AUC score, nel modello binario, e una media del 98\% per la metrica F1, nel modello multi-classe.
+
+Lo strumento che implementa il metodo descritto, BotBuster, è una applicazione web che esegue lo script per la classificazione, ed è disponibile per chiunque su internet.
