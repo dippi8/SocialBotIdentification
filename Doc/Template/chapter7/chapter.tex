@@ -34,15 +34,27 @@ The input filed filling triggers the engine operating in the background, which r
 \section{Architecture}
 The web application works under a client - server paradigm. The Angular program is executed on the client's web browser, while on the server runs the Flask application.
 Every time a user search for a Twitter user name, the HTTP protocols is involved to perform POST and GET requests between client and server. The frontend and the backend applications handle the request and exchange, as shown in Figure\ref{fig:architecture}.
-\begin{figure}
+\begin{figure}[t!]
 	\begin{center}
-		\includegraphics[width=0.6\columnwidth]{chapter7/figure/architecture.png}\par 
+		\includegraphics[width=0.6\columnwidth]{chapter7/figure/architecture.png} 
 	\end{center}
 	\caption{Client - Server architecture}
 	\label{fig:architecture}
 \end{figure}
 
 \section{Backend}
+The back-end side of the web application is the core of the whole tool. Its goal is to summarize and perform the methods explained in the previous chapters and to classify Twitter accounts, whose user name or id is provided by the BotBuster user.
+The prediction time may vary, and it depends on several factors, like the condition of the internet connection, the current utilization of the CPU, the amount of data retrieved for the required user, as well as other factors.
+We can say that, testing the web application on local machines, the average computation time for a single prediction, for those users that has at least 1000 tweets on their timelines, is up to 12 seconds. This remarkable amount of time is due to several factors, as said before, but it can be imputable to a specific element: the nsfw\_avg feature computation. It may takes up to 7 seconds, in order to process and classify 10 images with the Inception neural network. Users with less than 10 tweets, or less than 10 tweets with embedded images, require a shorter timespan to be classified, which is, in average up to 5 seconds. Figure \ref{fig:pie} shows the repartition of computational time, along with the processes involved. It is based on the timespan needed to classify users with at least 100 tweets and with at least 10 tweets with images.
+
+\begin{figure}[htp!]
+	\begin{center}
+		\includegraphics[width=\columnwidth]{chapter7/figure/time-pie.png}
+	\end{center}
+	\caption{Prediction time pie chart}
+	\label{fig:pie}
+\end{figure}
+
 \subsection{Engine}
 The real engine of the web application is a Python 3 script. It performs all the steps described in the pipeline execution section \ref{predicion_pipeline}.
 The models, that have been previously fitted with data, serialized and stored, are now loaded by the Python script. They have to perform a single prediction at a time.
