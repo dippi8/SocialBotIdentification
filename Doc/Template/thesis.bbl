@@ -1,36 +1,15 @@
 \begin{thebibliography}{10}
 
-\bibitem{Varol}
-Clayton A. Davis Filippo Menczer Alessandro~Flammini Onur~Varol,
-  Emilio~Ferrara.
-\newblock Online human-bot interactions: Detection, estimation, and
-  characterization.
-\newblock 2017.
-
-\bibitem{inbenta}
-Inbenta~Technologies Inc.
-\newblock The ultimate guide to chatbots for businesses. tech. rep., 2016.
-
 \bibitem{bessi}
 E.~Ferrara A.~Bessi.
 \newblock Social bots distort the 2016 us presidential election online
   discussion. first monday 21, 2016.
 
-\bibitem{DanielIC2019}
-Florian Daniel, Cinzia Cappiello, and Boualem Benatallah.
-\newblock {Bots Acting Like Humans: Understanding and Preventing Harm}.
-\newblock {\em IEEE Internet Computing, accpted for publication}, 2019.
-
-\bibitem{Botometer}
-Emilio Ferrara Alessandro Flammini Filippo~Menczer Clayton A.~Davis,
-  Onur~Varol.
-\newblock Botornot: A system to evaluate social bots, 2016.
-
-\bibitem{Lee11sevenmonths}
-Kyumin Lee, Brian~David Eoff, and James Caverlee.
-\newblock Seven months with the devils: a long-term study of content polluters
-  on twitter.
-\newblock 2011.
+\bibitem{SAGA}
+Simon Lacoste-Julien Aaron~Defazio, Francis~Bach.
+\newblock Saga: A fast incremental gradient method with support for
+  non-strongly convex composite objectives.
+\newblock 2014.
 
 \bibitem{Yang}
 R.~Harkreader C.~Yang and G.~Gu.
@@ -38,11 +17,55 @@ R.~Harkreader C.~Yang and G.~Gu.
   spammers.
 \newblock 2013.
 
-\bibitem{Cresci}
-Marinella Petrocchi Angelo Spognardi Maurizio~Tesconi Stefano~Cresci, Roberto
-  Di~Pietro.
-\newblock The paradigm-shift of social spambots: Evidence, theories, and tools
-  for the arms race.
+\bibitem{inception}
+Sergey Ioffe-Jonathon Shlens Zbigniew~Wojna Christian~Szegedy,
+  Vincent~Vanhoucke.
+\newblock Rethinking the inception architecture for computer vision, 2015.
+
+\bibitem{Botometer}
+Emilio Ferrara Alessandro Flammini Filippo~Menczer Clayton A.~Davis,
+  Onur~Varol.
+\newblock Botornot: A system to evaluate social bots, 2016.
+
+\bibitem{DanielIC2019}
+Florian Daniel, Cinzia Cappiello, and Boualem Benatallah.
+\newblock {Bots Acting Like Humans: Understanding and Preventing Harm}.
+\newblock {\em IEEE Internet Computing, accpted for publication}, 2019.
+
+\bibitem{inbenta}
+Inbenta~Technologies Inc.
+\newblock The ultimate guide to chatbots for businesses. tech. rep., 2016.
+
+\bibitem{svm}
+T.~Joachims.
+\newblock Text categorization with support vector machines: Learning with many
+  relevant features, 1998.
+
+\bibitem{Lee11sevenmonths}
+Kyumin Lee, Brian~David Eoff, and James Caverlee.
+\newblock Seven months with the devils: a long-term study of content polluters
+  on twitter.
+\newblock 2011.
+
+\bibitem{selfie}
+Wesna LaLanne Mubarak~Shah Mahdi M.~Kalayeh, Misrak~Seifu.
+\newblock How to take a good selfie?, 2015.
+
+\bibitem{SAG}
+Francis~Bach Mark~Schmidt, Nicolas Le~Roux.
+\newblock Minimizing finite sums with the stochastic average gradient.
+\newblock 2017.
+
+\bibitem{Varol}
+Clayton A. Davis Filippo Menczer Alessandro~Flammini Onur~Varol,
+  Emilio~Ferrara.
+\newblock Online human-bot interactions: Detection, estimation, and
+  characterization.
+\newblock 2017.
+
+\bibitem{Liblinear}
+Cho-Jui Hsieh Xiang-Rui~Wang Rong-En~Fa, Kai-Wei~Chang and Chih-Jen Lin.
+\newblock Liblinear: A library for large linear classification.
 \newblock 2017.
 
 \bibitem{Disinformation}
@@ -50,39 +73,15 @@ John S. and James L.~Knight Foundation.
 \newblock Disinformation, 'fake news' and influence campaigns on twitter.
 \newblock 2018.
 
-\bibitem{inception}
-Sergey Ioffe Jonathon Shlens Zbigniew~Wojna Christian~Szegedy,
-  Vincent~Vanhoucke.
-\newblock Rethinking the inception architecture for computer vision, 2015.
-
-\bibitem{selfie}
-Wesna LaLanne Mubarak~Shah Mahdi M.~Kalayeh, Misrak~Seifu.
-\newblock How to take a good selfie?, 2015.
-
-\bibitem{svm}
-T.~Joachims.
-\newblock Text categorization with support vector machines: Learning with many
-  relevant features, 1998.
-
 \bibitem{nb}
 W.~Ip S.~Ting and A.~H. Tsang.
 \newblock Is naive bayes a good classifier for document classification?, 2011.
 
-\bibitem{SAGA}
-LIENS MSR INRIA) Simon Lacoste-Julien (INRIA Paris Rocquencourt LIENS
-  MSR~INRIA) Aaron~Defazio, Francis Bach (INRIA Paris~Rocquencourt.
-\newblock Saga: A fast incremental gradient method with support for
-  non-strongly convex composite objectives.
-\newblock 2014.
-
-\bibitem{SAG}
-Francis~Bach Mark~Schmidt, Nicolas Le~Roux.
-\newblock Minimizing finite sums with the stochastic average gradient.
-\newblock 2017.
-
-\bibitem{Liblinear}
-Cho-Jui Hsieh Xiang-Rui~Wang Rong-En~Fa, Kai-Wei~Chang and Chih-Jen Lin.
-\newblock Liblinear: A library for large linear classification.
+\bibitem{Cresci}
+Marinella Petrocchi-Angelo Spognardi Maurizio~Tesconi Stefano~Cresci, Roberto
+  Di~Pietro.
+\newblock The paradigm-shift of social spambots: Evidence, theories, and tools
+  for the arms race.
 \newblock 2017.
 
 \end{thebibliography}
