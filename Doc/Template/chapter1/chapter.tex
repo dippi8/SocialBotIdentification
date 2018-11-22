@@ -29,29 +29,7 @@ A \textbf{harm} occurs when someone suffers an injury or a damage, but also when
 
 These types of harm may happen while bots perform  \textbf{actions}, such as posting a message or commenting a message by someone else, that are not harmful per se and that also human users would perform. What needs to happen is the verification of some condition of inappropriateness, which turns the action into an \textbf{abuse}. Abuses we found are, disclosing sensitive facts, denigrating, being grossly offensive, being indecent or obscene, be threatening, make false allegations, deceive users, spam, spread misinformation, mimic interest, clone profiles, and invade spaces that are not meant for bots. Some of these may be subject to legal prosecution (e.g., threatening people), others only breach moral, ethical or social norms, yet they still may be harmful to unprepared, human users.
 
-
-\section{Methodology}
-
-
-\begin{itemize}
-\item[\PencilRight] In order to create a bot classifier, we used the Foundational Methodology for Data Science, as described in figure \ref{fig:methodology}. The used tools are:
-
-\begin{itemize}
-	\item[\PencilRight] \emph{Python} for Data collection, undestanding, preparation and modelling.
-	\item[\PencilRight] \emph{Angular} for the front-end development
-	\item[\PencilRight] \emph{Flask} for the back-end development
-\end{itemize}
-
-\begin{figure}
-	\includegraphics[width=\linewidth]{chapter1/figure/methodology.jpg}
-	\caption{Foundational Methodology for Data Science by IBM}
-	\label{fig:methodology}
-\end{figure}
-
-\end{itemize}
-
-
-\section{Contributions}
+\section{Contributions and Methodology}
 \label{sec:contributions}
 In the following, we focus on \textbf{Twitter} as online communication environment, as Twitter is freely accessible through its open API (\url{https://developer.twitter.com}) and does not require special friend privileges to access content of users. We specifically study content shared via \emph{tweets}, where a tweet $t$ is a short text message of up to 280 characters, including URLs to external content or images, mentions (annotated references of other Twitter accounts), and hashtags. We neglect direct messages (similar to chats) between users, as these are private and not available for inspection. 
 
@@ -63,6 +41,14 @@ Out of the different types of \textbf{abuses} listed above, in this thesis we co
 If we call the four classes of bots \emph{NSFW, News-Spreaders, Spam-Bots, Fake-Followers}, respectively, 
 and use the class \emph{Genuine} for genuine accounts, the \textbf{problem} we address in this thesis is how to classify a given account $u$ by analysing the account's profile $P$ and tweet timeline $T$:  
 $u = \langle P, T \rangle \mapsto \{NSFW, NS, SB, FF, GEN\}$.
+
+In order to create a bot classifier, we used the Foundational Methodology for Data Science (\url{https://www-01.ibm.com/common/ssi/cgi-bin/ssialias?htmlfid=IMW14824USEN}), as described in figure \ref{fig:methodology}.
+
+\begin{figure}
+	\includegraphics[width=\linewidth]{chapter1/figure/methodology.jpg}
+	\caption{Foundational Methodology for Data Science by IBM}
+	\label{fig:methodology}
+\end{figure}
 
 The specific \textbf{contributions} of this thesis are:
 
