@@ -36,7 +36,7 @@ In the following, we focus on \textbf{Twitter} as online communication environme
 \textbf{Bots} manifest themselves in Twitter as regular users: they have an own account and user profile and are able to tweet (post a message), re-tweet (forward a tweet), reply to tweets, like tweets. Through the API of Twitter, it is possible to retrieve all tweets of a given account, that is the tweet timeline of the account, for inspection. For the purpose of this thesis, we focus on the tweets produced (tweets, re-tweets, replies) and interpret a generic user as a tuple $u = \langle P, T \rangle$ where $P$ is the set of 
 user profile parameters (e.g., name, bio, location) and $T = [t_i,...,t_n]$ is the chronologically ordered sequence of tweets.
 
-Out of the different types of \textbf{abuses} listed above, in this thesis we concentrate on: \emph{fake-followers} that follow a user to pretend interest in the user; bots that spread \emph{adult content} like pornographic material or lures (NSFW); bots propagating \emph{misinformation}, i.e., high-frequency publishers of news of ambiguous quality; and \emph{spambots} distributing commercial advertisements. The selection of these four abuse types is motivated by the common method we propose for their analysis, i.e., content-based classification.
+Out of the different types of \textbf{abuses} listed above, in this thesis we concentrate on: \emph{Fake-Followers} that follow a user to pretend interest in the user; bots that spread \emph{adult content} like pornographic material or lures (Not Safe For Work); bots propagating news and potential \emph{misinformation}, i.e., high-frequency publishers of news of ambiguous quality; and \emph{Spam-Bots} distributing commercial advertisements. The selection of these four abuse types is motivated by the common method we propose for their analysis, i.e., content-based classification.
 
 If we call the four classes of bots \emph{NSFW, News-Spreaders, Spam-Bots, Fake-Followers}, respectively, 
 and use the class \emph{Genuine} for genuine accounts, the \textbf{problem} we address in this thesis is how to classify a given account $u$ by analysing the account's profile $P$ and tweet timeline $T$:  
@@ -59,7 +59,7 @@ The specific \textbf{contributions} of this thesis are:
 	
 	\item[\PencilRight] We compare the \emph{performance} (precision, recall, f-measure) of the methods against that of a baseline classifier that uses only simple profile data for classification and demonstrate the \emph{viability} of the approach (Chapter \ref{capitolo5}).
 	
-	\item[\PencilRight] We compare different \emph{Ensemble methods} in order to combine the best classifiers and compute  the final predictions over users (Chapter \ref{capitolo6}).
+	\item[\PencilRight] We compare different \emph{ensemble methods} in order to combine the best classifiers and compute  the final predictions over users (Chapter \ref{capitolo6}).
 	
 	\item[\PencilRight] We describe two \emph{applications} of the best method: an implementation of a harmful bot detection tool, BotBuster (Chapter \ref{capitolo7}), whose performance we compare with that of our reference state-of-the-art tool, i.e., Botometer (\url{https://botometer.iuni.iu.edu}); and an estimation of the global bot ecosystem of Twitter, starting from a random sampling of xx accounts (Chapter \ref{capitolo8}).
 	
@@ -72,19 +72,19 @@ The specific \textbf{contributions} of this thesis are:
 The thesis has the following structure:
 
 \begin{itemize}
-\item[\PencilRight] Chapter 2 introduces the state of the art and...
+\item[\PencilRight] Chapter 2 introduces the state of the art.
 
 \item[\PencilRight] Chapter 3 explores existing datasets and tools for data collection. Then it shows how the data were gathered and it ends with the \emph{creation of our datasets}.
 
-\item[\PencilRight] Chapter 4 explains the features engineering step. Here we create new features based on users and tweets, that allow the classifiers to better understand the users' behaviours. At the end of this chapter we will have two \emph{feature vectors}: one for the binary problem (bot or not) and one for the multiclass one.
+\item[\PencilRight] Chapter 4 explains the features engineering step. Here we create new features based on users and tweets, that allow the classifiers to better understand the users' behaviours. At the end of this chapter we will have two \emph{feature vectors}: one for the binary problem (bot or not) and one for the multi-class one.
 
-\item[\PencilRight] Chapter 5 compares different classifiers for both the \emph{binary} and the \emph{multiclass} problems and performs the tuning of the parameters. In the end we will have three multiclass classifiers and a bot-or-not one.
+\item[\PencilRight] Chapter 5 compares different classifiers for both the \emph{binary} and the \emph{multi-class} problems and performs the tuning of the parameters. In the end we will have three bot-behaviour-specific classifiers and a bot-or-not one.
 
-\item[\PencilRight] Chapter 6 identifies the best way to combine the three multiclass classifiers and performs the tuning of the ensemble's parameters. Then it explains the final \emph{prediction pipeline} that, starting from a user ID, returns the probabilities of membership for each class (bot, genuine) and sub-class (NSFW, News-Spreaders, Spam-Bots, Fake-Followers).
+\item[\PencilRight] Chapter 6 identifies the best way to combine the three multi-class classifiers and performs the tuning of the ensemble parameters. Then it explains the final \emph{prediction pipeline} that, starting from a user ID, returns the probabilities of membership for each class (bot, genuine) and bots sub-class (NSFW, News-Spreaders, Spam-Bots, Fake-Followers).
 
-\item[\PencilRight] Chapter 7 shows the technologies used for the development of the \emph{web app}. This application provides the account classification service, according to the \emph{prediction pipeline}.
+\item[\PencilRight] Chapter 7 shows the technologies used for the development of the \emph{web application}. This tool provides the account classification service, according to the \emph{prediction pipeline}.
 
-\item[\PencilRight] Chapter 8 draws conclusions, examinates possibles future works and estimates the global distribution of users on Twitter, by classifying randomly sampled users with our tool.
+\item[\PencilRight] Chapter 8 draws conclusions, examines possible future works and estimates the global distribution of users on Twitter, by classifying randomly sampled users with our tool.
 
 
 

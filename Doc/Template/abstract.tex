@@ -11,7 +11,7 @@ The problem has so far been addressed with a special attention to the detection 
 The method involves the creation of two datasets, the engineering of features and the selection of the models.
 Starting from binary-labelled (bot or not) accounts lists, the thesis shows how the training sets have been collected, following different leads and approaches, yielding to a stratified multi-class dataset.
 The work done focuses on different bot behaviours, and specific features have been crafted to better distinguish those ways to act.
-The final solution involves a predictive pipeline algorithm, composed by a first binary machine learning classifier, aimed to perform the detection of bots among genuine accounts and a multi-class ensemble classifier, which goes deeper inside those aforementioned categories and classifies the potential threat.
+The final solution involves a predictive pipeline algorithm, composed of a first binary machine learning classifier, aimed to perform the detection of bots among genuine accounts and a multi-class ensemble classifier, which goes deeper inside those aforementioned categories and classifies the potential threat.
 Each model of the classifiers pool has been evaluated individually and inside the ensemble. The validation stages measured a 95\% of AUC score for the binary classifier, and an average of 98\% in F1 score, for the multi-class ensemble model.
 
 The tool implementing the method, BotBuster, is a web application running the prediction script, and it is accessible for free.

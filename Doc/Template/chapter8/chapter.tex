@@ -33,8 +33,26 @@ The prediction rendered with vertical bars contains probabilities for NSFW, News
 In addition with the utility provided to the internet users, with the development of such instrument, we hope that the study we made would be a starting point for those who are interested in building more sophisticated tools for automatic recognition of social bots, even in cross-platform environments.
 
 \section{Projection on wide scale}
-TO BE IMPLEMENTED
+We wanted to give and estimation about the bots distribution over the Twitter population. In order to be able to do that, we needed to sample unseen users from the social network and to classify them with our tool.
+Starting from 200K randomly generated IDs, within a feasible ranges of numbers, we checked each identifier with the Twitter APIs, to verify if they were actually bounded to existing accounts.
+This filtering process left us with just 12,616 retrieved profiles.
+Then, we analysed every one of those users with BotBuster, and the results are shown in Figure \ref{fig:projection}.
+\begin{figure}[htp!]
+	\begin{center}
+		\includegraphics[width=\columnwidth]{chapter8/figure/projection.png}
+	\end{center}
+	\caption{Projection on Twitter population}
+	\label{fig:projection}
+\end{figure}
 
+What we can infer from this chart is that the most representative category of accounts is the Genuine one.
+It is reasonable to assess that the legitimate accounts populate Twitter for the most, but our retrieved percentage disagrees with the one found by Varol et al. \cite{Varol}. The researchers of that paper claim to have sampled 14Mln accounts and to have found a bot percentage that is up to 15\% of the entire population.
+The classification of such amount of users would have taken an incredible timespan to be executed, since the average prediction takes 12 seconds to be computed.
+One other thing that may led us to different results is that we took into account totally random samples, which means including also inactive users.
+Users are marked as active if they logged at least once into the system in the last six months. The current population of active users is composed of about 300Mln of accounts. We managed to reach just 12K profiles and lots of them are apparently inactive, due to the ratio of Fake-Followers found with BotBuster. The latter bot category is characterized by low tweeting activity, along with other factors, such as the number of following. BotBuster seems to classify inactive users as Fake-Followers, because they usually lack tweets. It is a limitation imputable to the nature of the training sets, since we didn't have enough samples with such low activity, marked as legitimate.
+
+What really emerged from this experiment is the ratio of inactive users found by random sampling the Twitter accounts. They have been distributed among Genuine, Fake-Followers and NSFW, depending on two factors: their level of interaction and their profile pictures.
+Each of these inactive users are characterized by a very small number of tweets, but the ones which have no tweets, no followings, followers, custom profile pictures or likes are been marked as genuine by the tool. The ones that have at least one of those aforementioned fields with non-empty value are classified according by the rules of our models. The issue in this approach is represented by the Inception module for the image features computation. If the neural network fails in classifying a picture correctly, the examined user could be marked as NSFW, even with a almost-complete lacking of interactions, just by looking at its profile photo. This behaviour explains the high ratio for both Fake-Followers and NSFW classifications, with the retrieved samples.
 
 \section{Limitations}
 As said before, we met several limitations in our thesis, and they came both from external factors and internal choices that affected the final results.
@@ -72,7 +90,7 @@ Since we studied the Twitter platform, we stuck to a narrow range of harmful beh
 
 Another useful work that could be done is the evolving training of our models. It could be implemented a way to receive trusted feedbacks over the performed classifications. Such indications, along with the classified sample, could feed the models by adding that entry to our training set, with the indicated target. Obviously, feedbacks should be trusted and not biased. A heuristic method to choose which feedback consider should be implemented too, as well as reinforcement learning algorithms, to improve the evolving training.
 
-A more sophisticated image recognition system can be included. NSFW category is a well defined sphere of the bot's ecosystem, it would be very easy to detect it with the right instruments. By now, we have an Inception convolutional neural network, used to compute two features bounded to the images. It would be interesting getting some insights from video contents too, in feasible computation time. The image features aren't 100\% accurate, due to the validation error found and to the data used to fit the network. It can be improved, with more and diversified samples. The time needed to process ten images discourages us to look for more media content to analyse. It would be a robust support to be able to lookup more tweets with media contents embedded.
+A more sophisticated image recognition system can be included. NSFW category is a well defined sphere of the bots ecosystem, it would be very easy to detect it with the right instruments. By now, we have an Inception convolutional neural network, used to compute two features bounded to the images. It would be interesting getting some insights from video contents too, in feasible computation time. The image features aren't 100\% accurate, due to the validation error found and to the data used to fit the network. It can be improved, with more and diversified samples. The time needed to process ten images discourages us to look for more media content to analyse. It would be a robust support to be able to lookup more tweets with media contents embedded.
 
 Some features that will look outside the user's box could be added, like the ones which get clues from the user's network, from her friends or the accounts that quote and retweet her. We had our focus on the user's routine, with meta-data about her relationships, but we don't get inside those interactions.                
 

@@ -692,47 +692,41 @@ At the end of this process we obtained a feature vector composed of 33 elements,
 \subsubsection{Tweets features}
 \small
 \begin{center}
-	\begin{tabular}{lll}
-		\textbf{Descriptive features}\\
-		\hline\hline
-		freq\\
-		min\_fav\\
-		avg\_fav\\
-		max\_fav\\
-		min\_hash\\
-		avg\_hash\\
-		max\_hash\\
-		min\_len\\
-		avg\_len\\
-		max\_len\\
-		min\_ret\\
-		avg\_ret\\
-		max\_ret\\
-		media\_perc\\
-		quote\_perc\\
-		ret\_perc\\
-		url\_perc\\\hline\\
+	\begin{tabular}[t]{cc}
+		\begin{tabular}[t]{lll}
+			\textbf{Descriptive features}\\
+			\hline\hline
+			freq\\
+			min\_fav\\
+			avg\_fav\\
+			max\_fav\\
+			min\_hash\\
+			avg\_hash\\
+			max\_hash\\
+			min\_len\\
+			avg\_len\\
+			max\_len\\
+			min\_ret\\
+			avg\_ret\\
+			max\_ret\\
+			media\_perc\\
+			quote\_perc\\
+			ret\_perc\\
+			url\_perc\\\hline\\
+		\end{tabular} &
+		\begin{tabular}[t]{lll}
+			\textbf{Intrinsic features}\\
+			\hline\hline
+			tweets\_intradistance\\
+			url\_intradistance\\\hline\\
+			\textbf{Extrinsic features}\\
+			\hline\hline
+			bots\_words\_score\\
+			genuine\_words\_score\\
+			\hline\\
+		\end{tabular}
 	\end{tabular}
 \end{center}
 
-\begin{center}
-	\begin{tabular}{lll}
-		\textbf{Intrinsic features}\\
-		\hline\hline
-		tweets\_intradistance\\
-		url\_intradistance\\\hline\\
-	\end{tabular}
-\end{center}
-
-
-\begin{center}
-	\begin{tabular}{lll}
-		\textbf{Extrinsic features}\\
-		\hline\hline
-		bots\_words\_score\\
-		genuine\_words\_score\\
-		\hline\\
-	\end{tabular}
-\end{center}
 
 \normalsize
