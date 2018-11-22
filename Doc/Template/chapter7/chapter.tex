@@ -200,3 +200,16 @@ Looking at the partial scores assigned by the feature groups that Botometer comp
 \end{figure}
 
 Since it is legitimate to think that this profile is managed by a real person, we consider those feature introduced by Botometer as a valid contribute to the binary classifier. It could be considered in future implementations, in order to better distinguish human profiles, even with very high tweeting activities.
+
+During the tool testing, we noticed some particular types of users that we didn't be able to include in the training sets. These types are the \textit{protected} users and the ones which never had interactions on the social, at all. No interactions means that these unused users have no tweets, no followings, no followers, no likes and often no profile picture.
+Protected users choose to hide their sharing activities to everyone, and to reveal their timelines only to those accounts who send them the request to see their tweets. Obviously, the timelines aren't accessible via Twitter APIs, so it is hard to infer the nature of such accounts, since it is not possible to asses if they post contents or not. For this kind of users, we decided to assign a standard classification, that represents the uncertainty, as shown in Figure \ref{fig:protected}. The classification assesses a 50\% probabilities to both bot and genuine categories, and partitions the bot behaviours in equal parts.
+Instead, the prediction output of unused accounts has been fixed with a 100\% chance to be genuine. We cannot assess the real nature of those users, nor their purpose, but we can state that their not harmful, since they do not have interactions with other accounts. That makes them genuine accounts, like legitimate users, they don't represent threats or harmful entities. An example of such classification is shown in Figure \ref{fig:empty}.
+
+\begin{figure}[htp!]
+	\centering 
+	\subfigure[Protected account]{
+		\label{fig:protected}\includegraphics[width=60mm]{chapter7/figure/protected.png}}
+	\subfigure[Unused account]{
+		\label{fig:empty}\includegraphics[width=60mm]{chapter7/figure/empty.png}}
+	\caption{Classification of specific account types}
+\end{figure}
