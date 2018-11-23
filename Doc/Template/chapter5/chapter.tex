@@ -12,19 +12,19 @@ The result involves three models:
 	\item[\PencilRight] a first Random Forest classifier that has been used to provide an early filter on the separation between genuine accounts and bots
 	\item[\PencilRight] a second Random Forest that gives a classification among the four studied categories of bots only
 	\item[\PencilRight] a Naive Bayes classifier, used over the same classes of the second Random Forest, but which reads and labels the users, according on their tweets only
-	\item[\PencilRight] a K-neares-neighbors classifier, used over the four bot classes, based on the user's features only
+	\item[\PencilRight] a K-Nearest Neighbours classifier, used over the four bot classes, based on the user features only
 \end{itemize}
-The algorithm were used together into a pipeline workflow, whose first step is the detection of bots from humans, thanks to the first binary Random Forest.
+The algorithm were used together into a pipeline work-flow, whose first step is the detection of bots from humans, thanks to the first binary Random Forest.
 Then, the percentage of membership in the bot category is further split into four sub-percentages, which represent the prediction over the inner bot categories.
 This last partition is performed by a stacking ensemble, whose goal is to combine the predictions of the three multiclass models.
 
-\
+
 \section{Baselines}
 The choices explained in this section were made at the same time of the ones listed in the Baseline section of the last chapter.
 
 This is, basically, the same stage of the above-mentioned, but in a model-driven perspective.
 The features involved are the ones described in section \ref{baseline}, but we started from that base, to try different classifiers over it.
-We chose to evaluate the performances of raw classifiers, for both the binary and the mutliclass problem.
+We chose to evaluate the performances of raw classifiers, for both the binary and the multi-class problem.
 Each type of classifiers has been tested with the respective dataset, but considering only the baseline features of those data.
 
 Furthermore, no parameters tuning has been applied, in order to minimize the results of our baselines classifier, with their standard settings.

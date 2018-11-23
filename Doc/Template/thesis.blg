@@ -1,4 +1,4 @@
-This is BibTeX, Version 0.99d (TeX Live 2017/Debian)
+This is BibTeX, Version 0.99d (TeX Live 2018)
 Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: thesis.aux
 A level-1 auxiliary file: cover_page.aux
@@ -19,20 +19,25 @@ A level-1 auxiliary file: appendixB/appendix.aux
 Database file #1: references.bib
 Warning--entry type for "Botometer" isn't style-file defined
 --line 67 of file references.bib
+I was expecting a `,' or a `}'---line 73 of file references.bib
+ : @aritcle {Bot 
+ :               or Not,
+I'm skipping whatever remains of this entry
+Warning--entry type for "Bot-Hunter" isn't style-file defined
+--line 79 of file references.bib
 Warning--entry type for "svm" isn't style-file defined
---line 73 of file references.bib
+--line 85 of file references.bib
 Warning--entry type for "nb" isn't style-file defined
---line 80 of file references.bib
+--line 92 of file references.bib
 Warning--entry type for "inception" isn't style-file defined
---line 87 of file references.bib
+--line 99 of file references.bib
 Warning--entry type for "selfie" isn't style-file defined
---line 94 of file references.bib
+--line 106 of file references.bib
 Warning--entry type for "inbenta" isn't style-file defined
---line 100 of file references.bib
+--line 112 of file references.bib
 Warning--entry type for "bessi" isn't style-file defined
---line 107 of file references.bib
-Warning--I didn't find a database entry for "davis2016botornot"
-Warning--I didn't find a database entry for "ferrara2016rise"
+--line 119 of file references.bib
+Warning--I didn't find a database entry for "BotorNot"
 Warning--I didn't find a database entry for "lee2011seven"
 Warning--I didn't find a database entry for "ratkiewicz2011detecting"
 Warning--I didn't find a database entry for "cresci2015fame"
@@ -96,45 +101,45 @@ while executing---line 1090 of file plain.bst
 Too many commas in name 1 of "Stefano Cresci, Roberto Di Pietro, Marinella Petrocchi, Angelo Spognardi, Maurizio Tesconi" for entry Cresci
 while executing---line 1090 of file plain.bst
 Warning--empty journal in Cresci
-You've used 16 entries,
+You've used 17 entries,
             2118 wiz_defined-function locations,
-            596 strings with 6916 characters,
-and the built_in function-call counts, 3511 in all, are:
-= -- 313
-> -- 158
+            600 strings with 7045 characters,
+and the built_in function-call counts, 3744 in all, are:
+= -- 333
+> -- 171
 < -- 0
-+ -- 66
-- -- 48
-* -- 150
-:= -- 626
-add.period$ -- 41
-call.type$ -- 16
-change.case$ -- 72
++ -- 71
+- -- 52
+* -- 160
+:= -- 664
+add.period$ -- 43
+call.type$ -- 17
+change.case$ -- 77
 chr.to.int$ -- 0
-cite$ -- 24
-duplicate$ -- 139
-empty$ -- 308
-format.name$ -- 48
-if$ -- 715
+cite$ -- 25
+duplicate$ -- 146
+empty$ -- 330
+format.name$ -- 52
+if$ -- 765
 int.to.chr$ -- 0
-int.to.str$ -- 16
+int.to.str$ -- 17
 missing$ -- 9
-newline$ -- 76
-num.names$ -- 32
-pop$ -- 123
+newline$ -- 80
+num.names$ -- 34
+pop$ -- 133
 preamble$ -- 1
-purify$ -- 56
+purify$ -- 60
 quote$ -- 0
-skip$ -- 122
+skip$ -- 131
 stack$ -- 0
-substring$ -- 82
-swap$ -- 8
+substring$ -- 87
+swap$ -- 9
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 64
+type$ -- 68
 warning$ -- 8
-while$ -- 32
-width$ -- 18
-write$ -- 140
-(There were 24 error messages)
+while$ -- 34
+width$ -- 19
+write$ -- 148
+(There were 25 error messages)

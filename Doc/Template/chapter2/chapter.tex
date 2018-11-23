@@ -3,18 +3,21 @@
 \label{capitolo2}
 \thispagestyle{empty}
 
-\section{Botometer}
-The work that is most closely related to this thesis is Botometer, formerly known as BotOrNot \cite{davis2016botornot,ferrara2016rise}, an online tool that computes a bot-likelihood score for 
-Twitter accounts and allows one to \emph{tell bots and genuine user accounts apart}. The tool builds on more 1000 features among network, user, friends, temporal, content and sentiment features, and uses a random forest classifier for each subset of features. The training data used is based on bot accounts collected in prior work by Lee et al. \cite{lee2011seven}, who used Twitter honeypots to lure bots and collected about
-36000 candidate bot accounts following or messaging their honeypot accounts. The goal of BotBuster is to build on the results of Botometer and not only to tell bots and humans apart, but also to distinguish different types of bots based on their potential of harming the people they 
-interact with.
+In telling bots and humans apart, lots of effort has been spent to find the most accurate detection system. In the past years, several interesting approaches have been tested to build bot classifiers, most of these strategies involved supervised machine learning algorithms, to highlight the hidden patterns characterizing automated behaviours. Although, some researches relied on other methods, such as graph-based inspections, human annotators and stacked models on different tiered data. All the aforementioned approaches shared the goal to better identify algorithmically-driven entities on social networks.
 
-\section{Astroturfing}
+\section{Feature-based approaches}
+The work that is most closely related to this thesis is\textit{ Botometer}, formerly known as BotOrNot \cite{Botometer, BotorNot}, an online tool that computes a bot-likelihood score for Twitter accounts and allows one to \emph{tell bots and genuine user accounts apart}. The tool builds on more 1000 features among network, user, friends, temporal, content and sentiment features, and uses a random forest classifier for each subset of features. The training data used is based on bot accounts collected in prior work by Lee et al. \cite{lee2011seven}, who used several Twitter honeypots to lure bots and collected about 36,000 candidate bot entities following or messaging their honeypot accounts. 
+Botometer is a machine learning classifier system based on engineered features of heterogeneous nature. It considers attributes driven from sentiment analysis, timing, user's network, user content and meta-data. This feature-based approach led to an overall 0.94 score in AUC metric, measured with the Random Forest algorithm on a merged dataset, composed of the 36K aforementioned accounts and 3,000 new samples, manually annotated.
+The goal of \textbf{BotBuster} is to build on the results of Botometer and not only to tell bots and humans apart, but also to distinguish different types of bots based on their potential of harming the people they interact with.
+
+Other features-based studies took Botometer as a baseline, like the work did with \textit{Bot-Hunter} \cite{Bot-Hunter}.
+
+\section{Network-based approaches}
 The problem of telling bots and humans apart has been investigated already before Botometer. For instance, Ratkiewicz et al. \cite{ratkiewicz2011detecting} studied the phenomenon of \emph{astroturfing}, i.e., political campaigns that aim to fake social support from people for a cause, and showed that bots play a major role in astroturfing activities in Twitter. Cresci et al. \cite{cresci2015fame} specifically
 focused on the problem of \emph{fake followers}. They constructed a dataset of human accounts (manually and by invitation of friends) and bought fake followers from online services like \url{http://fastfollowerz.com}. The work compares two types of classifiers, classifiers based on expert-defined rules and feature-based classifiers (machine learning), and shows (i) that fake followers 
 can indeed be spotted and (ii) that black-box, feature-based classifiers perform better than white-box, rule-based classifiers. In addition, the work also produced a publicly available, labeled dataset that can be used for research purposes.
 
-\section{Other approaches}
+\section{Human-based approaches}
 In terms of \emph{datasets} to be analyzed in the bot detection process, Beskow and Carley \cite{Beskow2018} specifically propose four \emph{tiers} of data for the classification of Twitter accounts: single tweet text (tier 0), account + one tweet (1), account + full timeline (2), and account + timeline + friends timelines (3). With their tool but-hunter, they however only study different machine learning techniques for tier-1.
 
 Differently from the previous approaches that adopt feature-based techniques, Cao et al. \cite{cao2012aiding} describe SybilRank, a tool for the detection of sybil accounts (bots) in social networks that analyzes the social graph to compute sybil-likelihood scores. Also differently from the other approached, the work studies the social graph of Facebook, not that of Twitter.
