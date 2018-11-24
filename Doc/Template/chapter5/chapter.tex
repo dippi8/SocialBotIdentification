@@ -755,7 +755,7 @@ The Figures \ref{fig:rf_tuning_gini}, \ref{fig:rf_tuning_entropy} show how the a
 The different coloured lines represent the \textit{max\_depth} hyperparameter.
 The first Figure (\ref{fig:rf_tuning_gini}) shows the Grid Search results, with the \textit{gini} splitting criterion.
 The second one (\ref{fig:rf_tuning_entropy}) represent the situation having \textit{entropy} as a splitting choice.
-We combined nine numbers of estimators (200,250,300,350,400,450,500,550,600), together with three different maximum depths for the trees (26, 28, None) and the two above-mentioned splitting criteria.
+We combined nine numbers of estimators (200, 250, 300, 350, 400, 450, 500, 550, 600), together with three different maximum depths for the trees (26, 28, None) and the two above-mentioned splitting criteria.
 
 We could observe a peak, for both criteria, in correspondence with 400 estimators.
 Although the Gini-based forest's score didn't seem a bad point, we went with the Information Gain splitting criterion, which si also the same we used to rank the features of our data.

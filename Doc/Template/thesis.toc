@@ -95,7 +95,7 @@
 \contentsline {subsubsection}{Dataset}{92}{section*.67}
 \contentsline {subsubsection}{Comparison with Random Forest}{92}{section*.68}
 \contentsline {subsubsection}{Hyperparameters tuning}{93}{section*.70}
-\contentsline {section}{\numberline {6.2}Prediction pipeline}{97}{section.6.2}
+\contentsline {section}{\numberline {6.2}Prediction pipeline}{98}{section.6.2}
 \contentsline {chapter}{\numberline {7}Web application - BotBuster}{101}{chapter.7}
 \contentsline {section}{\numberline {7.1}Architecture}{102}{section.7.1}
 \contentsline {section}{\numberline {7.2}Backend}{102}{section.7.2}

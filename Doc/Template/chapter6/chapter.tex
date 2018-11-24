@@ -409,6 +409,13 @@ This setting obtained the following scores in a 10-fold crossvalidation:
 	\item[\PencilRight] \textit{F1 score}: 0.986
 \end{itemize}
 
+The stacking ensemble performance is resumed in Figure \ref{fig:stacking_performance}, where all the components are first measured individually to show that the combination of them improves the overall F1 score.
+\begin{figure}[htp!]
+	\includegraphics[width=\columnwidth]{chapter6/figure/stacking_performance.png}
+	\caption{Stacking ensemble performance}
+	\label{fig:stacking_performance}
+\end{figure}
+
 \section{Prediction pipeline}
 \label{predicion_pipeline}
 The final model is represented by an execution pipeline, involving a first binary classifier and then a mutli-class ensemble.
