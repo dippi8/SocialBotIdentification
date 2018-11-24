@@ -201,12 +201,12 @@ As shown in Figure \ref{fig:desc_rank}, this first group has been performed a ra
 
 
 \section{Intrinsic features}
-Due the multiclass nature of our dataset, it was impossible to rely on the descriptive meta features only.
+Due the multi-class nature of our dataset, it was impossible to rely on the descriptive meta features only.
 
 We faced the need of better capturing some behaviours, that could have helped us distinguish between targets.\\
 We spent a lot of time analysing Twitter timelines by ourselves. This was one of the most useful phases of our work.\\
 Indeed, we have learnt a lot about bots acting like humans on the social platform.
-One thing that was easy to notice was the monotony, in terms of words or URLs involved in tweets, met with Spam-bots, as well as the opposites, for Genuine accounts or Fake-Followers.
+One thing that was easy to notice was the monotony, in terms of words or URLs involved in tweets, met with Spam-Bots, as well as the opposites, for Genuine accounts or Fake-Followers.
 
 We tried to encapsule this distinctive behaviour by adding two intrinsic features to the training vector, along with the descriptive ones.\\
 
@@ -293,8 +293,8 @@ We gathered the 1000 most common words for each category of accounts.
 
 \subsection{Scores computation}
 
-\subsubsection{Multiclass Dataset}
-After the dictionaries related to the multiclass dataset were filtered, to prevent (partial) overlapping, we had four collections, composed by the tuples \textit{(word, score)}:
+\subsubsection{Multi-class Dataset}
+After the dictionaries related to the multi-class dataset were filtered, to prevent (partial) overlapping, we had four collections, composed by the tuples \textit{(word, score)}:
 \small
 \begin{center}
 	\begin{tabular}{ll}
@@ -354,7 +354,7 @@ The followings are examples of the top three words used by our bot categories:
 \small
 \begin{center}
 	\begin{tabular}{lllll}
-		\multicolumn{5}{c}{\textbf{News-Spreader dictionary}} \\
+		\multicolumn{5}{c}{\textbf{News-Spreaders dictionary}} \\
 		\hline\hline
 		\multicolumn{4}{l}{\textit{word}} & 
 		\multicolumn{1}{r}{\textit{score}}\\
@@ -413,7 +413,7 @@ We expected to capture patterns about the choice of the words involved in tweets
 This extrinsic attributes revealed themselves as very useful, lately.
 
 \subsubsection{Binary Dataset}
-As for the Multiclass dataset, we computed two dictioraries based on the Binary dataset classes.
+As for the multi-class dataset, we computed two dictioraries based on the Binary dataset classes.
 
 \small
 \begin{center}
@@ -477,7 +477,7 @@ We had to pick the number of the top N words that had to be representing, for ea
 
 We tried with four different portions of the collections: the 25\% of the words, the 50\%, the 75\% and the total non-overlapping solution, the 100\% of the terms.
 
-We computed four different dataset (starting from the multiclass collection), one for each parameter, and tested the outcomes of this process on them. The testing phase was composed by the features ranking, like done before, but considering the whole feature vector, and by a \textit{10-fold-crossvalidation} scoring. This last technique has been widely used during all our work, and will be explained in details in the following chapter.
+We computed four different dataset (starting from the multi-class collection), one for each parameter, and tested the outcomes of this process on them. The testing phase was composed by the features ranking, like done before, but considering the whole feature vector, and by a \textit{10-fold-crossvalidation} scoring. This last technique has been widely used during all our work, and will be explained in details in the following chapter.
 Figure \ref{fig:250_overall} lists the results for the first tested Safe Area, with 250 words involved in that zone, and the dictionaries that are overlapping for the 75\%. The following Figure \ref{fig:500_overall}, represents the situation with half of the words included in the Safe Areas. So does Figure \ref{fig:750_overall}, with the 75\% of the safe terms, and, finally, Figure \ref{fig:1000_overall}, with totally disjointed dictionaries.
 
 Looking at these graphics, we could infer that the most meaningful feature, for the Random Forest, had been computed with the score of the NSFW\_words list.
@@ -497,7 +497,7 @@ The overall placements in the rankings are similar among the different datasets.
 \end{itemize}
 
 We needed another confrontation term, which could tell us something about the goodness of the classifier, in relation with the number of safe words used for the computation of the features.
-We validated a Random Forest multiclass classifier, with increasing number of trees in the forest. Figure \ref{fig:safe_areas} shows the results.
+We validated a Random Forest multi-class classifier, with increasing number of trees in the forest. Figure \ref{fig:safe_areas} shows the results.
 
 \begin{figure}[htp!]
 	\centering
@@ -531,12 +531,12 @@ The best looking number of words to save was 1000. The totally non-overlapping s
 
 
 \section{Image features}
-One of the main issues of our work was to make the NSFW class different, in terms of classifiers vision, with respect of Spam-bots.
+One of the main issues of our work was to make the NSFW class different, in terms of classifiers vision, with respect of Spam-Bots.
 
 According to our user-based, descriptive and intrinsic features, both classes act in a similar way: they spam similar links, have high tweet frequency and their contents are often repeated.\\
 What could be the difference?
 
-We started with "blind" classifier, that was the main problem. Our feature vector lacked in visual components. A Spam-bot could have been detected as a NSFW, as its tweets involved media and URLs. We needed to go deep and actually see what kind of media were broadcast.
+We started with "blind" classifier, that was the main problem. Our feature vector lacked in visual components. A Spam-Bot could have been detected as a NSFW, as its tweets involved media and URLs. We needed to go deep and actually see what kind of media were broadcast.
 This is the reason for presence of the upcoming features.
 
 We've found a small versatile project on GitHub for NSFW detection.\\
@@ -583,7 +583,7 @@ The brand new attributes that helped us in better separating NSFW class are:
 \section{Final feature vectors}
 \label{sec:feature_vector}
 
-\subsection{Multiclass Dataset}
+\subsection{Multi-class Dataset}
 At the end of this process we obtained a feature vector composed of 37 elements, 12 based on the user and 26 based on his tweets.
 
 \subsubsection{User features}

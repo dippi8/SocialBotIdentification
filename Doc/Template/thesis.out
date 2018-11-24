@@ -23,9 +23,9 @@
 \BOOKMARK [1][-]{section.3.3}{Unsupervised labelling}{chapter.3}% 23
 \BOOKMARK [1][-]{section.3.4}{Collection}{chapter.3}% 24
 \BOOKMARK [2][-]{subsection.3.4.1}{NSFW}{section.3.4}% 25
-\BOOKMARK [2][-]{subsection.3.4.2}{News-spreader}{section.3.4}% 26
-\BOOKMARK [2][-]{subsection.3.4.3}{Spam-bots}{section.3.4}% 27
-\BOOKMARK [2][-]{subsection.3.4.4}{Fake-followers}{section.3.4}% 28
+\BOOKMARK [2][-]{subsection.3.4.2}{News-Spreaders}{section.3.4}% 26
+\BOOKMARK [2][-]{subsection.3.4.3}{Spam-Bots}{section.3.4}% 27
+\BOOKMARK [2][-]{subsection.3.4.4}{Fake-Followers}{section.3.4}% 28
 \BOOKMARK [2][-]{subsection.3.4.5}{Genuine}{section.3.4}% 29
 \BOOKMARK [2][-]{subsection.3.4.6}{Bots}{section.3.4}% 30
 \BOOKMARK [2][-]{subsection.3.4.7}{Final Datasets}{section.3.4}% 31
@@ -44,7 +44,7 @@
 \BOOKMARK [2][-]{subsection.4.5.2}{Safe Area}{section.4.5}% 44
 \BOOKMARK [1][-]{section.4.6}{Image features}{chapter.4}% 45
 \BOOKMARK [1][-]{section.4.7}{Final feature vectors}{chapter.4}% 46
-\BOOKMARK [2][-]{subsection.4.7.1}{Multiclass Dataset}{section.4.7}% 47
+\BOOKMARK [2][-]{subsection.4.7.1}{Multi-class Dataset}{section.4.7}% 47
 \BOOKMARK [2][-]{subsection.4.7.2}{Binary Dataset}{section.4.7}% 48
 \BOOKMARK [0][-]{chapter.5}{Bot classifiers}{}% 49
 \BOOKMARK [1][-]{section.5.1}{Baselines}{chapter.5}% 50
@@ -54,14 +54,14 @@
 \BOOKMARK [2][-]{subsection.5.1.4}{Support Vector Machine}{section.5.1}% 54
 \BOOKMARK [2][-]{subsection.5.1.5}{Comparison and baseline selection}{section.5.1}% 55
 \BOOKMARK [2][-]{subsection.5.1.6}{Holdout evaluation}{section.5.1}% 56
-\BOOKMARK [2][-]{subsection.5.1.7}{Multiclass}{section.5.1}% 57
+\BOOKMARK [2][-]{subsection.5.1.7}{Multi-class}{section.5.1}% 57
 \BOOKMARK [2][-]{subsection.5.1.8}{Crossvalidation}{section.5.1}% 58
 \BOOKMARK [1][-]{section.5.2}{Binary Classifier}{chapter.5}% 59
 \BOOKMARK [2][-]{subsection.5.2.1}{Dataset}{section.5.2}% 60
 \BOOKMARK [2][-]{subsection.5.2.2}{Model}{section.5.2}% 61
 \BOOKMARK [2][-]{subsection.5.2.3}{Validation}{section.5.2}% 62
 \BOOKMARK [2][-]{subsection.5.2.4}{Data extension}{section.5.2}% 63
-\BOOKMARK [1][-]{section.5.3}{Multiclass ensemble classifier}{chapter.5}% 64
+\BOOKMARK [1][-]{section.5.3}{Multi-class ensemble classifier}{chapter.5}% 64
 \BOOKMARK [2][-]{subsection.5.3.1}{All-features-based Random Forest classifier}{section.5.3}% 65
 \BOOKMARK [2][-]{subsection.5.3.2}{User-based KNN classifier}{section.5.3}% 66
 \BOOKMARK [2][-]{subsection.5.3.3}{Text-based Naive Bayes classifier}{section.5.3}% 67

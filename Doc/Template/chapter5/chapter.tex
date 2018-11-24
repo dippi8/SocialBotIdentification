@@ -16,7 +16,7 @@ The result involves three models:
 \end{itemize}
 The algorithm were used together into a pipeline work-flow, whose first step is the detection of bots from humans, thanks to the first binary Random Forest.
 Then, the percentage of membership in the bot category is further split into four sub-percentages, which represent the prediction over the inner bot categories.
-This last partition is performed by a stacking ensemble, whose goal is to combine the predictions of the three multiclass models.
+This last partition is performed by a stacking ensemble, whose goal is to combine the predictions of the three multi-class models.
 
 
 \section{Baselines}
@@ -58,7 +58,7 @@ Logistic Regression searches for the weighting vector that matches the highest l
 error function, provided by the negative log of the likelihood:
 \[{ \mathbf{L}(\vec{w}) = -\ln \prod\limits_{i=1}^{n} P(\hat{y}_{i} = +1 | \vec{x}_{i}, \vec{w})}\]
 
-In multiclasses tasks, there are two possible approaches to face the problem:
+In multi-classes tasks, there are two possible approaches to face the problem:
 \begin{itemize}
 	\item[\PencilRight] a more general \textit{softmax} function to replace the logistic sigmoid, which assigns the probability, for the  \textit{$i_{th}$} sample, to belong to the class \textit{C}:
 	\[{\displaystyle P(\mathbf{C}_{i} | \vec{x}_{i}, \vec{w})={\frac {e^{-\vec{w}h(\vec{x}_{i})}}{\sum\limits_{j = 1}^{n}e^{-\vec{w}h(\vec{x}_{j})}}}}\]
@@ -99,8 +99,8 @@ In comparison with "One-vs-Rest" approach, "One-vs-One" is less sensitive to an 
 Despite our choices over methods and parameters weren't accurate in this stage as they were in the other ones, we decided to stick with this setting for SVM, because otherwise it would have led us to an irrelevant algorithm, in comparison with the above-mentioned.
 
 \subsection{Comparison and baseline selection}
-Different tasks imply different evaluation metrics. Every classifier was validated and selected according to certain indices of goodness. In particular, we followed a triple of metrics that involves Precision, Recall and F1, for the multiclass problem and we aimed to maximize AUC score for the binary case.
-\subsubsection{Multiclass metric}
+Different tasks imply different evaluation metrics. Every classifier was validated and selected according to certain indices of goodness. In particular, we followed a triple of metrics that involves Precision, Recall and F1, for the multi-class problem and we aimed to maximize AUC score for the binary case.
+\subsubsection{Multi-class metric}
 The selected baseline models were tested with a holdout approach at first, then with a crossvalidation method.
 We built a Confusion Matrix for each model, in order to bring out goodness indices for each class, such as \textit{True Positive} (TP), \textit{False Positive} (FP) and \textit{False Negative} (FN).
 The evaluation metrics considered are \textit{Precision}, \textit{Recall} and \textit{F1 score} and they work on the mentioned indices.
@@ -112,10 +112,10 @@ The evaluation metrics considered are \textit{Precision}, \textit{Recall} and \t
 	\item[\PencilRight] $ F1 score = \frac{2(Precision \times Recall )}{Precision+Recall} $\\
 	It calculates the harmonic mean of the previous metrics
 \end{itemize}
-Every metric is adapted to fit a multiclass problem. For each class, it has been computed this set of measures, and then they were averaged without weights (macro average), in order to not take label imbalance into account.
+Every metric is adapted to fit a multi-class problem. For each class, it has been computed this set of measures, and then they were averaged without weights (macro average), in order to not take label imbalance into account.
 
 \subsubsection{Binary metric}
-Since this classifier was built for a different purpose, with respect of the multiclass models, the \textit{Area Under the Curve} score (AUC) is the metric we followed, both for baselines and the final model evaluation.
+Since this classifier was built for a different purpose, with respect of the multi-class models, the \textit{Area Under the Curve} score (AUC) is the metric we followed, both for baselines and the final model evaluation.
 Area Under the Curve represents the goodness of a classifier, in terms of the integral of the \textit{Receiver Operating Characteristic} (ROC curve), defined over the variation of a decision treshold.
 
 The ROC curve lies in a bi-dimensional space, which has the \textit{True Positive Ratio} ($ TPR =  \frac{TP}{TP+FN}$) on the Y-axis, and the False Positive Ratio ($ FPR =  \frac{FP}{FP+TN}$ ) on the X-axis.
@@ -129,7 +129,7 @@ WE wanted to get close to that score, using our crafted features.
 \subsection{Holdout evaluation}
 The holdout stage is performed separating the samples in the dataset into training and test subsets. The splitting process is randomized and it requires a bigger portion of the original dataset to be inserted in the training data, comparing to the amount of samples that will form the test set. A common choice is to use a third of the data to evaluate the model.
 
-\subsection{Multiclass}
+\subsection{Multi-class}
 In this case, we decided to use the 75\% of the data for the training set and the 25\% for the test set. This choice is a little bit different from the most common one, which builds the training set with 2/3 of the whole data, because we didn't dispose of a huge amount of records, so we preferred this ratio and then trying an other validation method for comparison.
 Here we list the algorithm and their parameters, as they were written according to the Scikit-learn library for Python, their confusion matrix and their scores:
 \begin{itemize}
@@ -343,7 +343,7 @@ Due the need of performing ten steps, it is computationally more expensive then 
 The obtained scores are also more meaningful, with regards to holdout, because they are less sensitive to "lucky" or "unlucky" splits.
 
 Here is the results for every baseline model:
-\subsubsection{Multiclass}
+\subsubsection{Multi-class}
 \begin{itemize}
 	\item[\PencilRight] \textit{RandomForestClassifier(n\_estimators = 10, criterion = 'entropy')}\\
 	Mean precision: 0.947\\
@@ -387,16 +387,16 @@ They built their features, grouped them in six main categories, then they ran a 
 
 We already had our feature engineering done, so we decided to test it on this new task.
 
-In order to not to build a poorer version of our multiclass model, we didn't want to use a reduced copy of our dataset, stratifying it by stripping random bots from it. We needed a balanced dataset, with about the same amount of genuines and bots. So, we started from the same dataset used by the Botometer project, in order to have a baseline comparison.
+In order to not to build a poorer version of our multi-class model, we didn't want to use a reduced copy of our dataset, stratifying it by stripping random bots from it. We needed a balanced dataset, with about the same amount of genuines and bots. So, we started from the same dataset used by the Botometer project, in order to have a baseline comparison.
 \subsection{Dataset}
 The dataset we used for this classification was composed by part of our collected records and by some entries from the Caverlee-2011 dataset, which contains 22,223 content polluters and 19,276 legitimate users, both collected through a social honeypot, as described in their paper \cite{Lee11sevenmonths}.
 
 We setted the APIs to retrieve the ids for both genuines and bots, from the Caverlee list. The process provided us 15,687 legitimate user ids, and 15,525 general bot ids (without inner classifications), for a total number of 31,212 samples.
 The difference from the original number of entries is due to the age of the dataset. Since 2011, the year of the creation of the list, a lot of accounts have been deleted or suspended.
 
-The feature vector we used is the same that came out from the feature engineering process \ref{sec:feature_vector}, except for the specific characterizing features, that weren't considered, because crafted for the inner separation among bots. We excluded the \textit{NSFW\_avg}) image feature, as we noticed it didn't bring much performance boosting with the multiclass models.
+The feature vector we used is the same that came out from the feature engineering process \ref{sec:feature_vector}, except for the specific characterizing features, that weren't considered, because crafted for the inner separation among bots. We excluded the \textit{NSFW\_avg}) image feature, as we noticed it didn't bring much performance boosting with the multi-class models.
 The extrinsic features must had been adjusted with new dictionaries, so we had two features: (\textit{bots\_words\_score} and  \textit{genuine\_words\_score}.
-Both the features have been computed as for the multiclass case, with up to 1000 non overlapping words in each dictionary.
+Both the features have been computed as for the multi-class case, with up to 1000 non overlapping words in each dictionary.
 
 \subsection{Model}
 The model chosen for the purpose was the best performer of the tested baselines: the Random Forest binary classifier.
@@ -430,13 +430,13 @@ The model has then been fitted with the hole data, with this settings: \textit{ 
 
 \subsection{Validation}
 
-We had an interesting amount of data that were not involved in this task, because of the comparison with the same Botometer's dataset. Since this unseen data had a further discrimination among bots, it was easy to sample some records randomly, replacing their multiclass targets with binary values.
+We had an interesting amount of data that were not involved in this task, because of the comparison with the same Botometer's dataset. Since this unseen data had a further discrimination among bots, it was easy to sample some records randomly, replacing their multi-class targets with binary values.
 We performed this job to validate the newborn model on unseen and fresher data.
 We were interested in testing a model that were trained over "old" accounts, with consequent different attributes values and different behaviours on the platform, with younger accounts.
 
 This validations would had given us a preview of the real performance of the model, once it would had been deployed on the internet. The account that a user would test with our application could be younger than the ones included in the Caverlee's list.
 
-We sampled 6,000 accounts, divided in 3,000 genuine and 3,000 bot ids, randomly picked by our multiclass dataset.
+We sampled 6,000 accounts, divided in 3,000 genuine and 3,000 bot ids, randomly picked by our multi-class dataset.
 
 The binary model were fitted with its data and it was ready to perform new predictions.
 
@@ -574,7 +574,7 @@ The improvement was encouraging, but still not enough to rely on this basic solu
 Considering the bot target as the positive class, we still had too many False Positive in our confusion Matrix. The binary classifier used to tend to identify an user as a bot, with too much confidence. We had to reduce that number, in order to provide a reliable filter in the final prediction pipeline system.
 
 \subsection{Data extension}
-The idea we had was to use some data from our multiclass dataset to enrich the binary training set, in order to make the algorithm handle younger and different types of samples from the Twitter population.
+The idea we had was to use some data from our multi-class dataset to enrich the binary training set, in order to make the algorithm handle younger and different types of samples from the Twitter population.
 
 In order to perform the extension, we sampled 3,000 genuine accounts and 8,000 bots (2,000 content polluters for each class), all coming from our dataset, and added them to the Caverlee's dataset.
 The new training set was composed by 42,212 samples.
@@ -614,7 +614,7 @@ While cross-validating the model, we tested the complete features vector (with a
 	\end{tabular}\\
 }
 
-The age filed removing made thing worse, but we decided to perform it anyway, because of the good score reached without it, and the flexibility we were giving to the Random Forest. The slight worsening could be also imputed to the biased extrinsic features of that data: those samples came from the multiclass dataset and they originally had the extrinsic features based on the four bot categories' dictionaries.
+The age filed removing made thing worse, but we decided to perform it anyway, because of the good score reached without it, and the flexibility we were giving to the Random Forest. The slight worsening could be also imputed to the biased extrinsic features of that data: those samples came from the multi-class dataset and they originally had the extrinsic features based on the four bot categories' dictionaries.
 In order to refill the binary dataset with these new samples, we had to recompute the extrinsic features, applying the analogous method used for the binary purpose.
 We didn't recompute the entire dictionaries, we just assigned the scores to the new samples we were introducing, basing the calculations on the already listed words. Those had been exposed in chapter \ref{capitolo4}. This approach aimed to force the algorithm to identify bots and humans, basing its comparisons on the online computations of those features, like in a real-case generalization.
 
@@ -634,17 +634,17 @@ A new Grid Search brought us the configuration for the hyperparameters shown in 
 \end{figure}
 The binary classifier has then been fitted with 42,212 samples with 34 features, 600 estimators, entropy splitting criterion and 26 levels of maximum depth.
 
-\section{Multiclass ensemble classifier}
+\section{Multi-class ensemble classifier}
 This is the first piece of the thesis we worked on.\\
 It somehow represents the core of our thesis, it models the starting idea: go deep inside bot identification and search and classify similar behaviours among them.
 
-In this section we will expose the model involved in the multiclass ensemble. In this process, we used a Random Forest algorithm, working on all the crafted features; a KNN model, operating on the user attributes only; a final text-based Naive Bayes classifier, which reads the tweets' texts and classifies them.
+In this section we will expose the model involved in the multi-class ensemble. In this process, we used a Random Forest algorithm, working on all the crafted features; a KNN model, operating on the user attributes only; a final text-based Naive Bayes classifier, which reads the tweets' texts and classifies them.
 
-At first, this ensemble of those three models should had been blended with the prediction of the binary classifier. That means that the genuine class was part of the labels we were trying to classify, even in the multiclass models. Then, we found an issue in this approach: the binary classifier itself wasn't enough, even including it into the ensemble, to give the right importance to the genuine accounts. This problem emerged because of the others classifiers, as they were trying to classify the genuine class too. They lacked in data with that target, so, basically, they used to treat that category as one other of the bot types.
+At first, this ensemble of those three models should had been blended with the prediction of the binary classifier. That means that the genuine class was part of the labels we were trying to classify, even in the multi-class models. Then, we found an issue in this approach: the binary classifier itself wasn't enough, even including it into the ensemble, to give the right importance to the genuine accounts. This problem emerged because of the others classifiers, as they were trying to classify the genuine class too. They lacked in data with that target, so, basically, they used to treat that category as one other of the bot types.
 
 Even if the results on our validation sets were still good (we accomplished a F1 measure of 0.973), for the final ensemble method, we knew that this method would had yielded to a poor bot vs genuine detection tool. We couldn't accept that situation, because, in order to go deeper than other works, in bots' behaviours classifications, we had to provide a solid previous discrimination between humans and automated accounts.
 
-The ensemble method with all the classifiers blended together were replaced with a pipeline, and the multiclass models were trained on bot categories only.
+The ensemble method with all the classifiers blended together were replaced with a pipeline, and the multi-class models were trained on bot categories only.
 These last classifiers had been put together inside a  ensemble, which returns the final mutliclass probability prediction, based on the opinions of those models, as shown in Figure \ref{fig:stacking_schema}
 
 The different nature of the classifiers, and the feature subsets as well, is one of the strengths of the stacking approach: it combines different opinions about the samples, driven by different classifiers, considering different parameters and attributes; basing on those unlike classifications, it builds its own.
@@ -654,7 +654,7 @@ It differs from other ensemble methods as bagging and boosting, because of this 
 \begin{figure}[htp!]
 	\centering
 	\includegraphics[width=\columnwidth]{chapter5/figure/stacking.png}
-	\caption{Multiclass ensemble schema}
+	\caption{Multi-class ensemble schema}
 	\label{fig:stacking_schema}
 \end{figure}
 In the following subsections there are the detailed explanations of the three classifier announced before.
@@ -689,7 +689,7 @@ We are talking about a light-weight version of this tool, because we just went t
 We had to manage the different training by our own, looking how the test score would have changed along with the increasing number of estimators and the different set of features.
 
 Grid Search uses crossvalidation to find the better estimators for the models, and this approach was right for our situation.
-Due to the multiclass nature and some imbalances with the labels, we decided to follow the F1 score metric to asses the value of our model.
+Due to the multi-class nature and some imbalances with the labels, we decided to follow the F1 score metric to asses the value of our model.
 
 The features were organized in clusters, as described in Chapter \ref{capitolo4}.
 We had the user features, the descriptive features, the intrinsic features, the extrinsic and the image features. Then we tried the model with the entire set of 38 attributes.
@@ -773,7 +773,7 @@ Figure (\ref{fig:tree}) shows an example of one of the estimators of the final m
 
 As the picture shows, this tree used the \textit{tweet\_intradistance} feature as root, in order to perform its first split on that attribute.
 
-The first algorithm of the multiclass ensemble was completed and ready to be combined with the following models.
+The first algorithm of the multi-class ensemble was completed and ready to be combined with the following models.
 
 \subsection{User-based KNN classifier}
 The Random Forest model represents somehow the core of the ensemble, as it was trained on the entire feature vector, with all the data we had for the purpose. A massive attention for parameters and features were given for that classifier. 
@@ -785,7 +785,7 @@ The model that had the best performance, not considering the Random Forest, was 
 
 We didn't want this model to work the entire feature vector, because we knew that it would had been overlooked by the Random Forest. Instead, we wanted it to concentrate on the features that describe the users, without the information driven by their tweets. Therefore, we relied on the user features, with the extension of the image feature that assesses the NSFW score to the profile picture. This extension wa due to the fact that such feature doesn't need the user's tweets to be computed; it can be seen as one of the user features as the others of that group.
 
-We hoped that treating the data before, or during, the training phase, would had brought to a good sustain for the first multiclass model, where needed.
+We hoped that treating the data before, or during, the training phase, would had brought to a good sustain for the first multi-class model, where needed.
 
 \subsubsection{Dataset}
 The dataset is composed by the same number (21,445) of samples of the first multitarget Random Forest, but preserving only the twelve features belonging to the user group, plus the NSFW\_profile attribute coming from the image features group.
@@ -900,7 +900,7 @@ We added to the pipeline the following operations:
 	Finally we applied to each word a TF-IDF encoding. Since we had a huge amount of tweets, without this step we would have risked to give too much importance to the overused wordsand almost nothing importance to the others. Moreover, without using TF-IDF we had a worse performance.
 	\item[\PencilRight] \textbf{MultinomialNB:}\\
 	This is the final classification algorithm. Thanks to the pipeline it always receives cleaned data, performing a better training and predictions.
-	We selected a Naive Bayes classifier for multinomial models since we are dealing with a multiclass problem.
+	We selected a Naive Bayes classifier for multinomial models since we are dealing with a multi-class problem.
 \end{itemize}
 
 \subsubsection{Holdout evaluation}

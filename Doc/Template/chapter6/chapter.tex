@@ -4,8 +4,8 @@
 \thispagestyle{empty}
 \section{Stacking meta-classifier}
 In order to classify bots, we had three models, each with different purposes, but they had to cooperate for the bots' behaviour identification.
-The initial idea was to use only the multiclass Random Forest to classify the bot categories, using the other two models as meta-models to build extra features with their outcome.
-Those features would have had the dataset enhanced, but their meaning would have been bounded to the multiclass classifier limits.
+The initial idea was to use only the multi-class Random Forest to classify the bot categories, using the other two models as meta-models to build extra features with their outcome.
+Those features would have had the dataset enhanced, but their meaning would have been bounded to the multi-class classifier limits.
 We wanted to give the right importance to each model, hoping they would help each other to better distinguish the patterns end to better model the real problem.
 
 We thought about several methods to exploit their strengths and combine them. In particular, we thought about a genetic approach and a stacking ensemble with a meta-classifier. 
@@ -227,7 +227,7 @@ The same training set has been used for train both the Genetic and Logistic mode
 Since we were managing a multilabel datasets, we knew that the ensemble meta-model would had been adapted to this job. The most common tool used for stacking purposes is the Logistic Regression, which performs well on binary separations. We decided to test this model on a multinomial approach, with a softmax activation function, instead of trying the already visited One-vs-Rest method.
 
 \subsubsection{Comparison with Random Forest}
-We didn't wanted to blindly select this model over some others tool, especially over Random Forest, which proved us to perform well in multiclass classifications.
+We didn't wanted to blindly select this model over some others tool, especially over Random Forest, which proved us to perform well in multi-class classifications.
 Thus, we tested these two algorithms with the new dataset.
 We ran some default configurations of the models, in order to have a raw comparison to trace a line between them.
 
@@ -411,18 +411,18 @@ This setting obtained the following scores in a 10-fold crossvalidation:
 
 \section{Prediction pipeline}
 \label{predicion_pipeline}
-The final model is represented by an execution pipeline, involving a first binary classifier and then a mutliclass ensemble.
+The final model is represented by an execution pipeline, involving a first binary classifier and then a mutli-class ensemble.
 
 As described by figure \ref{fig:prediction_pipeline}, In order to perform a prediction over a new sample the process is the following:
 \begin{enumerate}
 	\item User and tweets data retrieving with Twitter APIs
 	\item Prepare data with binary extrinsic features and strip image attributes, in order to output binary probability prediction (\textbf{Binary Random Forest})
-	\item Prepare data and perform features engineering to output multiclass probability prediction (\textbf{All-features multiclass Random Forest})
-	\item Strip all attributes, except for the user features, weight them with Information Gain-driven proportions to output multiclass probability prediction (\textbf{User-based multiclass KNN})
-	\item Prepare and treat text to perform text-based probability prediction (\textbf{Text-based multiclass Naive Bayes})
+	\item Prepare data and perform features engineering to output multi-class probability prediction (\textbf{All-features multi-class Random Forest})
+	\item Strip all attributes, except for the user features, weight them with Information Gain-driven proportions to output multi-class probability prediction (\textbf{User-based multi-class KNN})
+	\item Prepare and treat text to perform text-based probability prediction (\textbf{Text-based multi-class Naive Bayes})
 	\item Build new features vector with the stacked outcomes of the mutliclass classifiers
 	\item Compute the final mutliclass probabilistic prediction with the meta-classifier (\textbf{Multinomial Logistic Regression})
-	\item Use the multiclass division to repartition the bot probability provided by the binary model
+	\item Use the multi-class division to repartition the bot probability provided by the binary model
 \end{enumerate}
 The binary classifier returns two values: the membership probability for the bot category and the one for the genuine class.
 The percentage that marks the bot nature of the examined account gets partitioned by the outcome of the mutliclass stacking ensemble.
