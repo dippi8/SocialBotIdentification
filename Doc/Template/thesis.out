@@ -65,17 +65,17 @@
 \BOOKMARK [2][-]{subsection.5.3.1}{All-features-based Random Forest classifier}{section.5.3}% 65
 \BOOKMARK [2][-]{subsection.5.3.2}{User-based KNN classifier}{section.5.3}% 66
 \BOOKMARK [2][-]{subsection.5.3.3}{Text-based Naive Bayes classifier}{section.5.3}% 67
-\BOOKMARK [0][-]{chapter.6}{Final Prediction}{}% 68
+\BOOKMARK [0][-]{chapter.6}{Prediction}{}% 68
 \BOOKMARK [1][-]{section.6.1}{Stacking meta-classifier}{chapter.6}% 69
 \BOOKMARK [2][-]{subsection.6.1.1}{Genetic algorithm}{section.6.1}% 70
 \BOOKMARK [2][-]{subsection.6.1.2}{Logistic Regression}{section.6.1}% 71
 \BOOKMARK [1][-]{section.6.2}{Prediction pipeline}{chapter.6}% 72
 \BOOKMARK [0][-]{chapter.7}{Web application - BotBuster}{}% 73
 \BOOKMARK [1][-]{section.7.1}{Architecture}{chapter.7}% 74
-\BOOKMARK [1][-]{section.7.2}{Backend}{chapter.7}% 75
+\BOOKMARK [1][-]{section.7.2}{Back-end}{chapter.7}% 75
 \BOOKMARK [2][-]{subsection.7.2.1}{Engine}{section.7.2}% 76
 \BOOKMARK [2][-]{subsection.7.2.2}{Flask}{section.7.2}% 77
-\BOOKMARK [1][-]{section.7.3}{Frontend}{chapter.7}% 78
+\BOOKMARK [1][-]{section.7.3}{Front-end}{chapter.7}% 78
 \BOOKMARK [1][-]{section.7.4}{Deployment platform}{chapter.7}% 79
 \BOOKMARK [1][-]{section.7.5}{Comparison with Botometer}{chapter.7}% 80
 \BOOKMARK [0][-]{chapter.8}{Conclusion and Future Work}{}% 81

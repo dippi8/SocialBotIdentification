@@ -277,7 +277,8 @@ We didn't care about which page or sections the bots were interested to spam, as
 	\label{fig:intr_rank}
 \end{figure}
 Figure \ref{fig:intr_rank} shows the inner ranking of these two new features, that have these scores:
-\textit{1. tweet\_intradistance (0.736), 2. url\_entropy (0.264)}
+\textit{1. tweet\_intradistance (0.736), 2. url\_entropy (0.264)}.
+
 From the chart it is clear that the tweet content monotony plays a more important role than the analysis of the links posted. This could mean that bots tend to repeat themselves in terms of words used in tweets, more than in terms of URLs shared.
 Although, the  \textit{url\_entropy} feature may lacks in performances, when it has to examine shortened URLs. These links must be expanded to retrieve the actual URL, that may coincide with some of the ones already posted by the same bot, but without passing through shortener services. In terms of induced entropy, the same actual URL, posted twice, could be interpreted as two different endpoints, if one of the posts embedded it in the shortened way. It is computationally expensive, and often useless, to expand all these shrunk links. So, we decided to keep the feature computation as it was when the ranking was performed, and that the bias incorporated was acceptable.
 \section{Extrinsic features}
@@ -541,25 +542,26 @@ One of the main issues of our work was to make the NSFW class different, in term
 According to our user-based, descriptive and intrinsic features, both classes act in a similar way: they spam similar links, have high tweet frequency and their contents are often repeated.\\
 What could be the difference?
 
-We started with "blind" classifier, that was the main problem. Our feature vector lacked in visual components. A Spam-Bot could have been detected as a NSFW, as its tweets involved media and URLs. We needed to go deep and actually see what kind of media were broadcast.
+We started with ``blind`` classifier, that was the main problem. a blind model, in this case, is meant to not be able to understand visual contents. Indeed, we just analysed text-based information and meta-data on text posts. Our feature vector lacked in visual components. A Spam-Bot could have been detected as a NSFW, as its tweets involved media and URLs. We needed to go deep and actually see what kind of media were broadcast.
 This is the reason for presence of the upcoming features.
 
 We've found a small versatile project on GitHub for NSFW detection.\\
 The projects involves a pre-trained TensorFlow neural network for image recognition, that looks for adult and violent content inside pictures. It assigns the media a probability to be not safe for work.
 
 The model exploits the Inception v3 \cite{inception} architecture.
-It takes a 299x299x3 input, representing a 299 pixels squared visual field and 3 color channels (R,G,B). It has five convolutional layers, with two max-pooling operations between them. Successively, it stacks multiple "Inception modules" and it ends with a softmax output layer.
-The repeated stacking of such models makes the architecture much deep, allowing each module to detect features on multiple scales, using convolution operations with different kernel sizes.
+It takes a 299x299x3 input, representing a 299 pixels squared visual field and 3 color channels (R,G,B). It has five convolutional layers, with two max-pooling operations between them. Successively, it stacks multiple ``Inception modules``and it ends with a softmax activation function for output layer.
+The softmax function is a generalization of the sigmoid function used for the Logistic Regression model. It is used to calculate the probabilities distribution of the event over N different events, and it is very common for neural networks with more than one target.
+The repeated stacking of such models makes the architecture deep, allowing each module to detect features on multiple scales, using convolution operations with different kernel sizes.
 
 
 The Inception model has been fed with pictures representing Not Safe For Work contents, as well as Safe For Work contents.
 The NSFW images has been retrieve by crawling the browser tabs, with the help of Fatkun batch download Images, a Google Chrome extension for batch downloads.
 We gathered 1,548 elements for that class.
-The SFW class content is composed by a collection of clean pictures of random users, already collected in the Selfie Dataset \cite{selfie} . This dataset contains 46,836 images, wiht metadata about genders, ages and so on; it's built for research purposes.
-We just randomly picked the same number as for the other class, in order to have a balanced training set.
+The SFW class content is composed of a collection of clean pictures of random users, already collected in the Selfie Dataset \cite{selfie}. This dataset contains 46,836 images, with meta-data about genders, ages and so on; it's built for research purposes.
+We just randomly picked the same number of NSFW pictures, from the SFW collection, in order to have a balanced training set.
 
-The network has then been trained with 500 iteration steps, leading to a  95.7\% of accuracy in validation and 99\% in training stage, when distinguish nsfw contents from sfw ones. The accuracy graph is shown in Figure \ref{fig:inception}.
-We thought that the bias introduced with this new features would have been under control and that it wouldn't compromise the final results of our models.
+The network has then been trained with 500 iteration steps, leading to a  95.7\% of accuracy in validation and 99\% in training stage, when distinguish NSFW contents from SFW ones. The accuracy graph is shown in Figure \ref{fig:inception}.
+These attributes were computed with a machine learning model which, for definition, has an error in its functioning. These features differs from the others, because don't rely on 100\% accurate methods, like the computation of means and statistic indices. Thus, we knew we were introducing a bias in our feature vector, and that it was bounded to the Inception module test error. Although, we thought that the error brought with this new features would have been under control and that it wouldn't compromise the final results of our models.
 
 \begin{figure}[htp!]
 	\centering
@@ -570,8 +572,6 @@ We thought that the bias introduced with this new features would have been under
 
 We decided to scan our dataset with this new component and to give a NSFW score to both profile pictures and tweets.
 For time complexity reasons, we couldn't imagine to scan all the retrieved tweets for each user and to look for embedded media. We limited the process to the latest ten tweets.
-
-Obviously, the prediction time has been affected by this new preprocessing stage, but we think that this number of pictures analysed (up to eleven), makes the generalization duration still reasonable.
 
 The brand new attributes that helped us in better separating NSFW class are:
 \small

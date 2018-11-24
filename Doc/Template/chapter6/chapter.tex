@@ -1,5 +1,5 @@
 % !TEX root = ../thesis.tex
-\chapter{Final Prediction}
+\chapter{Prediction}
 \label{capitolo6}
 \thispagestyle{empty}
 \section{Stacking meta-classifier}
@@ -18,9 +18,8 @@ In order to make those prediction without cheating, we couldn't use the models t
 We didn't perform further Grid Search to find the best hyperparameters in this stage, because the final script that we were going to assemble was taking into account the entire dataset to train the models. Furthermore, this small variation, in terms of amount of training data, wouldn't had led us into a misinterpretation of the problem, if we had kept the same hyperparameters found earlier.
 We decided to stick with the configurations already found and to train the model with fewer data.
 
-Once the model were fitted, we used the \textit{predict\_proba()} method of the Scikit-learn implementations of the classifiers, in order to retrieve "soft classifications".
+Once the models were fitted, we used the \textit{predict\_proba()} method of the Scikit-learn implementations of the classifiers, in order to retrieve ``soft classifications``. This method differ from the standard \textit{predict()} function, because it doesn't return the predicted target for that sample, but it returns the computed probabilities for each class. The way a probability is given depends on the classification algorithm, i.e. Random Forest assesses the probability by retrieving the votes that its leaves give to each class. The \textit{predict()} method, instead, after the probability computation, returns the most probable target.
 We didn't want our model to assign a strict label to an unseen sample, indeed, we were interested in the percentage of categories membership.
-The predict\_proba() method computes the probability, for a sample, to belong to the highlighted class, without assigning the most probable target.
 We used this method to construct the output vectors needed to train the stacking models.
 
 Each sample of this new dataset contains 12 elements, 4 soft predictions (one for each category) for each classifier (complete Random Forest, text-based Naive Bayes and user-based KNN).
@@ -65,12 +64,12 @@ After several parallel attempts were done, the blending system was built with th
 This approach started as a side way, when we were already testing the stacking ensemble.
 
 The idea behind genetic programming, is to emulate the natural species evolution, by encoding the the \textit{chromosomes} in the process with data structures.
-The chromosomes represent the possible solutions for the problem and they have to "evolve", in order to get fitter and fitter for the goal.
+The chromosomes represent the possible solutions for the problem and they have to ``evolve``, in order to get fitter and fitter for the goal.
 Several operators must be determined to perform this evolution.
 Once a first \textit{generation} of feasible chromosomes has been formed, they have to be evaluate according to a \textit{fitness function}, which asses how well a chromosome faces the problem.
 The best portion of chromosomes are picked to be part of the next generation, and this is called \textit{elitism}. The solutions left are given a probabilities to join the elite ones, in order to form a new generation with about the same size as the previous. This step is called \textit{selection}.
 The chromosomes picked in the selection stage are assigned a high \textit{crossover} probability.
-The crossover operator handles the "born" of new chromosomes, mixing parents alleles in a certain way. The mixing method is highly correlated to the chosen encoding strategy.
+The crossover operator handles the ``born`` of new chromosomes, mixing parents alleles in a certain way. The mixing method is highly correlated to the chosen encoding strategy.
 Each newborn is give a low probability to undergo a mutation. This step often seems useless, but it's pretty important, in order to explore a higher spectrum of solutions, which couldn't be expanded by the mating operators only.
 After the new population has been accepted, it is ready to be validated through the previously define fitness function.
 The loop holds, until a solution is found, or, like in our case, the process sticks to a local or global maximum.
@@ -211,7 +210,7 @@ In the last run, from the 5\textsubscript{th} generation there was no improvemen
 \end{itemize}
 
 The results were discouraging, compared to the singular scores of the models involved.
-It was worth to try this approach, but we were aware that a "simple" weighted mean of the outcomes of the classifiers weren't enough to describe the problem.
+It was worth to try this approach, but we were aware that a ``simple`` weighted mean of the outcomes of the classifiers weren't enough to describe the problem.
 
 Thus, we built a different and more sophisticated stacking method.
 
@@ -227,7 +226,7 @@ The same training set has been used for train both the Genetic and Logistic mode
 Since we were managing a multilabel datasets, we knew that the ensemble meta-model would had been adapted to this job. The most common tool used for stacking purposes is the Logistic Regression, which performs well on binary separations. We decided to test this model on a multinomial approach, with a softmax activation function, instead of trying the already visited One-vs-Rest method.
 
 \subsubsection{Comparison with Random Forest}
-We didn't wanted to blindly select this model over some others tool, especially over Random Forest, which proved us to perform well in multi-class classifications.
+We didn't want to blindly select this model over some others tool, especially over Random Forest, which proved us to perform well in multi-class classifications.
 Thus, we tested these two algorithms with the new dataset.
 We ran some default configurations of the models, in order to have a raw comparison to trace a line between them.
 
@@ -235,9 +234,9 @@ We ran some default configurations of the models, in order to have a raw compari
 \begin{figure}[htp!]
 	\centering 
 	\subfigure[LogReg with raw settings]{
-		\label{fig:lr_def}\includegraphics[width=60mm]{chapter5/figure/logreg_default.png}}
+		\label{fig:lr_def}\includegraphics[width=\columnwidth]{chapter5/figure/logreg_default.png}}
 	\subfigure[Random Forest with raw settings]{
-		\label{fig:rf_def}\includegraphics[width=60mm]{chapter5/figure/random_forest_default.png}}
+		\label{fig:rf_def}\includegraphics[width=\columnwidth]{chapter5/figure/random_forest_default.png}}
 	\caption{Stacking models comparison}
 \end{figure}
 
@@ -280,7 +279,7 @@ The penalties that we explored were:
 Figure \ref{fig:lr_lasso_lambda} highlights the slightly better results obtained with the Lasso penalty, with unitary $ \lambda $ coefficient (Lasso F1 score: 0.973).
 As Figure \ref{fig:lr_ridge_lambda} shows, the ridge penalty needs to be weakened ($ \lambda $ = 0.1) in order to get close to the Lasso performance, which is a compromise hard to deal with. The smaller  is the regularization coefficient, the higher is the model complexity, as said before.
 Moreover, we decided to gather further consideration, by looking inside the weighting applied by those two terms.
-Since we didn't have lot of data for the training, we wanted to keep the regularization high enough to not fit the noise in the model.
+Since we didn't have a lot of data for the training, we wanted to keep the regularization high enough to not fit the noise in the model.
 
 We took a look inside the weighting performed by the model, with both L\textsubscript{1} and L\textsubscript{2} regularizations, in order to catch some insight from them.
 The weights are composed by four vectors of twelve elements each: each vector represent the weights applied for a One-vs-Rest target classification, and each element of the vectors are mark the features the model has been fitted on. As said before, each of the three groups of four features represents the probabilities, for a sample, of membership to the classes.
@@ -376,20 +375,20 @@ We wanted to get some further insights from the other weighting.
 The L\textsubscript{1} term, as expected cut out some features from the model.
 Looking at the excluded attributes, we noticed that the regularization caught the strenghts and the weaknesses of the classifiers. The text-based Naive Bayes classifier seemed to be useless when it came to detect Fake-Followers. It seemed legit, as the dictionary used by that category is the smallest and the most heterogeneus (lots of non english words are involved) in our dataset.
 Lasso seemed to understand this behaviour and decided to not consider the opinion of that classifier, when it has to give its opinion about that bot cateogry.
-Another insight got from L\textsubscript{1} is coming again from the Naive Bayes algorithm. The model couldn't distinguish with certainty Spam-Bots, since they act in a similar way, with respect to NSFW accounts. They just tweets click-baiting links, with catchy captions. A "blind" classifier struggles in understand the nature of those links. This is the reason that the contributes of the tex-based model had been almost discarded from the stacking meta-classifier.
+Another insight got from L\textsubscript{1} is coming again from the Naive Bayes algorithm. The model couldn't distinguish with certainty Spam-Bots, since they act in a similar way, with respect to NSFW accounts. They just tweets click-baiting links, with catchy captions. A ``blind`` classifier struggles in understand the nature of those links. This is the reason that the contributes of the tex-based model had been almost discarded from the stacking meta-classifier.
 
 \begin{figure}[htp!]
 	\centering 
 	\subfigure[Up to 150 iterations]{
-		\label{fig:lr_lasso_close}\includegraphics[width=60mm]{chapter5/figure/logreg_l1_close.png}}
+		\label{fig:lr_lasso_close}\includegraphics[width=\columnwidth]{chapter5/figure/logreg_l1_close.png}}
 	\subfigure[Up to 5000 iterations]{
-		\label{fig:lr_lasso_far}\includegraphics[width=60mm]{chapter5/figure/logreg_l1_far.png}}
+		\label{fig:lr_lasso_far}\includegraphics[width=\columnwidth]{chapter5/figure/logreg_l1_far.png}}
 	\caption{Lasso Logistic Regression scores over solvers}
 \end{figure}
 
 
 Since we knew our dataset and we were aware of the bias it might contain, we preferred a lighter and sparser model, over a more complex one, even when the F1 scores used to match. We wanted our model to infer on new unseen data and to be ready to give a representative statistical description of the actual situation on Twitter.
-We had to be far-sighted and not to recline on the accomplishments of the 10-fold crossvalidation. We thought that the Lasso model would had been performing better in out-of-box predictions.
+We had to be far-sighted and not to recline on the accomplishments of the 10-fold crossvalidation. We thought that the Lasso model would have been performing better in out-of-box predictions.
 
 We kept the L\textsubscript{1} penalty, with $ \lambda  = 1 $   and proceeded with the hyperparameters tuning.
 
@@ -400,7 +399,7 @@ The algorithms seem to not improve after 75 maximum iterations setted.
 Moreover, the LIBLINEAR solver gains slightly better results, in terms of F1 score, as it reaches 0.9867 in this metric, compared with the score obtained with LIBLINEAR solver, which is 0.9867.
 
 The final Logistic Regression meta-classifier has been fitted with the Scikit-learn library, with this setting:\\
-\textit{LogisticRegression(max\_iter = 100, penalty = "l1", solver = "liblinear", C = 1, multi\_class = "multinomial", fit\_intercept = True)}.\\
+\textit{LogisticRegression(max\_iter = 100, penalty = ``l1``, solver = ``liblinear``, C = 1, multi\_class = ``multinomial``, fit\_intercept = True)}.\\
 The \textit{C} parameter stands for $ \frac{1}{\lambda} $, the regularization coefficient.
 This setting obtained the following scores in a 10-fold crossvalidation:
 \begin{itemize}
@@ -424,7 +423,7 @@ As described by figure \ref{fig:prediction_pipeline}, In order to perform a pred
 \begin{enumerate}
 	\item User and tweets data retrieving with Twitter APIs
 	\item Prepare data with binary extrinsic features and strip image attributes, in order to output binary probability prediction (\textbf{Binary Random Forest})
-	\item Prepare data and perform features engineering to output multi-class probability prediction (\textbf{All-features multi-class Random Forest})
+	\item Prepare data and perform features computation to output multi-class probability prediction (\textbf{All-features multi-class Random Forest})
 	\item Strip all attributes, except for the user features, weight them with Information Gain-driven proportions to output multi-class probability prediction (\textbf{User-based multi-class KNN})
 	\item Prepare and treat text to perform text-based probability prediction (\textbf{Text-based multi-class Naive Bayes})
 	\item Build new features vector with the stacked outcomes of the mutliclass classifiers
@@ -434,9 +433,7 @@ As described by figure \ref{fig:prediction_pipeline}, In order to perform a pred
 The binary classifier returns two values: the membership probability for the bot category and the one for the genuine class.
 The percentage that marks the bot nature of the examined account gets partitioned by the outcome of the mutliclass stacking ensemble.
 The pipeline will be performed by a web application, in order to provide a useful classification tool for every internet user.
-The engine of this web application is mainly composed by a python script, which, given a Twitter user name, resumes this prediction pipeline and executes it, providing the classification.
 
-This last lines anticipate the content of the following chapter of our thesis.
 \begin{figure}
 	\begin{center}
 		\includegraphics[width=\columnwidth]{chapter5/figure/pred_pipeline.png}\par 
