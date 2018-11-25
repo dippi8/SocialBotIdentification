@@ -1,4 +1,4 @@
-This is BibTeX, Version 0.99d (TeX Live 2018)
+This is BibTeX, Version 0.99d (TeX Live 2017/Debian)
 Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: thesis.aux
 A level-1 auxiliary file: cover_page.aux
@@ -24,10 +24,8 @@ I was expecting a `,' or a `}'---line 73 of file references.bib
 I'm skipping whatever remains of this entry
 Warning--entry type for "Botometer" isn't style-file defined
 --line 108 of file references.bib
-I was expecting a `,' or a `}'---line 114 of file references.bib
- : @aritcle {Bot 
- :               or Not,
-I'm skipping whatever remains of this entry
+Warning--entry type for "BotorNot" isn't style-file defined
+--line 114 of file references.bib
 Warning--entry type for "Bot-Hunter" isn't style-file defined
 --line 120 of file references.bib
 Warning--entry type for "Astroturfing" isn't style-file defined
@@ -46,7 +44,6 @@ Warning--entry type for "bessi" isn't style-file defined
 --line 166 of file references.bib
 Warning--entry type for "Cyborgs" isn't style-file defined
 --line 172 of file references.bib
-Warning--I didn't find a database entry for "BotorNot"
 Warning--I didn't find a database entry for "lee2011seven"
 Too many commas in name 1 of "Onur Varol, Emilio Ferrara, Clayton A. Davis, Filippo Menczer, Alessandro Flammini" for entry Varol
 while executing---line 1049 of file plain.bst
@@ -55,6 +52,10 @@ while executing---line 1049 of file plain.bst
 Too many commas in name 1 of "Clayton A. Davis, Onur Varol, Emilio Ferrara, Alessandro Flammini, Filippo Menczer" for entry Botometer
 while executing---line 1049 of file plain.bst
 Too many commas in name 1 of "Clayton A. Davis, Onur Varol, Emilio Ferrara, Alessandro Flammini, Filippo Menczer" for entry Botometer
+while executing---line 1049 of file plain.bst
+Name 1 in "Emilio Ferrara, Onur Varol, Clayton Davis, Filippo Menczer, and AlessandroFlammini" has a comma at the end for entry BotorNot
+while executing---line 1049 of file plain.bst
+Too many commas in name 1 of "Emilio Ferrara, Onur Varol, Clayton Davis, Filippo Menczer, and AlessandroFlammini" for entry BotorNot
 while executing---line 1049 of file plain.bst
 Too many commas in name 1 of "Stefano Cresci, Roberto Di Pietro, Marinella Petrocchi, Angelo Spognardi, Maurizio Tesconi" for entry Fake-Followers
 while executing---line 1049 of file plain.bst
@@ -125,6 +126,10 @@ Too many commas in name 1 of "Clayton A. Davis, Onur Varol, Emilio Ferrara, Ales
 while executing---line 1090 of file plain.bst
 Too many commas in name 1 of "Clayton A. Davis, Onur Varol, Emilio Ferrara, Alessandro Flammini, Filippo Menczer" for entry Botometer
 while executing---line 1090 of file plain.bst
+Name 1 in "Emilio Ferrara, Onur Varol, Clayton Davis, Filippo Menczer, and AlessandroFlammini" has a comma at the end for entry BotorNot
+while executing---line 1090 of file plain.bst
+Too many commas in name 1 of "Emilio Ferrara, Onur Varol, Clayton Davis, Filippo Menczer, and AlessandroFlammini" for entry BotorNot
+while executing---line 1090 of file plain.bst
 Too many commas in name 1 of "J. Ratkiewicz, M. D. Conover, M. Meiss, B. Gonçalves, A. Flammini, F. Menczer" for entry Astroturfing
 while executing---line 1090 of file plain.bst
 Too many commas in name 1 of "J. Ratkiewicz, M. D. Conover, M. Meiss, B. Gonçalves, A. Flammini, F. Menczer" for entry Astroturfing
@@ -162,45 +167,45 @@ while executing---line 1090 of file plain.bst
 Warning--empty journal in Cresci
 Name 1 in "Zi Chu, Steven Gianvecchio, Haining Wang, and Sushil Jajodia" has a comma at the end for entry Cyborgs
 while executing---line 1090 of file plain.bst
-You've used 25 entries,
+You've used 26 entries,
             2118 wiz_defined-function locations,
-            624 strings with 7997 characters,
-and the built_in function-call counts, 5416 in all, are:
-= -- 481
-> -- 239
+            626 strings with 8102 characters,
+and the built_in function-call counts, 5651 in all, are:
+= -- 501
+> -- 252
 < -- 0
-+ -- 99
-- -- 72
-* -- 241
-:= -- 951
-add.period$ -- 63
-call.type$ -- 25
-change.case$ -- 110
++ -- 105
+- -- 76
+* -- 251
+:= -- 989
+add.period$ -- 65
+call.type$ -- 26
+change.case$ -- 115
 chr.to.int$ -- 0
-cite$ -- 43
-duplicate$ -- 220
-empty$ -- 477
-format.name$ -- 72
-if$ -- 1102
+cite$ -- 44
+duplicate$ -- 227
+empty$ -- 499
+format.name$ -- 76
+if$ -- 1152
 int.to.chr$ -- 0
-int.to.str$ -- 25
+int.to.str$ -- 26
 missing$ -- 15
-newline$ -- 116
-num.names$ -- 48
-pop$ -- 194
+newline$ -- 120
+num.names$ -- 50
+pop$ -- 204
 preamble$ -- 1
-purify$ -- 86
+purify$ -- 90
 quote$ -- 0
-skip$ -- 192
+skip$ -- 201
 stack$ -- 0
-substring$ -- 127
-swap$ -- 11
+substring$ -- 133
+swap$ -- 12
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 100
+type$ -- 104
 warning$ -- 18
-while$ -- 48
-width$ -- 27
-write$ -- 213
-(There were 50 error messages)
+while$ -- 50
+width$ -- 28
+write$ -- 221
+(There were 53 error messages)

@@ -6,15 +6,15 @@
 \addcontentsline{toc}{chapter}{Abstract}
 
 This thesis describes a study and a web tool for the identification and classification of bots, according to the potential harm or threat they may cause to humans in online conversations. The focus is on Twitter, as social network platform, and bots are meant as algorithmically driven accounts that act like humans in interactions.
-The problem has so far been addressed with a special attention to the detection of such automated entities among legitimate ones. The method and tool described in this thesis propose a finer level of granularity and show that it is further possible to classify bots also into potential types of harm --  bots with adult content (\textit{NSFW}), bots propagating news and potential misinformation (\textit{News-Spreaders}), bots that spam product sails or job offers (\textit{Spam-Bots}) and bots who mimic interests (\textit{Fake-Followers}) -- in function of the content they share and their behaviour.
+The problem has so far been addressed with a special attention to the detection of such automated entities among legitimate ones. The method and tool described in this thesis propose a finer level of granularity and show that it is further possible to classify bots also into potential types of harm --  bots with adult content (\textit{Not Safe For Work}), bots propagating news and potential misinformation (\textit{News-Spreaders}), bots that spam product sales or job offers (\textit{Spam-Bots}) and bots who mimic interest (\textit{Fake-Followers}) -- in function of the content they share and their behaviour.
 
-The method involves the creation of two datasets, the engineering of features and the selection of the models.
-Starting from binary-labelled (bot or not) accounts lists, the thesis shows how the training sets have been collected, following different leads and approaches, yielding to a stratified multi-class dataset.
-The work done focuses on different bot behaviours, and specific features have been crafted to better distinguish those ways to act.
-The final solution involves a predictive pipeline algorithm, composed of a first binary machine learning classifier, aimed to perform the detection of bots among genuine accounts and a multi-class ensemble classifier, which goes deeper inside those aforementioned categories and classifies the potential threat.
+The methodology followed involves the creation of two datasets, the engineering of features and the selection of the models.
+Starting from binary-labelled (bot or not) accounts lists, the thesis shows how the training sets have been collected, following different approaches, yielding a stratified multi-class dataset.
+The work done focuses on different bot behaviours, and specific features have been crafted to capture those ways to act.
+The final solution involves a predictive pipeline algorithm, composed of a first binary machine learning classifier, aimed to detect bots among genuine accounts and a multi-class ensemble classifier, which goes deeper into the aforementioned categories and classifies the potential threat.
 Each model of the classifiers pool has been evaluated individually and inside the ensemble. The validation stages measured a 95\% of AUC score for the binary classifier, and an average of 98\% in F1 score, for the multi-class ensemble model.
 
-The tool implementing the method, BotBuster, is a web application running the prediction script, and it is accessible for free.
+The tool implementing the method, BotBuster, is a web application running the prediction script, that is accessible for free.
 
 
 
