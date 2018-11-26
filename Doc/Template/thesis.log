@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.10.16)  26 NOV 2018 21:30
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.10.16)  26 NOV 2018 21:37
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1069,7 +1069,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 893--894
 
  []
 
-[85]
+
 Overfull \hbox (17.0pt too wide) in paragraph at lines 895--896
 [][] 
  []
@@ -1079,7 +1079,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 895--896
 
  []
 
-[86]) [87]
+[85] [86]) [87]
 \openout2 = `chapter6/chapter.aux'.
 
  (./chapter6/chapter.tex [88
@@ -1377,7 +1377,7 @@ xlive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texl
 ive/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texli
 ve/2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmti8.pfb></usr/local/texlive
 /2018/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb>
-Output written on thesis.pdf (145 pages, 11240341 bytes).
+Output written on thesis.pdf (145 pages, 11240275 bytes).
 PDF statistics:
  1620 PDF objects out of 1728 (max. 8388607)
  1324 compressed objects within 14 object streams

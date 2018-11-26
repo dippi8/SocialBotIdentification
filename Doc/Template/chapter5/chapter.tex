@@ -740,7 +740,7 @@ We then continued with a proper Grid Search over the whole number of features.
 The algorithms rely on parameters in order to fit a problem.
 Once the number of featured was picked, as well as the model, we needed to consider the possible hyperparameter ranges. 
 The Grid Search method from Scikit-learn helped us, once again, during this exploration.
-Since we were testing a Random Forest, we wanted to play with the number of estimators (tree) to include in the pool, as well as the maximum depth of each tree and the splitting criterion.
+Since we were testing a Random Forest, we wanted to play with the number of estimators (trees) to include in the pool, as well as the maximum depth of each tree and the splitting criterion.
 
 \begin{figure}[htp!]
 	\centering
@@ -759,12 +759,12 @@ The Figures \ref{fig:rf_tuning_gini}, \ref{fig:rf_tuning_entropy} show how the a
 The different coloured lines represent the \textit{max\_depth} hyperparameter.
 The first Figure (\ref{fig:rf_tuning_gini}) shows the Grid Search results, with the \textit{gini} splitting criterion.
 The second one (\ref{fig:rf_tuning_entropy}) represent the situation having \textit{entropy} as a splitting choice.
-We combined nine numbers of estimators (200, 250, 300, 350, 400, 450, 500, 550, 600), together with three different maximum depths for the trees (26, 28, None) and the two above-mentioned splitting criteria.
+We combined nine numbers of estimators (from 200 to 600), together with three different maximum depths for the trees (26, 28, None) and the two above-mentioned splitting criteria.
 
 We could observe a peak, for both criteria, in correspondence with 400 estimators.
 Although the Gini-based forest's score didn't seem a bad point, we went with the Information Gain splitting criterion, which si also the same we used to rank the features of our data.
 
-The final configuration involves 400 trees, the Information Gain criterion and the maximum reachable depth (for each of the 400 estimators) equal to 28 levels, yielding the following scores in 10-fold-crossvalidation:
+The final configuration involves 400 trees, the Entropy criterion and the maximum depth (for each estimator) equal to 28 levels, yielding the following scores in crossvalidation:
 \begin{itemize}
 	\item[\PencilRight] \textit{Precision}: \textbf{0.979}
 	\item[\PencilRight] \textit{Recall}: \textbf{0.977}
@@ -873,17 +873,17 @@ The shape of the dataset is the following:
 
 \begin{center}
 	\begin{tabular}{lr}
-		category&\# tweets\\
+		category&\#tweets\\
 		\hline\hline
 		NSFW&196712\\
 		News-Spreaders&280300\\
 		Spam-Bots&453719\\
 		Fake-Followers&41316\\
-		\hline\\\\
+		\hline\\
 	\end{tabular}
 \end{center}
 
-It seems unbalanced, anyway it is appropriate to keep all the data. Some spambot's tweets just contain links and they will be removed in the next steps. Differently, Fake-Followers usually don't tweet, or they never tweeted.
+It seems unbalanced, anyway it is appropriate to keep all the data. Some Spam-Bots tweets just contain links and they will be removed in the next steps. Differently, Fake-Followers usually don't tweet, or they never tweeted.
 
 \subsubsection{Model}
 In order to classify texts, we decided to use a Naive Bayes approach. This algorithm consists in a probabilistic classifier based on the Bayes' theorem. ``Numerous researchers proved that it is effective enough to classify the text in many domains \cite{svm}. Naive Bayes models allow each attribute to contribute towards the final decision equally and independently from other attributes`` \cite{nb}.
