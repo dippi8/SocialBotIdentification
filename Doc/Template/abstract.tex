@@ -23,7 +23,7 @@ The tool implementing the method, BotBuster, is a web application running the pr
 
 \addcontentsline{toc}{chapter}{Sommario}
 
-In questa tesi è descritta una metodologia e uno strumento per l'dentificazione e la classificazione di bot, in termini di potenziali comportamenti minacciosi o dannosi, nei confronti di umani, nel contesto delle interazioni sui social network.
+In questa tesi è descritta una metodologia e uno strumento per l'identificazione e la classificazione di bot, in termini di potenziali comportamenti minacciosi o dannosi, nei confronti di umani, nel contesto delle interazioni sui social network.
 In questo specifico caso, l'attenzione è stata rivolta alla piattaforma online di Twitter, e i bot sono da considerarsi come account presenti sul social, gestiti da algoritmi che ne automatizzano le interazioni con gli umani.
 Il problema dei bot è, fino ad ora, stato affrontato con un'ottica improntata all'identificazione di quest'ultimi tra la totalità delle entità che popolano il web.
 Il metodo esposto, così come lo strumento proposto, puntano ad aggiungere un livello di profondità alle soluzioni fino ad ora proposte, classificando la natura di questi bo e i possibili danni che possono recare ad utenti legittimi -- bot che condividono contenuti per adulti (NSFW), bot che fanno propaganda politica, diffondendo notizie e possibile disinformazione (News-Spreaders), bot che propinano offerte di lavoro o vendite di prodotti di dubbia validità (Spam-Bots) e bot che simulano interesse per i contenuti condivisi da altri account (Fake-Followers) -- in funzione dei contenuti da loro condivisi e dal loro comportamento.
@@ -31,7 +31,7 @@ Il metodo esposto, così come lo strumento proposto, puntano ad aggiungere un li
 Il metodo studiato prevede la costruzione di due dataset, un processo di creazione di attributi aggiuntivi e la selezione dei modelli di classificazione.
 Partendo da liste di utenti con target binario (bot o umani), la tesi mostra come si siano creati i training set per gli algoritmi, seguendo diverse piste, portando a dataset stratificati con più di due target.
 Il lavoro svolto si concentra sui diversi comportamenti imputabili ai bot, son state quindi assemblate delle feature specifiche per distinguere tali modi di interagire.
-La soluzione finale prevede una pipeline predittiva, composta da un primo modello di apprendimento automatico in grado di classificare bot e umani, e da un ensemble di classificatori che si occupano di andare a fondo nella distinzione di quelle sommenzionate categorie di bot e delle potenziali minacce che possono rappresentare.
+La soluzione finale prevede una pipeline predittiva, composta da un primo modello di apprendimento automatico in grado di classificare bot e umani, e da un ensemble di classificatori che si occupano di andare a fondo nella distinzione di quelle summenzionate categorie di bot e delle potenziali minacce che possono rappresentare.
 Ogni modello è stato valutato in maniera isolata e nell'insieme dell'ensemble. In fase di validazione sono stati misurati un 95\% di AUC score, nel modello binario, e una media del 98\% per la metrica F1, nel modello multi-classe.
 
 Lo strumento che implementa il metodo descritto, BotBuster, è una applicazione web che esegue lo script per la classificazione, ed è disponibile per chiunque su internet.
