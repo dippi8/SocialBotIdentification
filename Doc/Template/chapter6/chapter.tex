@@ -265,19 +265,18 @@ The penalties that we explored were:
 	
 	This softer term tends to shrink the weights, keeping the loss function quadratic in \textbf{w} and closed forum solution exists.
 \end{itemize}
-\begin{figure}
-	\includegraphics[width=\columnwidth]{chapter5/figure/logreg_l1_lambda.png}\par 
-	\caption{Lasso, $ \lambda$ = [0.1, 1, 10, 100]}
-	\label{fig:lr_lasso_lambda}
-\end{figure}
-\begin{figure}
-	\includegraphics[width=\columnwidth]{chapter5/figure/logreg_l2_lambda.png}\par 
-	\caption{Ridge, $ \lambda$ = [0.1, 1, 10, 100}
-	\label{fig:lr_ridge_lambda}
+
+\begin{figure}[htp!]
+	\centering 
+	\subfigure[Lasso penalty, $ \lambda$ = (0.1, 1, 10, 100)]{
+		\label{fig:lr_lasso_lambda}\includegraphics[width=\columnwidth]{chapter5/figure/logreg_l1_lambda.png}}\par 
+	\subfigure[Ridge penalty, $ \lambda$ = (0.1, 1, 10, 100)]{
+		\label{fig:lr_ridge_lambda}\includegraphics[width=\columnwidth]{chapter5/figure/logreg_l2_lambda.png}}\par 
+	\caption{Regularization coefficient tuning}
 \end{figure}
 
 Figure \ref{fig:lr_lasso_lambda} highlights the slightly better results obtained with the Lasso penalty, with unitary $ \lambda $ coefficient (Lasso F1 score: 0.973).
-As Figure \ref{fig:lr_ridge_lambda} shows, the ridge penalty needs to be weakened ($ \lambda $ = 0.1) in order to get close to the Lasso performance, which is a compromise hard to deal with. The smaller  is the regularization coefficient, the higher is the model complexity, as said before.
+As Figure \ref{fig:lr_ridge_lambda} shows, the ridge penalty needs to be weakened ($ \lambda $ = 0.1) in order to get close to the Lasso performance, which is a compromise hard to deal with. The smaller is the regularization coefficient, the higher is the model complexity, as said before.
 Moreover, we decided to gather further consideration, by looking inside the weighting applied by those two terms.
 Since we didn't have a lot of data for the training, we wanted to keep the regularization high enough to not fit the noise in the model.
 
@@ -381,7 +380,7 @@ Another insight got from L\textsubscript{1} is coming again from the Naive Bayes
 	\centering 
 	\subfigure[Up to 150 iterations]{
 		\label{fig:lr_lasso_close}\includegraphics[width=\columnwidth]{chapter5/figure/logreg_l1_close.png}}
-	\subfigure[Up to 5000 iterations]{
+	\subfigure[Up to 5000 iterations - close-up view]{
 		\label{fig:lr_lasso_far}\includegraphics[width=\columnwidth]{chapter5/figure/logreg_l1_far.png}}
 	\caption{Lasso Logistic Regression scores over solvers}
 \end{figure}

@@ -417,13 +417,13 @@ After several Grid Search runs, the last round computed had this hyperparameters
 \begin{figure}[htp!]
 	\centering
 	\includegraphics[width=\columnwidth]{chapter5/figure/bon_tuning.png}
-	\caption{Grid search results}
+	\caption{Grid search results - close-up view}
 	\label{fig:grid_search}
 \end{figure}
 \begin{figure}[htp!]
 	\centering
 	\includegraphics[width=\columnwidth]{chapter5/figure/auc.png}
-	\caption{ROC curve}
+	\caption{Bot-or-not ROC curve}
 	\label{fig:auc}
 \end{figure}
 As we can see in Figure \ref{fig:grid_search}, the AUC is increasing with the number of the estimators in the forest. We decided t stop at 450, which corresponds to the highest AUC score, since this phase was aimed to find a comparison term with Botometer, but it didn't represent the final model.
@@ -628,13 +628,13 @@ A new Grid Search brought us the configuration for the hyperparameters shown in 
 \begin{figure}[htp!]
 	\centering
 	\includegraphics[width=\columnwidth]{chapter5/figure/bon_tuning_refill.png}
-	\caption{Grid Search with extended data}
+	\caption{Grid Search with extended data - close-up view}
 	\label{fig:bon_tuning_refil}
 \end{figure}
 \begin{figure}[htp!]
 	\centering
 	\includegraphics[width=\columnwidth]{chapter5/figure/refill_auc.png}
-	\caption{AUC score with extended data}
+	\caption{Bot-or-not with extended data ROC curve}
 	\label{fig:bon_refil_auc}
 \end{figure}
 The binary classifier has then been fitted with 42,212 samples with 34 features, 600 estimators, entropy splitting criterion and 26 levels of maximum depth.
@@ -674,7 +674,7 @@ However, the model we wanted to develop was the Random Forest, which proved to p
 \subsubsection{Features selection}
 A useful advantage of the Random Forest algorithm is the ability to provide a feature ranking, according to its splitting criterion.
 We retrieved this standing, in order to see if we would have found some of the ones coming out from feature engineering at the top positions.
-The algorithm ranking ranked the features this way: 1. \textit{favourites\_count} (0.179), 2. \textit{nsfw\_profile} (0.068), 3. \textit{freq} (0.061), 4. \textit{tweet\_intradistance} (0.060), 5. \textit{news\_spreaders\_words\_score} (0.058), 6. \textit{statuses\_count} (0.053), 7. \textit{avg\_len} (0.051), 8. \textit{followers\_count} (0.051), 9. \textit{NSFW\_words\_score} (0.043), 10. \textit{ret\_perc} (0.041), 11. \textit{min\_len} (0.038), 12. \textit{spam\_bots\_words\_score} (0.035), ...  37. \textit{min\_fav} (0.0001).
+The algorithm ranking ranked the features this way: 1. \textit{favourites\_count} (\textbf{0.179}), 2. \textit{nsfw\_profile} (\textbf{0.068}), 3. \textit{freq} (\textbf{0.061}), 4. \textit{tweet\_intradistance} (\textbf{0.060}), 5. \textit{news\_spreaders\_words\_score} (\textbf{0.058}), 6. \textit{statuses\_count} (\textbf{0.053}), 7. \textit{avg\_len} (\textbf{0.051}), 8. \textit{followers\_count} (\textbf{0.051}), 9. \textit{NSFW\_words\_score} (\textbf{0.043}), 10. \textit{ret\_perc} (\textbf{0.041}), 11. \textit{min\_len} (\textbf{0.038}), 12. \textit{spam\_bots\_words\_score} (\textbf{0.035}), ...  37. \textit{min\_fav} (\textbf{0.0001}).
 
 \begin{figure}[htp!]
 	\centering
@@ -683,7 +683,7 @@ The algorithm ranking ranked the features this way: 1. \textit{favourites\_count
 	\label{fig:feature_rank}
 \end{figure}
 
-As Figure \ref{fig:feature_rank} shows, we could find some of our crafted features inside this list: lots of tweets descriptive features (\textit{avg\_len, freq, ret\_perc}, etc...), as well as the \textit{tweet\_intradistance} attribute and three of the four extrinsic features, like \textit{news\_spreaders\_words\_score}, \textit{NSFW\_words\_score} and the \textit{spam\_bots\_words\_score}.
+As Figure \ref{fig:feature_rank} shows, we could find some of our crafted features inside this list: lots of tweets descriptive attributes (\textit{avg\_len, freq, ret\_perc}, etc...), as well as the \textit{tweet\_intradistance} feature and three of the four extrinsic features, like \textit{news\_spreaders\_words\_score}, \textit{NSFW\_words\_score} and the \textit{spam\_bots\_words\_score}.
 This picture confirmed us that the idea behind those features was useful.
 
 Since those attributes were thought to belong to different clusters, we decided to try several combinations of those feature clusters, validating the model on them with a crossvalidation. The purpose of this stage was to see if some groups of features were enough to describe the real problem, or if some group would shown up as irrelevant.
@@ -697,7 +697,7 @@ Due to the multi-class nature and some imbalances with the labels, we decided to
 
 The features were organized in clusters, as described in Chapter \ref{capitolo4}.
 We had the user features, the descriptive features, the intrinsic features, the extrinsic and the image features. Then we tried the model with the entire set of 38 attributes.
-As shown in Figure \ref{fig:feature_clusters}, the best configuration seems to involve the whole set of features, as it reaches these scores, with 100 estimators: \textit{Precision} = 0.978, \textit{Recall} = 0.976, \textbf{\textit{F1}}= 0.977.
+As shown in Figure \ref{fig:feature_clusters}, the best configuration seems to involve the whole set of features, as it reaches these scores, with 100 estimators: \textit{Precision} = \textbf{0.978}, \textit{Recall} = \textbf{0.976}, \textit{F1} = \textbf{0.977}.
 
 \begin{figure}[htp!]
 	\centering
