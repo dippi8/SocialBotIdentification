@@ -876,15 +876,14 @@ The shape of the dataset is the following:
 		category&\# tweets\\
 		\hline\hline
 		NSFW&196712\\
-		news\_spreaders&280300\\
-		spam&453719\\
-		fake\_followers&41316\\
-		genuine&261233\\
+		News-Spreaders&280300\\
+		Spam-Bots&453719\\
+		Fake-Followers&41316\\
 		\hline\\\\
 	\end{tabular}
 \end{center}
 
-It seems unbalanced, anyway it is appropriate to keep all the data. Some spambot's tweets just contain links and they will be removed in the next steps. Differently, Fake-followers usually don't tweet, or they never tweeted.
+It seems unbalanced, anyway it is appropriate to keep all the data. Some spambot's tweets just contain links and they will be removed in the next steps. Differently, Fake-Followers usually don't tweet, or they never tweeted.
 
 \subsubsection{Model}
 In order to classify texts, we decided to use a Naive Bayes approach. This algorithm consists in a probabilistic classifier based on the Bayes' theorem. ``Numerous researchers proved that it is effective enough to classify the text in many domains \cite{svm}. Naive Bayes models allow each attribute to contribute towards the final decision equally and independently from other attributes`` \cite{nb}.
