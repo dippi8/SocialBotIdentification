@@ -764,7 +764,12 @@ We combined nine numbers of estimators (200, 250, 300, 350, 400, 450, 500, 550, 
 We could observe a peak, for both criteria, in correspondence with 400 estimators.
 Although the Gini-based forest's score didn't seem a bad point, we went with the Information Gain splitting criterion, which si also the same we used to rank the features of our data.
 
-The final configuration involves 400 trees, the Information Gain criterion and the maximum reachable depth (for each of the 400 estimators) equal to 28 levels.
+The final configuration involves 400 trees, the Information Gain criterion and the maximum reachable depth (for each of the 400 estimators) equal to 28 levels, yielding the following scores in 10-fold-crossvalidation:
+\begin{itemize}
+	\item[\PencilRight] \textit{Precision}: \textbf{0.979}
+	\item[\PencilRight] \textit{Recall}: \textbf{0.977}
+	\item[\PencilRight] \textit{F1 score}: \textbf{0.978}
+\end{itemize}
 
 Figure (\ref{fig:tree}) shows an example of one of the estimators of the final model, plotted with Matplotlib library for Python. It has been represented with the first two levels of depth, for visualizations reasons.
 
@@ -850,7 +855,14 @@ The different colours represent the Minkowski distances tested, as well as the d
 
 As visible in the picture, the best score, in the usual 10-fold crossvalidation, has been obtained with 5 neighbours, the Manhattan distance, and the weighted solution, which is averagely better than the other one.
 
-The final model has been created with the following call: \textit{KNeighborsClassifier(p=1, n\_neighbors=5)} and it has been fitted with the weighted data.
+The final model has been created with the following call: \textit{KNeighborsClassifier(p=1, n\_neighbors=5)} and it has been fitted with the weighted data, obtaining the following scores in 10-fold-crossvalidation:
+
+\begin{itemize}
+	\item[\PencilRight] \textit{Precision}: \textbf{0.924}
+	\item[\PencilRight] \textit{Recall}: \textbf{0.917}
+	\item[\PencilRight] \textit{F1 score}: \textbf{0.918}
+\end{itemize}
+
 
 \subsection{Text-based Naive Bayes classifier}
 In chapter \ref{capitolo4} we created some useful features that helped the above-mentioned classifiers . Anyway we didn't consider enough the tweet texts. A first idea consisted in add a feature that describe the context of the tweets. This task was easily viable using \textit{Google Cloud Natural Language}. Unfortunately, this service only provides a few free calls, and we would not be able to tag all the tweets in our dataset. Moreover, the Context Classification is very specific, and we would have risked to have a too large domain of values. We tried to classify some tweets and we noticed that it was not possible with many of them, since they were just exclamations or contextless sentences. We therefore decided to train a proprietary text classifier. This allowed us to classify texts according to our targets, and our final classifier would have been self-sufficient, without external services.
@@ -910,8 +922,8 @@ We added to the pipeline the following operations:
 \subsubsection{Holdout evaluation}
 The final text classifier has the following performance:
 \begin{itemize}
-	\item[\PencilRight] \textbf{F1 = 0.71} with TF-IDF
-	\item[\PencilRight] \textbf{F1 = 0.64} without TF-IDF
+	\item[\PencilRight] \textit{F1 score:} \textbf{0.71} with TF-IDF
+	\item[\PencilRight] \textit{F1 score:} \textbf{0.64} without TF-IDF
 \end{itemize}
 
 Since the other models classify users and not single tweets, we could not use a classifier for texts only.

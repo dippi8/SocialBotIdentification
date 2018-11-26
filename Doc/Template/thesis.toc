@@ -83,7 +83,7 @@
 \contentsline {subsubsection}{Dataset}{82}{section*.58}
 \contentsline {subsubsection}{Model}{82}{section*.59}
 \contentsline {subsection}{\numberline {5.3.3}Text-based Naive Bayes classifier}{84}{subsection.5.3.3}
-\contentsline {subsubsection}{Dataset}{84}{section*.61}
+\contentsline {subsubsection}{Dataset}{85}{section*.61}
 \contentsline {subsubsection}{Model}{85}{section*.62}
 \contentsline {subsubsection}{Holdout evaluation}{87}{section*.63}
 \contentsline {chapter}{\numberline {6}Prediction}{89}{chapter.6}
@@ -107,9 +107,9 @@
 \contentsline {chapter}{\numberline {8}Conclusion and Future Work}{119}{chapter.8}
 \contentsline {section}{\numberline {8.1}Summary and Lessons Learned}{119}{section.8.1}
 \contentsline {section}{\numberline {8.2}Outputs and Contributions}{121}{section.8.2}
-\contentsline {section}{\numberline {8.3}Projection on wide scale}{121}{section.8.3}
-\contentsline {section}{\numberline {8.4}Limitations}{122}{section.8.4}
-\contentsline {section}{\numberline {8.5}Future Work}{124}{section.8.5}
-\contentsline {chapter}{References}{127}{section.8.5}
-\contentsline {chapter}{\numberline {A}User Manual}{131}{appendix.A}
-\contentsline {chapter}{\numberline {B}Dataset}{133}{appendix.B}
+\contentsline {section}{\numberline {8.3}Projection on wide scale}{122}{section.8.3}
+\contentsline {section}{\numberline {8.4}Limitations}{124}{section.8.4}
+\contentsline {section}{\numberline {8.5}Future Work}{126}{section.8.5}
+\contentsline {chapter}{References}{129}{section.8.5}
+\contentsline {chapter}{\numberline {A}User Manual}{133}{appendix.A}
+\contentsline {chapter}{\numberline {B}Dataset}{135}{appendix.B}

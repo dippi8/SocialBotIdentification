@@ -1,8 +1,5 @@
 \begin{thebibliography}{10}
 
-\bibitem{Fact-Checking}
-
-
 \bibitem{bessi}
 E.~Ferrara A.~Bessi.
 \newblock Social bots distort the 2016 us presidential election online
@@ -35,6 +32,12 @@ Alessandro~Flammini Chengcheng~Shao, Giovanni Luca~Ciampaglia and Filippo
 Lei Wang-Xinwen Jiang Alessandro Flammini Filippo Menczer Giovanni
   Luca~Ciampaglia Chengcheng~Shao, Pik-Mai~Hui.
 \newblock Anatomy of an online misinformation network.
+\newblock 2018.
+
+\bibitem{Fact-Checking}
+Onur Varol-Kaicheng Yang Alessandro~Flammini Chengcheng~Shao, Giovanni
+  Luca~Ciampaglia and Filippo Menczer.
+\newblock The spread of low-credibility content by social bots.
 \newblock 2018.
 
 \bibitem{inception}

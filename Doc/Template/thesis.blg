@@ -1,4 +1,4 @@
-This is BibTeX, Version 0.99d (TeX Live 2017/Debian)
+This is BibTeX, Version 0.99d (TeX Live 2018)
 Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: thesis.aux
 A level-1 auxiliary file: cover_page.aux
@@ -17,11 +17,6 @@ The style file: plain.bst
 A level-1 auxiliary file: appendixA/appendix.aux
 A level-1 auxiliary file: appendixB/appendix.aux
 Database file #1: references.bib
-I was expecting a `,' or a `}'---line 73 of file references.bib
- :  
- :  author = {Chengcheng Shao, Giovanni Luca Ciampaglia, Onur Varol, Kaicheng Yang, Alessandro Flammini, and Filippo Menczer},
-(Error may have been on previous line)
-I'm skipping whatever remains of this entry
 Warning--entry type for "Botometer" isn't style-file defined
 --line 108 of file references.bib
 Warning--entry type for "BotorNot" isn't style-file defined
@@ -44,7 +39,6 @@ Warning--entry type for "bessi" isn't style-file defined
 --line 166 of file references.bib
 Warning--entry type for "Cyborgs" isn't style-file defined
 --line 172 of file references.bib
-Warning--I didn't find a database entry for "lee2011seven"
 Too many commas in name 1 of "Onur Varol, Emilio Ferrara, Clayton A. Davis, Filippo Menczer, Alessandro Flammini" for entry Varol
 while executing---line 1049 of file plain.bst
 Too many commas in name 1 of "Onur Varol, Emilio Ferrara, Clayton A. Davis, Filippo Menczer, Alessandro Flammini" for entry Varol
@@ -79,7 +73,12 @@ Too many commas in name 1 of "Chengcheng Shao, Pik-Mai Hui, Lei Wang, Xinwen Jia
 while executing---line 1049 of file plain.bst
 Name 1 in "Chengcheng Shao, Giovanni Luca Ciampaglia, Alessandro Flammini, and Filippo Menczer" has a comma at the end for entry Hoaxy
 while executing---line 1049 of file plain.bst
-Warning--to sort, need author or key in Fact-Checking
+Name 1 in "Chengcheng Shao, Giovanni Luca Ciampaglia, Onur Varol, Kaicheng Yang, Alessandro Flammini, and Filippo Menczer" has a comma at the end for entry Fact-Checking
+while executing---line 1049 of file plain.bst
+Too many commas in name 1 of "Chengcheng Shao, Giovanni Luca Ciampaglia, Onur Varol, Kaicheng Yang, Alessandro Flammini, and Filippo Menczer" for entry Fact-Checking
+while executing---line 1049 of file plain.bst
+Too many commas in name 1 of "Chengcheng Shao, Giovanni Luca Ciampaglia, Onur Varol, Kaicheng Yang, Alessandro Flammini, and Filippo Menczer" for entry Fact-Checking
+while executing---line 1049 of file plain.bst
 Too many commas in name 1 of "Stefano Cresci, Roberto Di Pietro, Marinella Petrocchi, Angelo Spognardi, Maurizio Tesconi" for entry Cresci
 while executing---line 1049 of file plain.bst
 Too many commas in name 1 of "Stefano Cresci, Roberto Di Pietro, Marinella Petrocchi, Angelo Spognardi, Maurizio Tesconi" for entry Cresci
@@ -98,10 +97,6 @@ Name 1 in "S. Ting, W. Ip, and A. H. Tsang" has a comma at the end for entry nb
 while executing---line 1049 of file plain.bst
 Too many commas in name 1 of "Rong-En Fa, Kai-Wei Chang, Cho-Jui Hsieh, Xiang-Rui Wang and Chih-Jen Lin" for entry Liblinear
 while executing---line 1049 of file plain.bst
-Warning--empty author in Fact-Checking
-Warning--empty title in Fact-Checking
-Warning--empty journal in Fact-Checking
-Warning--empty year in Fact-Checking
 Warning--empty journal in SAGA
 Name 1 in "C. Yang, R. Harkreader, and G. Gu." has a comma at the end for entry Yang
 while executing---line 1090 of file plain.bst
@@ -118,6 +113,13 @@ while executing---line 1090 of file plain.bst
 Too many commas in name 1 of "Chengcheng Shao, Pik-Mai Hui, Lei Wang, Xinwen Jiang, Alessandro Flammini, Filippo Menczer, Giovanni Luca Ciampaglia" for entry Misinformation
 while executing---line 1090 of file plain.bst
 Warning--empty journal in Misinformation
+Name 1 in "Chengcheng Shao, Giovanni Luca Ciampaglia, Onur Varol, Kaicheng Yang, Alessandro Flammini, and Filippo Menczer" has a comma at the end for entry Fact-Checking
+while executing---line 1090 of file plain.bst
+Too many commas in name 1 of "Chengcheng Shao, Giovanni Luca Ciampaglia, Onur Varol, Kaicheng Yang, Alessandro Flammini, and Filippo Menczer" for entry Fact-Checking
+while executing---line 1090 of file plain.bst
+Too many commas in name 1 of "Chengcheng Shao, Giovanni Luca Ciampaglia, Onur Varol, Kaicheng Yang, Alessandro Flammini, and Filippo Menczer" for entry Fact-Checking
+while executing---line 1090 of file plain.bst
+Warning--empty journal in Fact-Checking
 Too many commas in name 1 of "Christian Szegedy, Vincent Vanhoucke, Sergey Ioffe, Jonathon Shlens, Zbigniew Wojna" for entry inception
 while executing---line 1090 of file plain.bst
 Too many commas in name 1 of "Christian Szegedy, Vincent Vanhoucke, Sergey Ioffe, Jonathon Shlens, Zbigniew Wojna" for entry inception
@@ -169,43 +171,43 @@ Name 1 in "Zi Chu, Steven Gianvecchio, Haining Wang, and Sushil Jajodia" has a c
 while executing---line 1090 of file plain.bst
 You've used 26 entries,
             2118 wiz_defined-function locations,
-            626 strings with 8102 characters,
-and the built_in function-call counts, 5651 in all, are:
-= -- 501
-> -- 252
+            627 strings with 8252 characters,
+and the built_in function-call counts, 5737 in all, are:
+= -- 513
+> -- 264
 < -- 0
-+ -- 105
-- -- 76
-* -- 251
-:= -- 989
-add.period$ -- 65
++ -- 110
+- -- 80
+* -- 246
+:= -- 1018
+add.period$ -- 67
 call.type$ -- 26
-change.case$ -- 115
+change.case$ -- 118
 chr.to.int$ -- 0
-cite$ -- 44
+cite$ -- 40
 duplicate$ -- 227
-empty$ -- 499
-format.name$ -- 76
-if$ -- 1152
+empty$ -- 498
+format.name$ -- 80
+if$ -- 1169
 int.to.chr$ -- 0
 int.to.str$ -- 26
 missing$ -- 15
-newline$ -- 120
-num.names$ -- 50
-pop$ -- 204
+newline$ -- 122
+num.names$ -- 52
+pop$ -- 201
 preamble$ -- 1
-purify$ -- 90
+purify$ -- 92
 quote$ -- 0
-skip$ -- 201
+skip$ -- 202
 stack$ -- 0
-substring$ -- 133
+substring$ -- 134
 swap$ -- 12
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 104
-warning$ -- 18
-while$ -- 50
+warning$ -- 14
+while$ -- 52
 width$ -- 28
-write$ -- 221
-(There were 53 error messages)
+write$ -- 226
+(There were 58 error messages)

@@ -403,9 +403,9 @@ The final Logistic Regression meta-classifier has been fitted with the Scikit-le
 The \textit{C} parameter stands for $ \frac{1}{\lambda} $, the regularization coefficient.
 This setting obtained the following scores in a 10-fold crossvalidation:
 \begin{itemize}
-	\item[\PencilRight] \textit{Precision}: 0.987
-	\item[\PencilRight] \textit{Recall}: 0.986
-	\item[\PencilRight] \textit{F1 score}: 0.986
+	\item[\PencilRight] \textit{Precision}: \textbf{0.987}
+	\item[\PencilRight] \textit{Recall}: \textbf{0.986}
+	\item[\PencilRight] \textit{F1 score}: \textbf{0.987}
 \end{itemize}
 
 The stacking ensemble performance is resumed in Figure \ref{fig:stacking_performance}, where all the components are first measured individually to show that the combination of them improves the overall F1 score.
@@ -431,12 +431,12 @@ As described by figure \ref{fig:prediction_pipeline}, In order to perform a pred
 	\item Use the multi-class division to repartition the bot probability provided by the binary model
 \end{enumerate}
 The binary classifier returns two values: the membership probability for the bot category and the one for the genuine class.
-The percentage that marks the bot nature of the examined account gets partitioned by the outcome of the mutliclass stacking ensemble.
+The percentage that marks the bot nature of the examined account gets partitioned by the outcome of the multi-class stacking ensemble.
 The pipeline will be performed by a web application, in order to provide a useful classification tool for every internet user.
 
-\begin{figure}
+\begin{figure}[t!]
 	\begin{center}
-		\includegraphics[width=\columnwidth]{chapter5/figure/pred_pipeline.png}\par 
+		\includegraphics[width=\columnwidth]{chapter5/figure/pred_pipeline.png}
 	\end{center}
 	\caption{Final prediction pipeline}
 	\label{fig:prediction_pipeline}
