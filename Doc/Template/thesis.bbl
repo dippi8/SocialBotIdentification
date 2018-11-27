@@ -1,9 +1,9 @@
 \begin{thebibliography}{10}
 
 \bibitem{Varol}
-Clayton A. Davis Filippo Menczer Alessandro~Flammini Onur~Varol,
-  Emilio~Ferrara.
-\newblock Online human-bot interactions: Detection, estimation, and
+Onur Varol, Emilio Ferrara, Clayton~A. Davis, Filippo Menczer, and Alessandro
+  Flammini.
+\newblock Online human-bot interactions: Detection, estimation and
   characterization.
 \newblock 2017.
 
@@ -12,7 +12,7 @@ Inbenta~Technologies Inc.
 \newblock The ultimate guide to chatbots for businesses. tech. rep., 2016.
 
 \bibitem{bessi}
-E.~Ferrara A.~Bessi.
+A.~Bessi and E.~Ferrara.
 \newblock Social bots distort the 2016 us presidential election online
   discussion. first monday 21, 2016.
 
@@ -22,12 +22,12 @@ Florian Daniel, Cinzia Cappiello, and Boualem Benatallah.
 \newblock {\em IEEE Internet Computing, accpted for publication}, 2019.
 
 \bibitem{Botometer}
-Emilio Ferrara Alessandro Flammini Filippo~Menczer Clayton A.~Davis,
-  Onur~Varol.
+Clayton~A. Davis, Onur Varol, Emilio Ferrara, Alessandro Flammini, and Filippo
+  Menczer.
 \newblock Botornot: A system to evaluate social bots, 2016.
 
 \bibitem{BotorNot}
-Clayton Davis Filippo~Menczer Emilio~Ferrara, Onur~Varol and
+Emilio Ferrara, Onur Varol, Clayton Davis, Filippo Menczer, and
   AlessandroFlammini.
 \newblock The rise of social bots, 2016.
 
@@ -38,64 +38,65 @@ Kyumin Lee, Brian~David Eoff, and James Caverlee.
 \newblock 2011.
 
 \bibitem{Fake-Followers}
-Marinella Petrocchi Angelo Spognardi Maurizio~Tesconi Stefano~Cresci, Roberto
-  Di~Pietro.
+Stefano Cresci, Roberto~Di Pietro, Marinella Petrocchi, Angelo Spognardi, and
+  Maurizio Tesconi.
 \newblock Fame for sale: Efficient detection of fake twitter followers.
 \newblock 2015.
 
 \bibitem{Bot-Hunter}
-Carley Beskow, David and Kathleen.
+Beskow, David, Carley, and Kathleen.
 \newblock Bot-hunter: A tiered approach to detecting and characterizing
   automated activity on twitter, 2018.
 
 \bibitem{Astroturfing}
-M.~Meiss B. Gonçalves A. Flammini F.~Menczer J.~Ratkiewicz, M. D.~Conover.
+J.~Ratkiewicz, M.~D. Conover, M.~Meiss, B.~Gonçalves, A.~Flammini, and
+  F.~Menczer.
 \newblock Detecting and tracking political abuse in social media, 2011.
 
 \bibitem{Sybils}
-Xiaowei~Yang Qiang~Cao, Michael~Sirivianos and Tiago Pregueiro.
+Qiang Cao, Michael Sirivianos, Xiaowei Yang, and Tiago Pregueiro.
 \newblock Aiding the detection of fake accounts in large scale social online
   services.
 \newblock 2012.
 
 \bibitem{Intrusion-Detection}
-Vern~Paxson Robin~Sommer.
+Robin Sommer and Vern Paxson.
 \newblock Outside the closed world: On using machine learning for network
   intrusion detection.
 \newblock 2010.
 
 \bibitem{Misinformation}
-Lei Wang Xinwen Jiang Alessandro Flammini Filippo Menczer Giovanni
-  Luca~Ciampaglia Chengcheng~Shao, Pik-Mai~Hui.
+Chengcheng Shao, Pik-Mai Hui, Lei Wang, Xinwen Jiang, Alessandro Flammini,
+  Filippo Menczer, and Giovanni~Luca Ciampaglia.
 \newblock Anatomy of an online misinformation network.
 \newblock 2018.
 
 \bibitem{Hoaxy}
-Alessandro~Flammini Chengcheng~Shao, Giovanni Luca~Ciampaglia and Filippo
+Chengcheng Shao, Giovanni~Luca Ciampaglia, Alessandro Flammini, and Filippo
   Menczer.
 \newblock Hoaxy: A platform for tracking online misinformation.
 \newblock 2016.
 
 \bibitem{Fact-Checking}
-Onur Varol Kaicheng Yang Alessandro~Flammini Chengcheng~Shao, Giovanni
-  Luca~Ciampaglia and Filippo Menczer.
+Chengcheng Shao, Giovanni~Luca Ciampaglia, Onur Varol, Kaicheng Yang,
+  Alessandro Flammini, and Filippo Menczer.
 \newblock The spread of low-credibility content by social bots.
 \newblock 2018.
 
 \bibitem{Cresci}
-Marinella Petrocchi Angelo Spognardi Maurizio~Tesconi Stefano~Cresci, Roberto
-  Di~Pietro.
+Stefano Cresci, Roberto~Di Pietro, Marinella Petrocchi, Angelo Spognardi, and
+  Maurizio Tesconi.
 \newblock The paradigm-shift of social spambots: Evidence, theories, and tools
   for the arms race.
 \newblock 2017.
 
 \bibitem{Cyborgs}
-Haining~Wang Zi~Chu, Steven~Gianvecchio and Sushil Jajodia.
+Zi~Chu, Steven Gianvecchio, Haining Wang, and Sushil Jajodia.
 \newblock Detecting automation of twitter accounts: Are you a human, bot, or
   cyborg?, 2012.
 
 \bibitem{Yang}
-R.~Harkreader C.~Yang and G.~Gu.
+C.~Yang, R.~Harkreader, and G.~Gu.
 \newblock Empirical evaluation and new design for fighting evolving twitter
   spammers.
 \newblock 2013.
@@ -106,12 +107,12 @@ John S. and James L.~Knight Foundation.
 \newblock 2018.
 
 \bibitem{inception}
-Sergey Ioffe Jonathon Shlens Zbigniew~Wojna Christian~Szegedy,
-  Vincent~Vanhoucke.
+Christian Szegedy, Vincent Vanhoucke, Sergey Ioffe, Jonathon Shlens, and
+  Zbigniew Wojna.
 \newblock Rethinking the inception architecture for computer vision, 2015.
 
 \bibitem{selfie}
-Wesna LaLanne Mubarak~Shah Mahdi M.~Kalayeh, Misrak~Seifu.
+Mahdi~M. Kalayeh, Misrak Seifu, Wesna LaLanne, and Mubarak Shah.
 \newblock How to take a good selfie?, 2015.
 
 \bibitem{svm}
@@ -120,22 +121,22 @@ T.~Joachims.
   relevant features, 1998.
 
 \bibitem{nb}
-W.~Ip S.~Ting and A.~H. Tsang.
+S.~Ting, W.~Ip, and A.~H. Tsang.
 \newblock Is naive bayes a good classifier for document classification?, 2011.
 
 \bibitem{SAGA}
-Simon Lacoste-Julien Aaron~Defazio, Francis~Bach.
+Aaron Defazio, Francis Bach, and Simon Lacoste-Julien.
 \newblock Saga: A fast incremental gradient method with support for
   non-strongly convex composite objectives.
 \newblock 2014.
 
 \bibitem{SAG}
-Francis~Bach Mark~Schmidt, Nicolas Le~Roux.
+Mark Schmidt, Nicolas~Le Roux, and Francis Bach.
 \newblock Minimizing finite sums with the stochastic average gradient.
 \newblock 2017.
 
 \bibitem{Liblinear}
-Cho-Jui Hsieh Xiang-Rui~Wang Rong-En~Fa, Kai-Wei~Chang and Chih-Jen Lin.
+Rong-En Fa, Kai-Wei Chang, Cho-Jui Hsieh, Xiang-Rui Wang, and Chih-Jen Lin.
 \newblock Liblinear: A library for large linear classification.
 \newblock 2017.
 

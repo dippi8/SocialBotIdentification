@@ -14,9 +14,9 @@ Other kind of features are more behaviour-oriented, like the monotony of differe
 Finally we also added features related to image analysis.
 
 The choice over the amount of tweets that would have been considered was a trade-off between performance and prediction speed.
-We finally chose to retrieve up to the latest 100 tweets for each user, because further material led us to a slower, but equivalent, prediction over test samples.
+We finally chose to retrieve up to the latest 100 tweets for each user.
 
-At the end of this stage, the resulting - and final - feature vector will include 38 features.
+At the end of this stage, the resulting - and final - feature vector for the multi-class dataset will include 37 features; while the binary dataset will have 34 attributes.
 
 Each resulting feature group has been used to fit a Random Forest with Entropy criterion and 250 tree estimators. This phase allowed us to rank, within each feature group, the crafted attributes, thanks to the inner ranking method of the model.
 The ranking of an attribute is performed by computing the entropy brought with that feature, when it comes to split the data for the creations of sub-trees. The higher is the feature's entropy, the lower is its rank.
@@ -563,7 +563,7 @@ The brand new attributes that helped us in better separating NSFW class are:
 \label{sec:feature_vector}
 
 \subsection{Multi-class Dataset}
-At the end of this process we obtained a feature vector composed of 37 elements, 12 based on the user and 26 based on his tweets.
+At the end of this process we obtained a feature vector composed of 37 elements, 12 based on the user and 25 based on his tweets.
 
 \subsubsection{User features}
 

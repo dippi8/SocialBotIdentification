@@ -1,87 +1,86 @@
 \BOOKMARK [0][-]{chapter*.2}{Abstract}{}% 1
 \BOOKMARK [0][-]{chapter*.3}{Sommario}{}% 2
-\BOOKMARK [0][-]{chapter*.4}{Acknowledgements}{}% 3
-\BOOKMARK [0][-]{chapter.1}{Introduction}{}% 4
-\BOOKMARK [1][-]{section.1.1}{Context}{chapter.1}% 5
-\BOOKMARK [1][-]{section.1.2}{Problem Statement and Contributions}{chapter.1}% 6
-\BOOKMARK [1][-]{section.1.3}{Structure of Thesis}{chapter.1}% 7
-\BOOKMARK [0][-]{chapter.2}{State of the Art}{}% 8
-\BOOKMARK [1][-]{section.2.1}{Feature-based approaches}{chapter.2}% 9
-\BOOKMARK [1][-]{section.2.2}{Network-based approaches}{chapter.2}% 10
-\BOOKMARK [1][-]{section.2.3}{Human-based approaches}{chapter.2}% 11
-\BOOKMARK [1][-]{section.2.4}{Summary}{chapter.2}% 12
-\BOOKMARK [0][-]{chapter.3}{Data Collection}{}% 13
-\BOOKMARK [1][-]{section.3.1}{Tools}{chapter.3}% 14
-\BOOKMARK [2][-]{subsection.3.1.1}{Tweepy}{section.3.1}% 15
-\BOOKMARK [2][-]{subsection.3.1.2}{Botometer}{section.3.1}% 16
-\BOOKMARK [2][-]{subsection.3.1.3}{Hoaxy}{section.3.1}% 17
-\BOOKMARK [1][-]{section.3.2}{Datasets}{chapter.3}% 18
-\BOOKMARK [2][-]{subsection.3.2.1}{Caverlee-2011}{section.3.2}% 19
-\BOOKMARK [2][-]{subsection.3.2.2}{Cresci-2017}{section.3.2}% 20
-\BOOKMARK [2][-]{subsection.3.2.3}{Varol-2017}{section.3.2}% 21
-\BOOKMARK [2][-]{subsection.3.2.4}{BotBlock}{section.3.2}% 22
-\BOOKMARK [1][-]{section.3.3}{Unsupervised labeling of datasets}{chapter.3}% 23
-\BOOKMARK [1][-]{section.3.4}{Supervised labeling of datasets}{chapter.3}% 24
-\BOOKMARK [2][-]{subsection.3.4.1}{NSFW}{section.3.4}% 25
-\BOOKMARK [2][-]{subsection.3.4.2}{News-Spreaders}{section.3.4}% 26
-\BOOKMARK [2][-]{subsection.3.4.3}{Spam-Bots}{section.3.4}% 27
-\BOOKMARK [2][-]{subsection.3.4.4}{Fake-Followers}{section.3.4}% 28
-\BOOKMARK [2][-]{subsection.3.4.5}{Genuine}{section.3.4}% 29
-\BOOKMARK [2][-]{subsection.3.4.6}{Bots}{section.3.4}% 30
-\BOOKMARK [2][-]{subsection.3.4.7}{Final Datasets}{section.3.4}% 31
-\BOOKMARK [1][-]{section.3.5}{Descriptive statistics of datasets}{chapter.3}% 32
-\BOOKMARK [0][-]{chapter.4}{Features engineering}{}% 33
-\BOOKMARK [1][-]{section.4.1}{Baseline}{chapter.4}% 34
-\BOOKMARK [1][-]{section.4.2}{Missing values filling}{chapter.4}% 35
-\BOOKMARK [1][-]{section.4.3}{Descriptive features}{chapter.4}% 36
-\BOOKMARK [2][-]{subsection.4.3.1}{Ranking}{section.4.3}% 37
-\BOOKMARK [1][-]{section.4.4}{Intrinsic features}{chapter.4}% 38
-\BOOKMARK [2][-]{subsection.4.4.1}{Tweet intradistance}{section.4.4}% 39
-\BOOKMARK [2][-]{subsection.4.4.2}{URL entropy}{section.4.4}% 40
-\BOOKMARK [2][-]{subsection.4.4.3}{Ranking}{section.4.4}% 41
-\BOOKMARK [1][-]{section.4.5}{Extrinsic features}{chapter.4}% 42
-\BOOKMARK [2][-]{subsection.4.5.1}{Scores computation}{section.4.5}% 43
-\BOOKMARK [2][-]{subsection.4.5.2}{Safe Area}{section.4.5}% 44
-\BOOKMARK [1][-]{section.4.6}{Image features}{chapter.4}% 45
-\BOOKMARK [1][-]{section.4.7}{Final feature vectors}{chapter.4}% 46
-\BOOKMARK [2][-]{subsection.4.7.1}{Multi-class Dataset}{section.4.7}% 47
-\BOOKMARK [2][-]{subsection.4.7.2}{Binary Dataset}{section.4.7}% 48
-\BOOKMARK [0][-]{chapter.5}{Bot classifiers}{}% 49
-\BOOKMARK [1][-]{section.5.1}{Baselines}{chapter.5}% 50
-\BOOKMARK [2][-]{subsection.5.1.1}{Random Forest}{section.5.1}% 51
-\BOOKMARK [2][-]{subsection.5.1.2}{Logistic Regression}{section.5.1}% 52
-\BOOKMARK [2][-]{subsection.5.1.3}{K-Nearest Neighbors}{section.5.1}% 53
-\BOOKMARK [2][-]{subsection.5.1.4}{Support Vector Machine}{section.5.1}% 54
-\BOOKMARK [2][-]{subsection.5.1.5}{Comparison and baseline selection}{section.5.1}% 55
-\BOOKMARK [2][-]{subsection.5.1.6}{Holdout evaluation}{section.5.1}% 56
-\BOOKMARK [2][-]{subsection.5.1.7}{Multi-class}{section.5.1}% 57
-\BOOKMARK [2][-]{subsection.5.1.8}{Crossvalidation}{section.5.1}% 58
-\BOOKMARK [1][-]{section.5.2}{Binary Classifier}{chapter.5}% 59
-\BOOKMARK [2][-]{subsection.5.2.1}{Dataset}{section.5.2}% 60
-\BOOKMARK [2][-]{subsection.5.2.2}{Model}{section.5.2}% 61
-\BOOKMARK [2][-]{subsection.5.2.3}{Validation}{section.5.2}% 62
-\BOOKMARK [2][-]{subsection.5.2.4}{Data extension}{section.5.2}% 63
-\BOOKMARK [1][-]{section.5.3}{Multi-class ensemble classifier}{chapter.5}% 64
-\BOOKMARK [2][-]{subsection.5.3.1}{All-features-based Random Forest classifier}{section.5.3}% 65
-\BOOKMARK [2][-]{subsection.5.3.2}{User-based KNN classifier}{section.5.3}% 66
-\BOOKMARK [2][-]{subsection.5.3.3}{Text-based Naive Bayes classifier}{section.5.3}% 67
-\BOOKMARK [0][-]{chapter.6}{Prediction}{}% 68
-\BOOKMARK [1][-]{section.6.1}{Stacking meta-classifier}{chapter.6}% 69
-\BOOKMARK [2][-]{subsection.6.1.1}{Genetic algorithm}{section.6.1}% 70
-\BOOKMARK [2][-]{subsection.6.1.2}{Logistic Regression}{section.6.1}% 71
-\BOOKMARK [1][-]{section.6.2}{Prediction pipeline}{chapter.6}% 72
-\BOOKMARK [0][-]{chapter.7}{Web application - BotBuster}{}% 73
-\BOOKMARK [1][-]{section.7.1}{Architecture}{chapter.7}% 74
-\BOOKMARK [1][-]{section.7.2}{Back-end}{chapter.7}% 75
-\BOOKMARK [2][-]{subsection.7.2.1}{Engine}{section.7.2}% 76
-\BOOKMARK [2][-]{subsection.7.2.2}{Flask}{section.7.2}% 77
-\BOOKMARK [1][-]{section.7.3}{Front-end}{chapter.7}% 78
-\BOOKMARK [1][-]{section.7.4}{Deployment platform}{chapter.7}% 79
-\BOOKMARK [1][-]{section.7.5}{Comparison with Botometer}{chapter.7}% 80
-\BOOKMARK [0][-]{chapter.8}{Conclusion and Future Work}{}% 81
-\BOOKMARK [1][-]{section.8.1}{Summary and Lessons Learned}{chapter.8}% 82
-\BOOKMARK [1][-]{section.8.2}{Outputs and Contributions}{chapter.8}% 83
-\BOOKMARK [1][-]{section.8.3}{Projection on wide scale}{chapter.8}% 84
-\BOOKMARK [1][-]{section.8.4}{Limitations}{chapter.8}% 85
-\BOOKMARK [1][-]{section.8.5}{Future Work}{chapter.8}% 86
-\BOOKMARK [0][-]{section.8.5}{References}{}% 87
+\BOOKMARK [0][-]{chapter.1}{Introduction}{}% 3
+\BOOKMARK [1][-]{section.1.1}{Context}{chapter.1}% 4
+\BOOKMARK [1][-]{section.1.2}{Problem Statement and Contributions}{chapter.1}% 5
+\BOOKMARK [1][-]{section.1.3}{Structure of Thesis}{chapter.1}% 6
+\BOOKMARK [0][-]{chapter.2}{State of the Art}{}% 7
+\BOOKMARK [1][-]{section.2.1}{Feature-based approaches}{chapter.2}% 8
+\BOOKMARK [1][-]{section.2.2}{Network-based approaches}{chapter.2}% 9
+\BOOKMARK [1][-]{section.2.3}{Human-based approaches}{chapter.2}% 10
+\BOOKMARK [1][-]{section.2.4}{Summary}{chapter.2}% 11
+\BOOKMARK [0][-]{chapter.3}{Data Collection}{}% 12
+\BOOKMARK [1][-]{section.3.1}{Tools}{chapter.3}% 13
+\BOOKMARK [2][-]{subsection.3.1.1}{Tweepy}{section.3.1}% 14
+\BOOKMARK [2][-]{subsection.3.1.2}{Botometer}{section.3.1}% 15
+\BOOKMARK [2][-]{subsection.3.1.3}{Hoaxy}{section.3.1}% 16
+\BOOKMARK [1][-]{section.3.2}{Datasets}{chapter.3}% 17
+\BOOKMARK [2][-]{subsection.3.2.1}{Caverlee-2011}{section.3.2}% 18
+\BOOKMARK [2][-]{subsection.3.2.2}{Cresci-2017}{section.3.2}% 19
+\BOOKMARK [2][-]{subsection.3.2.3}{Varol-2017}{section.3.2}% 20
+\BOOKMARK [2][-]{subsection.3.2.4}{BotBlock}{section.3.2}% 21
+\BOOKMARK [1][-]{section.3.3}{Unsupervised labeling of datasets}{chapter.3}% 22
+\BOOKMARK [1][-]{section.3.4}{Supervised labeling of datasets}{chapter.3}% 23
+\BOOKMARK [2][-]{subsection.3.4.1}{NSFW}{section.3.4}% 24
+\BOOKMARK [2][-]{subsection.3.4.2}{News-Spreaders}{section.3.4}% 25
+\BOOKMARK [2][-]{subsection.3.4.3}{Spam-Bots}{section.3.4}% 26
+\BOOKMARK [2][-]{subsection.3.4.4}{Fake-Followers}{section.3.4}% 27
+\BOOKMARK [2][-]{subsection.3.4.5}{Genuine}{section.3.4}% 28
+\BOOKMARK [2][-]{subsection.3.4.6}{Bots}{section.3.4}% 29
+\BOOKMARK [2][-]{subsection.3.4.7}{Final Datasets}{section.3.4}% 30
+\BOOKMARK [1][-]{section.3.5}{Descriptive statistics of datasets}{chapter.3}% 31
+\BOOKMARK [0][-]{chapter.4}{Features engineering}{}% 32
+\BOOKMARK [1][-]{section.4.1}{Baseline}{chapter.4}% 33
+\BOOKMARK [1][-]{section.4.2}{Missing values filling}{chapter.4}% 34
+\BOOKMARK [1][-]{section.4.3}{Descriptive features}{chapter.4}% 35
+\BOOKMARK [2][-]{subsection.4.3.1}{Ranking}{section.4.3}% 36
+\BOOKMARK [1][-]{section.4.4}{Intrinsic features}{chapter.4}% 37
+\BOOKMARK [2][-]{subsection.4.4.1}{Tweet intradistance}{section.4.4}% 38
+\BOOKMARK [2][-]{subsection.4.4.2}{URL entropy}{section.4.4}% 39
+\BOOKMARK [2][-]{subsection.4.4.3}{Ranking}{section.4.4}% 40
+\BOOKMARK [1][-]{section.4.5}{Extrinsic features}{chapter.4}% 41
+\BOOKMARK [2][-]{subsection.4.5.1}{Scores computation}{section.4.5}% 42
+\BOOKMARK [2][-]{subsection.4.5.2}{Safe Area}{section.4.5}% 43
+\BOOKMARK [1][-]{section.4.6}{Image features}{chapter.4}% 44
+\BOOKMARK [1][-]{section.4.7}{Final feature vectors}{chapter.4}% 45
+\BOOKMARK [2][-]{subsection.4.7.1}{Multi-class Dataset}{section.4.7}% 46
+\BOOKMARK [2][-]{subsection.4.7.2}{Binary Dataset}{section.4.7}% 47
+\BOOKMARK [0][-]{chapter.5}{Bot classifiers}{}% 48
+\BOOKMARK [1][-]{section.5.1}{Baselines}{chapter.5}% 49
+\BOOKMARK [2][-]{subsection.5.1.1}{Random Forest}{section.5.1}% 50
+\BOOKMARK [2][-]{subsection.5.1.2}{Logistic Regression}{section.5.1}% 51
+\BOOKMARK [2][-]{subsection.5.1.3}{K-Nearest Neighbors}{section.5.1}% 52
+\BOOKMARK [2][-]{subsection.5.1.4}{Support Vector Machine}{section.5.1}% 53
+\BOOKMARK [2][-]{subsection.5.1.5}{Comparison and baseline selection}{section.5.1}% 54
+\BOOKMARK [2][-]{subsection.5.1.6}{Holdout evaluation}{section.5.1}% 55
+\BOOKMARK [2][-]{subsection.5.1.7}{Multi-class}{section.5.1}% 56
+\BOOKMARK [2][-]{subsection.5.1.8}{Crossvalidation}{section.5.1}% 57
+\BOOKMARK [1][-]{section.5.2}{Binary Classifier}{chapter.5}% 58
+\BOOKMARK [2][-]{subsection.5.2.1}{Dataset}{section.5.2}% 59
+\BOOKMARK [2][-]{subsection.5.2.2}{Model}{section.5.2}% 60
+\BOOKMARK [2][-]{subsection.5.2.3}{Validation}{section.5.2}% 61
+\BOOKMARK [2][-]{subsection.5.2.4}{Data extension}{section.5.2}% 62
+\BOOKMARK [1][-]{section.5.3}{Multi-class ensemble classifier}{chapter.5}% 63
+\BOOKMARK [2][-]{subsection.5.3.1}{All-features-based Random Forest classifier}{section.5.3}% 64
+\BOOKMARK [2][-]{subsection.5.3.2}{User-based KNN classifier}{section.5.3}% 65
+\BOOKMARK [2][-]{subsection.5.3.3}{Text-based Naive Bayes classifier}{section.5.3}% 66
+\BOOKMARK [0][-]{chapter.6}{Prediction}{}% 67
+\BOOKMARK [1][-]{section.6.1}{Stacking meta-classifier}{chapter.6}% 68
+\BOOKMARK [2][-]{subsection.6.1.1}{Genetic algorithm}{section.6.1}% 69
+\BOOKMARK [2][-]{subsection.6.1.2}{Logistic Regression}{section.6.1}% 70
+\BOOKMARK [1][-]{section.6.2}{Prediction pipeline}{chapter.6}% 71
+\BOOKMARK [0][-]{chapter.7}{Web application - BotBuster}{}% 72
+\BOOKMARK [1][-]{section.7.1}{Architecture}{chapter.7}% 73
+\BOOKMARK [1][-]{section.7.2}{Back-end}{chapter.7}% 74
+\BOOKMARK [2][-]{subsection.7.2.1}{Engine}{section.7.2}% 75
+\BOOKMARK [2][-]{subsection.7.2.2}{Flask}{section.7.2}% 76
+\BOOKMARK [1][-]{section.7.3}{Front-end}{chapter.7}% 77
+\BOOKMARK [1][-]{section.7.4}{Deployment platform}{chapter.7}% 78
+\BOOKMARK [1][-]{section.7.5}{Comparison with Botometer}{chapter.7}% 79
+\BOOKMARK [0][-]{chapter.8}{Conclusion and Future Work}{}% 80
+\BOOKMARK [1][-]{section.8.1}{Summary and Lessons Learned}{chapter.8}% 81
+\BOOKMARK [1][-]{section.8.2}{Outputs and Contributions}{chapter.8}% 82
+\BOOKMARK [1][-]{section.8.3}{Projection on wide scale}{chapter.8}% 83
+\BOOKMARK [1][-]{section.8.4}{Limitations}{chapter.8}% 84
+\BOOKMARK [1][-]{section.8.5}{Future Work}{chapter.8}% 85
+\BOOKMARK [0][-]{section.8.5}{References}{}% 86

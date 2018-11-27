@@ -7,12 +7,12 @@ In this chapter we will show the choices and stages behind the final model.
 Starting from baseline models, we enhanced the chosen classifiers with handcrafted features coming from the last chapter.\\
 We saw and studied the performance improvements with validation approaches, and this phase led us to our current solution.
 
-The result involves three models:
+The result involves four models:
 \begin{itemize}
-	\item[\PencilRight] a first Random Forest classifier that has been used to provide an early filter on the separation between genuine accounts and bots
-	\item[\PencilRight] a second Random Forest that gives a classification among the four studied categories of bots only
-	\item[\PencilRight] a Naive Bayes classifier, used over the same classes of the second Random Forest, but which reads and labels the users, according on their tweets only
-	\item[\PencilRight] a K-Nearest Neighbours classifier, used over the four bot classes, based on the user features only
+	\item[\PencilRight] A first Random Forest classifier that has been used to provide an early filter on the separation between genuine accounts and bots.
+	\item[\PencilRight] A second Random Forest that gives a classification among the four studied categories of bots only.
+	\item[\PencilRight] A Naive Bayes classifier, used over the same classes of the second Random Forest, but which reads and labels the users, according to their tweet texts only.
+	\item[\PencilRight] A K-Nearest Neighbours classifier, used over the four bot classes, based on the user features only.
 \end{itemize}
 The algorithms were used together into a pipeline work-flow, whose first step is the detection of bots from humans, thanks to the first binary Random Forest.
 Then, the percentage of membership in the bot category is further split into four sub-percentages, which represent the prediction over the inner bot categories.
@@ -20,12 +20,7 @@ This last partition is performed by a stacking ensemble, whose goal is to combin
 
 
 \section{Baselines}
-The choices explained in this section were made at the same time of the ones listed in the Baseline section of the last chapter.
-
-This is, basically, the same stage of the above-mentioned, but in a model-driven perspective.
-The features involved are the ones described in section \ref{baseline}, but we started from that base, to try different classifiers over it.
-We chose to evaluate the performances of raw classifiers, for both the binary and the multi-class problem.
-Each type of classifiers has been tested with the respective dataset, but considering only the baseline features of those data.
+In order to build a classification system, we needed to test different algorithms with raw settings. We decided to perform several validations on the entire feature vector, with four different machine learning classifiers, for both the binary and the multi-class problem.
 
 Furthermore, no parameters tuning has been applied, in order to minimize the results of our baselines classifier, with their standard settings.
 \subsection{Random Forest}
@@ -127,7 +122,7 @@ We wanted to get close to that score, using our crafted features.
 
 
 \subsection{Holdout evaluation}
-The holdout evaluation is performed separating the samples in the dataset into training and test subsets. The splitting process is randomized and it requires a bigger portion of the original dataset to be inserted in the training data, comparing to the amount of samples that will form the test set. A common choice is to use a third of the data to evaluate the model.
+The holdout evaluation is performed separating the samples of the dataset into training and test subsets. The splitting process is randomized and it requires a bigger portion of the original dataset to be inserted in the training data, comparing to the amount of samples that will form the test set. A common choice is to use a third of the data to evaluate the model.
 
 \subsection{Multi-class}
 In this case, we decided to use 75\% of the data for the training set and 25\% for the test set. This choice is a little bit different from the most common one, which builds the training set with 2/3 of the whole data, because we didn't dispose of a huge amount of records, so we preferred this ratio and then trying an other validation method for comparison.
@@ -246,7 +241,7 @@ From these evaluations it is possible to see how the Random Forest algorithm out
 
 
 \subsubsection{Binary}
-This evaluation was made with the common splitting ration between train and test set. Since we had 31,212 samples available, well balanced, we used two thirds (20,808) for the training set and the remaining (10,404) for the test set.
+This evaluation was made with the common splitting ratio between train and test set. Since we had 31,212 samples available, well balanced, we used two thirds (20,808) for the training set and the remaining (10,404) for the test set.
 We wanted a first term of comparison, so, in the beginning, we evaluated the AUC metric with the holdout technique.
 \begin{itemize}
 	\item[\PencilRight] \textit{RandomForestClassifier(n\_estimators = 10, criterion = 'entropy')}\\
@@ -399,8 +394,8 @@ The dataset we used for this classification was composed of part of our collecte
 We used the APIs to retrieve the ids for both genuines and bots, from the Caverlee list. The process provided us 15,687 legitimate user ids, and 15,525 general bot ids (without inner classifications), for a total number of 31,212 samples.
 The difference from the original number of entries is due to the age of the dataset. Since 2011, the year of the creation of the list, a lot of accounts have been deleted or suspended.
 
-The feature vector we used is the same that came out from the feature engineering process, except for the specific characterizing features, that weren't considered, because crafted for the inner separation among bots. We excluded the \textit{NSFW\_avg}) image feature, as we noticed it didn't bring much performance boosting with the multi-class models.
-The extrinsic features must had been adjusted with new dictionaries, so we had two features: (\textit{bots\_words\_score} and  \textit{genuine\_words\_score}.
+The feature vector we used is the same that came out from the feature engineering process, except for the specific characterizing features, that weren't considered, because crafted for the inner separation among bots. We excluded the \textit{NSFW\_avg} image feature, as we noticed it didn't bring much performance boosting with the multi-class models.
+The extrinsic features must had been adjusted with new dictionaries, so we had two features: \textit{bots\_words\_score} and  \textit{genuine\_words\_score}.
 Both the features have been computed as for the multi-class case, with up to 1000 non overlapping words in each dictionary.
 
 \subsection{Model}
@@ -646,7 +641,7 @@ In this section we will expose the model involved in the multi-class ensemble. I
 
 At first, this ensemble of these three models should have been blended with the prediction of the binary classifier. That means that the genuine class was part of the labels we were trying to classify, even in the multi-class models. Then, we found an issue in this approach: the binary classifier itself wasn't enough, even including it into the ensemble, to give the right importance to the genuine accounts. This problem emerged because of the others classifiers, as they were trying to classify the genuine class too. They lacked in data with that target, so, basically, they used to treat that category as one other of the bot types.
 
-Even if the results on our validation sets were still good (we accomplished a F1 measure of 0.973), for the final ensemble method, we knew that this method would had yielded to a poor bot vs genuine detection tool. We couldn't accept that situation, because, in order to go deeper than other works, in bot behaviour classifications, we had to provide a solid previous discrimination between humans and automated accounts.
+Even if the results on our validation sets were still good (we accomplished a F1 measure of 0.973), for the final ensemble method, we knew that this method would had yielded a poor bot vs genuine detection tool. We couldn't accept that situation, because, in order to go deeper than other works, in bot behaviour classifications, we had to provide a solid previous discrimination between humans and automated accounts.
 
 The ensemble method with all the classifiers blended together were replaced with a pipeline, and the multi-class models were trained on bot categories only.
 These last classifiers had been put together inside a  ensemble, which returns the final mutliclass probability prediction, based on the opinions of those models, as shown in Figure \ref{fig:stacking_schema}
@@ -792,7 +787,7 @@ We noticed, as shown in the previous Figure \ref{fig:feature_clusters}, that the
 
 The model that had the best performance, not considering the Random Forest, was the K-Nearest Neighbors algorithm.
 
-We didn't want this model to work the entire feature vector, because we knew that it would had been overlooked by the Random Forest. Instead, we wanted it to concentrate on the features that describe the users, without the information driven by their tweets. Therefore, we relied on the user features, with the extension of the image feature that assesses the NSFW score to the profile picture. This extension wa due to the fact that such feature doesn't need the user's tweets to be computed; it can be seen as one of the user features as the others of that group.
+We didn't want this model to work the entire feature vector, because we knew that it would had been overlooked by the Random Forest. Instead, we wanted it to concentrate on the features that describe the users, without the information driven by their tweets. Therefore, we relied on the user features, with the extension of the image feature that assesses the NSFW score to the profile picture. This extension was due to the fact that such feature doesn't need the user's tweets to be computed; it can be seen as one of the user features as the others of that group.
 
 We hoped that treating the data before, or during, the training phase, would had brought to a good sustain for the first multi-class model, where needed.
 
@@ -865,7 +860,7 @@ The final model has been created with the following call: \textit{KNeighborsClas
 
 
 \subsection{Text-based Naive Bayes classifier}
-In chapter \ref{capitolo4} we created some useful features that helped the above-mentioned classifiers . Anyway we didn't consider enough the tweet texts. A first idea consisted in add a feature that describe the context of the tweets. This task was easily viable using \textit{Google Cloud Natural Language}. Unfortunately, this service only provides a few free calls, and we would not be able to tag all the tweets in our dataset. Moreover, the Context Classification is very specific, and we would have risked to have a too large domain of values. We tried to classify some tweets and we noticed that it was not possible with many of them, since they were just exclamations or contextless sentences. We therefore decided to train a proprietary text classifier. This allowed us to classify texts according to our targets, and our final classifier would have been self-sufficient, without external services.
+In chapter \ref{capitolo4} we created some useful features that helped the above-mentioned classifiers. Anyway we didn't consider enough the tweet texts. A first idea consisted in add a feature that describe the context of the tweets. This task was easily viable using \textit{Google Cloud Natural Language}. Unfortunately, this service only provides a few free calls, and we would not be able to tag all the tweets in our dataset. Moreover, the Context Classification is very specific, and we would have risked to have a too large domain of values. We tried to classify some tweets and we noticed that it was not possible with many of them, since they were just exclamations or contextless sentences. We therefore decided to train a proprietary text classifier. This allowed us to classify texts according to our targets, and our final classifier would have been self-sufficient, without external services.
 \subsubsection{Dataset}
 Since we wanted to classify texts instead of users, we needed to create a specific dataset.
 It had to contain a list of tweets and all the related target. We composed it by binding the target of each tweet to the label of its author. This produced some noise; often bots tweet something different from their goal, to seem more humans. We could accept this problem, since most of the tweets are aimed to a goal.
@@ -890,11 +885,10 @@ In order to classify texts, we decided to use a Naive Bayes approach. This algor
 
 Tweets can't be processed as they are. Since this model aims to classify texts basing on its words, we had to clean the dataset from all those parts of the text that are not real or useful words. For example articles, smiles, punctuation should not be taken into consideration. Moreover it is fundamental to reduce inflected words to their word stem. Finally, we need to clean all those noisy parts of the tweets, which is important to allow the final text classifier to consider only real words, in order to identify the context.
 
-Tweets without this pre-processing step look like this:\\
-
+Tweets without this pre-processing step look like this:\\\\
 \framebox[\textwidth][l]{\parbox{\textwidth}{\textit{'RT @SteveSchmidtSES: TRUMP disgraced the Presidency and the\\United States at the G-7 summit. From his slovenly appearance to his\\unprepared... https://t.co/KiT29FvJw5'}}}\\
 
-In order to perform this tasks, we used a \textit{sklearn Pipeline}. It is a method that allows to build a custom predictive algorithm. In our case, it contains intermediate steps of data transformation and finally the machine learning algorithm. It works like a generic model, but it perform all the included transformations before processing a data, both in training and prediction steps.
+In order to perform these tasks, we used a \textit{sklearn Pipeline}. It is a method that allows to build a custom predictive algorithm. In our case, it contains intermediate steps of data transformation and finally the machine learning algorithm. It works like a generic model, but it perform all the included transformations before processing a data, both in training and prediction steps.
 
 We added to the pipeline the following operations:
 

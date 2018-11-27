@@ -3,7 +3,6 @@ Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: thesis.aux
 A level-1 auxiliary file: cover_page.aux
 A level-1 auxiliary file: abstract.aux
-A level-1 auxiliary file: acknowledgements.aux
 A level-1 auxiliary file: chapter1/chapter.aux
 A level-1 auxiliary file: chapter2/chapter.aux
 A level-1 auxiliary file: chapter3/chapter.aux
@@ -36,89 +35,31 @@ Warning--entry type for "bessi" isn't style-file defined
 --line 165 of file references.bib
 Warning--entry type for "Cyborgs" isn't style-file defined
 --line 171 of file references.bib
-Too many commas in name 1 of "Onur Varol, Emilio Ferrara, Clayton A. Davis, Filippo Menczer, Alessandro Flammini" for entry Varol
-while executing---line 944 of file unsrt.bst
-Too many commas in name 1 of "Onur Varol, Emilio Ferrara, Clayton A. Davis, Filippo Menczer, Alessandro Flammini" for entry Varol
-while executing---line 944 of file unsrt.bst
 Warning--empty journal in Varol
-Too many commas in name 1 of "Clayton A. Davis, Onur Varol, Emilio Ferrara, Alessandro Flammini, Filippo Menczer" for entry Botometer
-while executing---line 944 of file unsrt.bst
-Too many commas in name 1 of "Clayton A. Davis, Onur Varol, Emilio Ferrara, Alessandro Flammini, Filippo Menczer" for entry Botometer
-while executing---line 944 of file unsrt.bst
-Name 1 in "Emilio Ferrara, Onur Varol, Clayton Davis, Filippo Menczer, and AlessandroFlammini" has a comma at the end for entry BotorNot
-while executing---line 944 of file unsrt.bst
-Too many commas in name 1 of "Emilio Ferrara, Onur Varol, Clayton Davis, Filippo Menczer, and AlessandroFlammini" for entry BotorNot
-while executing---line 944 of file unsrt.bst
 Warning--empty journal in Lee11sevenmonths
-Too many commas in name 1 of "Stefano Cresci, Roberto Di Pietro, Marinella Petrocchi, Angelo Spognardi, Maurizio Tesconi" for entry Fake-Followers
-while executing---line 944 of file unsrt.bst
-Too many commas in name 1 of "Stefano Cresci, Roberto Di Pietro, Marinella Petrocchi, Angelo Spognardi, Maurizio Tesconi" for entry Fake-Followers
-while executing---line 944 of file unsrt.bst
 Warning--empty journal in Fake-Followers
-Too many commas in name 1 of "J. Ratkiewicz, M. D. Conover, M. Meiss, B. Gonçalves, A. Flammini, F. Menczer" for entry Astroturfing
-while executing---line 944 of file unsrt.bst
-Too many commas in name 1 of "J. Ratkiewicz, M. D. Conover, M. Meiss, B. Gonçalves, A. Flammini, F. Menczer" for entry Astroturfing
-while executing---line 944 of file unsrt.bst
-Too many commas in name 1 of "J. Ratkiewicz, M. D. Conover, M. Meiss, B. Gonçalves, A. Flammini, F. Menczer" for entry Astroturfing
-while executing---line 944 of file unsrt.bst
-Name 1 in "Qiang Cao, Michael Sirivianos, Xiaowei Yang, and Tiago Pregueiro" has a comma at the end for entry Sybils
-while executing---line 944 of file unsrt.bst
 Warning--empty journal in Sybils
 Warning--empty journal in Intrusion-Detection
-Too many commas in name 1 of "Chengcheng Shao, Pik-Mai Hui, Lei Wang, Xinwen Jiang, Alessandro Flammini, Filippo Menczer, Giovanni Luca Ciampaglia" for entry Misinformation
-while executing---line 944 of file unsrt.bst
-Too many commas in name 1 of "Chengcheng Shao, Pik-Mai Hui, Lei Wang, Xinwen Jiang, Alessandro Flammini, Filippo Menczer, Giovanni Luca Ciampaglia" for entry Misinformation
-while executing---line 944 of file unsrt.bst
-Too many commas in name 1 of "Chengcheng Shao, Pik-Mai Hui, Lei Wang, Xinwen Jiang, Alessandro Flammini, Filippo Menczer, Giovanni Luca Ciampaglia" for entry Misinformation
-while executing---line 944 of file unsrt.bst
-Too many commas in name 1 of "Chengcheng Shao, Pik-Mai Hui, Lei Wang, Xinwen Jiang, Alessandro Flammini, Filippo Menczer, Giovanni Luca Ciampaglia" for entry Misinformation
-while executing---line 944 of file unsrt.bst
 Warning--empty journal in Misinformation
-Name 1 in "Chengcheng Shao, Giovanni Luca Ciampaglia, Alessandro Flammini, and Filippo Menczer" has a comma at the end for entry Hoaxy
-while executing---line 944 of file unsrt.bst
 Warning--empty journal in Hoaxy
-Name 1 in "Chengcheng Shao, Giovanni Luca Ciampaglia, Onur Varol, Kaicheng Yang, Alessandro Flammini, and Filippo Menczer" has a comma at the end for entry Fact-Checking
-while executing---line 944 of file unsrt.bst
-Too many commas in name 1 of "Chengcheng Shao, Giovanni Luca Ciampaglia, Onur Varol, Kaicheng Yang, Alessandro Flammini, and Filippo Menczer" for entry Fact-Checking
-while executing---line 944 of file unsrt.bst
-Too many commas in name 1 of "Chengcheng Shao, Giovanni Luca Ciampaglia, Onur Varol, Kaicheng Yang, Alessandro Flammini, and Filippo Menczer" for entry Fact-Checking
-while executing---line 944 of file unsrt.bst
 Warning--empty journal in Fact-Checking
-Too many commas in name 1 of "Stefano Cresci, Roberto Di Pietro, Marinella Petrocchi, Angelo Spognardi, Maurizio Tesconi" for entry Cresci
-while executing---line 944 of file unsrt.bst
-Too many commas in name 1 of "Stefano Cresci, Roberto Di Pietro, Marinella Petrocchi, Angelo Spognardi, Maurizio Tesconi" for entry Cresci
-while executing---line 944 of file unsrt.bst
 Warning--empty journal in Cresci
-Name 1 in "Zi Chu, Steven Gianvecchio, Haining Wang, and Sushil Jajodia" has a comma at the end for entry Cyborgs
-while executing---line 944 of file unsrt.bst
-Name 1 in "C. Yang, R. Harkreader, and G. Gu." has a comma at the end for entry Yang
-while executing---line 944 of file unsrt.bst
 Warning--empty journal in Yang
 Warning--empty journal in Disinformation
-Too many commas in name 1 of "Christian Szegedy, Vincent Vanhoucke, Sergey Ioffe, Jonathon Shlens, Zbigniew Wojna" for entry inception
-while executing---line 944 of file unsrt.bst
-Too many commas in name 1 of "Christian Szegedy, Vincent Vanhoucke, Sergey Ioffe, Jonathon Shlens, Zbigniew Wojna" for entry inception
-while executing---line 944 of file unsrt.bst
-Too many commas in name 1 of "Mahdi M. Kalayeh, Misrak Seifu, Wesna LaLanne, Mubarak Shah" for entry selfie
-while executing---line 944 of file unsrt.bst
-Name 1 in "S. Ting, W. Ip, and A. H. Tsang" has a comma at the end for entry nb
-while executing---line 944 of file unsrt.bst
 Warning--empty journal in SAGA
 Warning--empty journal in SAG
-Too many commas in name 1 of "Rong-En Fa, Kai-Wei Chang, Cho-Jui Hsieh, Xiang-Rui Wang and Chih-Jen Lin" for entry Liblinear
-while executing---line 944 of file unsrt.bst
 Warning--empty journal in Liblinear
 You've used 26 entries,
             1791 wiz_defined-function locations,
-            572 strings with 7719 characters,
-and the built_in function-call counts, 3483 in all, are:
-= -- 251
-> -- 158
+            571 strings with 7859 characters,
+and the built_in function-call counts, 4323 in all, are:
+= -- 263
+> -- 350
 < -- 0
-+ -- 66
-- -- 40
-* -- 88
-:= -- 586
++ -- 126
+- -- 100
+* -- 227
+:= -- 766
 add.period$ -- 67
 call.type$ -- 26
 change.case$ -- 26
@@ -126,8 +67,8 @@ chr.to.int$ -- 0
 cite$ -- 40
 duplicate$ -- 175
 empty$ -- 409
-format.name$ -- 40
-if$ -- 767
+format.name$ -- 100
+if$ -- 911
 int.to.chr$ -- 0
 int.to.str$ -- 26
 missing$ -- 15
@@ -137,7 +78,7 @@ pop$ -- 150
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 98
+skip$ -- 91
 stack$ -- 0
 substring$ -- 0
 swap$ -- 12
@@ -149,4 +90,4 @@ warning$ -- 14
 while$ -- 26
 width$ -- 28
 write$ -- 226
-(There were 29 error messages)
+(There were 25 warnings)
