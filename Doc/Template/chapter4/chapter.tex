@@ -85,70 +85,43 @@ Features processed as ``delete - relative feature`` are those ones related to th
 Features with few missing values was not deleted from the dataset, but we needed to fill that fields.
 In this section we analyse how we performed this task for each features.
 \begin{itemize}
-	\item[\PencilRight]\textbf{default\_profile\_image}: Thanks to the figure \ref{fig:msno} we could see that all the missing values was at the bottom, in particular, all of them were in tuples with target 3 or 4. In order to uderstand the behaviour of this feature, we printed its values count for each indicted target.
+	\item[\PencilRight]\textbf{default\_profile\_image}: Thanks to the figure \ref{fig:msno} we could see that all the missing values was at the bottom, in particular, all of them were in tuples with target 3 (Fake-Followers). In order to understand the behaviour of this feature, we printed its values count for that target.
 	\begin{center}
-		\begin{tabular}{lll}
-			\\target&3\\
+		\begin{tabular}{ll}
+			\multicolumn{2}{c}{Fake-Followers} \\
 			\hline\hline
 			value&mean\\
 			\hline\hline
 			0&2868\\
 			1&228\\\hline\\
 		\end{tabular}
-		
-		\begin{tabular}{lll}
-			\\target&4\\
-			\hline\hline
-			value&mean\\
-			\hline\hline
-			0&181\\
-			1&19\\\hline\\
-		\end{tabular}
 	\end{center}
 	
 	In both cases the value ``0`` is more frequent then ``1``, so we filled all the missing values with the mode (0).
 	
-	\item[\PencilRight]\textbf{profile\_background\_tile}: As for ``default\_profile\_image``, all the missing values belonged to target 3 and 4. We used the same approach and we obtained:
+	\item[\PencilRight]\textbf{profile\_background\_tile}: As for ``default\_profile\_image``, all the missing values belonged to Fake-Followers. We used the same approach and we obtained:
 	\begin{center}
-		\begin{tabular}{lll}
-			\\target&3\\
+		\begin{tabular}{ll}
+			\multicolumn{2}{c}{Fake-Followers} \\
 			\hline\hline
 			value&mean\\
 			\hline\hline
 			0&3086\\
 			1&99\\\hline\\
 		\end{tabular}
-		
-		\begin{tabular}{lll}
-			\\target&4\\
-			\hline\hline
-			value&mean\\
-			\hline\hline
-			0&1347\\
-			1&147\\\hline\\
-		\end{tabular}
 	\end{center}
-	In this case we decided to fill these fields with the mode (0). Since most of the data are 0, this choise allowed us not to dirty the dataset.
+	In this case we decided to fill these fields with the mode (0). Since most of the data are 0, this choice allowed us not to dirty the dataset.
 	
 	
-	\item[\PencilRight]\textbf{profile\_use\_background\_image}: All the missing values are still in the last two classes.
+	\item[\PencilRight]\textbf{profile\_use\_background\_image}: All the missing values are still in the last class.
 	\begin{center}
-		\begin{tabular}{lll}
-			\\target&3\\
+		\begin{tabular}{ll}
+			\multicolumn{2}{c}{Fake-Followers} \\
 			\hline\hline
 			value&mean\\
 			\hline\hline
 			0&12\\
 			1&4983\\\hline\\
-		\end{tabular}
-		
-		\begin{tabular}{lll}
-			\\target&4\\
-			\hline\hline
-			value&mean\\
-			\hline\hline
-			0&25\\
-			1&3246\\\hline\\
 		\end{tabular}
 	\end{center}
 	This data is really unbalanced, so filling the null fields with the mode (1) is still the better solution.
@@ -160,7 +133,7 @@ In order to enrich our attributes and to provide support to our algorithms, we d
 
 Their purpose is to describe the tweets in a statistical way, adding ranges and means to the attributes provided by the official APIs.\\
 Each of these new values have been added to the users feature vector, in order to append new information for each account.
-Here is the list of these first 18 brand new features, introduced by our work:
+Here is the list of these first 17 brand new features, introduced by our work:
 
 \small
 \begin{center}
@@ -197,6 +170,7 @@ Here is the list of these first 18 brand new features, introduced by our work:
 \end{figure}
 As shown in Figure \ref{fig:desc_rank}, this first group has been performed a ranking function on, with the following result:\\
 1. \textit{freq} (\textbf{0.148}), 2. \textit{avg\_len} (\textbf{0.140}), 3. \textit{media\_perc} (\textbf{0.102}), 4. \textit{min\_len} (\textbf{0.098}), 5. \textit{ret\_perc} (\textbf{0.095}), 6. \textit{max\_len} (\textbf{0.087}), 7. \textit{avg\_ret} (\textbf{0.082}), 8. \textit{max\_ret} (\textbf{0.063}), 9. \textit{quote\_perc} (\textbf{0.060}), 10. \textit{url\_perc} (\textbf{0.030}), 11. \textit{avg\_hash} (\textbf{0.030}), 12. \textit{avg\_fav} (\textbf{0.016}), 13. \textit{max\_fav} (\textbf{0.013}), 14. \textit{min\_hash} (\textbf{0.012}), 15. \textit{max\_hash} (\textbf{0.011}), 16. \textit{min\_ret} (\textbf{0.004}), 17. \textit{min\_fav} (\textbf{0.001})
+
 
 The scores assigned to each feature represent the percentages of importance for the model, in terms of Information Gain provided.
 
