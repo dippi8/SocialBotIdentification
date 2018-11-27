@@ -223,7 +223,7 @@ This kind of models is often involved in stacking other classifiers, with a bina
 
 \subsubsection{Dataset}
 The same training set has been used for train both the Genetic and Logistic models.
-Since we were managing a multilabel datasets, we knew that the ensemble meta-model would had been adapted to this job. The most common tool used for stacking purposes is the Logistic Regression, which performs well on binary separations. We decided to test this model on a multinomial approach, with a softmax activation function, instead of trying the already visited One-vs-Rest method.
+Since we were managing a multi-class datasets, we knew that the ensemble meta-model would had been adapted to this job. The most common tool used for stacking purposes is the Logistic Regression, which performs well on binary separations. We decided to test this model on a multinomial approach, with a softmax activation function, instead of trying the already visited One-vs-Rest method.
 
 \subsubsection{Comparison with Random Forest}
 We didn't want to blindly select this model over some others tool, especially over Random Forest, which proved us to perform well in multi-class classifications.

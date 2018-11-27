@@ -5,7 +5,7 @@
 \thispagestyle{empty}
 
 
-In this chapter we present all the available datasets containing bot accounts, togheter with all the tools and methodologies used to collect the respective data. The final dataset contains:
+In this chapter we present all the available datasets containing bot accounts, together with all the tools and methodologies used to collect the respective data. The final dataset contains:
 
 \begin{itemize}
 \item[\PencilRight]Data from already existing datasets
@@ -18,7 +18,7 @@ Different tools were used in order to both collect the data and to enrich existi
 
 \subsection{Tweepy}
 Tweepy is a Python wrapper for the Twitter API.
-Two main methods were used to collect all the dafault features of users and tweets:\\
+Two main methods were used to collect all the default features of users and tweets:\\
 
 
 \begin{tabular}{lll}
@@ -63,6 +63,7 @@ The authors observed the content polluters that used to interact with their hone
 \end{center}
 
 Each cluster has been manually checked, in order to asses its credibility.
+Finally, 22,223 bots were included in the dataset.
 For each content polluter, the authors collect the 200 most recent tweets, following and follower graph, and the temporal and historical profile information.
 
 In order to collect genuine users too, 19,297 Twitter ids were randomly sampled and monitored  for three months, to see if they were still active and not suspended by the social platform moderation service.
@@ -155,7 +156,7 @@ All the collected users had to have at least 200 tweets in total and 90 tweets d
 
 Using the classifier trained on the honeypot dataset in \cite{Lee11sevenmonths}, the authors et al. \cite{Varol} computed the classification scores for each of the active accounts, obtaining 0.85 in the AUC metric score, a lower score then the one obtained, by the same model, on the honeypot's data (0.95 AUC). This difference was justified by the lower ages of the manually annotated bots, with respect to the ones collected by the social honeypots.
 Then the samples were grouped by their score and 300 accounts from each bot-score decile were randomly selected. 
-The 3000 extracted accounts were manually labeled by volunteers. The authors analyzed users profile, friends, tweets, retweets and interactions with other users. Then a label was assigned to each user.
+The 3,000 extracted accounts were manually labeled by volunteers. The authors analyzed users profile, friends, tweets, retweets and interactions with other users. Then a label was assigned to each user.
 Of course the final decision is conditioned to personal opinion.
 
 \subsection{BotBlock}
@@ -166,8 +167,8 @@ They are mainly used to aggressively market porn sites.
 At first try, we wanted to understand if different kinds of bots were easy to distinguish, using their profile features only. We didn't know what kinds of bots populate Twitter for the most. So, an unsupervised approach could have helped us to highlight different categories. We relied expectations on clustering techniques, hoping to get a solid help in automatizing the labeling process of the data.\\
 We used the Varol dataset \cite{Varol}, that contains a plain list of bots and humans.\\
 It was not possible to use all the data, because we needed to scrape from the web all the possible features and some of the listed accounts were already been deleted. So, for this work, we had to consider only those accounts that were still active.\\
-The first step was the knee-elbow analisys based on a hierarchical clustering with single linkage and euclidean distance. We used this technique in order to determine the optimal number of clusters. The data must had been preprocessed and cleaned.\\
-Here we illustrate what kind of preprocess operations were performed for that purpose; features marked with '---' don't need to be preprocessed:
+The first step was the knee-elbow analysis based on a hierarchical clustering with single linkage and euclidean distance. We used this technique in order to determine the optimal number of clusters. The data must had been preprocessed and cleaned.\\
+Here we illustrate what kind of pre-process operations were performed for that purpose; features marked with '---' don't need to be preprocessed:
 
 \small
 \begin{center}
@@ -262,10 +263,9 @@ As this process came to an end, we manually inspected the resulting clusters.
 Cluster 2 contains most of the samples, while the others have fewer elements.
 We observed the Twitter profile of all the elements belonging to cluster 1, 3, 4 and a small sample of profiles for cluster 2.
 
-Unfortunately there was no behavioral correlation among accounts in the same cluster, they just had similar values in the default features (i.e. number of followers, number of tweets, etc). So this technique didn't seem to fit the speeding up of the labeling process, nor to create useful features for a classifier.
+Unfortunately there was no behavioural correlation among accounts in the same cluster, they just had similar values in the default features (i.e. number of followers, number of tweets, etc). So this technique didn't seem to fit the speeding up of the labeling process, nor to create useful features for a classifier.
 
 \section{Supervised labeling of datasets}
-\label{sec:dataset}
 The clustering approach did not help us, but the manual inspection of the clusters allowed us to get in touch with some existing bots, making us understand which categories of bots are most common on the social network. In particular we detected 4 main classes:
 \begin{itemize}
 	\item[\PencilRight]NSFW bots
@@ -274,7 +274,7 @@ The clustering approach did not help us, but the manual inspection of the cluste
 	\item[\PencilRight]Fake-Followers
 \end{itemize}
 
-We started with a hand-labeling of the Varol dataset \cite{Varol}. For each account we analyzed its profile and tweets and we assigned it a label according to the categories we identified.  We have faced some unexpected behaviors among bot accounts, that didn't fit the above-mentioned categories. For example, we found harmless bots, whose goal was to improve their ability of formulating sentences. In these cases, they were temporarily signed as ''general purpose''.
+We started with a hand-labeling of the Varol dataset \cite{Varol}. For each account we analysed its profile and tweets and we assigned it a label according to the categories we identified.  We have faced some unexpected behaviours among bot accounts, that didn't fit the above-mentioned categories. For example, we found harmless bots, whose goal was to improve their ability of formulating sentences. In these cases, they were temporarily signed as ''general purpose''.
 
 We also found genuine users, who we thought  had been incorrectly added to the dataset.
 This task resulted into the collection of the following bots:
@@ -307,9 +307,9 @@ All these samples were not enough to train a classifier, hence we needed to coll
 \subsection{NSFW}
 \emph{Not safe for work} is a tag used on internet to mark all that URLs, web pages, e-mails that contain nudity, intense sexuality, profanity or violence. In particular we wanted to collect a specific sub-category: the pornbots. In order to collect them, we used the BotBlock dataset.
 
-BotBlock contains thousands of pornbot ids. We wanted to gather about 6000 samples, an amount that would have been enough for the final dataset, with regards to its balance.
+BotBlock contains thousands of pornbot ids. We wanted to gather about 6,000 samples, an amount that would have been enough for the final dataset, with regards to its balance.
 Since they were sorted according to their creation date, we shuffled the whole list. Then, using the Twitter API, we looked for accounts that weren't deleted yet. 
-We needed to scrape profile features and tweets, so we couldn't consider banned accounts. The user list was initially shuffled to allow us to collect users with different ages. This emerged as a very useful setp, because we gathered both more long-lived accounts and more explicit accounts (which probably have shorter lives). We finally obtained 6903 accounts and 198378 tweets.
+We needed to scrape profile features and tweets, so we couldn't consider banned accounts. The user list was initially shuffled to allow us to collect users with different ages. This emerged as a very useful setp, because we gathered both more long-lived accounts and more explicit accounts (which probably have shorter lives). We finally obtained 6,605 accounts and 198,378 tweets.
 \subsection{News-Spreaders}
 Many bots on Twitter are News-Spreaders. The goal of these users is to spread politics, sports or other news. Often their behavior is not harmful, they just retweet statuses from newspapers accounts. However, there are users created to diffuse fake news. In the last few years Twitter has been used to boost politics propaganda. During elections or political campaigns, ad hoc accounts are created to divulgate specific political idea.
 
@@ -330,7 +330,7 @@ We set a threshold, in order to classify a user as a bot. That threshold is 2.3 
 The second approach just consisted in collecting the most popular News-Spreaders according to Hoaxy. In consistency with the mentioned threshold, profiles with a Botometer score lower then 2.3 were still discarded.
 
 Finally we checked every profile added to this dataset and removed all those users who didn't tweet enough statuses to be included in this class. This hand-made analysis made us know that there are no bots who only spread fake news. Usually they tweet a lot of verified news and some fake ones, to keep their credibility.
-We reached 3590 accounts and 333699 tweets.
+We reached 3,590 accounts and 333,699 tweets.
 
 \subsection{Spam-Bots}
 As seen before, Spam-Bots were already collected in the work of Cresci et al. \cite{Cresci}. Authors allowed us to access their dataset, so we obtained the Spam-Bots list by sampling their data. Due to homogeneity reasons, we needed to perform scraping again, since we needed different features compared to the available ones.
@@ -341,7 +341,7 @@ We selected users from:
 	\item[\PencilRight]social Spam-Bots 3
 \end{itemize}
 
-We chose this categories because they contain the most popular kinds of Spam-Bots, that are the ones who advertise products, services or mobile applications. We ignored \emph{''social Spam-Bots 1''}, since they are italian News-Spreaders and \emph{''traditional Spam-Bots 3 and 4''}, since we retrieved enough job-offer spammers during the hand-made labeling. If we had stored too many bots of this category, we would not have been able to generalize on generic Spam-Bots. Finally we gathered 4943 accounts and 458809 tweets.
+We chose this categories because they contain the most popular kinds of Spam-Bots, that are the ones who advertise products, services or mobile applications. We ignored \emph{''social Spam-Bots 1''}, since they are italian News-Spreaders and \emph{''traditional Spam-Bots 3 and 4''}, since we retrieved enough job-offer spammers during the hand-made labeling. If we had stored too many bots of this category, we would not have been able to generalize on generic Spam-Bots. Finally we gathered 4,943 accounts and 458809 tweets.
 
 \subsection{Fake-Followers}
 The collection of this class was quite easy. We initially performed scraping of the data collected by the work of Cresci et al. \cite{Cresci}. Many of these accounts had already been banned, so we could not collect their features. In order to enrich our dataset, we created a new Twitter account (figure \ref{fig:dibebot}). Then we bought Fake-Followers from two different services:
@@ -355,7 +355,7 @@ The collection of this class was quite easy. We initially performed scraping of 
 \emph{Rantic}, on the other hand, ensures more realistic followers. They seem to have a real network of friends and, sometimes, they tweet too.
 
 By using both services, we gathered a more miscellaneous dataset.
-We collected 6307 users and 41683 tweets for about 20\$.
+We collected 6,307 users and 41,683 tweets for about 20\$.
 \begin{figure}
 	\centering
 	\includegraphics[width=\columnwidth]{chapter3/figure/dibebot.png}
@@ -364,23 +364,24 @@ We collected 6307 users and 41683 tweets for about 20\$.
 \end{figure}
 
 \subsection{Genuine}
-Finally we needed genuine accounts. We used again the Cresci dataset \cite{Cresci} and we filled it with all the Varol users labeled as humans. We again performed scraping on the existing accounts and we collected 3661 users and 263240 tweets in total.
-Morover, we gathered all the Genuine users from the Caverlee dataset \cite{Lee11sevenmonths}. these are many more than other classes, but they will be necessary for a future classification between bots and humans. We perfomed scraping and we were able to obtain 15701 users and 1278852 tweets.
+Finally we needed genuine accounts. We used again the Cresci dataset \cite{Cresci} and we filled it with all the Varol users labeled as humans. We again performed scraping on the existing accounts and we collected 3,661 users and 263,240 tweets in total.
+Morover, we gathered all the Genuine users from the Caverlee dataset \cite{Lee11sevenmonths}. these are many more than other classes, but they will be necessary for a future classification between bots and humans. We perfomed scraping and we were able to obtain 15,701 users and 1,278,852 tweets.
 
 \subsection{Bots}
-We needed a set of unlabeled bots in order to train a binary classifier, that is able to classify bots and humans. We again scraped the Caverlee dataset \cite{Lee11sevenmonths} and we gathered 15539 and 1276457 tweets.
+We needed a set of unlabeled bots in order to train a binary classifier, that is able to classify bots and humans. We again scraped the Caverlee dataset \cite{Lee11sevenmonths} and we gathered 15,539 and 1,276,457 tweets.
 
 \subsection{Final Datasets}
+\label{sec:dataset}
 At the end of the collection, we set up two datasets. The first one is the \textit{multi-class} dataset, that contains only bots labeled according to the type of threat, its composition is the following:
 
 \begin{center}
 \begin{tabular}{lll}
 	\\category&\# users&\# tweets\\
 	\hline\hline
-	NSFW&6903&198378\\
-	News-Spreader&3590&333699\\
-	Spam-Bots&4943&458809\\
-	Fake-Followers&6307&41683\\\hline\\	
+	NSFW&6,605&198,378\\
+	News-Spreader&3,590&333,699\\
+	Spam-Bots&4,943&458,809\\
+	Fake-Followers&6,307&41,683\\\hline\\	
 \end{tabular}
 \end{center}
 
@@ -390,14 +391,14 @@ The second dataset is the \textit{Binary} dataset, containing bots and genuine u
 	\begin{tabular}{lll}
 		\\category&\# users&\# tweets\\
 		\hline\hline
-		Bots&15539&1276457\\
-		Genuine&15701&1278852\\\hline\\	
+		Bots&15,539&1,276,457\\
+		Genuine&15,701&1,278,852\\\hline\\	
 	\end{tabular}
 \end{center}
 
 \newpage
 \section{Descriptive statistics of datasets}
-As the collection of the data was completed, we explored our final multi-class dataset. In this section we will only focus on different cateogories of bots, which is the most iteresting part.
+As the collection of the data was completed, we explored our final multi-class dataset. In this section we will only focus on different categories of bots, which is the most interesting part.
 
 A first look (\ref{fig:bubble}) shows us how many user accounts we collected (y axis) for each class and how many tweets we could scrape (diameter). It is easy to observe that Fake-Followers and NSFW bots have fewer tweets than the others, while News-Spreaders have a lot of tweets, but we collected fewer profiles.
 \begin{center}
@@ -461,4 +462,4 @@ Finally we performed three further analyses. With the heatmap we could not detec
 	
 	\label{fig:box_followers}
 \end{figure}
-In Figure \ref{fig:box_friends} and \ref{fig:box_followers} we performed the same analysis considering the \emph{''friends\_count''} and \emph{''followers\_count''} features. We limited the charts between 4000 and 2000 to keep them understandable. This two figures show us that News-Spreaders usually have a bigger network, while Fake-Followers just follow few users. News-Spreaders network may depends on the popularity of the news media. Other categories are more balanced and their differences can be attributed to the data and not to a different behaviuor between them.
+In Figure \ref{fig:box_friends} and \ref{fig:box_followers} we performed the same analysis considering the \emph{''friends\_count''} and \emph{''followers\_count''} features. We limited the charts between 4,000 and 2,000 to keep them understandable. This two figures show us that News-Spreaders usually have a bigger network, while Fake-Followers just follow few users. News-Spreaders network may depends on the popularity of the news media. Other categories are more balanced and their differences can be attributed to the data and not to a different behaviuor between them.
