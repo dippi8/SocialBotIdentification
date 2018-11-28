@@ -29,14 +29,14 @@ Two main methods were used to collect all the default features of users and twee
 \end{tabular}
 
 A User object contains all that features that describe the user's profile and his utilization of Twitter.
-A Status object contains the datails of a single tweet, such as the full text, number of retweets and replies.
+A Status object contains the details of a single tweet, such as the full text, number of retweets and replies.
 
 \subsection{Botometer}
 Botometer \cite{Botometer} checks the activity of a Twitter account and gives it a score based on how likely the account is to be a bot.
 
 Authors et al \cite{Botometer} tested most classification algorithm with their dataset and highlighted Random Forest as their final classifier, since it gained the highest accuracy. Its accuracy was 98.42\% and 0.984 F1 measure \cite{Lee11sevenmonths}.
 
-Botometer provides an API to check Twitter accounts genuinity.
+Botometer provides an API to check Twitter accounts authenticity.
 
 \subsection{Hoaxy}
 Hoaxy is a tool that visualizes the spreading of articles online. Articles can be found on Twitter, or other sources of misinformation and fact-checking.
@@ -130,7 +130,7 @@ Cresci Dataset et al. \cite{Cresci} is composed of genuine accounts and bots. In
 
 \normalsize
 \begin{itemize}
-	\item \textbf{Genuine accounts} are those users who correctly answered to a simple question, posed in natural language, so they represent accounts with no automatization.
+	\item \textbf{Genuine accounts} are those users who correctly answered to a simple question, posed in natural language, so they represent accounts with no automation.
 	\item  During Rome majoral election in 2014, one of the candidates used a set of automated accounts to publicize his policies. These accounts were gathered to be part of the \textbf{Social Spam-Bots \#1}.
 	\item \textbf{Social Spam-Bots \#2} are accounts that promotes mobile app, using popular hashtags for months.
 	\item  \textbf{Social Spam-Bots \#3} promotes products on sale on Amazon, by tweeting products URL and descriptions.
@@ -140,7 +140,7 @@ All these accounts were manually checked to verify their automated nature.
 \begin{itemize}
 	\item The \textbf{Traditional Spam-Bots \#1} dataset is the training set used in \cite{Yang}.
 	\item \textbf{traditional Spam-Bots \#2} are users that mention other users in tweets containing scam URLs. They usually invite users to claim a prize.
-	\item  \textbf{Traditional Spam-Bots \#3} and \textbf{traditional Spam-Bots \#4} are bots that continously tweet job offers.
+	\item \textbf{Traditional Spam-Bots \#3} and \textbf{traditional Spam-Bots \#4} are bots that continuously tweet job offers.
 	\item \textbf{Fake-Followers} are account involved in increasing popularity of other users. In order to collect them, Cresci et al. \cite{Cresci} bought followers from fastfollowerz.com, intertwitter.com and twittertechnology.com.
 \end{itemize}
 
@@ -150,7 +150,7 @@ The intent of this project was to find a methodology useful to detect sophistica
 \subsection{Varol-2017}
 The Varol dataset et al. \cite{Varol} contains a list of Twitter accounts, labeled as bots (1) or humans (0).
 
-The construction of this dataset starts with the indentification of a representative sample of users, by monitoring a Twitter stream for 3 months, starting in October 2015. Thanks to this approach it is possible to collect data without bias; in fact other methods like snowball (a technique that nominee new samples, starting from the social networks of an initial pool of users) or breadth-first (a graph exploration technique) need an initial users set.
+The construction of this dataset starts with the identification of a representative sample of users, by monitoring a Twitter stream for 3 months, starting in October 2015. Thanks to this approach it is possible to collect data without bias; in fact other methods like snowball (a technique that nominee new samples, starting from the social networks of an initial pool of users) or breadth-first (a graph exploration technique) need an initial users set.
 During the observation window about 14 million user accounts were gathered. 
 All the collected users had to have at least 200 tweets in total and 90 tweets during the three month observation (about one tweet per day).
 
@@ -217,7 +217,7 @@ Here we illustrate what kind of pre-process operations were performed for that p
 \normalsize
 \clearpage
 
-Since we didn't know how many categories of bots were listed in this dataset, the first step consisted in understanding wich was the optimal number of clusters to look for. To achieve that goal, we applied \textit{hierarchical clustering}. This is a method of cluster analysis which build a hierarchy of clusters. The results of hierarchical clustering are usually presented in a dendrogram, that illustrates the arrangement of the clusters produced.
+Since we didn't know how many categories of bots were listed in this dataset, the first step consisted in understanding which was the optimal number of clusters to look for. To achieve that goal, we applied \textit{hierarchical clustering}. This is a method of cluster analysis which build a hierarchy of clusters. The results of hierarchical clustering are usually presented in a dendrogram, that illustrates the arrangement of the clusters produced.
 In figure (\ref{fig:dendogram}) you can see the dendogram of the algorithm.
 
 
@@ -238,7 +238,7 @@ In order to select the optimal number of clusters, we plotted the knee-elbow fig
 \newpage
 It is clear that there are no well-defined elbows or knees, both curves seems to be ''smooth'', so it were hard to pick a reasonable k (number of clusters) for the algorithms to come.
 
-Then we tried another approach. We applied the \emph{K-means} algorithm and we plotted the elbow methond (\ref{fig:elbow}). In this figure there is an elbow beetween k=3 and k=4, so the most accurate solution were represented by four clusters.
+Then we tried another approach. We applied the \emph{K-means} algorithm and we plotted the elbow method (\ref{fig:elbow}). In this figure there is an elbow between k=3 and k=4, so the most accurate solution were represented by four clusters.
 
 \begin{figure}
 	\includegraphics[width=\linewidth]{chapter3/figure/elbow.jpg}
@@ -274,7 +274,7 @@ The clustering approach did not help us, but the manual inspection of the cluste
 	\item[\PencilRight]Fake-Followers
 \end{itemize}
 
-We started with a hand-labeling of the Varol dataset \cite{Varol}. For each account we analysed its profile and tweets and we assigned it a label according to the categories we identified.  We have faced some unexpected behaviours among bot accounts, that didn't fit the above-mentioned categories. For example, we found harmless bots, whose goal was to improve their ability of formulating sentences. In these cases, they were temporarily signed as ''general purpose''.
+We started with a hand-labeling of the Varol dataset \cite{Varol}. For each account we analyzed its profile and tweets and we assigned it a label according to the categories we identified. We have faced some unexpected behaviors among bot accounts, that didn't fit the above-mentioned categories. For example, we found harmless bots, whose goal was to improve their ability of formulating sentences. In these cases, they were temporarily signed as ''general purpose''.
 
 We also found genuine users, who we thought  had been incorrectly added to the dataset.
 This task resulted into the collection of the following bots:
@@ -294,7 +294,7 @@ This task resulted into the collection of the following bots:
 
 \emph{''General purpose''} accounts are sometimes bots with no goal, they aim to emulate human behavior and often they were recognizable just because their description informs other users about their own nature.
 
-Sixtythree users were not enough to represent a class and it was not possible to find a large list of those accounts who act like them, so we added all these ids to the ''genuine'' group. Even if this choise brought some noise to our data (since we added some bots in a humans dataset), it allowed us to provide our data more heterogeneity.
+Sixtythree users were not enough to represent a class and it was not possible to find a large list of those accounts who act like them, so we added all these ids to the ''genuine'' group. Even if this choice brought some noise to our data (since we added some bots in a humans dataset), it allowed us to provide our data more heterogeneity.
 
 \emph{''NSFW''} accounts are only thirtyone elements, anyway the problem of pornography is a known issue on Twitter. In \cite{Varol} they clusterize users too. ''These bot clusters exhibit some prominent properties: cluster C0, for example, consists of legit-looking accounts that are promoting themselves (recruiters, porn actresses, etc.)'' \cite{Varol}.
 This kind of users are often banned by Twitter, so it is likely that the accounts that we were not able to scrape, used to belong to this category.
@@ -309,7 +309,7 @@ All these samples were not enough to train a classifier, hence we needed to coll
 
 BotBlock contains thousands of pornbot ids. We wanted to gather about 6,000 samples, an amount that would have been enough for the final dataset, with regards to its balance.
 Since they were sorted according to their creation date, we shuffled the whole list. Then, using the Twitter API, we looked for accounts that weren't deleted yet. 
-We needed to scrape profile features and tweets, so we couldn't consider banned accounts. The user list was initially shuffled to allow us to collect users with different ages. This emerged as a very useful setp, because we gathered both more long-lived accounts and more explicit accounts (which probably have shorter lives). We finally obtained 6,605 accounts and 198,378 tweets.
+We needed to scrape profile features and tweets, so we couldn't consider banned accounts. The user list was initially shuffled to allow us to collect users with different ages. This emerged as a very useful step, because we gathered both more long-lived accounts and more explicit accounts (which probably have shorter lives). We finally obtained 6,605 accounts and 198,378 tweets.
 \subsection{News-Spreaders}
 Many bots on Twitter are News-Spreaders. The goal of these users is to spread politics, sports or other news. Often their behavior is not harmful, they just retweet statuses from newspapers accounts. However, there are users created to diffuse fake news. In the last few years Twitter has been used to boost politics propaganda. During elections or political campaigns, ad hoc accounts are created to divulgate specific political idea.
 
@@ -317,9 +317,9 @@ As a recent study highlighted, about 80\% of these ''pre-elections bots'' are st
 
 We started gathering these ids by exploring Hoaxy.
 We used two different approaches.
-\begin{figure}[t]
+\begin{figure}[htp]
 	\centering
-	\includegraphics[width=250px]{chapter3/figure/news-spreader.jpg}
+	\includegraphics[width=\columnwidth]{chapter3/figure/news-spreader.jpg}
 	\caption{Collection of News-Spreading bots, approach 1}
 	\label{fig:News-Spreaders}
 \end{figure}
