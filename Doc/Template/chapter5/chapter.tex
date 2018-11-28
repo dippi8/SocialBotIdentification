@@ -422,7 +422,7 @@ After several Grid Search runs, the last round computed had this hyperparameters
 	\label{fig:auc}
 \end{figure}
 As we can see in Figure \ref{fig:grid_search}, the AUC is increasing with the number of the estimators in the forest. We decided t stop at 450, which corresponds to the highest AUC score, since this phase was aimed to find a comparison term with Botometer, but it didn't represent the final model.
-In their paper \cite{Varol}, the Botometer group claims to reach 0.95 in AUC score.
+In their paper \cite{Botometer}, the Botometer group claims to reach 0.95 in AUC score.
 
 The AUC obtained with our arrangement is equal to 0.96, as shown in Figure \ref{fig:auc}, which is a positive accomplishment, considering that it will be used only as support for the identification of humans among bots, but we didn't crafted specific features as the ones involved in the Botometer project and we didn't have the same amount of data neither.
 
@@ -616,7 +616,7 @@ While cross-validating the model, we tested the complete features vector (with a
 
 The age filed removing made thing worse, but we decided to perform it anyway, because of the good score reached without it, and the flexibility we were giving to the Random Forest. The slight worsening could be also imputed to the biased extrinsic features of that data: those samples came from the multi-class dataset and they originally had the extrinsic features based on the four bot categories' dictionaries.
 In order to refill the binary dataset with these new samples, we had to recompute the extrinsic features, applying the analogous method used for the binary purpose.
-We didn't recompute the entire dictionaries, we just assigned the scores to the new samples we were introducing, basing the calculations on the already listed words. Those had been exposed in chapter \ref{capitolo4}. This approach aimed to force the algorithm to identify bots and humans, basing its comparisons on the online computations of those features, like in a real-case generalization.
+We didn't recompute the entire dictionaries, we just assigned the scores to the new samples we were introducing, basing the calculations on the already listed words. Those have been exposed in chapter \ref{capitolo4}. This approach aimed to force the algorithm to identify bots and humans, basing its comparisons on the online computations of those features, like in a real-case generalization.
 
 This last configuration was used to performed a further tuning of the parameters.
 A new Grid Search brought us the configuration for the hyperparameters shown in Figure \ref{fig:bon_tuning_refil}, leading to the new AUC score, exposed in Figure \ref{fig:bon_refil_auc}.
@@ -660,7 +660,7 @@ In the following subsections there are the detailed explanations of the three cl
 
 \subsection{All-features-based Random Forest classifier}
 \subsubsection{Dataset}
-During this phase, we used the previously described dataset \ref{sec:dataset} with its four different labels.
+During this phase, we used the previously described dataset in section \ref{sec:dataset} with its four different labels.
 The algorithm was fed with 21,445 samples and 37 features. the amount of records were light enough to consider K-fold crossvalidation, without slow the validation down too much.
 \subsubsection{Model}
 We found ourselves in the situation in which we had some brand new features and we didn't know how useful they were. Obviously, we could appeal to heat-maps or other tools, to highlight the correlations among variables and targets.
@@ -832,7 +832,7 @@ This model is quite simple and doesn't require much effort in interpolating seve
 	The third option, which was the most interesting, was built by computing the Information Gain for each feature, using the inner ability of the Random Forest classifier, and then by applying the weights on the attributes, basing the coefficients on the scores provided by the ranking.
 	This method emerged as the most effective, in the overall score.
 	
-	The last one was implemented as a Gaussian Kernel, which exploits the above-explained Radial Basis Function \ref{rbf}.
+	The last one was implemented as a Gaussian Kernel, which exploits the above-explained Radial Basis Function in section \ref{rbf}.
 	This attempt fell shorter then the standard normalization, and it could be imputable to an overestimation of the ability to approximate the probability density of our data.
 	It seemed that the Gaussian-based weighting wasn't a good fit for the problem.
 \end{itemize}
@@ -860,7 +860,7 @@ The final model has been created with the following call: \textit{KNeighborsClas
 
 
 \subsection{Text-based Naive Bayes classifier}
-In chapter \ref{capitolo4} we created some useful features that helped the above-mentioned classifiers. Anyway we didn't consider enough the tweet texts. A first idea consisted in add a feature that describe the context of the tweets. This task was easily viable using \textit{Google Cloud Natural Language}. Unfortunately, this service only provides a few free calls, and we would not be able to tag all the tweets in our dataset. Moreover, the Context Classification is very specific, and we would have risked to have a too large domain of values. We tried to classify some tweets and we noticed that it was not possible with many of them, since they were just exclamations or contextless sentences. We therefore decided to train a proprietary text classifier. This allowed us to classify texts according to our targets, and our final classifier would have been self-sufficient, without external services.
+In Chapter \ref{capitolo4} we created some useful features that helped the above-mentioned classifiers. Anyway we didn't consider enough the tweet texts. A first idea consisted in add a feature that describe the context of the tweets. This task was easily viable using \textit{Google Cloud Natural Language}. Unfortunately, this service only provides a few free calls, and we would not be able to tag all the tweets in our dataset. Moreover, the Context Classification is very specific, and we would have risked to have a too large domain of values. We tried to classify some tweets and we noticed that it was not possible with many of them, since they were just exclamations or contextless sentences. We therefore decided to train a proprietary text classifier. This allowed us to classify texts according to our targets, and our final classifier would have been self-sufficient, without external services.
 \subsubsection{Dataset}
 Since we wanted to classify texts instead of users, we needed to create a specific dataset.
 It had to contain a list of tweets and all the related target. We composed it by binding the target of each tweet to the label of its author. This produced some noise; often bots tweet something different from their goal, to seem more humans. We could accept this problem, since most of the tweets are aimed to a goal.

@@ -9,15 +9,7 @@ Bots often don't claim themselves as automated accounts, that makes their detect
 
 \textbf{BotBuster} is the name of the project, whose goal is to provide the probability-based classification of the desired Twitter user.
 The logo used to represent the application tool is shown in Figure \ref{fig:botbuster}
-The probabilities are shown in a histogram-shaped graph, with different colours, one for each target, as displayed in Figure\ref{fig:histogram}.
-
-\begin{figure}
-	\begin{center}
-		\includegraphics[width=\columnwidth]{chapter7/figure/histogram.jpg}\par 
-	\end{center}
-	\caption{Probability classification diagram on BotBuster}
-	\label{fig:histogram}
-\end{figure}
+The probabilities are shown in a histogram-shaped graph, with different colours, one for each target, as displayed in Figure \ref{fig:histogram}.
 
 \begin{figure}
 	\begin{center}
@@ -27,13 +19,23 @@ The probabilities are shown in a histogram-shaped graph, with different colours,
 	\label{fig:botbuster}
 \end{figure}
 
+
+\begin{figure}
+	\begin{center}
+		\includegraphics[width=\columnwidth]{chapter7/figure/histogram.jpg}\par 
+	\end{center}
+	\caption{Probability classification diagram on BotBuster}
+	\label{fig:histogram}
+\end{figure}
+
+
 The web application is freely accessible through a public URL. It is currently available on \href{http://www.botbuster.it}{\textit{www.botbuster.it}}.
 
 Basically, the functioning of BotBuster can be resumed in getting a Twitter user name through an input field on the home page, and then executing the prediction pipeline described in section \ref{predicion_pipeline}.
 The input field filling triggers the engine operating in the background, which runs a Python script performing the prediction.
 \section{Architecture}
 The web application works under a client - server paradigm. The front-end program is executed on the client's web browser, while on the server runs the back-end application.
-Every time a user search for a Twitter user name, the HTTP protocols is involved to perform POST and GET requests between client and server. The front-end and the back-end applications handle the request and exchange data, as shown in Figure\ref{fig:architecture}.
+Every time a user search for a Twitter user name, the HTTP protocols is involved to perform POST and GET requests between client and server. The front-end and the back-end applications handle the request and exchange data, as shown in Figure \ref{fig:architecture}.
 \begin{figure}[t!]
 	\begin{center}
 		\includegraphics[width=0.6\columnwidth]{chapter7/figure/architecture.png} 
@@ -63,7 +65,7 @@ The first step consists in calling the Twitter APIs to retrieve user's data and 
 The script, then, handles the preprocessing stages and the data preparations needed by the different classifiers.
 Two final predictions are computed: the binary and the mutliclass classification.
 The probability given to the bot target, by the binary classifier, is used to weight the mutliclass prediction provided by the stacking ensemble.
-The final classification is composed by five probabilities: \textbf{P\textsubscript{NSWF},} \textbf{P\textsubscript{News-Spreader}}, \textbf{P\textsubscript{Spam-Bot}}, \textbf{P\textsubscript{Fake-Followers}}, \textbf{P\textsubscript{Genuine}}.
+The final classification is composed by five probabilities: \textbf{P\textsubscript{NSWF},} \textbf{P\textsubscript{News-Spreader}}, \textbf{P\textsubscript{Spam-Bot}}, \textbf{P\textsubscript{Fake-Follower}}, \textbf{P\textsubscript{Genuine}}.
 \subsection{Flask}
 Flask is a web framework for Python. It is a good fit for our tool, due to the Python-based script of the engine.
 The idea behind the Flask back-end is to map URL paths to some logic we want to execute. In the flask main script, we used three endpoints to trigger the computation of some code.
@@ -201,15 +203,15 @@ Looking at the partial scores assigned by the feature groups that Botometer comp
 
 Since it is legitimate to think that this profile is managed by a real person, we consider those feature introduced by Botometer as a valid contribute to the binary classifier. It could be considered in future implementations, in order to better distinguish human profiles, even with very high tweeting activities.
 
-During the tool testing, we noticed some particular types of users that we haven't been able to include in the training sets. These types are the \textit{protected} users and the ones which never had interactions on the social, at all. No interactions means that these unused users have no tweets, no followings, no followers, no likes and often no profile picture.
+During the tool testing, we noticed some particular types of users that we haven't been able to include in the training sets. These types are the \textit{protected} users and the ones which never had interactions on the social, at all. No interactions means that these inactive users have no tweets, no followings, no followers, no likes and often no profile picture.
 Protected users choose to hide their sharing activities to everyone, and to reveal their timelines only to those accounts who send them the request to see their tweets. Obviously, the timelines aren't accessible via Twitter APIs, so it is hard to infer the nature of such accounts, since it is not possible to asses if they post contents or not. For this kind of users, we decided to assign a standard classification, that represents the uncertainty, as shown in Figure \ref{fig:protected}. The classification assesses a 50\% probabilities to both bot and genuine categories, and partitions the bot behaviours in equal parts.
-Instead, the prediction output of unused accounts has been fixed with a 100\% chance to be genuine. We cannot assess the real nature of those users, nor their purpose, but we can state that their not harmful, since they do not have interactions with other accounts. That makes them genuine accounts, like legitimate users, they don't represent threats or harmful entities. An example of such classification is shown in Figure \ref{fig:empty}.
+Instead, the prediction output of inactive accounts has been fixed with a 100\% chance to be genuine. We cannot assess the real nature of those users, nor their purpose, but we can state that their not harmful, since they do not have interactions with other accounts. That makes them genuine accounts, like legitimate users, they don't represent threats or harmful entities. An example of such classification is shown in Figure \ref{fig:empty}.
 
 \begin{figure}[htp!]
 	\centering 
 	\subfigure[Protected account]{
 		\label{fig:protected}\includegraphics[width=60mm]{chapter7/figure/protected.png}}
-	\subfigure[Unused account]{
+	\subfigure[Inactive account]{
 		\label{fig:empty}\includegraphics[width=60mm]{chapter7/figure/empty.png}}
 	\caption{Classification of specific account types}
 \end{figure}

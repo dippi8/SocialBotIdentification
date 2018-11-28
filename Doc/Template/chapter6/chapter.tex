@@ -11,10 +11,10 @@ We wanted to give the right importance to each model, hoping they would help eac
 We thought about several methods to exploit their strengths and combine them. In particular, we thought about a genetic approach and a stacking ensemble with a meta-classifier. 
 We wanted to evaluate the performance obtained by these methods and chose the one that fitted our need.
 
-Both the genetic and the meta-model were trained with holdout technique, splitting the whole dataset into training and test sets. The 70\% of the samples ended up into the training set, the 30\% in the validation set.
+Both the genetic and the meta-model were trained with holdout technique, splitting the whole dataset into training and test sets. 70\% of the samples ended up into the training set, 30\% in the validation set.
 We had a training set for the ensemble models that contains 6,434 entries.
 The data that fed the stacking methods were the predictions of the tree classifiers, over the validation set.
-In order to make those prediction without cheating, we couldn't use the models that were already fitted with the hole data. We had to retrain them with the 70\% of the records. 
+In order to make those prediction without cheating, we couldn't use the models that were already fitted with the hole data. We had to retrain them with 70\% of the records. 
 We didn't perform further Grid Search to find the best hyperparameters in this stage, because the final script that we were going to assemble was taking into account the entire dataset to train the models. Furthermore, this small variation, in terms of amount of training data, wouldn't had led us into a misinterpretation of the problem, if we had kept the same hyperparameters found earlier.
 We decided to stick with the configurations already found and to train the model with fewer data.
 
